@@ -1,8 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8n8cxgf36bc6"]
+[gd_scene load_steps=4 format=3 uid="uid://ban5xayoc55fa"]
 
-[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://wall/wall.tscn" id="1_p4mbc"]
-[ext_resource type="Script" uid="uid://c30cqe5qs1yip" path="res://player/player.gd" id="2_kicnn"]
-[ext_resource type="PackedScene" uid="uid://ddq1u3wwk2bwj" path="res://tank/tank.tscn" id="3_bdwy4"]
+[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_p4mbc"]
+[ext_resource type="PackedScene" uid="uid://ddq1u3wwk2bwj" path="res://game/tank/tank.tscn" id="3_bdwy4"]
+
+[sub_resource type="GDScript" id="GDScript_g7njr"]
+script/source = "extends TankController
+class_name Player
+
+var id : int
+
+func _process(delta):
+	update_movement_input()
+	
+	if Input.is_action_pressed(\"DEBUG_QUIT\") : get_tree().quit() #DEBUG
+	
+
+func update_movement_input() :
+	var input : Vector2
+	input.x = Input.get_axis(\"player\" + str(id) + \"_left\", \"player\" + str(id) + \"_right\")
+	input.y = Input.get_axis(\"player\" + str(id) + \"_down\", \"player\" + str(id) + \"_up\")
+	set_tank_input(input)
+"
 
 [node name="TankMovementTesting" type="Node2D"]
 
@@ -12,32 +30,38 @@
 
 [node name="Wall" parent="Walls" instance=ExtResource("1_p4mbc")]
 position = Vector2(0, -312)
+update = true
 horizontal = true
 length = 1000.0
 
 [node name="Wall2" parent="Walls" instance=ExtResource("1_p4mbc")]
 position = Vector2(550, 0)
+update = true
 length = 300.0
 
 [node name="Wall3" parent="Walls" instance=ExtResource("1_p4mbc")]
 position = Vector2(-442, 0)
+update = true
 length = 500.0
 
 [node name="Wall4" parent="Walls" instance=ExtResource("1_p4mbc")]
 position = Vector2(266, -3)
+update = true
 length = 150.0
 
 [node name="Wall5" parent="Walls" instance=ExtResource("1_p4mbc")]
 position = Vector2(207, 67)
+update = true
 horizontal = true
 
 [node name="Wall6" parent="Walls" instance=ExtResource("1_p4mbc")]
 position = Vector2(160, -83)
+update = true
 horizontal = true
 length = 200.0
 
 [node name="Player" type="Node" parent="."]
-script = ExtResource("2_kicnn")
+script = SubResource("GDScript_g7njr")
 
 [node name="Tanks" type="Node2D" parent="."]
 

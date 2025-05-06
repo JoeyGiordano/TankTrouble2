@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ddq1u3wwk2bwj"]
 
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_1ealj"]
-[ext_resource type="Script" uid="uid://bxduchl0yk352" path="res://tank/tank_rigidbody.gd" id="2_2mifv"]
+[ext_resource type="Script" uid="uid://bxduchl0yk352" path="res://game/tank/tank_rigidbody.gd" id="2_2mifv"]
 
 [sub_resource type="GDScript" id="GDScript_olqvs"]
 script/source = "extends Tank

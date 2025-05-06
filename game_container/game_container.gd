@@ -12,7 +12,7 @@ static var GC : GameContainer
 @onready var Players = $Players
 
 #Other Scenes
-@onready var tank_scene : PackedScene = preload("res://tank/tank.tscn")
+@onready var tank_scene : PackedScene = preload("res://game/tank/tank.tscn")
 
 #Active Scenes (scenes that might be put in the active scene holder
 @onready var startup : PackedScene = preload("res://scenes/startup.tscn")
@@ -20,7 +20,7 @@ static var GC : GameContainer
 @onready var instructions : PackedScene = preload("res://scenes/instructions.tscn")
 @onready var credits : PackedScene = preload("res://scenes/credits.tscn")
 @onready var ready_up : PackedScene = preload("res://scenes/ready_up/ready_up.tscn")
-@onready var game : PackedScene = preload("res://scenes/game.tscn")
+@onready var game : PackedScene = preload("res://game/game.tscn")
 @onready var victory : PackedScene = preload("res://scenes/victory.tscn")
 
 @onready var scene_dict = {
