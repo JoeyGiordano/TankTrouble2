@@ -9,7 +9,6 @@ var move_input : Vector2 = Vector2.ZERO
 var shoot_input : bool = false
 
 func _physics_process(delta):
-	#move_input = Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_down", "ui_up"))
 	move_and_rotate()
 
 func move_and_rotate() :

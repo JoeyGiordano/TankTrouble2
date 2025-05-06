@@ -2,7 +2,7 @@ extends Node
 class_name GameContainer
 
 #easy way to access the GameContainer from other nodes
-static var GAME_CONTAINER : GameContainer
+static var GC : GameContainer
 
 #There should only ever be one active scene (menu or stage) and it will be the only child of the ActiveSceneHolder node
 @onready var ActiveSceneHolder = $ActiveSceneHolder
@@ -35,7 +35,7 @@ static var GAME_CONTAINER : GameContainer
 
 func _ready():
 	#set up the singleton (not an autoload)
-	GAME_CONTAINER = self
+	GC = self
 
 func _process(delta):
 	#quit if Q pressed - DEBUG
