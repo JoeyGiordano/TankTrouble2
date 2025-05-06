@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddstyon1os41f"]
+
+[ext_resource type="Script" uid="uid://c7x3b0o7nyjft" path="res://scenes/ready_up/ready_up.gd" id="1_d831x"]
+
+[node name="ReadyUp" type="Node"]
+script = ExtResource("1_d831x")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 371.0
+offset_top = 193.0
+offset_right = 447.0
+offset_bottom = 216.0
+text = "Ready up!
+Player 1 press Q
+Player 2 press M"

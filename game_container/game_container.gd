@@ -11,39 +11,37 @@ static var GAME_CONTAINER : GameContainer
 #The player nodes are instantiated in the Players node, they can be hidden and frozen when necessary (if the player nodes do not need to persist this structure is not necessary)
 @onready var Players = $Players
 
-#Scenes
-@onready var main_menu : PackedScene = preload("res://scenes/statics/main_menu.tscn")
-@onready var credits : PackedScene = preload("res://scenes/statics/credits.tscn")
-@onready var instructions : PackedScene = preload("res://scenes/statics/instructions.tscn")
-@onready var cutscene1 : PackedScene = preload("res://scenes/cutscenes/cutscene1.tscn")
-@onready var game_over : PackedScene = preload("res://scenes/statics/game_over.tscn")
-@onready var stage1 : PackedScene = preload("res://scenes/stages/stage1.tscn")
-@onready var stage2 : PackedScene = preload("res://scenes/stages/stage2.tscn")
-@onready var stage3 : PackedScene = preload("res://scenes/stages/stage3.tscn")
+#Other Scenes
+@onready var tank_scene : PackedScene = preload("res://tank/tank.tscn")
+
+#Active Scenes (scenes that might be put in the active scene holder
+@onready var startup : PackedScene = preload("res://scenes/startup.tscn")
+@onready var main_menu : PackedScene = preload("res://scenes/main_menu.tscn")
+@onready var instructions : PackedScene = preload("res://scenes/instructions.tscn")
+@onready var credits : PackedScene = preload("res://scenes/credits.tscn")
+@onready var ready_up : PackedScene = preload("res://scenes/ready_up/ready_up.tscn")
+@onready var game : PackedScene = preload("res://scenes/game.tscn")
+@onready var victory : PackedScene = preload("res://scenes/victory.tscn")
+
 @onready var scene_dict = {
+	"startup" : startup,
 	"main_menu" : main_menu,
-	"credits" : credits,
 	"instructions" : instructions,
-	"cutscene1" : cutscene1,
-	"game_over" : game_over,
-	"stage1" : stage1,
-	"stage2" : stage2,
-	"stage3" : stage3
+	"credits" : credits,
+	"ready_up" : ready_up,
+	"game" : game,
+	"victory" : victory	
 }
-
-
-#### METHODS ####
 
 func _ready():
 	#set up the singleton (not an autoload)
 	GAME_CONTAINER = self
-	pass
 
 func _process(delta):
 	#quit if Q pressed - DEBUG
-	if Input.is_key_pressed(KEY_Q) :
-		get_tree().quit()
-	pass
+	if Input.is_action_pressed("DEBUG_QUIT") : get_tree().quit()
+
+### SCENE MANAGEMENT ###
 
 func switch_to_scene(scene_name : String) :
 	#switch to a scene with the name scene_name
@@ -57,16 +55,23 @@ func switch_active_scene(scene : PackedScene) :
 
 func get_scene(scene_name : String) -> PackedScene:
 	#return the PackedScene with the name scene_name, or return a random stage
-	if scene_name == "random_stage" :
-		return get_random_stage()
+	#frist if statement is old, I left it in so we know where to put it later if needed
+	#if scene_name == "random_stage" :
+		#return get_random_stage()
 	if !scene_dict.has(scene_name) : 
 		print("Scene " + scene_name + " is not in scene dict.")
 		return main_menu
 	return scene_dict[scene_name]
 
-func get_random_stage() -> PackedScene:
-	#return a random stage
-	var r = int(randf() * 4)
-	if r == 0 : return stage1
-	if r == 1 : return stage2
-	else : return stage3
+### PLAYER MANAGEMENT ###
+
+func create_players(count : int) :
+	#destroys existing Players and instantiates [count] Tank scenes childed to Players
+	destroy_all_players()
+	for i in count :
+		var s = Tank.instantiate_tank(true, i+1)
+		Players.add_child(s)
+
+func destroy_all_players() :
+	for j in Players.get_child_count() :
+		Players.get_child(j).queue_free()

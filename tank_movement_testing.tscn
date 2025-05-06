@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8n8cxgf36bc6"]
+
+[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://wall/wall.tscn" id="1_p4mbc"]
+[ext_resource type="Script" uid="uid://c30cqe5qs1yip" path="res://player/player.gd" id="2_kicnn"]
+[ext_resource type="PackedScene" uid="uid://ddq1u3wwk2bwj" path="res://tank/tank.tscn" id="3_bdwy4"]
+
+[node name="TankMovementTesting" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource("1_p4mbc")]
+position = Vector2(0, -312)
+horizontal = true
+length = 1000.0
+
+[node name="Wall2" parent="Walls" instance=ExtResource("1_p4mbc")]
+position = Vector2(550, 0)
+length = 300.0
+
+[node name="Wall3" parent="Walls" instance=ExtResource("1_p4mbc")]
+position = Vector2(-442, 0)
+length = 500.0
+
+[node name="Wall4" parent="Walls" instance=ExtResource("1_p4mbc")]
+position = Vector2(266, -3)
+length = 150.0
+
+[node name="Wall5" parent="Walls" instance=ExtResource("1_p4mbc")]
+position = Vector2(207, 67)
+horizontal = true
+
+[node name="Wall6" parent="Walls" instance=ExtResource("1_p4mbc")]
+position = Vector2(160, -83)
+horizontal = true
+length = 200.0
+
+[node name="Player" type="Node" parent="."]
+script = ExtResource("2_kicnn")
+
+[node name="Tanks" type="Node2D" parent="."]
+
+[node name="Tank" parent="Tanks" instance=ExtResource("3_bdwy4")]

@@ -4,17 +4,18 @@
 
 [node name="GameOver" type="Node"]
 
-[node name="MainMenuButton" type="Button" parent="."]
+[node name="TitleButton" type="Button" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
 text = "MainMenu"
 script = ExtResource("1_mua0j")
 switch_to = "main_menu"
+quick_key = true
 
 [node name="TEMP" type="Label" parent="."]
 offset_left = 144.0
 offset_top = 130.0
 offset_right = 308.0
 offset_bottom = 179.0
-text = "Game_Over
-Player 1 Wins"
+text = "Victory
+Player ___ Wins"
