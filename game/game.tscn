@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsd7gwwl4lle0"]
+
+[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_l1rk1"]
+
+[node name="Game" type="Node"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 219.0
+offset_top = 87.0
+offset_right = 265.0
+offset_bottom = 110.0
+text = "Game"
+
+[node name="Camera2D" type="Camera2D" parent="Label"]
+
+[node name="Walls" type="Node2D" parent="Label"]
+
+[node name="Wall" parent="Label/Walls" instance=ExtResource("1_l1rk1")]
+position = Vector2(0, -312)
+update = true
+horizontal = true
+length = 1000.0
+
+[node name="Wall2" parent="Label/Walls" instance=ExtResource("1_l1rk1")]
+position = Vector2(550, 0)
+update = true
+length = 300.0
+
+[node name="Wall3" parent="Label/Walls" instance=ExtResource("1_l1rk1")]
+position = Vector2(-442, 0)
+update = true
+length = 500.0
+
+[node name="Wall4" parent="Label/Walls" instance=ExtResource("1_l1rk1")]
+position = Vector2(266, -3)
+update = true
+length = 150.0
+
+[node name="Wall5" parent="Label/Walls" instance=ExtResource("1_l1rk1")]
+position = Vector2(207, 67)
+update = true
+horizontal = true
+
+[node name="Wall6" parent="Label/Walls" instance=ExtResource("1_l1rk1")]
+position = Vector2(160, -83)
+update = true
+horizontal = true
+length = 200.0

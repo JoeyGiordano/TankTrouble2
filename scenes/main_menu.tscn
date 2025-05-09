@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dd71ltua8vpqj"]
 
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://game_container/switch_to_scene.gd" id="1_hccbo"]
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://game_container/switch_to_scene.gd" id="1_u5tdt"]
 
 [node name="MainMenu" type="Node"]
 
@@ -8,15 +8,16 @@
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Play"
-script = ExtResource("1_hccbo")
-switch_to = "cutscene1"
+script = ExtResource("1_u5tdt")
+switch_to = "ready_up"
+quick_key = true
 
 [node name="CreditsButton" type="Button" parent="."]
 offset_top = 115.0
 offset_right = 63.0
 offset_bottom = 146.0
 text = "Credits"
-script = ExtResource("1_hccbo")
+script = ExtResource("1_u5tdt")
 switch_to = "credits"
 
 [node name="InstructionsButton" type="Button" parent="."]
@@ -24,7 +25,7 @@ offset_top = 57.0
 offset_right = 101.0
 offset_bottom = 88.0
 text = "Instructions"
-script = ExtResource("1_hccbo")
+script = ExtResource("1_u5tdt")
 switch_to = "instructions"
 
 [node name="TEMP" type="Label" parent="."]
