@@ -1,20 +1,21 @@
 extends Node
 class_name GameManager
 
-#easy way to access the GameContainer from other nodes
+#easy way to access the GameManager from other nodes
 static var GM : GameManager
 
 var player_count : int
 var score : int
 
-func _ready():
-	#set up the singleton (not an autoload)
+func _init():
+	#set up the singleton (not an autoload) (in _init() so that it works when _ready() is called for all other nodes)
 	GM = self
 
 func _process(delta):
+	
+	#DEBUG - allows skipping the Game scene
 	if GameContainer.GC.ActiveSceneHolder.get_child(0).name == "Game" && Input.is_action_just_pressed("DEBUG_SKIP"):
 		victory_achieved(1)
-		
 
 func player_ready() :
 	#gets called from the ready_up screen

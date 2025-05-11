@@ -33,8 +33,8 @@ static var GC : GameContainer
 	"victory" : victory	
 }
 
-func _ready():
-	#set up the singleton (not an autoload)
+func _init():
+	#set up the singleton (not an autoload) (in _init() so that it works when _ready() is called for all other nodes)
 	GC = self
 
 func _process(delta):
