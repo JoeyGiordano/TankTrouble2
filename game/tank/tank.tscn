@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddq1u3wwk2bwj"]
+[gd_scene load_steps=7 format=3 uid="uid://ddq1u3wwk2bwj"]
 
+[ext_resource type="Script" uid="uid://b2q2mhktsf8jw" path="res://game/tank/tank.gd" id="1_77ink"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_1ealj"]
-[ext_resource type="Script" uid="uid://bxduchl0yk352" path="res://game/tank/tank_rigidbody.gd" id="2_2mifv"]
-
-[sub_resource type="GDScript" id="GDScript_olqvs"]
-script/source = "extends Tank
-"
+[ext_resource type="Script" uid="uid://bxduchl0yk352" path="res://game/tank/rigidbody/tank_rigidbody.gd" id="2_2mifv"]
+[ext_resource type="Script" uid="uid://cgubog5r5kaxx" path="res://game/tank/gun/guns/default_gun.gd" id="3_ilbjp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p4mbc"]
 friction = 0.5
@@ -14,7 +12,7 @@ friction = 0.5
 size = Vector2(22, 14)
 
 [node name="Tank" type="Node"]
-script = SubResource("GDScript_olqvs")
+script = ExtResource("1_77ink")
 
 [node name="TankRigidbody" type="RigidBody2D" parent="."]
 mass = 11.406
@@ -25,18 +23,33 @@ script = ExtResource("2_2mifv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TankRigidbody"]
 shape = SubResource("RectangleShape2D_x3xvy")
 
-[node name="Sprite" type="Node2D" parent="TankRigidbody"]
+[node name="Visuals" type="Node2D" parent="TankRigidbody"]
 
-[node name="Body" type="Sprite2D" parent="TankRigidbody/Sprite"]
+[node name="BodySprite" type="Sprite2D" parent="TankRigidbody/Visuals"]
 scale = Vector2(22, 14)
 texture = ExtResource("2_1ealj")
 region_enabled = true
 region_rect = Rect2(63, 68, 1, 1)
 
-[node name="Barrel" type="Sprite2D" parent="TankRigidbody/Sprite"]
-modulate = Color(1, 0.341176, 1, 1)
-position = Vector2(11, 0)
-scale = Vector2(9, 3)
+[node name="BackIcon" type="Sprite2D" parent="TankRigidbody/Visuals"]
+modulate = Color(0.858218, 0.858218, 0.858218, 1)
+position = Vector2(-9.25, 0.25)
+scale = Vector2(2.5, 9.5)
 texture = ExtResource("2_1ealj")
 region_enabled = true
 region_rect = Rect2(63, 68, 1, 1)
+
+[node name="GunHolder" type="Node2D" parent="TankRigidbody"]
+
+[node name="DefaultGun" type="Node2D" parent="TankRigidbody/GunHolder"]
+script = ExtResource("3_ilbjp")
+
+[node name="Barrel" type="Sprite2D" parent="TankRigidbody/GunHolder/DefaultGun"]
+modulate = Color(0.942703, 0.481239, 0.933172, 1)
+position = Vector2(11, 0)
+scale = Vector2(10.5, 3)
+texture = ExtResource("2_1ealj")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="Guntip" type="Node2D" parent="TankRigidbody/GunHolder/DefaultGun"]

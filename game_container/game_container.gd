@@ -11,9 +11,6 @@ static var GC : GameContainer
 #The player nodes are instantiated in the Players node, they can be hidden and frozen when necessary (if the player nodes do not need to persist this structure is not necessary)
 @onready var Players = $Players
 
-#Other Scenes
-@onready var tank_scene : PackedScene = preload("res://game/tank/tank.tscn")
-
 #Active Scenes (scenes that might be put in the active scene holder
 @onready var startup : PackedScene = preload("res://scenes/startup.tscn")
 @onready var main_menu : PackedScene = preload("res://scenes/main_menu.tscn")
@@ -69,8 +66,7 @@ func create_players(count : int) :
 	#destroys existing Players and instantiates [count] Tank scenes childed to Players
 	destroy_all_players()
 	for i in count :
-		var s = Tank.instantiate_tank(true, i+1)
-		Players.add_child(s)
+		var s = Tank.instantiate_tank(Players, true, i+1)
 
 func destroy_all_players() :
 	for j in Players.get_child_count() :

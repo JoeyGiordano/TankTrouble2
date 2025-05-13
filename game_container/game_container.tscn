@@ -12,7 +12,7 @@ script = ExtResource("2_ukxy1")
 
 [node name="ActiveSceneHolder" type="Node" parent="."]
 
-[node name="Startup_cutscene" parent="ActiveSceneHolder" instance=ExtResource("2_xcs12")]
+[node name="StartupCutscene" parent="ActiveSceneHolder" instance=ExtResource("2_xcs12")]
 
 [node name="OverlayPanels" type="Node" parent="."]
 
