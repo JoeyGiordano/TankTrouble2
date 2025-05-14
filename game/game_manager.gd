@@ -28,9 +28,9 @@ func victory_achieved(player_id : int) :
 	GameContainer.GC.destroy_all_players()
 	GameContainer.GC.switch_to_scene("victory")
 
-func player(player_id : int) -> Tank :
-	#gets player with given player_id
+func player(tank_id : int) -> Tank :
+	#gets player with given tank_id, tank_ids lower than 1 are not players
 	for i in GameContainer.GC.Players.get_child_count() :
-		if GameContainer.GC.Players.get_child(i).player_id == player_id :
+		if GameContainer.GC.Players.get_child(i).tank_id == tank_id :
 			return GameContainer.GC.Players.get_child(i)
 	return null

@@ -11,7 +11,6 @@ func _ready():
 	linear_velocity = speed * dir.normalized()
 
 func on_body_entered(body : Node) : #contact_monitor must be set to true and max_contacts_reported must be >0
-	print(body.name)
 	if body is Tank :
 		on_hit_tank(body)
 
@@ -29,7 +28,7 @@ static func instantiate_bullet(parent : Node , speed : float, dir : Vector2) :
 	b.dir = dir
 	
 	#add the new tank to the scene tree
-m	parent.add_child(b)
+	parent.add_child(b)
 	return b
 	
 	

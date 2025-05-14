@@ -5,17 +5,13 @@ class_name TankRigidbody
 @export var backward_speed = 100.0
 @export var rotation_speed = 4.0
 
-var move_input : Vector2 = Vector2.ZERO
-var shoot_input : bool = false
-
-func _physics_process(delta):
-	move_and_rotate()
+@onready var tank : Tank = get_parent()
 
 func move_and_rotate() :
 	#should only be called in _physics_process()
 	#moves the tank forward or backwards based on y input, rotates the tank based on x input
 	#does not use forces, just sets the linear_velocity and angular_velocity
-	
+	var move_input = tank.move_input
 	#forwards-backwards movement
 	if move_input.y > 0:
 		linear_velocity = move_input.y * forward_speed * transform.x
@@ -29,9 +25,3 @@ func move_and_rotate() :
 		angular_velocity = move_input.x * rotation_speed
 	else :
 		angular_velocity = 0
-
-func set_move_input(new_input : Vector2) :
-	move_input = new_input
-
-func set_shoot_input(new_input : bool) :
-	shoot_input = new_input
