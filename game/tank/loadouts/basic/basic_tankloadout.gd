@@ -1,7 +1,7 @@
-extends Gun
-class_name DefaultGun
+extends TankLoadout
+class_name BasicTankLoadout
 
-@onready var guntip : Node2D = $Guntip
+@onready var guntip = $Guntip
 
 var max_bullets : int = 5
 var bullets : Array[DefaultBullet] = []
@@ -13,11 +13,11 @@ func shoot() :
 	update_bullets()
 	if bullets.size() == max_bullets : return
 	
-	var b = DefaultBullet.instantiate(guntip.global_position, 100, forward(), 7)
+	var b = DefaultBullet.instantiate(guntip.global_position, 100, tank_rigidbody.forward(), 7)
 	bullets.append(b)
 	#play shoot sound and anim
 
-	
+
 func update_bullets() :
 	#iterates backwards through the array to safely through the array and delete all invalid nodes (bullets that have destroyed themselves)
 	for i in range(bullets.size() - 1, -1, -1) :
