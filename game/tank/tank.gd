@@ -5,8 +5,6 @@ class_name Tank
 
 var stats #TODO
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
-@onready var gun_holder : GunHolder = $TankRigidbody/GunHolder
-@onready var collision_polygon : TankCollisionPolygon = $TankRigidbody/TankCollisionPolygon
 static var tank_scene : PackedScene = preload("res://game/tank/tank.tscn")
 
 var collision_mask : int
@@ -19,20 +17,34 @@ func _ready() :
 	collision_mask = tank_rigidbody.collision_mask #save the normal collision mask for later
 
 func _process(delta):
+	DEBUG_PROCESS()
 	get_movement_input()
+	#shoot logic
+	if Input.is_action_just_pressed(get_input_tag("_shoot")) :
+		shoot()
+	if Input.is_action_just_released(get_input_tag("_shoot")) :
+		end_shoot() #for loadouts where the release of the shoot hey also has an effect
 
 func _physics_process(delta):
 	if !input_locked :
 		tank_rigidbody.move_and_rotate()
-		#play movement anim, depending on what it is, it could go in its own node
-		if Input.is_action_just_pressed(get_input_tag("_shoot")) :
-			gun_holder.get_current_gun().shoot()
+
+func DEBUG_PROCESS() :
+	#place to put debug controls
+	if Input.is_action_just_pressed("DEBUG_COMMAND") : #for this if, you have to press 9 before debug command
+		if Input.is_key_pressed(KEY_9) :
+			change_loadout(TankLoadout.Type.EMPTY)
+		if Input.is_key_pressed(KEY_0) :
+			change_loadout(TankLoadout.Type.BASIC)
+		
+
+## Misc Methods
 
 func begin_round(position : Vector2) :
 	#called at the beginning of every round
 	#all of the relevant bools should get set here
 	dead = false
-	gun_holder.switch_to_gun("default")
+	change_loadout(TankLoadout.Type.BASIC)
 	add_to_game(position)
 	unlock()
 
@@ -50,6 +62,16 @@ func die() :
 	GameManager.GM.tank_died()
 
 #INPUT
+func shoot() :
+	tank_rigidbody.get_loadout().shoot()
+
+func end_shoot() :
+	tank_rigidbody.get_loadout().end_shoot()
+	
+func change_loadout(type : TankLoadout.Type) :
+	tank_rigidbody.replace_loadout(type)
+
+##INPUT
 
 func get_movement_input() :
 	move_input.x = Input.get_axis(get_input_tag("_left"), get_input_tag("_right"))
@@ -70,6 +92,7 @@ func get_input_tag(action : String = "") -> String :
 	return "tank" + str(id) + action
 
 #MISC RESOURCE
+##MISC RESOURCE
 
 func lock() :
 	#disallows player/npc script from controlling tank, should be used for scene transitions etc
@@ -78,11 +101,11 @@ func lock() :
 func unlock() :
 	#allows player/npc script from controlling tank, should be used for scene transitions etc
 	input_locked = true
-	
+
 func remove_from_game() :
 	tank_rigidbody.hide()
 	tank_rigidbody.teleport_to(Vector2(10000000, id * 100))# = Vector2(10000000, id * 100) #to get the collision shapes out of the way. I couldn't find a way to disable them that prevents them from being detected by on_body_entered, which is what bullets use to see that they've hit a tank (yes, I've already tried changing the collision_mask). This works so...
-	
+
 func add_to_game(position : Vector2) :
 	tank_rigidbody.position = position
 	tank_rigidbody.show()
@@ -102,4 +125,3 @@ static func instantiate_tank(parent : Node , id : int) -> Tank :
 	#add the new tank to the scene tree
 	parent.add_child(t)
 	return t
-	
