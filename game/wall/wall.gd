@@ -15,7 +15,7 @@ class_name Wall
 func _ready():
 	update = true
 
-func _process(delta):
+func _process(_delta):
 	if update :
 		update = false
 		if horizontal :

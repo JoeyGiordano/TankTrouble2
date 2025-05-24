@@ -15,7 +15,7 @@ func _init():
 	#set up the singleton (not an autoload) (in _init() so that it works when _ready() is called for all other nodes)
 	GM = self
 
-func _process(delta):
+func _process(_delta):
 	
 	#DEBUG - allows skipping the Game scene
 	#if GameContainer.GC.ActiveSceneHolder.get_child(0).name == "Game" && Input.is_action_just_pressed("DEBUG_SKIP"):
@@ -70,7 +70,7 @@ func create_players(count : int) :
 	#destroys existing Players and instantiates [count] Tank scenes childed to Players
 	destroy_all_players()
 	for i in count :
-		var s = Tank.instantiate_tank(Players, i+1)
+		Tank.instantiate_tank(Players, i+1)
 
 func destroy_all_players() :
 	for j in Players.get_child_count() :

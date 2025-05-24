@@ -4,7 +4,7 @@ extends Node
 #this is a bit of a haphazard way to do it, but it'll need a full revamp for multiple players and art. so this works for now
 var most_recent_press : int = 0
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("tank1_shoot") :
 		if most_recent_press == 2 :
 			players_ready()

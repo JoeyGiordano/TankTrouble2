@@ -2,7 +2,7 @@ extends CollisionPolygon2D
 class_name TankLoadout
 
 static var empty : PackedScene = preload("res://game/tank/loadouts/empty_tankloadout.tscn")
-static var default : PackedScene = preload("res://game/tank/loadouts/basic/basic_tankloadout.tscn")
+static var basic : PackedScene = preload("res://game/tank/loadouts/basic/basic_tankloadout.tscn")
 
 enum Type {
 	EMPTY,
@@ -28,8 +28,8 @@ static func instantiate(parent : RigidBody2D, type : Type) -> TankLoadout :
 		Type.EMPTY :
 			tl = empty.instantiate()
 		Type.BASIC :
-			tl = default.instantiate()
+			tl = basic.instantiate()
 		_ :
-			tl = default.instantiate()
+			tl = basic.instantiate()
 	parent.add_child(tl)
 	return tl

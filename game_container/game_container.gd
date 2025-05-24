@@ -32,7 +32,7 @@ func _init():
 	#set up the singleton (not an autoload) (in _init() so that it works when _ready() is called for all other nodes)
 	GC = self
 
-func _process(delta):
+func _process(_delta):
 	#quit if Q pressed - DEBUG
 	if Input.is_action_pressed("DEBUG_QUIT") : get_tree().quit()
 

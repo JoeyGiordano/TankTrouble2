@@ -16,7 +16,7 @@ func _ready() :
 	ensure_input_map()
 	collision_mask = tank_rigidbody.collision_mask #save the normal collision mask for later
 
-func _process(delta):
+func _process(_delta):
 	DEBUG_PROCESS()
 	get_movement_input()
 	#shoot logic
@@ -25,13 +25,13 @@ func _process(delta):
 	if Input.is_action_just_released(get_input_tag("_shoot")) :
 		end_shoot() #for loadouts where the release of the shoot hey also has an effect
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !input_locked :
 		tank_rigidbody.move_and_rotate()
 
 func DEBUG_PROCESS() :
 	#place to put debug controls
-	if Input.is_action_just_pressed("DEBUG_COMMAND") : #for this if, you have to press 9 before debug command
+	if Input.is_action_just_pressed("DEBUG_COMMAND") && id == 2: #for this if, you have to press 9 before debug command
 		if Input.is_key_pressed(KEY_9) :
 			change_loadout(TankLoadout.Type.EMPTY)
 		if Input.is_key_pressed(KEY_0) :
@@ -113,12 +113,12 @@ func is_player() -> bool :
 func is_npc() -> bool :
 	return id < 0
 
-static func instantiate_tank(parent : Node , id : int) -> Tank :
+static func instantiate_tank(parent : Node , id_ : int) -> Tank :
 	#create a new tank and return it
 	#instantiate a tank from the .tscn #GameContainer.GC.
 	var t : Tank = tank_scene.instantiate() #have to call to game container here bc this method is static
 	#set id
-	t.id = id
+	t.id = id_
 	#add the new tank to the scene tree
 	parent.add_child(t)
 	return t

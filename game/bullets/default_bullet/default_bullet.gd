@@ -24,16 +24,16 @@ func on_body_entered(body : Node) : #contact_monitor must be set to true and max
 		body.tank.die()
 		queue_free()
 
-static func instantiate(position : Vector2 , speed : float, dir : Vector2, lifetime : float) -> DefaultBullet :
+static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, lifetime_ : float) -> DefaultBullet :
 	#create a new bullet and return it
 	#instantiate a tank from the .tscn
 	var b : DefaultBullet = bullet_scene.instantiate() #have to call to game container here bc this method is static
 	
 	#set the variables
-	b.speed = speed
-	b.dir = dir
-	b.position = position
-	b.lifetime = lifetime
+	b.speed = speed_
+	b.dir = dir_
+	b.position = position_
+	b.lifetime = lifetime_
 	
 	#add the new bullet to the scene tree in the correct place
 	GameManager.GM.Bullets.add_child(b)
