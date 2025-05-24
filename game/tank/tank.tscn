@@ -3,14 +3,12 @@
 [ext_resource type="Script" uid="uid://b2q2mhktsf8jw" path="res://game/tank/tank.gd" id="1_77ink"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_1ealj"]
 [ext_resource type="Script" uid="uid://bxduchl0yk352" path="res://game/tank/rigidbody/tank_rigidbody.gd" id="2_2mifv"]
-[ext_resource type="Script" uid="uid://cgubog5r5kaxx" path="res://game/tank/gun/guns/default_gun.gd" id="3_ilbjp"]
+[ext_resource type="Script" uid="uid://cvhwo47qx3ekq" path="res://game/tank/tank_collision_polygon.gd" id="3_fa0tr"]
 [ext_resource type="Script" uid="uid://bpfhkfvwrtgli" path="res://game/tank/gun_holder.gd" id="4_tldmv"]
+[ext_resource type="PackedScene" uid="uid://cj5vegfgtuubx" path="res://game/gun/default_gun/default_gun.tscn" id="5_tldmv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p4mbc"]
 friction = 0.5
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3xvy"]
-size = Vector2(22, 14)
 
 [node name="Tank" type="Node"]
 script = ExtResource("1_77ink")
@@ -21,8 +19,17 @@ physics_material_override = SubResource("PhysicsMaterial_p4mbc")
 gravity_scale = 0.0
 script = ExtResource("2_2mifv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TankRigidbody"]
-shape = SubResource("RectangleShape2D_x3xvy")
+[node name="TankCollisionPolygon" type="CollisionPolygon2D" parent="TankRigidbody"]
+polygon = PackedVector2Array(11, -7, 11, 7, -11, 7, -11, -7)
+script = ExtResource("3_fa0tr")
+
+[node name="rect" type="Polygon2D" parent="TankRigidbody/TankCollisionPolygon"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(11, -7, 11, 7, -11, 7, -11, -7)
+
+[node name="default" type="Polygon2D" parent="TankRigidbody/TankCollisionPolygon"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(11, -7, 11, -2, 16, -2, 16, 2, 11, 2, 11, 7, -11, 7, -11, -7)
 
 [node name="Visuals" type="Node2D" parent="TankRigidbody"]
 
@@ -43,16 +50,4 @@ region_rect = Rect2(63, 68, 1, 1)
 [node name="GunHolder" type="Node2D" parent="TankRigidbody"]
 script = ExtResource("4_tldmv")
 
-[node name="DefaultGun" type="Node2D" parent="TankRigidbody/GunHolder"]
-script = ExtResource("3_ilbjp")
-
-[node name="BarrelSprite" type="Sprite2D" parent="TankRigidbody/GunHolder/DefaultGun"]
-modulate = Color(0.942703, 0.481239, 0.933172, 1)
-position = Vector2(11, 0)
-scale = Vector2(10.5, 3)
-texture = ExtResource("2_1ealj")
-region_enabled = true
-region_rect = Rect2(63, 68, 1, 1)
-
-[node name="Guntip" type="Node2D" parent="TankRigidbody/GunHolder/DefaultGun"]
-position = Vector2(17, 0)
+[node name="DefaultGun" parent="TankRigidbody/GunHolder" instance=ExtResource("5_tldmv")]

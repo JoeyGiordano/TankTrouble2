@@ -1,24 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwdtdg5xj5phs"]
 
-[ext_resource type="Script" uid="uid://wrtuwofl23xx" path="res://game/bullet/bullet.gd" id="1_bk8op"]
-[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_m2nm7"]
-[ext_resource type="PhysicsMaterial" uid="uid://bnjatfvplfsop" path="res://game/bullet/bullet_physmat.tres" id="1_s4i6l"]
+[ext_resource type="PhysicsMaterial" uid="uid://bnjatfvplfsop" path="res://game/bullets/default_bullet/defualt_bullet_physmat.tres" id="1_uyll6"]
+[ext_resource type="Script" uid="uid://wrtuwofl23xx" path="res://game/bullets/default_bullet/default_bullet.gd" id="2_4jnwi"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="3_1r4oe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m2nm7"]
 radius = 2.0
 
 [node name="Bullet" type="RigidBody2D"]
-physics_material_override = ExtResource("1_s4i6l")
+physics_material_override = ExtResource("1_uyll6")
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 8
 linear_damp_mode = 1
-script = ExtResource("1_bk8op")
+script = ExtResource("2_4jnwi")
 
 [node name="BulletSprite" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(4, 4)
-texture = ExtResource("1_m2nm7")
+texture = ExtResource("3_1r4oe")
 region_enabled = true
 region_rect = Rect2(63, 68, 1, 1)
 

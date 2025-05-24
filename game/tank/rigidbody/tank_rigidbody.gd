@@ -25,3 +25,27 @@ func move_and_rotate() :
 		angular_velocity = move_input.x * rotation_speed
 	else :
 		angular_velocity = 0
+		
+## Resource
+
+func teleport_to(new_global_position : Vector2) :
+		freeze = true
+		freeze_mode = RigidBody2D.FREEZE_MODE_STATIC
+		global_position = new_global_position
+		freeze = false
+
+# tank directions
+
+func forward() -> Vector2 :
+	return transform.x
+
+func backward() -> Vector2 :
+	return -transform.x
+
+func left() -> Vector2 :
+	return -transform.y
+
+func right() -> Vector2 :
+	return transform.y
+	
+	

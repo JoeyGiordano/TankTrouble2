@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsd7gwwl4lle0"]
+
+[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_o3gri"]
+
+[node name="TestLevel0" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(219, 87)
+
+[node name="Walls" type="Node2D" parent="."]
+position = Vector2(219, 87)
+
+[node name="Wall" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(0, -312)
+update = false
+horizontal = true
+length = 1000.0
+
+[node name="Wall2" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(550, 0)
+update = false
+length = 300.0
+
+[node name="Wall3" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(-442, 0)
+update = false
+length = 500.0
+
+[node name="Wall4" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(266, -3)
+update = false
+length = 150.0
+
+[node name="Wall5" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(207, 67)
+update = false
+horizontal = true
+
+[node name="Wall6" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(160, -83)
+update = false
+horizontal = true
+length = 200.0
+
+[node name="Bullets" type="Node" parent="."]

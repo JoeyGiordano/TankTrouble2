@@ -1,0 +1,42 @@
+extends RigidBody2D
+class_name DefaultBullet
+
+static var bullet_scene = preload("res://game/bullets/default_bullet/default_bullet.tscn")
+
+var speed : float
+var dir : Vector2
+var lifetime : float #lifetime in seconds
+
+func _ready():
+	body_entered.connect(on_body_entered)
+	linear_velocity = speed * dir.normalized()
+
+func _process(delta):
+	lifetime -= delta
+	if lifetime <= 0 :
+		#play bullet disappread sound and anim
+		queue_free()
+
+func on_body_entered(body : Node) : #contact_monitor must be set to true and max_contacts_reported must be >0
+	print(body.name)
+	if body is TankRigidbody :
+		assert(body is TankRigidbody)
+		body.tank.die()
+		queue_free()
+
+static func instantiate(position : Vector2 , speed : float, dir : Vector2, lifetime : float) -> DefaultBullet :
+	#create a new bullet and return it
+	#instantiate a tank from the .tscn
+	var b : DefaultBullet = bullet_scene.instantiate() #have to call to game container here bc this method is static
+	
+	#set the variables
+	b.speed = speed
+	b.dir = dir
+	b.position = position
+	b.lifetime = lifetime
+	
+	#add the new bullet to the scene tree in the correct place
+	GameManager.GM.Bullets.add_child(b)
+	return b
+	
+	

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d176ir76ayfrc"]
 
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://game_container/switch_to_scene.gd" id="1_2aema"]
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/switch_to_scene.gd" id="1_2aema"]
 
 [node name="StartupCutscene" type="Node"]
 
