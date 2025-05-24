@@ -7,7 +7,7 @@ func _ready() :
 	#connect the button's pressed signal to on_pressed()
 	connect("pressed", on_pressed)
 
-func _process(delta):
+func _process(deltas):
 	if quick_key && Input.is_action_just_pressed("DEBUG_SKIP"):
 		on_pressed()
 

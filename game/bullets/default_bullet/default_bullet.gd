@@ -18,7 +18,6 @@ func _process(delta):
 		queue_free()
 
 func on_body_entered(body : Node) : #contact_monitor must be set to true and max_contacts_reported must be >0
-	print(body.name)
 	if body is TankRigidbody :
 		assert(body is TankRigidbody)
 		body.tank.die()

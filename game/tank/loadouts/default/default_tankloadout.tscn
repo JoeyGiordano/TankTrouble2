@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc3gcesms2j6x"]
+
+[ext_resource type="Script" uid="uid://bv2tmy5whtrkg" path="res://game/tank/loadouts/default/default_tankloadout.gd" id="1_f1pdn"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_oitnw"]
+
+[node name="DefaultTankloadout" type="CollisionPolygon2D"]
+polygon = PackedVector2Array(-11, -7, 11, -7, 11, -2, 15, -2, 15, 1, 11, 1, 11, 7, -11, 7)
+script = ExtResource("1_f1pdn")
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+scale = Vector2(22, 14)
+texture = ExtResource("1_oitnw")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="BackSprite" type="Sprite2D" parent="."]
+modulate = Color(0.858218, 0.858218, 0.858218, 1)
+position = Vector2(-9.25, 0.25)
+scale = Vector2(2.5, 9.5)
+texture = ExtResource("1_oitnw")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="BackSprite2" type="Sprite2D" parent="."]
+modulate = Color(0.858218, 0.858218, 0.858218, 1)
+position = Vector2(6, 0)
+scale = Vector2(2.5, 9.5)
+texture = ExtResource("1_oitnw")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="Guntip" type="Node2D" parent="."]

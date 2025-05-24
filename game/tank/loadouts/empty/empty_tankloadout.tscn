@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://mm0rgh4l6ngd"]
+
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_3nvgk"]
+[ext_resource type="Script" uid="uid://df533ltfno6qp" path="res://game/tank/loadouts/tank_loadout.gd" id="1_etu3h"]
+
+[node name="EmptyTankloadout" type="CollisionPolygon2D"]
+polygon = PackedVector2Array(-11, -7, 11, -7, 11, 7, -11, 7)
+script = ExtResource("1_etu3h")
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+scale = Vector2(22, 14)
+texture = ExtResource("1_3nvgk")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="BackSprite" type="Sprite2D" parent="."]
+modulate = Color(0.858218, 0.858218, 0.858218, 1)
+position = Vector2(-9.25, 0.25)
+scale = Vector2(2.5, 9.5)
+texture = ExtResource("1_3nvgk")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
