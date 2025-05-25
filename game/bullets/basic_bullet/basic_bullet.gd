@@ -10,7 +10,6 @@ var dir : Vector2
 var lifetime : float #lifetime in seconds
 
 func _ready():
-	body_entered.connect(on_body_entered)
 	hitbox.area_entered.connect(on_area_entered)
 	linear_velocity = speed * dir.normalized()
 
@@ -19,14 +18,6 @@ func _process(delta):
 	if lifetime <= 0 :
 		#play bullet disappread sound and anim
 		queue_free()
-
-func on_body_entered(body : Node) : #contact_monitor must be set to true and max_contacts_reported must be >0
-	pass
-	#print(body.name)
-	#if body is TankRigidbody :
-	#	assert(body is TankRigidbody)
-	#	body.tank.die()
-	#	queue_free()
 
 func on_area_entered(area : Area2D) : #contact_monitor must be set to true and max_contacts_reported must be >0
 	if area.is_in_group("tank_hitbox") :

@@ -18,4 +18,4 @@ physics_material_override = SubResource("PhysicsMaterial_p4mbc")
 gravity_scale = 0.0
 script = ExtResource("2_2mifv")
 
-[node name="BasicTankloadout" parent="TankRigidbody" instance=ExtResource("3_ilbjp")]
+[node name="BasicTankLoadout" parent="TankRigidbody" instance=ExtResource("3_ilbjp")]

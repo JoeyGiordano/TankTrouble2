@@ -6,9 +6,6 @@ class_name BasicTankLoadout
 var max_bullets : int = 5
 var bullets : Array[BasicBullet] = []
 
-func _process(_delta):
-	if Input.is_key_pressed(KEY_4) : shoot()
-
 func shoot() :
 	update_bullets()
 	if bullets.size() == max_bullets : return

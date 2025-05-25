@@ -15,13 +15,6 @@ func _init():
 	#set up the singleton (not an autoload) (in _init() so that it works when _ready() is called for all other nodes)
 	GM = self
 
-func _process(_delta):
-	
-	#DEBUG - allows skipping the Game scene
-	#if GameContainer.GC.ActiveSceneHolder.get_child(0).name == "Game" && Input.is_action_just_pressed("DEBUG_SKIP"):
-		#victory_achieved(1)
-	pass
-
 func players_ready() :
 	#called when the players finish readying up in the ready_up shell_scene
 	#assume two players for now

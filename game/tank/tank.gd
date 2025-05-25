@@ -7,14 +7,12 @@ var stats #TODO
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
 static var tank_scene : PackedScene = preload("res://game/tank/tank.tscn")
 
-var collision_mask : int
 var move_input : Vector2 = Vector2.ZERO
 var input_locked = false #allows/disallows input map input from controlling tank, should be used for scene transitions etc
 var dead = false
 
 func _ready() :
 	ensure_input_map()
-	collision_mask = tank_rigidbody.collision_mask #save the normal collision mask for later
 
 func _process(_delta):
 	DEBUG_PROCESS()
@@ -77,6 +75,7 @@ func get_movement_input() :
 func ensure_input_map() :
 	#checks to see if there are already input actions in the input map for this tank
 	#if there are none, creates them
+	#this way, if a tank is not one of the player tanks, it will have input actions that can be accessed by an NPC/AI controller node
 	if InputMap.has_action(get_input_tag()+"_left") : return #if it already has one, assume it has all of them
 	#create input map actions. these can be triggered in code by an npc tank
 	InputMap.add_action(get_input_tag("_left"))

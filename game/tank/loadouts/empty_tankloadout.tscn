@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1t7y6"]
 size = Vector2(22, 14)
 
-[node name="EmptyTankloadout" type="CollisionPolygon2D"]
+[node name="EmptyTankLoadout" type="CollisionPolygon2D"]
 polygon = PackedVector2Array(-10, -7, 12, -7, 12, 7, -10, 7)
 script = ExtResource("1_1t7y6")
 
