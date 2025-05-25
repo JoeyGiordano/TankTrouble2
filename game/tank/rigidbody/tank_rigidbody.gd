@@ -1,9 +1,11 @@
 extends RigidBody2D
 class_name TankRigidbody
 
-@export var forward_speed = 150.0
-@export var backward_speed = 100.0
-@export var rotation_speed = 4.0
+var forward_speed = 150.0
+var backward_speed = 100.0
+var rotation_speed = 4.0
+var linear_stop_damp = 28
+var angular_stop_damp = 17
 
 @onready var tank : Tank = get_parent()
 
@@ -25,13 +27,15 @@ func move_and_rotate() :
 	elif move_input.y < 0:
 		linear_velocity = move_input.y * backward_speed * transform.x
 	else :
-		linear_velocity = Vector2.ZERO
+		#makes the linear velocity go to zero smoothly
+		linear_velocity = linear_velocity.move_toward(Vector2.ZERO,linear_stop_damp)
 	
 	#rotation	
 	if move_input.x :
 		angular_velocity = move_input.x * rotation_speed
 	else :
-		angular_velocity = 0
+		#makes the angular velocity go to zero smoothly
+		angular_velocity = move_toward(angular_velocity, 0, angular_stop_damp)
 
 ## Loadout Management
 
