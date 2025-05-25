@@ -3,7 +3,6 @@ class_name Tank
 
 @export var id = 0 # 1,2,3,etc for player; -1,-2,-3,etc for non-player
 
-var stats #TODO
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
 static var tank_scene : PackedScene = preload("res://game/tank/tank.tscn")
 
@@ -87,6 +86,20 @@ func ensure_input_map() :
 func get_input_tag(action : String = "") -> String :
 	return "tank" + str(id) + action
 
+# STATS
+#### item and stats handling (everything else is implemented in the stats_and_item_handler)
+@onready var stats_handler : StatsHandler = $StatsHandler
+var stats : Stats
+
+func pickup_item(item : Item) :
+	stats_handler.handle_pickup(item)
+	pass
+
+func drop_item(item : Item, destroy : bool) :
+	#if destroy is false, you should be reparenting the item
+	stats_handler.handle_drop(item, destroy)
+	pass
+
 #MISC RESOURCE
 
 func lock() :
@@ -122,4 +135,3 @@ static func instantiate_tank(parent : Node , id_ : int) -> Tank :
 	#add the new tank to the scene tree
 	parent.add_child(t)
 	return t
-	
