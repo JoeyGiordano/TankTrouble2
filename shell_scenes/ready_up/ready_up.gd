@@ -4,12 +4,12 @@ extends Node
 #this is a bit of a haphazard way to do it, but it'll need a full revamp for multiple players and art. so this works for now
 var most_recent_press : int = 0
 
-func _process(delta):
-	if Input.is_action_pressed("player1_shoot") :
+func _process(_delta):
+	if Input.is_action_pressed("tank1_shoot") :
 		if most_recent_press == 2 :
 			players_ready()
 		most_recent_press = 1
-	if Input.is_action_pressed("player2_shoot") :
+	if Input.is_action_pressed("tank2_shoot") :
 		if most_recent_press == 1 :
 			players_ready()
 		most_recent_press = 2
@@ -17,4 +17,4 @@ func _process(delta):
 		players_ready()
 
 func players_ready() :
-	GameManager.GM.player_ready()
+	GameManager.GM.players_ready()

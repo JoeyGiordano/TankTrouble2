@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddstyon1os41f"]
 
-[ext_resource type="Script" uid="uid://c7x3b0o7nyjft" path="res://scenes/ready_up/ready_up.gd" id="1_d831x"]
+[ext_resource type="Script" uid="uid://c7x3b0o7nyjft" path="res://shell_scenes/ready_up/ready_up.gd" id="1_d831x"]
 
 [node name="ReadyUp" type="Node"]
 script = ExtResource("1_d831x")
