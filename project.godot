@@ -22,7 +22,6 @@ window/stretch/mode="canvas_items"
 
 [global_group]
 
-bullet_hitbox=""
 tank_hitbox=""
 
 [input]

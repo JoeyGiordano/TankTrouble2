@@ -26,8 +26,7 @@ func _process(_delta):
 		end_shoot() #for loadouts where the release of the shoot hey also has an effect
 
 func _physics_process(_delta):
-	if !input_locked :
-		tank_rigidbody.move_and_rotate()
+	tank_rigidbody.move_and_rotate()
 
 func DEBUG_PROCESS() :
 	#place to put debug controls
@@ -94,14 +93,16 @@ func get_input_tag(action : String = "") -> String :
 func lock() :
 	#disallows player/npc script from controlling tank, should be used for scene transitions etc
 	input_locked = true
+	tank_rigidbody.lock()
 
 func unlock() :
 	#allows player/npc script from controlling tank, should be used for scene transitions etc
 	input_locked = true
+	tank_rigidbody.unlock()
 	
 func remove_from_game() :
-	#tank_rigidbody.hide()
-	tank_rigidbody.teleport_to(Vector2(100, id * 100))# = Vector2(10000000, id * 100) #to get the collision shapes out of the way. I couldn't find a way to disable them that prevents them from being detected by on_body_entered, which is what bullets use to see that they've hit a tank (yes, I've already tried changing the collision_mask). This works so...
+	tank_rigidbody.hide()
+	tank_rigidbody.teleport_to(Vector2(10000000, id * 100)) #to get the collision shapes out of the way. Easier than changing the collision masks. It works so...
 	
 func add_to_game(position : Vector2) :
 	tank_rigidbody.position = position

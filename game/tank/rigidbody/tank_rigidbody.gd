@@ -7,10 +7,17 @@ class_name TankRigidbody
 
 @onready var tank : Tank = get_parent()
 
+var locked : bool = false
+
 func move_and_rotate() :
 	#should only be called in _physics_process()
 	#moves the tank forward or backwards based on y input, rotates the tank based on x input
 	#does not use forces, just sets the linear_velocity and angular_velocity
+	if locked :
+		linear_velocity = Vector2.ZERO
+		angular_velocity = 0
+		return
+	
 	var move_input = tank.move_input
 	#forwards-backwards movement
 	if move_input.y > 0:
@@ -55,6 +62,12 @@ func _teleport_to(new_global_position : Vector2) :
 		freeze_mode = RigidBody2D.FREEZE_MODE_STATIC
 		global_position = new_global_position
 		freeze = false
+
+func lock() :
+	locked = true
+
+func unlock() :
+	locked = false
 
 # tank directions
 

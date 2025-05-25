@@ -21,12 +21,12 @@ func _process(delta):
 		queue_free()
 
 func on_body_entered(body : Node) : #contact_monitor must be set to true and max_contacts_reported must be >0
-	return
-	print(body.name)
-	if body is TankRigidbody :
-		assert(body is TankRigidbody)
-		body.tank.die()
-		queue_free()
+	pass
+	#print(body.name)
+	#if body is TankRigidbody :
+	#	assert(body is TankRigidbody)
+	#	body.tank.die()
+	#	queue_free()
 
 func on_area_entered(area : Area2D) : #contact_monitor must be set to true and max_contacts_reported must be >0
 	if area.is_in_group("tank_hitbox") :
