@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5mo3dhrqjo2c"]
+[gd_scene load_steps=3 format=3 uid="uid://bd3yrfsuc246j"]
 
 [ext_resource type="Script" uid="uid://bookqmunfj674" path="res://game/tank/loadouts/tank_loadout.gd" id="1_1t7y6"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_iwq2m"]

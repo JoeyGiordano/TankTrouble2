@@ -34,7 +34,7 @@ func DEBUG_PROCESS() :
 	if Input.is_action_just_pressed("DEBUG_COMMAND") && id == 2: #for this if, you have to press 9 before debug command
 		if Input.is_key_pressed(KEY_9) :
 			change_loadout(TankLoadout.Type.EMPTY)
-		if Input.is_key_pressed(KEY_0) :
+		if Input.is_key_pressed(KEY_8) :
 			change_loadout(TankLoadout.Type.BASIC)
 
 ## Misc Methods
@@ -100,8 +100,8 @@ func unlock() :
 	input_locked = true
 	
 func remove_from_game() :
-	tank_rigidbody.hide()
-	#tank_rigidbody.teleport_to(Vector2(10000000, id * 100))# = Vector2(10000000, id * 100) #to get the collision shapes out of the way. I couldn't find a way to disable them that prevents them from being detected by on_body_entered, which is what bullets use to see that they've hit a tank (yes, I've already tried changing the collision_mask). This works so...
+	#tank_rigidbody.hide()
+	tank_rigidbody.teleport_to(Vector2(100, id * 100))# = Vector2(10000000, id * 100) #to get the collision shapes out of the way. I couldn't find a way to disable them that prevents them from being detected by on_body_entered, which is what bullets use to see that they've hit a tank (yes, I've already tried changing the collision_mask). This works so...
 	
 func add_to_game(position : Vector2) :
 	tank_rigidbody.position = position

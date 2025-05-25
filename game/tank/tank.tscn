@@ -17,4 +17,3 @@ gravity_scale = 0.0
 script = ExtResource("2_2mifv")
 
 [node name="BasicTankloadout" parent="TankRigidbody" instance=ExtResource("3_ilbjp")]
-position = Vector2(-11.07, -6.2844)
