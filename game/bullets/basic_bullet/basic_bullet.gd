@@ -1,7 +1,7 @@
 extends RigidBody2D
-class_name DefaultBullet
+class_name BasicBullet
 
-static var bullet_scene = preload("res://game/bullets/default_bullet/default_bullet.tscn")
+static var bullet_scene = preload("res://game/bullets/basic_bullet/basic_bullet.tscn")
 
 var speed : float
 var dir : Vector2
@@ -24,10 +24,10 @@ func on_body_entered(body : Node) : #contact_monitor must be set to true and max
 		body.tank.die()
 		queue_free()
 
-static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, lifetime_ : float) -> DefaultBullet :
+static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, lifetime_ : float) -> BasicBullet :
 	#create a new bullet and return it
 	#instantiate a tank from the .tscn
-	var b : DefaultBullet = bullet_scene.instantiate() #have to call to game container here bc this method is static
+	var b : BasicBullet = bullet_scene.instantiate() #have to call to game container here bc this method is static
 	
 	#set the variables
 	b.speed = speed_

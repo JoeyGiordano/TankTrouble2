@@ -4,7 +4,7 @@ class_name BasicTankLoadout
 @onready var guntip = $Guntip
 
 var max_bullets : int = 5
-var bullets : Array[DefaultBullet] = []
+var bullets : Array[BasicBullet] = []
 
 func _process(_delta):
 	if Input.is_key_pressed(KEY_4) : shoot()
@@ -13,7 +13,7 @@ func shoot() :
 	update_bullets()
 	if bullets.size() == max_bullets : return
 	
-	var b = DefaultBullet.instantiate(guntip.global_position, 100, tank_rigidbody.forward(), 7)
+	var b = BasicBullet.instantiate(guntip.global_position, 100, tank_rigidbody.forward(), 7)
 	bullets.append(b)
 	#play shoot sound and anim
 
