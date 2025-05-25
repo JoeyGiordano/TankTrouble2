@@ -4,8 +4,11 @@ class_name Tank
 @export var id = 0 # 1,2,3,etc for player; -1,-2,-3,etc for non-player
 
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
+@onready var items : Node = $Items
+@onready var stats_handler : StatsHandler = $StatsHandler
 static var tank_scene : PackedScene = preload("res://game/tank/tank.tscn")
 
+var stats : Stats
 var move_input : Vector2 = Vector2.ZERO
 var input_locked = false #allows/disallows input map input from controlling tank, should be used for scene transitions etc
 var dead = false
@@ -87,17 +90,17 @@ func get_input_tag(action : String = "") -> String :
 	return "tank" + str(id) + action
 
 # STATS
-#### item and stats handling (everything else is implemented in the stats_and_item_handler)
-@onready var stats_handler : StatsHandler = $StatsHandler
-var stats : Stats
+#### item and stats handling (everything else is implemented in the stats_handler)
 
 func pickup_item(item : Item) :
+	item.reparent(items)
 	stats_handler.handle_pickup(item)
 	pass
 
-func drop_item(item : Item, destroy : bool) :
+func drop_item(item : Item) :
 	#if destroy is false, you should be reparenting the item
-	stats_handler.handle_drop(item, destroy)
+	stats_handler.handle_drop(item)
+	item.queue_free()
 	pass
 
 #MISC RESOURCE

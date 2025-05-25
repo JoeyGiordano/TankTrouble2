@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://b8ve24bo453do"]
+
+[ext_resource type="Script" uid="uid://cl7ga7teyrqpf" path="res://game/item/item_resource.gd" id="1_21k6j"]
+
+[resource]
+script = ExtResource("1_21k6j")
+name = "itemx1"
+description = "tttt"
+func_names = Array[String]([])
+forward_speed = 40.0
+backward_speed = 30.0
+rotation_speed = -1.0
+metadata/_custom_type_script = "uid://cl7ga7teyrqpf"

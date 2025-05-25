@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urdjt"]
 size = Vector2(7, 7)
 
-[node name="Item" type="Node"]
+[node name="Item" type="Node2D"]
 script = ExtResource("1_urdjt")
 
 [node name="Hitbox" type="Area2D" parent="."]
