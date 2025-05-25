@@ -1,8 +1,10 @@
 extends CollisionPolygon2D
 class_name TankLoadout
 
+#packed scenes of loadout types (except basic, see below)
 static var empty : PackedScene = preload("res://game/tank/loadouts/empty_tankloadout.tscn")
 
+#loadout type enum, one for each packed scene
 enum Type {
 	EMPTY,
 	BASIC

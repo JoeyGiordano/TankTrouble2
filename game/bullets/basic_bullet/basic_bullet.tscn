@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwdtdg5xj5phs"]
+[gd_scene load_steps=6 format=3 uid="uid://cwdtdg5xj5phs"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://bnjatfvplfsop" path="res://game/bullets/basic_bullet/basic_bullet_physmat.tres" id="1_fkvyi"]
 [ext_resource type="Script" uid="uid://wrtuwofl23xx" path="res://game/bullets/basic_bullet/basic_bullet.gd" id="2_p48ds"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="3_fkyex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m2nm7"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjdun"]
 radius = 2.0
 
 [node name="BasicBullet" type="RigidBody2D"]
@@ -24,3 +27,8 @@ region_rect = Rect2(63, 68, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_m2nm7")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["bullet_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_gjdun")

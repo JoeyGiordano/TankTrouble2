@@ -46,6 +46,8 @@ func _replace_loadout(type : TankLoadout.Type) :
 
 func teleport_to(new_global_position : Vector2) :
 	#using call_deferred ensures that _teleport_to is not called during a physics frame, changing the physics state mid physics update can be bad
+	#this is still a workaround so it might get weird behavior (make sure hidden tanks teleport actually teleport)
+	#the fact that there is not support for manually moving rigidbodies in godot is... upsetting
 	call_deferred("_teleport_to", new_global_position)
 
 func _teleport_to(new_global_position : Vector2) :
