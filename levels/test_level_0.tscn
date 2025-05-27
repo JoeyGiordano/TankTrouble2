@@ -41,10 +41,38 @@ length = 200.0
 
 [node name="Bullets" type="Node" parent="."]
 
-[node name="Item" parent="." instance=ExtResource("2_gtf01")]
-position = Vector2(-16, 244)
+[node name="Item1s" type="Node2D" parent="."]
+
+[node name="Item" parent="Item1s" instance=ExtResource("2_gtf01")]
+position = Vector2(44, 112)
 item_res = ExtResource("3_ao06l")
 
-[node name="Item2" parent="." instance=ExtResource("2_gtf01")]
-position = Vector2(118, 250)
+[node name="Item2" parent="Item1s" instance=ExtResource("2_gtf01")]
+position = Vector2(44, 161)
+item_res = ExtResource("3_ao06l")
+
+[node name="Item3" parent="Item1s" instance=ExtResource("2_gtf01")]
+position = Vector2(45, 216)
+item_res = ExtResource("3_ao06l")
+
+[node name="Item4" parent="Item1s" instance=ExtResource("2_gtf01")]
+position = Vector2(44, 68)
+item_res = ExtResource("3_ao06l")
+
+[node name="Item2s" type="Node2D" parent="."]
+
+[node name="Item2" parent="Item2s" instance=ExtResource("2_gtf01")]
+position = Vector2(166, 191)
+item_res = ExtResource("4_aw1bw")
+
+[node name="Item3" parent="Item2s" instance=ExtResource("2_gtf01")]
+position = Vector2(170, 135)
+item_res = ExtResource("4_aw1bw")
+
+[node name="Item4" parent="Item2s" instance=ExtResource("2_gtf01")]
+position = Vector2(166, 20)
+item_res = ExtResource("4_aw1bw")
+
+[node name="Item5" parent="Item2s" instance=ExtResource("2_gtf01")]
+position = Vector2(166, 74)
 item_res = ExtResource("4_aw1bw")

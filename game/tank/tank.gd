@@ -16,7 +16,7 @@ var dead = false
 func _ready() :
 	ensure_input_map()
 
-func _process(_delta):
+func _process(_delta) :
 	DEBUG_PROCESS()
 	get_movement_input()
 	#shoot logic
@@ -24,12 +24,17 @@ func _process(_delta):
 		shoot()
 	if Input.is_action_just_released(get_input_tag("_shoot")) :
 		end_shoot() #for loadouts where the release of the shoot hey also has an effect
+	
+	#if get_child_count() > 0 : 
+	#	print(str(items.get_child_count()) + str(items.get_child(0).name))
+	#else : print("none")
 
 func _physics_process(_delta):
 	tank_rigidbody.move_and_rotate()
 
 func DEBUG_PROCESS() :
 	#place to put debug controls
+	#don't leave debug features in here when you merge (unless its something for everybody to use)
 	if Input.is_action_just_pressed("DEBUG_COMMAND") && id == 2: #for this if, you have to press 9 before debug command
 		if Input.is_key_pressed(KEY_9) :
 			change_loadout(TankLoadout.Type.EMPTY)
@@ -89,19 +94,16 @@ func ensure_input_map() :
 func get_input_tag(action : String = "") -> String :
 	return "tank" + str(id) + action
 
-# STATS
-#### item and stats handling (everything else is implemented in the stats_handler)
+# Item
 
 func pickup_item(item : Item) :
 	item.reparent(items)
 	stats_handler.handle_pickup(item)
-	pass
 
 func drop_item(item : Item) :
 	#if destroy is false, you should be reparenting the item
 	stats_handler.handle_drop(item)
 	item.queue_free()
-	pass
 
 #MISC RESOURCE
 
