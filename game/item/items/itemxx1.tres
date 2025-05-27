@@ -6,7 +6,7 @@
 script = ExtResource("1_21k6j")
 name = "itemx1"
 description = "tttt"
-func_names = Array[String]([])
+func_names = Array[String](["do_nothing"])
 forward_speed = 40.0
 backward_speed = 30.0
 rotation_speed = -1.0

@@ -13,6 +13,8 @@ var move_input : Vector2 = Vector2.ZERO
 var input_locked = false #allows/disallows input map input from controlling tank, should be used for scene transitions etc
 var dead = false
 
+var on_fire : bool = false
+
 func _ready() :
 	ensure_input_map()
 
@@ -25,9 +27,7 @@ func _process(_delta) :
 	if Input.is_action_just_released(get_input_tag("_shoot")) :
 		end_shoot() #for loadouts where the release of the shoot hey also has an effect
 	
-	#if get_child_count() > 0 : 
-	#	print(str(items.get_child_count()) + str(items.get_child(0).name))
-	#else : print("none")
+	on_fire = Input.is_key_pressed(KEY_F)
 
 func _physics_process(_delta):
 	tank_rigidbody.move_and_rotate()

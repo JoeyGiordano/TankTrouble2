@@ -24,7 +24,7 @@ func get_stats() -> Stats :
 	s.rotation_speed = rotation_speed
 	return s
 
-####################################################################
+########################################################################
 ######   ITEM  SPECIFIC  FUNCTIONS    ########################################
 
 #EXAMPLE
@@ -34,7 +34,7 @@ static func amulet_of_empowering_fear(player : Player) :
 		player.stats.top_speed += 10
 """
 
-#TESTING
 static func do_nothing(tank : Tank) :
-	tank.stats.forward_speed += 10
-	print("nothing")
+	#for testing
+	tank.stats.backward_speed = 0
+	if tank.on_fire : tank.stats.backward_speed = 300
