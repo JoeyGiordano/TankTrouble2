@@ -4,6 +4,9 @@ class_name StatsHandler
 @onready var tank : Tank = get_parent()
 @onready var unconditional_stats : Stats = Stats.get_tank_base_stats_copy() #player base stats + unconditional stats from items (updated when a new item is picked up)
 
+func _ready() :
+	tank.stats = unconditional_stats.copy()
+
 func _process(_delta):
 	handle_process_effects()
 

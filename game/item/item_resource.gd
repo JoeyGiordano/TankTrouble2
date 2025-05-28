@@ -10,9 +10,12 @@ class_name ItemResource
 
 #Stats
 @export var forward_speed : float
+#@export var forward_speed_multiplier : float
 @export var backward_speed : float
 @export var rotation_speed : float
 
+#Other
+@export var color : Color
 
 #note that when adding a stat, a few lines need to be added in stats.gd and in get_stats() in this class
 
@@ -36,5 +39,5 @@ static func amulet_of_empowering_fear(player : Player) :
 
 static func do_nothing(tank : Tank) :
 	#for testing
-	tank.stats.backward_speed = 0
+	tank.stats.backward_speed -= 200
 	if tank.on_fire : tank.stats.backward_speed = 300

@@ -10,6 +10,7 @@ var t : Tank
 
 func _ready():
 	hitbox.area_entered.connect(on_area_entered)
+	hitbox.get_child(0).modulate = item_res.color
 
 func get_stats() -> Stats :
 	return item_res.get_stats()
