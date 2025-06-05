@@ -1,20 +1,35 @@
 extends Node
 class_name Tank
 
-@export var id = 0 # 1,2,3,etc for player; -1,-2,-3,etc for non-player
+## The Tank class is the control center for the tank. This script is attached to the Tank Node.
+## This class manages the internal state of the tank (including the state of the Tank Nodes children)
+## and acts as a point of contact for external nodes to reference inside tank and act on its state.
+## It is a set structure (ie we always know the hierarchy of nodes under tank) which makes it easy
+## for internal and external nodes. Anything that is added to this script should only affect the internal
+## state of the tank and should NOT affect the state of external nodes, to compartmentalize, prevent 
+## clutter, and make it harder to leave out of date code here. A good example is Item, which when picked
+## up completely manages adding itself into the items list and giving the boost to the stats_handler,
+## instead of having a pickup_item(Item) function in tank that does that stuff.
 
-var stats #TODO
+@export var id = 0 # 1,2,3,etc for player; -1,-2,-3,etc for non-player
+#MUST put the starting stats in as a NOT saved resource. if you want to use a saved resource, you must load it in init(). A normal saved exported resource loads too late, initializing in _ready() is also too late: it will cause an error when it tries to get accessed, preload causes a cyclic error with stat_boost static functions 
+@export var stats : StatBoost # we use a stat boost to store the tanks stats (it holds all the info we need it to hold)
+
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
+@onready var items : Node = $Items
+@onready var stats_handler : StatsHandler = $StatsHandler
 static var tank_scene : PackedScene = preload("res://game/tank/tank.tscn")
 
 var move_input : Vector2 = Vector2.ZERO
 var input_locked = false #allows/disallows input map input from controlling tank, should be used for scene transitions etc
 var dead = false
 
+var on_fire : bool = false
+
 func _ready() :
 	ensure_input_map()
 
-func _process(_delta):
+func _process(_delta) :
 	DEBUG_PROCESS()
 	get_movement_input()
 	#shoot logic
@@ -22,12 +37,15 @@ func _process(_delta):
 		shoot()
 	if Input.is_action_just_released(get_input_tag("_shoot")) :
 		end_shoot() #for loadouts where the release of the shoot hey also has an effect
+	
+	on_fire = Input.is_key_pressed(KEY_F)
 
 func _physics_process(_delta):
 	tank_rigidbody.move_and_rotate()
 
 func DEBUG_PROCESS() :
 	#place to put debug controls
+	#don't leave debug features in here when you merge (unless its something for everybody to use)
 	if Input.is_action_just_pressed("DEBUG_COMMAND") && id == 2: #for this if, you have to press 9 before debug command
 		if Input.is_key_pressed(KEY_9) :
 			change_loadout(TankLoadout.Type.EMPTY)
@@ -122,4 +140,3 @@ static func instantiate_tank(parent : Node , id_ : int) -> Tank :
 	#add the new tank to the scene tree
 	parent.add_child(t)
 	return t
-	

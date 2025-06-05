@@ -1,6 +1,11 @@
 extends CollisionPolygon2D
 class_name TankLoadout
 
+## A template for other tank loadouts (extend them from this class).
+## This extends from CollisionPolygon2D because tank loadouts are the collision object for tank rigidbody
+## (That way each loadout can have its own collision shape if necessary).
+## A loadout is basically an entire tank minus the logic, it has physics collision shape, damage hitbox, the sprite, the animations, the guns, and anything else
+
 #packed scenes of loadout types (except basic, see below)
 static var empty : PackedScene = preload("res://game/tank/loadouts/empty_tankloadout.tscn")
 

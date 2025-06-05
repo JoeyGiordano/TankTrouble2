@@ -1,6 +1,10 @@
 extends Node
 class_name GameManager
 
+## Manages all of the in game things, but continues to exist between games to allow for communication between the menus and the games
+## Provides access to preset children (Players, Bullets, etc) via the GM singleton.
+## Individual level managers should be used for level specific stuff.
+
 #easy way to access the GameManager from other nodes
 static var GM : GameManager
 
@@ -8,19 +12,26 @@ static var GM : GameManager
 @onready var Players = $Players #The player nodes are instantiated and stored in this node, they can exist even when a menu is on the screen by locking the controls and hiding the player
 @onready var Bullets = $Bullets
 
-var player_count : int
+var in_game : bool = false
 var score : int
 
 func _init():
 	#set up the singleton (not an autoload) (in _init() so that it works when _ready() is called for all other nodes)
 	GM = self
 
+func _process(_delta):
+	if in_game :
+		$Debug_label.text = player(2).stats.as_string()
+	else : $Debug_label.text = ""
+	
 func players_ready() :
 	#called when the players finish readying up in the ready_up shell_scene
 	#assume two players for now
 	GameContainer.GC.switch_to_scene("test_level_0")
 	create_players(2)
+	in_game = true
 	player(1).tank_rigidbody.global_position = Vector2(-100,0)
+	player(1).tank_rigidbody.get_loadout().get_child(0).get_child(1).modulate = Color.BLUE #change one tank color
 
 ## END OF ROUND/GAME LOGIC
 
@@ -37,6 +48,7 @@ func tank_died() :
 		end_round()
 
 func end_round() :
+	in_game = false
 	for child in Bullets.get_children():
 		child.queue_free()
 	

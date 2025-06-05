@@ -1,11 +1,11 @@
 extends RigidBody2D
 class_name TankRigidbody
 
-var forward_speed = 150.0
-var backward_speed = 100.0
-var rotation_speed = 4.0
-var linear_stop_damp = 28
-var angular_stop_damp = 17
+## Script on the rigidbody.
+## Manages movement and switching tank loadouts (which are collision objects).
+
+var linear_stop_damp : float = 0.186
+var angular_stop_damp : float = 4.27
 
 @onready var tank : Tank = get_parent()
 
@@ -23,19 +23,19 @@ func move_and_rotate() :
 	var move_input = tank.move_input
 	#forwards-backwards movement
 	if move_input.y > 0:
-		linear_velocity = move_input.y * forward_speed * transform.x
+		linear_velocity = move_input.y * tank.stats.forward_speed * transform.x
 	elif move_input.y < 0:
-		linear_velocity = move_input.y * backward_speed * transform.x
+		linear_velocity = move_input.y * tank.stats.backward_speed * transform.x
 	else :
-		#makes the linear velocity go to zero smoothly
-		linear_velocity = linear_velocity.move_toward(Vector2.ZERO,linear_stop_damp)
+		#makes the linear velocity go to zero smoothly (the higher the speed stat, the faster the speed needs to drop)
+		linear_velocity = linear_velocity.move_toward(Vector2.ZERO,linear_stop_damp*max(abs(tank.stats.forward_speed),abs(tank.stats.backward_speed)))
 	
 	#rotation	
 	if move_input.x :
-		angular_velocity = move_input.x * rotation_speed
+		angular_velocity = move_input.x * tank.stats.rotation_speed
 	else :
-		#makes the angular velocity go to zero smoothly
-		angular_velocity = move_toward(angular_velocity, 0, angular_stop_damp)
+		#makes the angular velocity go to zero smoothly (the higher the speed stat, the faster the speed needs to drop)
+		angular_velocity = move_toward(angular_velocity, 0, angular_stop_damp*tank.stats.rotation_speed)
 
 ## Loadout Management
 

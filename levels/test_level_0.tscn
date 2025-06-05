@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsd7gwwl4lle0"]
+[gd_scene load_steps=5 format=3 uid="uid://dsd7gwwl4lle0"]
 
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_o3gri"]
+[ext_resource type="PackedScene" uid="uid://bojycccxpxfms" path="res://game/item/item.tscn" id="2_gtf01"]
+[ext_resource type="Resource" uid="uid://b8ve24bo453do" path="res://game/item/items/itemxx1.tres" id="3_ao06l"]
+[ext_resource type="Resource" uid="uid://c586uv6od1lus" path="res://game/item/items/itemxx2.tres" id="4_aw1bw"]
 
 [node name="TestLevel0" type="Node"]
 
@@ -12,34 +15,64 @@ position = Vector2(219, 87)
 
 [node name="Wall" parent="Walls" instance=ExtResource("1_o3gri")]
 position = Vector2(0, -312)
-update = false
 horizontal = true
 length = 1000.0
 
 [node name="Wall2" parent="Walls" instance=ExtResource("1_o3gri")]
 position = Vector2(550, 0)
-update = false
 length = 300.0
 
 [node name="Wall3" parent="Walls" instance=ExtResource("1_o3gri")]
 position = Vector2(-442, 0)
-update = false
 length = 500.0
 
 [node name="Wall4" parent="Walls" instance=ExtResource("1_o3gri")]
 position = Vector2(266, -3)
-update = false
 length = 150.0
 
 [node name="Wall5" parent="Walls" instance=ExtResource("1_o3gri")]
 position = Vector2(207, 67)
-update = false
 horizontal = true
 
 [node name="Wall6" parent="Walls" instance=ExtResource("1_o3gri")]
 position = Vector2(160, -83)
-update = false
 horizontal = true
 length = 200.0
 
 [node name="Bullets" type="Node" parent="."]
+
+[node name="Item1s" type="Node2D" parent="."]
+
+[node name="Item" parent="Item1s" instance=ExtResource("2_gtf01")]
+position = Vector2(44, 112)
+item_res = ExtResource("3_ao06l")
+
+[node name="Item2" parent="Item1s" instance=ExtResource("2_gtf01")]
+position = Vector2(44, 161)
+item_res = ExtResource("3_ao06l")
+
+[node name="Item3" parent="Item1s" instance=ExtResource("2_gtf01")]
+position = Vector2(45, 216)
+item_res = ExtResource("3_ao06l")
+
+[node name="Item4" parent="Item1s" instance=ExtResource("2_gtf01")]
+position = Vector2(44, 68)
+item_res = ExtResource("3_ao06l")
+
+[node name="Item2s" type="Node2D" parent="."]
+
+[node name="Item2" parent="Item2s" instance=ExtResource("2_gtf01")]
+position = Vector2(166, 191)
+item_res = ExtResource("4_aw1bw")
+
+[node name="Item3" parent="Item2s" instance=ExtResource("2_gtf01")]
+position = Vector2(170, 135)
+item_res = ExtResource("4_aw1bw")
+
+[node name="Item4" parent="Item2s" instance=ExtResource("2_gtf01")]
+position = Vector2(166, 20)
+item_res = ExtResource("4_aw1bw")
+
+[node name="Item5" parent="Item2s" instance=ExtResource("2_gtf01")]
+position = Vector2(166, 74)
+item_res = ExtResource("4_aw1bw")
