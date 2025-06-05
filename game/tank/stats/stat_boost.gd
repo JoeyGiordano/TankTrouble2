@@ -1,6 +1,11 @@
 extends Resource
 class_name StatBoost
 
+## This script is a resource that holds all of the stats for a tank.
+## It acts as a library of static boost specific functions for boosts to use.
+## When adding a new boost specific function, put it with all the other ones (between the two comments)
+## It also has some helper functions used by stats handler
+
 #Stats
 @export var forward_speed : float
 #@export var forward_speed_multiplier : float

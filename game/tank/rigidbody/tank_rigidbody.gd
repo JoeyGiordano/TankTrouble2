@@ -1,6 +1,9 @@
 extends RigidBody2D
 class_name TankRigidbody
 
+## Script on the rigidbody.
+## Manages movement and switching tank loadouts (which are collision objects).
+
 var linear_stop_damp : float = 0.186
 var angular_stop_damp : float = 4.27
 

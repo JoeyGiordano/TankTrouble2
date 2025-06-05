@@ -1,6 +1,10 @@
 extends Node
 class_name GameManager
 
+## Manages all of the in game things, but continues to exist between games to allow for communication between the menus and the games
+## Provides access to preset children (Players, Bullets, etc) via the GM singleton.
+## Individual level managers should be used for level specific stuff.
+
 #easy way to access the GameManager from other nodes
 static var GM : GameManager
 

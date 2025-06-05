@@ -1,5 +1,8 @@
 class_name BoostHolder
 
+## Stores a stat boost and info about where it came from 
+## Mostly only used by Stats Handler
+
 var stat_boost : StatBoost
 var source : Node
 var has_source : bool = false

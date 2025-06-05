@@ -1,6 +1,9 @@
 extends Node
 class_name GameContainer
 
+## The root of the game. Manages scene switching.
+## Provides access to preset children (GameContainer, ActiveSceneHolder, OverlayPanels) via the GC singleton.
+
 #easy way to access the GameContainer from other nodes
 static var GC : GameContainer
 

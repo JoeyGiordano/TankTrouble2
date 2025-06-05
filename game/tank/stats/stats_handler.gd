@@ -1,6 +1,9 @@
 extends Node
 class_name StatsHandler
 
+## Handles all stats for one tank. This script is on a node that is a direct child of a tank.
+## Use this script by calling one of the three add or remove boost methods.
+
 @onready var tank : Tank = get_parent()
 @onready var unconditional_stats : StatBoost #player starting base stats + non-reactive stats from stat boosts (updated when a new stat boost is added)
 
@@ -33,7 +36,7 @@ func add_boost_stats(boost : StatBoost) :
 
 ## Creates and adds a new BoostHolder associated with a source
 ## Later you can use remove_all_boosts_from_source() to remove all boosts youve associated with a certain node
-## or save the returned boost holder and use it later to call remove_boost()
+## or you can store the returned boost holder and use it later to call remove_boost()
 ## Returns the BoostHolder (you don't have to do anything with it)
 func add_boost_with_source(boost : StatBoost, source : Node) -> BoostHolder :
 	var bh := BoostHolder.create_with_source(boost, source)
@@ -41,7 +44,7 @@ func add_boost_with_source(boost : StatBoost, source : Node) -> BoostHolder :
 	return bh
 
 ## Creates and adds a new BoostHolder (not associated with a source)
-##
+## Optionally store the returned boost holder and use it later to call remove_boost()
 ## Returns the BoostHolder (you don't have to do anything with it)
 ## Alternatively, set the remove flag on StatBoost to true and it will be removed during the next frame (do this if you don't have a reference to the stats_handler anymore)
 func add_boost(boost : StatBoost) -> BoostHolder :
@@ -68,7 +71,7 @@ func subtract_boost_stats(boost : StatBoost) :
 ## Removes all boosts (from the boost list of this Stats Handler) that have the passed source as their source
 func remove_all_boosts_from_source(source : Node) :
 	for i in range(boost_list.size()-1, -1, -1) :
-		if boost_list.get(i).source == source :
+		if boost_list.get(i).has_source && boost_list.get(i).source == source :
 			unregister_boost_holder(boost_list.get(i))
 
 ## Removes a Boost contained in the passed Boost Holder 
