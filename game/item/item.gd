@@ -5,7 +5,6 @@ class_name Item
 
 @onready var hitbox : Area2D = $Hitbox
 
-var x :int = 0
 var t : Tank
 
 func _ready():
@@ -32,4 +31,4 @@ func _get_pickedup_by(tank : Tank) :
 	hitbox.monitorable = false
 	hide()
 	reparent(tank.items)
-	tank.stats_handler.add_boost_with_source(item_res, self)
+	tank.stats_handler.add_boost_with_source(item_res.stat_boost, self)

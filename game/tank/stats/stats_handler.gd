@@ -64,7 +64,7 @@ func subtract_boost_stats(boost : StatBoost) :
 
 ## Removes all boosts (from the boost list of this Stats Handler) that have the passed source as their source
 func remove_all_boosts_from_source(source : Node) :
-	for i in range(boost_list.size(), 1, 0) :
+	for i in range(boost_list.size()-1, -1, -1) :
 		if boost_list.get(i).source == source :
 			unregister_boost_holder(boost_list.get(i))
 

@@ -1,14 +1,20 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://c586uv6od1lus"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://c586uv6od1lus"]
 
 [ext_resource type="Script" uid="uid://cl7ga7teyrqpf" path="res://game/item/item_resource.gd" id="1_680lg"]
+[ext_resource type="Script" uid="uid://8jp733sld27f" path="res://game/tank/stats/stat_boost.gd" id="2_a3mpq"]
+
+[sub_resource type="Resource" id="Resource_taihr"]
+script = ExtResource("2_a3mpq")
+forward_speed = 0.0
+backward_speed = 0.0
+rotation_speed = 0.0
+func_names = Array[String](["do_nothing"])
+metadata/_custom_type_script = "uid://8jp733sld27f"
 
 [resource]
 script = ExtResource("1_680lg")
 name = "itemxx2"
 description = "asdafa"
+stat_boost = SubResource("Resource_taihr")
 color = Color(0.927397, 0.406548, 0.30857, 1)
-forward_speed = 70.0
-backward_speed = -50.0
-rotation_speed = 1.0
-func_names = Array[String]([])
 metadata/_custom_type_script = "uid://cl7ga7teyrqpf"

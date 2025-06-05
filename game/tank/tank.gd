@@ -12,8 +12,8 @@ class_name Tank
 ## instead of having a pickup_item(Item) function in tank that does that stuff.
 
 @export var id = 0 # 1,2,3,etc for player; -1,-2,-3,etc for non-player
+#MUST put the starting stats in as a NOT saved resource. if you want to use a saved resource, you must load it in init(). A normal saved exported resource loads too late, initializing in _ready() is also too late: it will cause an error when it tries to get accessed, preload causes a cyclic error with stat_boost static functions 
 @export var stats : StatBoost # we use a stat boost to store the tanks stats (it holds all the info we need it to hold)
-
 
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
 @onready var items : Node = $Items
