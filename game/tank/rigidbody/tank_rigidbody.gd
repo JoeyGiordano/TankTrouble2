@@ -7,7 +7,7 @@ var angular_stop_damp : float = 4.27
 @onready var tank : Tank = get_parent()
 
 var locked : bool = false
- 
+
 func move_and_rotate() :
 	#should only be called in _physics_process()
 	#moves the tank forward or backwards based on y input, rotates the tank based on x input

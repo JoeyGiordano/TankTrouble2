@@ -12,7 +12,7 @@ func _ready():
 	hitbox.area_entered.connect(on_area_entered)
 	hitbox.get_child(0).modulate = item_res.color
 
-func get_stats() -> Stats :
+func get_stats() -> StatBoost :
 	return item_res.get_stats()
 
 func on_area_entered(area : Area2D) :
@@ -31,4 +31,5 @@ func _get_pickedup_by(tank : Tank) :
 	hitbox.monitoring = false
 	hitbox.monitorable = false
 	hide()
-	tank.pickup_item(self)
+	reparent(tank.items)
+	tank.stats_handler.add_boost_with_source(item_res, self)

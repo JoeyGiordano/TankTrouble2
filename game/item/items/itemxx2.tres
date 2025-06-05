@@ -6,9 +6,9 @@
 script = ExtResource("1_680lg")
 name = "itemxx2"
 description = "asdafa"
-func_names = Array[String]([])
+color = Color(0.927397, 0.406548, 0.30857, 1)
 forward_speed = 70.0
 backward_speed = -50.0
 rotation_speed = 1.0
-color = Color(0.927397, 0.406548, 0.30857, 1)
+func_names = Array[String]([])
 metadata/_custom_type_script = "uid://cl7ga7teyrqpf"

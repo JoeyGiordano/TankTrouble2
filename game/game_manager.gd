@@ -17,8 +17,8 @@ func _init():
 
 func _process(_delta):
 	if in_game :
-		$Label.text = player(2).stats.as_string()
-	else : $Label.text = ""
+		$Debug_label.text = player(2).stats.as_string()
+	else : $Debug_label.text = ""
 	
 func players_ready() :
 	#called when the players finish readying up in the ready_up shell_scene

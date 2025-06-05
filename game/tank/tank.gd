@@ -1,14 +1,25 @@
 extends Node
 class_name Tank
 
+## The Tank class is the control center for the tank. This script is attached to the Tank Node.
+## This class manages the internal state of the tank (including the state of the Tank Nodes children)
+## and acts as a point of contact for external nodes to reference inside tank and act on its state.
+## It is a set structure (ie we always know the hierarchy of nodes under tank) which makes it easy
+## for internal and external nodes. Anything that is added to this script should only affect the internal
+## state of the tank and should NOT affect the state of external nodes, to compartmentalize, prevent 
+## clutter, and make it harder to leave out of date code here. A good example is Item, which when picked
+## up completely manages adding itself into the items list and giving the boost to the stats_handler,
+## instead of having a pickup_item(Item) function in tank that does that stuff.
+
 @export var id = 0 # 1,2,3,etc for player; -1,-2,-3,etc for non-player
+@export var stats : StatBoost # we use a stat boost to store the tanks stats (it holds all the info we need it to hold)
+
 
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
 @onready var items : Node = $Items
 @onready var stats_handler : StatsHandler = $StatsHandler
 static var tank_scene : PackedScene = preload("res://game/tank/tank.tscn")
 
-var stats : Stats
 var move_input : Vector2 = Vector2.ZERO
 var input_locked = false #allows/disallows input map input from controlling tank, should be used for scene transitions etc
 var dead = false
@@ -93,17 +104,6 @@ func ensure_input_map() :
 
 func get_input_tag(action : String = "") -> String :
 	return "tank" + str(id) + action
-
-# Item
-
-func pickup_item(item : Item) :
-	item.reparent(items)
-	stats_handler.handle_pickup(item)
-
-func drop_item(item : Item) :
-	#if destroy is false, you should be reparenting the item
-	stats_handler.handle_drop(item)
-	item.queue_free()
 
 #MISC RESOURCE
 
