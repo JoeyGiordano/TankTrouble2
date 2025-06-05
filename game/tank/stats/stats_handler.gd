@@ -32,6 +32,8 @@ func add_boost_stats(boost : StatBoost) :
 	unconditional_stats.add(boost) #see register_boost_holder() for explaination
 
 ## Creates and adds a new BoostHolder associated with a source
+## Later you can use remove_all_boosts_from_source() to remove all boosts youve associated with a certain node
+## or save the returned boost holder and use it later to call remove_boost()
 ## Returns the BoostHolder (you don't have to do anything with it)
 func add_boost_with_source(boost : StatBoost, source : Node) -> BoostHolder :
 	var bh := BoostHolder.create_with_source(boost, source)
@@ -39,6 +41,7 @@ func add_boost_with_source(boost : StatBoost, source : Node) -> BoostHolder :
 	return bh
 
 ## Creates and adds a new BoostHolder (not associated with a source)
+##
 ## Returns the BoostHolder (you don't have to do anything with it)
 ## Alternatively, set the remove flag on StatBoost to true and it will be removed during the next frame (do this if you don't have a reference to the stats_handler anymore)
 func add_boost(boost : StatBoost) -> BoostHolder :
@@ -69,8 +72,8 @@ func remove_all_boosts_from_source(source : Node) :
 			unregister_boost_holder(boost_list.get(i))
 
 ## Removes a Boost contained in the passed Boost Holder 
-func remove_boost(holder : BoostHolder) :
-	unregister_boost_holder(holder)
+func remove_boost(bh : BoostHolder) :
+	unregister_boost_holder(bh)
 	
 ## Don't call this. Use remove_boost() or remove_all_boosts_from_source()
 func unregister_boost_holder(bh : BoostHolder) :
