@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://2su3htx11obo"]
 
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_sioxr"]
-[ext_resource type="Script" uid="uid://cevvdvskheoas" path="res://game/tank/loadouts/basic/basic_tankloadout.gd" id="1_vab7l"]
+[ext_resource type="Script" uid="uid://cevvdvskheoas" path="res://tank/loadouts/basic/basic_tankloadout.gd" id="1_vab7l"]
 
 [node name="BasicTankLoadout" type="CollisionPolygon2D"]
 polygon = PackedVector2Array(-10, -7, 12, -7, 12, -2, 17, -2, 17, 2, 12, 2, 12, 7, -10, 7)

@@ -18,13 +18,15 @@ class_name Tank
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
 @onready var items : Node = $Items
 @onready var stats_handler : StatsHandler = $StatsHandler
-static var tank_scene : PackedScene = preload("res://game/tank/tank.tscn")
+@onready var effects_handler : EffectsHandler = $EffectsHandler
+static var tank_scene : PackedScene = preload("res://tank/tank.tscn")
 
+#Input
 var move_input : Vector2 = Vector2.ZERO
+
+#Flags
 var input_locked = false #allows/disallows input map input from controlling tank, should be used for scene transitions etc
 var dead = false
-
-var on_fire : bool = false
 
 func _ready() :
 	ensure_input_map()
@@ -37,8 +39,6 @@ func _process(_delta) :
 		shoot()
 	if Input.is_action_just_released(get_input_tag("_shoot")) :
 		end_shoot() #for loadouts where the release of the shoot hey also has an effect
-	
-	on_fire = Input.is_key_pressed(KEY_F)
 
 func _physics_process(_delta):
 	tank_rigidbody.move_and_rotate()

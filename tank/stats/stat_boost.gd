@@ -28,7 +28,7 @@ static func amulet_of_empowering_fear(player : Player) :
 static func do_nothing(tank : Tank) :
 	#for testing
 	tank.stats.backward_speed -= 200
-	if tank.on_fire : tank.stats.backward_speed = 300
+	if tank.effects_handler.on_fire : tank.stats.backward_speed = 300
 
 
 ######   END BOOST  SPECIFIC  FUNCTIONS    ###################################

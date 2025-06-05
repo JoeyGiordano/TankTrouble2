@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_o3gri"]
 [ext_resource type="PackedScene" uid="uid://bojycccxpxfms" path="res://game/item/item.tscn" id="2_gtf01"]
-[ext_resource type="Resource" uid="uid://b8ve24bo453do" path="res://game/item/items/itemxx1.tres" id="3_ao06l"]
-[ext_resource type="Resource" uid="uid://c586uv6od1lus" path="res://game/item/items/itemxx2.tres" id="4_aw1bw"]
+[ext_resource type="Resource" uid="uid://b8ve24bo453do" path="res://game/item/items/item1.tres" id="3_ao06l"]
+[ext_resource type="Resource" uid="uid://c586uv6od1lus" path="res://game/item/items/item2.tres" id="4_aw1bw"]
 
 [node name="TestLevel0" type="Node"]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatBoost" load_steps=2 format=3 uid="uid://75s0p38ju7ew"]
 
-[ext_resource type="Script" uid="uid://8jp733sld27f" path="res://game/tank/stats/stat_boost.gd" id="1_vmwlf"]
+[ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="1_vmwlf"]
 
 [resource]
 script = ExtResource("1_vmwlf")
