@@ -3,14 +3,13 @@ class_name BasicTankLoadout
 
 @onready var guntip = $Guntip
 
-var max_bullets : int = 5
 var bullets : Array[BasicBullet] = []
 
 func shoot() :
 	update_bullets()
-	if bullets.size() == max_bullets : return
+	if bullets.size() == tank.stats.bullet_count : return
 	
-	var b = BasicBullet.instantiate(guntip.global_position, 100, tank_rigidbody.forward(), 7)
+	var b = BasicBullet.instantiate(guntip.global_position, tank.stats.bullet_speed, tank_rigidbody.forward(), tank.stats.bullet_lifetime)
 	bullets.append(b)
 	#play shoot sound and anim
 

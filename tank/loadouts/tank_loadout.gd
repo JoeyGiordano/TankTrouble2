@@ -15,6 +15,7 @@ enum Type {
 	BASIC
 }
 
+@onready var tank : Tank = get_parent().get_parent()
 @onready var tank_rigidbody : TankRigidbody = get_parent()
 
 func shoot() :

@@ -3,6 +3,8 @@ extends Node2D
 class_name Wall
 
 @export var update : bool = false
+@export var editing : bool = false
+@export var snap : bool = false
 
 @export var horizontal : bool = false
 @export var length : float = 100.0
@@ -16,7 +18,7 @@ func _ready():
 	update = true
 
 func _process(_delta):
-	if update :
+	if update || editing :
 		update = false
 		if horizontal :
 			col.shape.size = Vector2(length, width)
@@ -26,3 +28,8 @@ func _process(_delta):
 			sprite.scale = Vector2(width, length)
 		sprite.position = Vector2.ZERO
 		sprite.modulate = color
+	if snap :
+		position.x = round(position.x / 100) * 100
+		position.y = round(position.y / 100) * 100
+		length = round(length / 100) * 100
+		width = round(width / 10) * 10

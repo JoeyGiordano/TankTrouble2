@@ -9,45 +9,62 @@
 [node name="TestLevel0" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(219, 87)
 
 [node name="Walls" type="Node2D" parent="."]
-position = Vector2(219, 87)
 
 [node name="Wall" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(0, -312)
+position = Vector2(0, -300)
+editing = true
+snap = true
 horizontal = true
-length = 1000.0
+length = 1100.0
+width = 50.0
 
 [node name="Wall2" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(550, 0)
-length = 300.0
+position = Vector2(600, 0)
+snap = true
+length = 800.0
+width = 50.0
 
 [node name="Wall3" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(-442, 0)
-length = 500.0
+position = Vector2(-600, 0)
+editing = null
+snap = true
+length = 800.0
+width = 50.0
 
 [node name="Wall4" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(266, -3)
-length = 150.0
+position = Vector2(400, 0)
+editing = null
+snap = true
+length = 200.0
+width = 10.0
 
 [node name="Wall5" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(207, 67)
+position = Vector2(200, 100)
+snap = true
 horizontal = true
+width = 10.0
 
 [node name="Wall6" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(160, -83)
+position = Vector2(200, -100)
+editing = null
+snap = true
 horizontal = true
 length = 200.0
+width = 10.0
 
 [node name="Wall7" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(0, 267)
+position = Vector2(0, 300)
+snap = true
 horizontal = true
-length = 1000.0
+length = 1100.0
+width = 50.0
 
 [node name="Bullets" type="Node" parent="."]
 
 [node name="Item1s" type="Node2D" parent="."]
+position = Vector2(-202, -120)
 
 [node name="Item" parent="Item1s" instance=ExtResource("2_gtf01")]
 position = Vector2(44, 112)
@@ -66,6 +83,7 @@ position = Vector2(44, 68)
 item_res = ExtResource("3_ao06l")
 
 [node name="Item2s" type="Node2D" parent="."]
+position = Vector2(-255, 0)
 
 [node name="Item2" parent="Item2s" instance=ExtResource("2_gtf01")]
 position = Vector2(166, 191)
@@ -84,4 +102,4 @@ position = Vector2(166, 74)
 item_res = ExtResource("4_aw1bw")
 
 [node name="EffectArea" parent="." instance=ExtResource("5_aw1bw")]
-position = Vector2(204, -123)
+position = Vector2(-278, 64)

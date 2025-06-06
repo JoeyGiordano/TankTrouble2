@@ -13,6 +13,9 @@ script = ExtResource("2_tldmv")
 forward_speed = 150.0
 backward_speed = 100.0
 rotation_speed = 4.0
+bullet_count = 5
+bullet_lifetime = 7.0
+bullet_speed = 100.0
 func_names = Array[String]([])
 metadata/_custom_type_script = "uid://8jp733sld27f"
 
