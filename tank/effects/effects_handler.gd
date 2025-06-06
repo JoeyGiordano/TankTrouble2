@@ -8,7 +8,7 @@ var frozen : bool = false
 var electrified : bool = false
 
 
-func _process(delta) :
+func _process(_delta) :
 	
 	on_fire = Input.is_key_pressed(KEY_F)
 	frozen = Input.is_key_pressed(KEY_G)

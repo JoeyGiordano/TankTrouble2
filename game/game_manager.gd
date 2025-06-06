@@ -30,7 +30,8 @@ func players_ready() :
 	GameContainer.GC.switch_to_scene("test_level_0")
 	create_players(2)
 	in_game = true
-	player(1).tank_rigidbody.global_position = Vector2(-100,0)
+	player(1).tank_rigidbody.global_position = Vector2(-450,0)
+	player(2).tank_rigidbody.global_position = Vector2(450,0)
 	player(1).tank_rigidbody.get_loadout().get_child(0).get_child(1).modulate = Color.BLUE #change one tank color
 
 ## END OF ROUND/GAME LOGIC

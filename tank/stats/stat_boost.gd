@@ -52,7 +52,7 @@ func subtract(s : StatBoost) :
 	forward_speed -= s.forward_speed
 	backward_speed -= s.backward_speed
 	rotation_speed -= s.rotation_speed
-	bullet_count -+ s.bullet_count
+	bullet_count -= s.bullet_count
 	bullet_lifetime -= s.bullet_lifetime
 	bullet_speed -= s.bullet_speed
 
