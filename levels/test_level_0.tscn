@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsd7gwwl4lle0"]
+[gd_scene load_steps=6 format=3 uid="uid://dsd7gwwl4lle0"]
 
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_o3gri"]
 [ext_resource type="PackedScene" uid="uid://bojycccxpxfms" path="res://game/item/item.tscn" id="2_gtf01"]
 [ext_resource type="Resource" uid="uid://b8ve24bo453do" path="res://game/item/items/item1.tres" id="3_ao06l"]
 [ext_resource type="Resource" uid="uid://c586uv6od1lus" path="res://game/item/items/item2.tres" id="4_aw1bw"]
+[ext_resource type="PackedScene" uid="uid://okbp1o6c0twy" path="res://game/effect_area/effect_area.tscn" id="5_aw1bw"]
 
 [node name="TestLevel0" type="Node"]
 
@@ -38,6 +39,11 @@ horizontal = true
 position = Vector2(160, -83)
 horizontal = true
 length = 200.0
+
+[node name="Wall7" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(0, 267)
+horizontal = true
+length = 1000.0
 
 [node name="Bullets" type="Node" parent="."]
 
@@ -76,3 +82,6 @@ item_res = ExtResource("4_aw1bw")
 [node name="Item5" parent="Item2s" instance=ExtResource("2_gtf01")]
 position = Vector2(166, 74)
 item_res = ExtResource("4_aw1bw")
+
+[node name="EffectArea" parent="." instance=ExtResource("5_aw1bw")]
+position = Vector2(204, -123)

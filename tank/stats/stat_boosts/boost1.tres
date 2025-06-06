@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_vmwlf")
-forward_speed = 1.0
-backward_speed = 0.0
-rotation_speed = 0.0
+forward_speed = 20.0
+backward_speed = -10.0
+rotation_speed = -1.0
 func_names = Array[String]([])
 metadata/_custom_type_script = "uid://8jp733sld27f"
