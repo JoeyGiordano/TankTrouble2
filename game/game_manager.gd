@@ -13,7 +13,7 @@ static var GM : GameManager
 @onready var Bullets = $Bullets
 
 var in_game : bool = false
-var score : int
+var score : Vector2 = Vector2.ZERO
 
 func _init():
 	#set up the singleton (not an autoload) (in _init() so that it works when _ready() is called for all other nodes)
@@ -27,7 +27,7 @@ func _process(_delta):
 func players_ready() :
 	#called when the players finish readying up in the ready_up shell_scene
 	#assume two players for now
-	GameContainer.GC.switch_to_scene("test_level_0")
+	GameContainer.GC.switch_to_level("test_level_0")
 	create_players(2)
 	in_game = true
 	player(1).tank_rigidbody.global_position = Vector2(-450,0)
@@ -37,6 +37,7 @@ func players_ready() :
 ## END OF ROUND/GAME LOGIC
 
 func tank_died() :
+	#makes sure to only call end of round 2.5 seconds after the most recent tank death
 	var tanks_alive : int = alive_players_count()
 	if tanks_alive == 1 :
 		var timer = get_tree().create_timer(2.5)
@@ -52,13 +53,29 @@ func end_round() :
 	in_game = false
 	for child in Bullets.get_children():
 		child.queue_free()
+		
+	#score the round
+	if !player(1).dead && player(2).dead :
+		score.x += 1
+	if !player(1).dead && player(2).dead :
+		score.y += 1
 	
-	if player(1).dead && player(2).dead :
-		victory_achieved("draw")
-	elif player(1).dead :
-		victory_achieved(2)
-	elif player(2).dead :
+	#check for a winner
+	if score.x == 5 :
 		victory_achieved(1)
+		return
+	if score.y == 5 :
+		victory_achieved(2)
+		return
+	
+	#if here, there is no winner, go to the next round 
+	next_level()
+
+func next_level() :
+	for tank : Tank in Players.get_children() : tank.end_round()
+	GameContainer.GC.switch_to_level("test_level_" + str(randi_range(0,2)))
+	for tank : Tank in Players.get_children() :
+		tank.begin_round()
 
 func victory_achieved(player_id) :
 	destroy_all_players()

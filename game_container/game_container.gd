@@ -19,16 +19,15 @@ static var GC : GameContainer
 @onready var credits : PackedScene = preload("res://shell_scenes/credits.tscn")
 @onready var ready_up : PackedScene = preload("res://shell_scenes/ready_up/ready_up.tscn")
 @onready var victory : PackedScene = preload("res://shell_scenes/victory.tscn")
-@onready var test_level_0 : PackedScene = preload("res://levels/test_level_0.tscn")
 
+#don't add levels to the scene dict, instead use switch_to_level()
 @onready var scene_dict = {
 	"startup" : startup,
 	"main_menu" : main_menu,
 	"instructions" : instructions,
 	"credits" : credits,
 	"ready_up" : ready_up,
-	"victory" : victory,
-	"test_level_0" : test_level_0
+	"victory" : victory
 }
 
 func _init():
@@ -40,6 +39,9 @@ func _process(_delta):
 	if Input.is_action_pressed("DEBUG_QUIT") : get_tree().quit()
 
 ### SCENE MANAGEMENT ###
+
+func switch_to_level(level_name : String) :
+	switch_active_scene(load("res://levels/" + level_name + ".tscn"))
 
 func switch_to_scene(scene_name : String) :
 	#switch to a scene with the name scene_name

@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci5lrsralpuxn"]
+
+[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_vxfd6"]
+
+[node name="LevelTemplate" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Border" type="Node2D" parent="Walls"]
+
+[node name="Top" parent="Walls/Border" instance=ExtResource("1_vxfd6")]
+position = Vector2(0, -340)
+horizontal = true
+length = 1211.0
+width = 51.0
+grid_pos = Vector2i(0, -8)
+grid_length = 29
+
+[node name="Left" parent="Walls/Border" instance=ExtResource("1_vxfd6")]
+position = Vector2(-580, 0)
+length = 730.0
+width = 50.0
+grid_pos = Vector2i(-14, 0)
+grid_length = 17
+
+[node name="Right" parent="Walls/Border" instance=ExtResource("1_vxfd6")]
+position = Vector2(580, 0)
+length = 730.0
+width = 50.0
+grid_pos = Vector2i(15, 0)
+grid_length = 17
+
+[node name="Bottom" parent="Walls/Border" instance=ExtResource("1_vxfd6")]
+position = Vector2(40, 340)
+horizontal = true
+length = 1210.0
+width = 50.0
+grid_pos = Vector2i(1, 9)
+grid_length = 29
+
+[node name="Wall" parent="Walls" instance=ExtResource("1_vxfd6")]
+position = Vector2(-380, 0)
+length = 208.0
+grid_pos = Vector2i(-9, 0)
+grid_length = 5
+
+[node name="Wall2" parent="Walls" instance=ExtResource("1_vxfd6")]
+position = Vector2(420, 0)
+length = 328.0
+grid_pos = Vector2i(11, 0)
+grid_length = 8
+
+[node name="StartingPositions" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="StartingPositions"]
+position = Vector2(-473, 0)
+
+[node name="Node2D2" type="Node2D" parent="StartingPositions"]
+position = Vector2(490, 0)
