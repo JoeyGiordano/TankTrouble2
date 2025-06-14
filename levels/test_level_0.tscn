@@ -17,86 +17,88 @@ script = ExtResource("1_g3xp3")
 [node name="Border" type="Node2D" parent="Walls"]
 
 [node name="Wall" parent="Walls/Border" instance=ExtResource("1_o3gri")]
-position = Vector2(0, -340)
+position = Vector2(-240, 0)
 horizontal = true
-length = 1211.0
+length = 1091.0
 width = 51.0
-grid_pos = Vector2i(0, -8)
-grid_length = 29
+grid_pos = Vector2i(-6, 0)
+grid_length = 26
 
 [node name="Wall2" parent="Walls/Border" instance=ExtResource("1_o3gri")]
-position = Vector2(-580, 0)
-length = 730.0
+position = Vector2(0, -240)
+length = 610.0
 width = 50.0
-grid_pos = Vector2i(-14, 0)
-grid_length = 17
+grid_pos = Vector2i(0, -6)
+grid_length = 14
 
 [node name="Wall3" parent="Walls/Border" instance=ExtResource("1_o3gri")]
-position = Vector2(580, 0)
-length = 730.0
+position = Vector2(0, -240)
+length = 610.0
 width = 50.0
-grid_pos = Vector2i(15, 0)
-grid_length = 17
+grid_pos = Vector2i(0, -6)
+grid_length = 14
 
 [node name="Wall7" parent="Walls/Border" instance=ExtResource("1_o3gri")]
-position = Vector2(0, 340)
+position = Vector2(-240, 0)
 horizontal = true
-length = 1210.0
+length = 1090.0
 width = 50.0
-grid_pos = Vector2i(0, 9)
-grid_length = 29
+grid_pos = Vector2i(-6, 0)
+grid_length = 26
 
 [node name="Wall" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(0, 220)
+position = Vector2(-240, 0)
 horizontal = true
-length = 208.0
-grid_pos = Vector2i(0, 6)
-grid_length = 5
+length = 88.0
+grid_pos = Vector2i(-6, 0)
+grid_length = 2
 
 [node name="Wall2" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(380, 80)
-length = 288.0
-grid_pos = Vector2i(10, 2)
-grid_length = 7
-
-[node name="Wall3" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(-380, 0)
-length = 248.0
-grid_pos = Vector2i(-9, 0)
-grid_length = 6
-
-[node name="Wall4" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(20, 0)
-length = 48.0
-grid_pos = Vector2i(1, 0)
-
-[node name="Wall5" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(-20, 0)
-length = 48.0
-
-[node name="Wall6" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(0, -20)
-horizontal = true
-length = 48.0
-
-[node name="Wall7" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(0, -140)
-horizontal = true
+position = Vector2(0, -240)
 length = 168.0
-grid_pos = Vector2i(0, -3)
+grid_pos = Vector2i(0, -6)
 grid_length = 4
 
-[node name="Wall8" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(300, 0)
+[node name="Wall3" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(0, -240)
+length = 128.0
+grid_pos = Vector2i(0, -6)
+grid_length = 3
+
+[node name="Wall4" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(40, -200)
+length = 48.0
+grid_pos = Vector2i(1, -5)
+
+[node name="Wall5" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(200, 0)
 length = 448.0
-grid_pos = Vector2i(8, 0)
+grid_pos = Vector2i(5, 0)
 grid_length = 11
 
+[node name="Wall6" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(-200, -40)
+horizontal = true
+length = 48.0
+grid_pos = Vector2i(-5, -1)
+
+[node name="Wall7" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(-240, 0)
+horizontal = true
+length = 48.0
+grid_pos = Vector2i(-6, 0)
+
+[node name="Wall8" parent="Walls" instance=ExtResource("1_o3gri")]
+position = Vector2(0, -240)
+length = 328.0
+grid_pos = Vector2i(0, -6)
+grid_length = 8
+
 [node name="Wall9" parent="Walls" instance=ExtResource("1_o3gri")]
-position = Vector2(180, 0)
-length = 368.0
-grid_pos = Vector2i(5, 0)
-grid_length = 9
+position = Vector2(0, -240)
+length = 248.0
+grid_pos = Vector2i(0, -6)
+grid_length = 6
 
 [node name="Item1s" type="Node2D" parent="."]
 position = Vector2(-202, -120)
