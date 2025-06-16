@@ -75,7 +75,7 @@ func next_level() :
 	for tank : Tank in Players.get_children() : tank.end_round()
 	GameContainer.GC.switch_to_level("test_level_" + str(randi_range(0,2)))
 	for tank : Tank in Players.get_children() :
-		tank.begin_round()
+		tank.begin_round(Vector2.ZERO)
 
 func victory_achieved(player_id) :
 	destroy_all_players()

@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends Node
 class_name Grid
 
 ## Provides resource methods for translating between real and grid coordinates.
@@ -9,9 +9,9 @@ class_name Grid
 ## More generally, the grid point (a,b) is at real coordinates (a*size+offset, b*size+offset)
 
 ## Width of each grid square in pixels
-static var scale_ : float = 40
+@export var scale_ : float = 40
 ## Offset of the grid origin from the real coordinate origin in pixels
-static var offset : Vector2 = Vector2(0,0)
+@export var offset : Vector2 = Vector2(0,0)
 
 enum COORD_TYPE {
 	GRID,
@@ -21,16 +21,16 @@ enum COORD_TYPE {
 # Basic getters
 
 ## Translates a grid coordinate to a real coordinate (no rounding)
-static func grid_to_real(grid_coord : Vector2) -> Vector2 :
+func grid_to_real(grid_coord : Vector2) -> Vector2 :
 	return grid_coord * scale_ + offset
 
 ## Translates a real coordinate to a grid coordinate (no rounding)
-static func real_to_grid(real_coord : Vector2) -> Vector2 :
+func real_to_grid(real_coord : Vector2) -> Vector2 :
 	return (real_coord - offset) / scale_
 
 #Nearest
 
-static func nearest_point(point : Vector2, input_coord_type : COORD_TYPE , output_coord_type : COORD_TYPE) -> Vector2 :
+func nearest_point(point : Vector2, input_coord_type : COORD_TYPE , output_coord_type : COORD_TYPE) -> Vector2 :
 	#ensure point is in grid coords
 	if input_coord_type == COORD_TYPE.REAL :
 		point = real_to_grid(point)
@@ -43,7 +43,7 @@ static func nearest_point(point : Vector2, input_coord_type : COORD_TYPE , outpu
 		return grid_to_real(point)
 	else : return point
 
-static func nearest_square_center(point : Vector2, input_coord_type : COORD_TYPE , output_coord_type : COORD_TYPE)  -> Vector2 :
+func nearest_square_center(point : Vector2, input_coord_type : COORD_TYPE , output_coord_type : COORD_TYPE)  -> Vector2 :
 	#ensure point is in grid coords
 	if input_coord_type == COORD_TYPE.REAL :
 		point = real_to_grid(point)
@@ -56,7 +56,7 @@ static func nearest_square_center(point : Vector2, input_coord_type : COORD_TYPE
 		return grid_to_real(point)
 	else : return point
 
-static func nearest_horizontal_edge_center(point : Vector2, input_coord_type : COORD_TYPE , output_coord_type : COORD_TYPE)  -> Vector2 :
+func nearest_horizontal_edge_center(point : Vector2, input_coord_type : COORD_TYPE , output_coord_type : COORD_TYPE)  -> Vector2 :
 	#ensure point is in grid coords
 	if input_coord_type == COORD_TYPE.REAL :
 		point = real_to_grid(point)
@@ -69,7 +69,7 @@ static func nearest_horizontal_edge_center(point : Vector2, input_coord_type : C
 		return grid_to_real(point)
 	else : return point
 
-static func nearest_vertical_edge_center(point : Vector2, input_coord_type : COORD_TYPE , output_coord_type : COORD_TYPE)  -> Vector2 :
+func nearest_vertical_edge_center(point : Vector2, input_coord_type : COORD_TYPE , output_coord_type : COORD_TYPE)  -> Vector2 :
 	#ensure point is in grid coords
 	if input_coord_type == COORD_TYPE.REAL :
 		point = real_to_grid(point)
@@ -82,7 +82,7 @@ static func nearest_vertical_edge_center(point : Vector2, input_coord_type : COO
 		return grid_to_real(point)
 	else : return point
 
-static func nearest_edge_center(point : Vector2, input_coord_type : COORD_TYPE , output_coord_type : COORD_TYPE)  -> Vector2 :
+func nearest_edge_center(point : Vector2, input_coord_type : COORD_TYPE , output_coord_type : COORD_TYPE)  -> Vector2 :
 	#ensure point is in grid coords
 	if input_coord_type == COORD_TYPE.REAL :
 		point = real_to_grid(point)
