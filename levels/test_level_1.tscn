@@ -52,10 +52,12 @@ grid_pos = Vector2(-0.5, -8)
 grid_length = 27
 
 [node name="Wall" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("1_hri27")]
-position = Vector2(-80, -180)
-length = 48.0
+position = Vector2(-20, 120)
+horizontal = true
+length = 368.0
 grid = NodePath("../../Grid")
-grid_pos = Vector2(-2, -4.5)
+grid_pos = Vector2(-0.5, 3)
+grid_length = 9
 
 [node name="Wall2" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("1_hri27")]
 position = Vector2(-320, -180)

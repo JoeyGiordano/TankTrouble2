@@ -36,9 +36,10 @@ func players_ready() :
 	GameContainer.GC.switch_to_level("test_level_0")
 	create_players(2)
 	in_game = true
-	player(1).tank_rigidbody.global_position = Vector2(-450,0)
-	player(2).tank_rigidbody.global_position = Vector2(450,0)
 	player(1).tank_rigidbody.get_loadout().get_child(0).get_child(1).modulate = Color.BLUE #change one tank color
+	next_level()
+	#player(1).tank_rigidbody.global_position = Vector2(-450,0)
+	#player(2).tank_rigidbody.global_position = Vector2(450,0)
 
 ### GAME FLOW/LOGIC ###
 
@@ -64,6 +65,9 @@ func end_of_round() :
 	next_level()
 
 func next_level() :
+	GameContainer.GC.switch_to_scene("loading")
+	var timer = get_tree().create_timer(1.4)
+	await timer.timeout
 	GameContainer.GC.switch_to_level("test_level_" + str(randi_range(0,2)))
 	level = GameContainer.GC.get_active_scene()
 	begin_round.emit()

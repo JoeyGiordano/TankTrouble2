@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_vxfd6"]
 [ext_resource type="Script" uid="uid://dm5taoqysx28v" path="res://game/grid/snap_to_grid.gd" id="3_rd2rc"]
 
-[node name="LevelTemplate" type="Node2D"]
+[node name="LevelTemplate" type="Node"]
 script = ExtResource("1_r0i4a")
 
 [node name="Camera2D" type="Camera2D" parent="."]

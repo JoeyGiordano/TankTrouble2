@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cjn6ovy0vud68"]
+
+[node name="Loading" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 528.0
+offset_top = 260.0
+offset_right = 590.0
+offset_bottom = 283.0
+text = "Loading"

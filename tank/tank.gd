@@ -54,27 +54,7 @@ func DEBUG_PROCESS() :
 		if Input.is_key_pressed(KEY_8) :
 			change_loadout(TankLoadout.Type.BASIC)
 
-## Misc Methods
-
-func on_begin_round() :
-	#response to GM.begin_round signal
-	#all of the relevant bools should get set here
-	dead = false
-	add_to_play(GameManager.GM.get_spawn_point(id))
-	unlock()
-
-func on_end_round() :
-	#called at the end of every round
-	#all of the relevant bools should get set here
-	lock()
-	remove_from_play()
-
-func die() :
-	lock()
-	#play death sound and anim
-	remove_from_play()
-	dead = true
-	GameManager.GM.tank_died()
+#MISC
 
 func shoot() :
 	tank_rigidbody.get_loadout().shoot()
@@ -107,7 +87,29 @@ func ensure_input_map() :
 func get_input_tag(action : String = "") -> String :
 	return "tank" + str(id) + action
 
-#MISC RESOURCE
+# MAJOR STATE
+
+func on_begin_round() :
+	#response to GM.begin_round signal
+	#all of the relevant bools should get set here
+	dead = false
+	put_in_play_at(GameManager.GM.get_spawn_point(id))
+	unlock()
+
+func on_end_round() :
+	#called at the end of every round
+	#all of the relevant bools should get set here
+	lock()
+	remove_from_play()
+
+func die() :
+	lock()
+	#play death sound and anim
+	remove_from_play()
+	dead = true
+	GameManager.GM.tank_died()
+
+#MINOR STATE
 
 func lock() :
 	#disallows player/npc script from controlling tank, should be used for scene transitions etc
@@ -119,14 +121,15 @@ func unlock() :
 	input_locked = true
 	tank_rigidbody.unlock()
 
-func add_to_play(position : Vector2) :
-	print(id ,position)
-	tank_rigidbody.position = position
+func put_in_play_at(position : Vector2) :
+	tank_rigidbody.teleport_to(position)
 	tank_rigidbody.show()
 
 func remove_from_play() :
 	tank_rigidbody.hide()
 	tank_rigidbody.teleport_to(Vector2(10000000, id * 100)) #to get the collision shapes out of the way. Easier than changing the collision masks. It works so...
+
+#RESOURCE
 
 func is_player() -> bool :
 	return id > 0
