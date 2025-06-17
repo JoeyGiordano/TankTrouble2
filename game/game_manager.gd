@@ -17,6 +17,7 @@ var level : LevelManager
 
 var in_game : bool = false
 var score : Vector2 = Vector2.ZERO
+var player_count : int = 2
 
 signal begin_round
 signal end_round
@@ -35,11 +36,8 @@ func players_ready() :
 	#assume two players for now
 	GameContainer.GC.switch_to_level("test_level_0")
 	create_players(2)
-	in_game = true
 	player(1).tank_rigidbody.get_loadout().get_child(0).get_child(1).modulate = Color.BLUE #change one tank color
 	next_level()
-	#player(1).tank_rigidbody.global_position = Vector2(-450,0)
-	#player(2).tank_rigidbody.global_position = Vector2(450,0)
 
 ### GAME FLOW/LOGIC ###
 
@@ -70,6 +68,8 @@ func next_level() :
 	await timer.timeout
 	GameContainer.GC.switch_to_level("test_level_" + str(randi_range(0,2)))
 	level = GameContainer.GC.get_active_scene()
+	level.spawn_players()
+	in_game = true
 	begin_round.emit()
 
 func victory_achieved(player_id) :
@@ -81,24 +81,6 @@ func victory_achieved(player_id) :
 		"draw" : label.text = "Draw"
 		1 : label.text = "Player 1 wins"
 		2 : label.text = "Player 2 wins"
-		
-### TANK COMMUNICATION ###
-
-func get_spawn_point(id : int) -> Vector2 :
-	return level.get_spawn_positions(2).get(id-1)
-
-func tank_died() :
-	#makes sure to only call end of round 2.5 seconds after the most recent tank death
-	var tanks_alive : int = alive_players_count()
-	if tanks_alive == 1 :
-		var timer = get_tree().create_timer(2.5)
-		await timer.timeout
-		if alive_players_count() == 0 : return #if the last surviving player died while the timer was running, let the new timer that was created when it died run out before ending the scene
-		end_of_round()
-	if tanks_alive == 0 :
-		var timer = get_tree().create_timer(2.5)
-		await timer.timeout
-		end_of_round()
 
 ### PLAYER RESOURCES ###
 

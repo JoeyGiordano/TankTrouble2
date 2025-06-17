@@ -7,6 +7,7 @@
 
 [node name="TestLevel1" type="Node"]
 script = ExtResource("1_84ig8")
+randomize_spawn_rotation = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -81,6 +82,7 @@ grid_pos = Vector2(-12, 0)
 
 [node name="Node2D2" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
 position = Vector2(480, 0)
+rotation = 3.14159
 script = ExtResource("4_ccxi4")
 grid = NodePath("../../Grid")
 grid_pos = Vector2(12, 0)

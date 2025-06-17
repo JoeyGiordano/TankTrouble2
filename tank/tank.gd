@@ -32,6 +32,8 @@ func _ready() :
 	GameManager.GM.begin_round.connect(on_begin_round)
 	GameManager.GM.end_round.connect(on_end_round)
 	ensure_input_map()
+	lock()
+	despawn() #just hides them from view and disables their rigidbody interactions
 
 func _process(_delta) :
 	DEBUG_PROCESS()
@@ -92,22 +94,22 @@ func get_input_tag(action : String = "") -> String :
 func on_begin_round() :
 	#response to GM.begin_round signal
 	#all of the relevant bools should get set here
+	#it should be spawned in by the level
 	dead = false
-	put_in_play_at(GameManager.GM.get_spawn_point(id))
 	unlock()
 
 func on_end_round() :
 	#called at the end of every round
 	#all of the relevant bools should get set here
 	lock()
-	remove_from_play()
+	despawn()
 
 func die() :
 	lock()
 	#play death sound and anim
-	remove_from_play()
+	despawn()
 	dead = true
-	GameManager.GM.tank_died()
+	GameManager.GM.level.tank_died()
 
 #MINOR STATE
 
@@ -121,11 +123,11 @@ func unlock() :
 	input_locked = true
 	tank_rigidbody.unlock()
 
-func put_in_play_at(position : Vector2) :
+func respawn(position : Vector2) :
 	tank_rigidbody.teleport_to(position)
 	tank_rigidbody.show()
 
-func remove_from_play() :
+func despawn() :
 	tank_rigidbody.hide()
 	tank_rigidbody.teleport_to(Vector2(10000000, id * 100)) #to get the collision shapes out of the way. Easier than changing the collision masks. It works so...
 

@@ -80,6 +80,7 @@ grid_pos = Vector2(-12, 0)
 
 [node name="Node2D2" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
 position = Vector2(480, 0)
+rotation = 3.14159
 script = ExtResource("5_d6nfl")
 grid = NodePath("../../Grid")
 grid_pos = Vector2(12, 0)
