@@ -29,8 +29,9 @@ var input_locked = false #allows/disallows input map input from controlling tank
 var dead = false
 
 func _ready() :
+	GameManager.GM.begin_round.connect(on_begin_round)
+	GameManager.GM.end_round.connect(on_end_round)
 	ensure_input_map()
-	print(stats_handler.get_parent().id)
 
 func _process(_delta) :
 	DEBUG_PROCESS()
@@ -55,23 +56,23 @@ func DEBUG_PROCESS() :
 
 ## Misc Methods
 
-func begin_round(position : Vector2) :
-	#called at the beginning of every round
+func on_begin_round() :
+	#response to GM.begin_round signal
 	#all of the relevant bools should get set here
 	dead = false
-	add_to_game(position)
+	add_to_play(GameManager.GM.get_spawn_point(id))
 	unlock()
 
-func end_round() :
+func on_end_round() :
 	#called at the end of every round
 	#all of the relevant bools should get set here
 	lock()
-	remove_from_game()
+	remove_from_play()
 
 func die() :
 	lock()
 	#play death sound and anim
-	remove_from_game()
+	remove_from_play()
 	dead = true
 	GameManager.GM.tank_died()
 
@@ -92,7 +93,7 @@ func get_movement_input() :
 	move_input.y = Input.get_axis(get_input_tag("_down"), get_input_tag("_up"))
 
 func ensure_input_map() :
-	#checks to see if there are already input actions in the input map for this tank
+	#checks to see if there are already input ons in the input map for this tank
 	#if there are none, creates them
 	#this way, if a tank is not one of the player tanks, it will have input actions that can be accessed by an NPC/AI controller node
 	if InputMap.has_action(get_input_tag()+"_left") : return #if it already has one, assume it has all of them
@@ -117,14 +118,15 @@ func unlock() :
 	#allows player/npc script from controlling tank, should be used for scene transitions etc
 	input_locked = true
 	tank_rigidbody.unlock()
-	
-func remove_from_game() :
-	tank_rigidbody.hide()
-	tank_rigidbody.teleport_to(Vector2(10000000, id * 100)) #to get the collision shapes out of the way. Easier than changing the collision masks. It works so...
-	
-func add_to_game(position : Vector2) :
+
+func add_to_play(position : Vector2) :
+	print(id ,position)
 	tank_rigidbody.position = position
 	tank_rigidbody.show()
+
+func remove_from_play() :
+	tank_rigidbody.hide()
+	tank_rigidbody.teleport_to(Vector2(10000000, id * 100)) #to get the collision shapes out of the way. Easier than changing the collision masks. It works so...
 
 func is_player() -> bool :
 	return id > 0

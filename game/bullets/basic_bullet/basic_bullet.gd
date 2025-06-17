@@ -10,6 +10,8 @@ var dir : Vector2
 var lifetime : float #lifetime in seconds
 
 func _ready():
+	GameManager.GM.end_round.connect(on_end_round)
+	
 	hitbox.area_entered.connect(on_area_entered)
 	linear_velocity = speed * dir.normalized()
 
@@ -25,6 +27,9 @@ func on_area_entered(area : Area2D) : #contact_monitor must be set to true and m
 		tank.die()
 		queue_free()
 
+func on_end_round() :
+	queue_free()
+
 static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, lifetime_ : float) -> BasicBullet :
 	#create a new bullet and return it
 	#instantiate a tank from the .tscn
@@ -37,7 +42,7 @@ static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, li
 	b.lifetime = lifetime_
 	
 	#add the new bullet to the scene tree in the correct place
-	GameManager.GM.Bullets.add_child(b)
+	GameManager.GM.Entites.add_child(b)
 	return b
 	
 	

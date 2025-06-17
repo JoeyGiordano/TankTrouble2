@@ -40,6 +40,9 @@ func _process(_delta):
 
 ### SCENE MANAGEMENT ###
 
+func get_active_scene() -> Node :
+	return ActiveSceneHolder.get_child(0)
+
 func switch_to_level(level_name : String) :
 	switch_active_scene(load("res://levels/" + level_name + ".tscn"))
 

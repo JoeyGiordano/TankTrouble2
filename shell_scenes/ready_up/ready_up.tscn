@@ -6,10 +6,14 @@
 script = ExtResource("1_d831x")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 371.0
-offset_top = 193.0
-offset_right = 447.0
-offset_bottom = 216.0
-text = "Ready up!
-Player 1 press Q
-Player 2 press M"
+offset_left = 401.0
+offset_top = 226.0
+offset_right = 692.0
+offset_bottom = 405.0
+text = "Player 1 controls        Player 2 controls
+        AWSD+Q                arrow keys + M
+
+
+                         Ready up!
+
+Player 1 press Q         Player 2 press M"

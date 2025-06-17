@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsd7gwwl4lle0"]
+[gd_scene load_steps=9 format=3 uid="uid://dsd7gwwl4lle0"]
 
 [ext_resource type="Script" uid="uid://5kwgnpicdiel" path="res://game/level_manager.gd" id="1_g3xp3"]
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_o3gri"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://b8ve24bo453do" path="res://game/item/items/item1.tres" id="3_ao06l"]
 [ext_resource type="Resource" uid="uid://c586uv6od1lus" path="res://game/item/items/item2.tres" id="4_aw1bw"]
 [ext_resource type="PackedScene" uid="uid://okbp1o6c0twy" path="res://game/effect_area/effect_area.tscn" id="5_aw1bw"]
-[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="7_14jeo"]
 [ext_resource type="Script" uid="uid://dm5taoqysx28v" path="res://game/grid/snap_to_grid.gd" id="8_ocf6p"]
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="9_ocf6p"]
 
@@ -157,11 +156,28 @@ item_res = ExtResource("4_aw1bw")
 [node name="EffectArea" parent="." instance=ExtResource("5_aw1bw")]
 position = Vector2(-358, -33)
 
-[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("grid")]
-position = Vector2(20, -20)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_14jeo")
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+position = Vector2(-480, 0)
 script = ExtResource("8_ocf6p")
-grid = NodePath("../Grid")
-snap_type = 1
-grid_pos = Vector2(0.5, -0.5)
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-12, 0)
+
+[node name="Node2D2" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+position = Vector2(480, 0)
+script = ExtResource("8_ocf6p")
+grid = NodePath("../../Grid")
+grid_pos = Vector2(12, 0)
+
+[node name="Node2D3" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+position = Vector2(-480, -80)
+script = ExtResource("8_ocf6p")
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-12, -2)
+
+[node name="Node2D4" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+position = Vector2(480, 80)
+script = ExtResource("8_ocf6p")
+grid = NodePath("../../Grid")
+grid_pos = Vector2(12, 2)

@@ -10,10 +10,16 @@ static var GM : GameManager
 
 #Important nodes that always exist under the Game Manager, used to hold nodes that are instantiated and uninstantiated in the game (players, bullets, npcs, etc, but not levels structure which is the active scene)
 @onready var Players = $Players #The player nodes are instantiated and stored in this node, they can exist even when a menu is on the screen by locking the controls and hiding the player
-@onready var Bullets = $Bullets
+@onready var Entites = $Entities
+
+#Level manager of the most recently loaded level (does not change when a menu shows, check in_game to see if a level is going)
+var level : LevelManager
 
 var in_game : bool = false
 var score : Vector2 = Vector2.ZERO
+
+signal begin_round
+signal end_round
 
 func _init():
 	#set up the singleton (not an autoload) (in _init() so that it works when _ready() is called for all other nodes)
@@ -34,30 +40,16 @@ func players_ready() :
 	player(2).tank_rigidbody.global_position = Vector2(450,0)
 	player(1).tank_rigidbody.get_loadout().get_child(0).get_child(1).modulate = Color.BLUE #change one tank color
 
-## END OF ROUND/GAME LOGIC
+### GAME FLOW/LOGIC ###
 
-func tank_died() :
-	#makes sure to only call end of round 2.5 seconds after the most recent tank death
-	var tanks_alive : int = alive_players_count()
-	if tanks_alive == 1 :
-		var timer = get_tree().create_timer(2.5)
-		await timer.timeout
-		if alive_players_count() == 0 : return #if the last surviving player died while the timer was running, let the new timer that was created when it died run out before ending the scene
-		end_round()
-	if tanks_alive == 0 :
-		var timer = get_tree().create_timer(2.5)
-		await timer.timeout
-		end_round()
-
-func end_round() :
+func end_of_round() :
+	end_round.emit()
 	in_game = false
-	for child in Bullets.get_children():
-		child.queue_free()
-		
+	
 	#score the round
 	if !player(1).dead && player(2).dead :
 		score.x += 1
-	if !player(1).dead && player(2).dead :
+	if !player(2).dead && player(1).dead :
 		score.y += 1
 	
 	#check for a winner
@@ -72,20 +64,37 @@ func end_round() :
 	next_level()
 
 func next_level() :
-	for tank : Tank in Players.get_children() : tank.end_round()
 	GameContainer.GC.switch_to_level("test_level_" + str(randi_range(0,2)))
-	for tank : Tank in Players.get_children() :
-		tank.begin_round(Vector2.ZERO)
+	level = GameContainer.GC.get_active_scene()
+	begin_round.emit()
 
 func victory_achieved(player_id) :
+	#goes to the victory screen and ensures it displays the right winner, returns to the shell scenes sequence
 	destroy_all_players()
 	GameContainer.GC.switch_to_scene("victory")
-	var label : Label = GameContainer.GC.ActiveSceneHolder.get_child(0).get_child(1)
+	var label : Label = GameContainer.GC.get_active_scene().get_child(1)
 	match player_id :
 		"draw" : label.text = "Draw"
 		1 : label.text = "Player 1 wins"
 		2 : label.text = "Player 2 wins"
 		
+### TANK COMMUNICATION ###
+
+func get_spawn_point(id : int) -> Vector2 :
+	return level.get_spawn_positions(2).get(id-1)
+
+func tank_died() :
+	#makes sure to only call end of round 2.5 seconds after the most recent tank death
+	var tanks_alive : int = alive_players_count()
+	if tanks_alive == 1 :
+		var timer = get_tree().create_timer(2.5)
+		await timer.timeout
+		if alive_players_count() == 0 : return #if the last surviving player died while the timer was running, let the new timer that was created when it died run out before ending the scene
+		end_of_round()
+	if tanks_alive == 0 :
+		var timer = get_tree().create_timer(2.5)
+		await timer.timeout
+		end_of_round()
 
 ### PLAYER RESOURCES ###
 
