@@ -1,20 +1,23 @@
 [gd_scene load_steps=2 format=3 uid="uid://cby3remb66qik"]
 
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/switch_to_scene.gd" id="1_mua0j"]
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/button_scene_switch.gd" id="1_mua0j"]
 
 [node name="GameOver" type="Node"]
 
 [node name="TitleButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 356.0
+offset_top = 414.0
+offset_right = 782.0
+offset_bottom = 486.0
 text = "MainMenu"
 script = ExtResource("1_mua0j")
 switch_to = "main_menu"
 quick_key = true
 
 [node name="TEMP" type="Label" parent="."]
-offset_left = 144.0
-offset_top = 130.0
-offset_right = 308.0
-offset_bottom = 179.0
+offset_left = 385.0
+offset_top = 185.0
+offset_right = 752.0
+offset_bottom = 234.0
 text = "Victory"
+horizontal_alignment = 1

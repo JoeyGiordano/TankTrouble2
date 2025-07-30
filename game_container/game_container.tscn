@@ -1,14 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dajeyyd76x0vu"]
+[gd_scene load_steps=2 format=3 uid="uid://dajeyyd76x0vu"]
 
-[ext_resource type="Script" uid="uid://cikmhh7uipt2u" path="res://game_container/game_container.gd" id="1_nfc83"]
-[ext_resource type="Script" uid="uid://bkrk63111d2e5" path="res://game/game_manager.gd" id="2_ukxy1"]
 [ext_resource type="PackedScene" uid="uid://d176ir76ayfrc" path="res://shell_scenes/startup.tscn" id="2_xcs12"]
 
 [node name="GameContainer" type="Node"]
-script = ExtResource("1_nfc83")
 
 [node name="GameManager" type="Node" parent="."]
-script = ExtResource("2_ukxy1")
 
 [node name="Players" type="Node" parent="GameManager"]
 

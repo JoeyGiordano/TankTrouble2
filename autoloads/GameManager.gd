@@ -1,16 +1,11 @@
 extends Node
-class_name GameManager
 
 ## Manages all of the in game things, but continues to exist between games to allow for communication between the menus and the games
-## Provides access to preset children (Players, Bullets, etc) via the GM singleton.
 ## Individual level managers should be used for level specific stuff.
 
-#easy way to access the GameManager from other nodes
-static var GM : GameManager
-
 #Important nodes that always exist under the Game Manager, used to hold nodes that are instantiated and uninstantiated in the game (players, bullets, npcs, etc, but not levels structure which is the active scene)
-@onready var Players = $Players #The player nodes are instantiated and stored in this node, they can exist even when a menu is on the screen by locking the controls and hiding the player
-@onready var Entites = $Entities
+@onready var Players = get_node("/root/GameContainer/GameManager/Players") #The player nodes are instantiated and stored in this node, they can exist even when a menu is on the screen by locking the controls and hiding the player
+@onready var Entites = get_node("/root/GameContainer/GameManager/Entities")
 
 #Level manager of the most recently loaded level (does not change when a menu shows, check in_game to see if a level is going)
 var level : LevelManager
@@ -22,19 +17,16 @@ var player_count : int = 2
 signal begin_round
 signal end_round
 
-func _init():
-	#set up the singleton (not an autoload) (in _init() so that it works when _ready() is called for all other nodes)
-	GM = self
-
-func _process(_delta):
-	if in_game :
-		$Debug_label.text = player(2).stats.as_string()
-	else : $Debug_label.text = ""
+func _process(_delta) :
+	#if in_game :
+	#	$Debug_label.text = player(2).stats.as_string()
+	#else : $Debug_label.text = ""
+	pass
 	
 func players_ready() :
 	#called when the players finish readying up in the ready_up shell_scene
 	#assume two players for now
-	GameContainer.GC.switch_to_level("test_level_0")
+	SceneManager.switch_active_scene(Reference.test_level_0)
 	create_players(2)
 	player(1).tank_rigidbody.get_loadout().get_child(0).get_child(1).modulate = Color.BLUE #change one tank color
 	next_level()
@@ -63,11 +55,11 @@ func end_of_round() :
 	next_level()
 
 func next_level() :
-	GameContainer.GC.switch_to_scene("loading")
+	SceneManager.switch_active_scene(Reference.loading)
 	var timer = get_tree().create_timer(0.7)
 	await timer.timeout
-	GameContainer.GC.switch_to_level("test_level_" + str(randi_range(0,2)))
-	level = GameContainer.GC.get_active_scene()
+	SceneManager.switch_active_scene(Reference.get("test_level_" + str(randi_range(0,2))))
+	level = SceneManager.get_active_scene()
 	level.spawn_players()
 	in_game = true
 	begin_round.emit()
@@ -75,8 +67,8 @@ func next_level() :
 func victory_achieved(player_id) :
 	#goes to the victory screen and ensures it displays the right winner, returns to the shell scenes sequence
 	destroy_all_players()
-	GameContainer.GC.switch_to_scene("victory")
-	var label : Label = GameContainer.GC.get_active_scene().get_child(1)
+	SceneManager.switch_active_scene(Reference.victory)
+	var label : Label = SceneManager.get_active_scene().get_child(1)
 	match player_id :
 		"draw" : label.text = "Draw"
 		1 : label.text = "Player 1 wins"

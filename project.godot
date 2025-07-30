@@ -15,6 +15,15 @@ run/main_scene="res://game_container/game_container.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://autoloads/GameManager.gd"
+SceneManager="*res://autoloads/SceneManager.gd"
+Global="*res://autoloads/Global.gd"
+SignalBus="*res://autoloads/SignalBus.gd"
+Utility="*res://autoloads/Utility.gd"
+Reference="*res://autoloads/reference/Reference.tscn"
+
 [display]
 
 window/size/mode=2

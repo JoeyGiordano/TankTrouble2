@@ -29,8 +29,8 @@ var input_locked = false #allows/disallows input map input from controlling tank
 var dead = false
 
 func _ready() :
-	GameManager.GM.begin_round.connect(on_begin_round)
-	GameManager.GM.end_round.connect(on_end_round)
+	GameManager.begin_round.connect(on_begin_round)
+	GameManager.end_round.connect(on_end_round)
 	ensure_input_map()
 	lock()
 	despawn() #just hides them from view and disables their rigidbody interactions
@@ -109,7 +109,7 @@ func die() :
 	#play death sound and anim
 	despawn()
 	dead = true
-	GameManager.GM.level.tank_died()
+	GameManager.level.tank_died()
 
 #MINOR STATE
 

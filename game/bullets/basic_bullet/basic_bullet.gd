@@ -10,7 +10,7 @@ var dir : Vector2
 var lifetime : float #lifetime in seconds
 
 func _ready():
-	GameManager.GM.end_round.connect(on_end_round)
+	GameManager.end_round.connect(on_end_round)
 	
 	hitbox.area_entered.connect(on_area_entered)
 	linear_velocity = speed * dir.normalized()
@@ -42,7 +42,7 @@ static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, li
 	b.lifetime = lifetime_
 	
 	#add the new bullet to the scene tree in the correct place
-	GameManager.GM.Entites.add_child(b)
+	GameManager.Entites.add_child(b)
 	return b
 	
 	

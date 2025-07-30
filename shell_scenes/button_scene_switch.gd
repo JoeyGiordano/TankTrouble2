@@ -13,4 +13,4 @@ func _process(_delta):
 
 func on_pressed() :
 	#tell the GameContainer to switch the scene to the scene with the name switch_to
-	GameContainer.GC.switch_to_scene(switch_to)
+	SceneManager.switch_active_scene(Reference.get(switch_to))

@@ -17,4 +17,4 @@ func _process(_delta):
 		players_ready()
 
 func players_ready() :
-	GameManager.GM.players_ready()
+	GameManager.players_ready()
