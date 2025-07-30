@@ -64,7 +64,7 @@ func end_of_round() :
 
 func next_level() :
 	GameContainer.GC.switch_to_scene("loading")
-	var timer = get_tree().create_timer(1.4)
+	var timer = get_tree().create_timer(0.7)
 	await timer.timeout
 	GameContainer.GC.switch_to_level("test_level_" + str(randi_range(0,2)))
 	level = GameContainer.GC.get_active_scene()
