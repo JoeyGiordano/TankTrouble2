@@ -4,33 +4,59 @@
 
 [node name="MainMenu" type="Node"]
 
+[node name="Label" type="Label" parent="."]
+offset_left = 1152.0
+offset_top = 648.0
+offset_right = 1546.0
+offset_bottom = 671.0
+
 [node name="PlayButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -188.0
+offset_top = -300.0
+offset_right = 182.0
+offset_bottom = -225.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Play"
 script = ExtResource("1_u5tdt")
 switch_to = "ready_up"
 quick_key = true
 
 [node name="CreditsButton" type="Button" parent="."]
-offset_top = 115.0
-offset_right = 63.0
-offset_bottom = 146.0
+offset_left = 388.0
+offset_top = 519.0
+offset_right = 758.0
+offset_bottom = 569.0
 text = "Credits"
 script = ExtResource("1_u5tdt")
 switch_to = "credits"
 
 [node name="InstructionsButton" type="Button" parent="."]
-offset_top = 57.0
-offset_right = 101.0
-offset_bottom = 88.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -188.0
+offset_top = -200.0
+offset_right = 182.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Instructions"
 script = ExtResource("1_u5tdt")
 switch_to = "instructions"
 
 [node name="TEMP" type="Label" parent="."]
-offset_left = 144.0
-offset_top = 130.0
-offset_right = 308.0
-offset_bottom = 179.0
-text = "Main Menu"
+offset_left = 482.0
+offset_top = 164.0
+offset_right = 646.0
+offset_bottom = 213.0
+text = "Game Title
+Main Menu"
+horizontal_alignment = 1

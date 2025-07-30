@@ -5,15 +5,17 @@
 [node name="Credits" type="Node"]
 
 [node name="BackButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 388.0
+offset_top = 520.0
+offset_right = 750.0
+offset_bottom = 567.0
 text = "Back"
 script = ExtResource("1_lxpdn")
 switch_to = "main_menu"
 
 [node name="TEMP" type="Label" parent="."]
-offset_left = 144.0
-offset_top = 130.0
-offset_right = 308.0
-offset_bottom = 179.0
+offset_left = 534.0
+offset_top = 113.0
+offset_right = 698.0
+offset_bottom = 162.0
 text = "Credits"

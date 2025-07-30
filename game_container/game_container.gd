@@ -18,17 +18,18 @@ static var GC : GameContainer
 @onready var instructions : PackedScene = preload("res://shell_scenes/instructions.tscn")
 @onready var credits : PackedScene = preload("res://shell_scenes/credits.tscn")
 @onready var ready_up : PackedScene = preload("res://shell_scenes/ready_up/ready_up.tscn")
+@onready var loading : PackedScene = preload("res://shell_scenes/loading.tscn")
 @onready var victory : PackedScene = preload("res://shell_scenes/victory.tscn")
-@onready var test_level_0 : PackedScene = preload("res://levels/test_level_0.tscn")
 
+#don't add levels to the scene dict, instead use switch_to_level()
 @onready var scene_dict = {
 	"startup" : startup,
 	"main_menu" : main_menu,
 	"instructions" : instructions,
 	"credits" : credits,
 	"ready_up" : ready_up,
-	"victory" : victory,
-	"test_level_0" : test_level_0
+	"loading" : loading,
+	"victory" : victory
 }
 
 func _init():
@@ -41,18 +42,24 @@ func _process(_delta):
 
 ### SCENE MANAGEMENT ###
 
+func get_active_scene() -> Node :
+	return ActiveSceneHolder.get_child(0)
+
+func switch_to_level(level_name : String) :
+	_switch_active_scene(load("res://levels/" + level_name + ".tscn"))
+
 func switch_to_scene(scene_name : String) :
 	#switch to a scene with the name scene_name
-	switch_active_scene(get_scene(scene_name))
+	_switch_active_scene(_get_scene(scene_name))
 
-func switch_active_scene(scene : PackedScene) :
+func _switch_active_scene(scene : PackedScene) :
 	#replace the scene in the ActiveSceneHolder with a newly instantiated PackedScene scene
 	ActiveSceneHolder.get_child(0).queue_free()
 	ActiveSceneHolder.remove_child(ActiveSceneHolder.get_child(0))
 	var s = scene.instantiate()
 	ActiveSceneHolder.add_child(s)
 
-func get_scene(scene_name : String) -> PackedScene:
+func _get_scene(scene_name : String) -> PackedScene:
 	#return the PackedScene with the name scene_name, or return a random stage
 	if !scene_dict.has(scene_name) : 
 		print("Scene " + scene_name + " is not in scene dict.")

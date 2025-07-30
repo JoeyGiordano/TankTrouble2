@@ -7,7 +7,7 @@ class_name TankLoadout
 ## A loadout is basically an entire tank minus the logic, it has physics collision shape, damage hitbox, the sprite, the animations, the guns, and anything else
 
 #packed scenes of loadout types (except basic, see below)
-static var empty : PackedScene = preload("res://game/tank/loadouts/empty_tankloadout.tscn")
+static var empty : PackedScene = preload("res://tank/loadouts/empty_tankloadout.tscn")
 
 #loadout type enum, one for each packed scene
 enum Type {
@@ -15,6 +15,7 @@ enum Type {
 	BASIC
 }
 
+@onready var tank : Tank = get_parent().get_parent()
 @onready var tank_rigidbody : TankRigidbody = get_parent()
 
 func shoot() :

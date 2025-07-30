@@ -5,16 +5,18 @@
 [node name="StartupCutscene" type="Node"]
 
 [node name="CutSceneOverButton" type="Button" parent="."]
-offset_right = 128.0
-offset_bottom = 31.0
+offset_left = 517.0
+offset_top = 407.0
+offset_right = 645.0
+offset_bottom = 438.0
 text = "[CutSceneOver]"
 script = ExtResource("1_2aema")
 switch_to = "main_menu"
 quick_key = true
 
 [node name="THIS SCENE IS TEMP" type="Label" parent="."]
-offset_left = 142.0
-offset_top = 130.0
-offset_right = 1088.0
-offset_bottom = 231.0
+offset_left = 503.0
+offset_top = 136.0
+offset_right = 725.0
+offset_bottom = 202.0
 text = "Pre Game Cut Scene"

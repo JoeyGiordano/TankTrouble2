@@ -10,10 +10,17 @@ static var GM : GameManager
 
 #Important nodes that always exist under the Game Manager, used to hold nodes that are instantiated and uninstantiated in the game (players, bullets, npcs, etc, but not levels structure which is the active scene)
 @onready var Players = $Players #The player nodes are instantiated and stored in this node, they can exist even when a menu is on the screen by locking the controls and hiding the player
-@onready var Bullets = $Bullets
+@onready var Entites = $Entities
+
+#Level manager of the most recently loaded level (does not change when a menu shows, check in_game to see if a level is going)
+var level : LevelManager
 
 var in_game : bool = false
-var score : int
+var score : Vector2 = Vector2.ZERO
+var player_count : int = 2
+
+signal begin_round
+signal end_round
 
 func _init():
 	#set up the singleton (not an autoload) (in _init() so that it works when _ready() is called for all other nodes)
@@ -27,47 +34,53 @@ func _process(_delta):
 func players_ready() :
 	#called when the players finish readying up in the ready_up shell_scene
 	#assume two players for now
-	GameContainer.GC.switch_to_scene("test_level_0")
+	GameContainer.GC.switch_to_level("test_level_0")
 	create_players(2)
-	in_game = true
-	player(1).tank_rigidbody.global_position = Vector2(-100,0)
 	player(1).tank_rigidbody.get_loadout().get_child(0).get_child(1).modulate = Color.BLUE #change one tank color
+	next_level()
 
-## END OF ROUND/GAME LOGIC
+### GAME FLOW/LOGIC ###
 
-func tank_died() :
-	var tanks_alive : int = alive_players_count()
-	if tanks_alive == 1 :
-		var timer = get_tree().create_timer(2.5)
-		await timer.timeout
-		if alive_players_count() == 0 : return #if the last surviving player died while the timer was running, let the new timer that was created when it died run out before ending the scene
-		end_round()
-	if tanks_alive == 0 :
-		var timer = get_tree().create_timer(2.5)
-		await timer.timeout
-		end_round()
-
-func end_round() :
+func end_of_round() :
+	end_round.emit()
 	in_game = false
-	for child in Bullets.get_children():
-		child.queue_free()
 	
-	if player(1).dead && player(2).dead :
-		victory_achieved("draw")
-	elif player(1).dead :
-		victory_achieved(2)
-	elif player(2).dead :
+	#score the round
+	if !player(1).dead && player(2).dead :
+		score.x += 1
+	if !player(2).dead && player(1).dead :
+		score.y += 1
+	
+	#check for a winner
+	if score.x == 5 :
 		victory_achieved(1)
+		return
+	if score.y == 5 :
+		victory_achieved(2)
+		return
+	
+	#if here, there is no winner, go to the next round 
+	next_level()
+
+func next_level() :
+	GameContainer.GC.switch_to_scene("loading")
+	var timer = get_tree().create_timer(0.7)
+	await timer.timeout
+	GameContainer.GC.switch_to_level("test_level_" + str(randi_range(0,2)))
+	level = GameContainer.GC.get_active_scene()
+	level.spawn_players()
+	in_game = true
+	begin_round.emit()
 
 func victory_achieved(player_id) :
+	#goes to the victory screen and ensures it displays the right winner, returns to the shell scenes sequence
 	destroy_all_players()
 	GameContainer.GC.switch_to_scene("victory")
-	var label : Label = GameContainer.GC.ActiveSceneHolder.get_child(0).get_child(1)
+	var label : Label = GameContainer.GC.get_active_scene().get_child(1)
 	match player_id :
 		"draw" : label.text = "Draw"
 		1 : label.text = "Player 1 wins"
 		2 : label.text = "Player 2 wins"
-		
 
 ### PLAYER RESOURCES ###
 

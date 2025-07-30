@@ -12,22 +12,28 @@ class_name Tank
 ## instead of having a pickup_item(Item) function in tank that does that stuff.
 
 @export var id = 0 # 1,2,3,etc for player; -1,-2,-3,etc for non-player
-#MUST put the starting stats in as a NOT saved resource. if you want to use a saved resource, you must load it in init(). A normal saved exported resource loads too late, initializing in _ready() is also too late: it will cause an error when it tries to get accessed, preload causes a cyclic error with stat_boost static functions 
+#MUST set stats resource local_to_scene=true. MUST put the starting stats in as a NOT saved resource. if you want to use a saved resource, you must load it in init(). A normal saved exported resource loads too late, initializing in _ready() is also too late: it will cause an error when it tries to get accessed, preload causes a cyclic error with stat_boost static functions 
 @export var stats : StatBoost # we use a stat boost to store the tanks stats (it holds all the info we need it to hold)
 
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
 @onready var items : Node = $Items
 @onready var stats_handler : StatsHandler = $StatsHandler
-static var tank_scene : PackedScene = preload("res://game/tank/tank.tscn")
+@onready var effects_handler : EffectsHandler = $EffectsHandler
+static var tank_scene : PackedScene = preload("res://tank/tank.tscn")
 
+#Input
 var move_input : Vector2 = Vector2.ZERO
+
+#Flags
 var input_locked = false #allows/disallows input map input from controlling tank, should be used for scene transitions etc
 var dead = false
 
-var on_fire : bool = false
-
 func _ready() :
+	GameManager.GM.begin_round.connect(on_begin_round)
+	GameManager.GM.end_round.connect(on_end_round)
 	ensure_input_map()
+	lock()
+	despawn() #just hides them from view and disables their rigidbody interactions
 
 func _process(_delta) :
 	DEBUG_PROCESS()
@@ -37,8 +43,6 @@ func _process(_delta) :
 		shoot()
 	if Input.is_action_just_released(get_input_tag("_shoot")) :
 		end_shoot() #for loadouts where the release of the shoot hey also has an effect
-	
-	on_fire = Input.is_key_pressed(KEY_F)
 
 func _physics_process(_delta):
 	tank_rigidbody.move_and_rotate()
@@ -52,27 +56,7 @@ func DEBUG_PROCESS() :
 		if Input.is_key_pressed(KEY_8) :
 			change_loadout(TankLoadout.Type.BASIC)
 
-## Misc Methods
-
-func begin_round(position : Vector2) :
-	#called at the beginning of every round
-	#all of the relevant bools should get set here
-	dead = false
-	add_to_game(position)
-	unlock()
-
-func end_round() :
-	#called at the end of every round
-	#all of the relevant bools should get set here
-	lock()
-	remove_from_game()
-
-func die() :
-	lock()
-	#play death sound and anim
-	remove_from_game()
-	dead = true
-	GameManager.GM.tank_died()
+#MISC
 
 func shoot() :
 	tank_rigidbody.get_loadout().shoot()
@@ -91,7 +75,7 @@ func get_movement_input() :
 	move_input.y = Input.get_axis(get_input_tag("_down"), get_input_tag("_up"))
 
 func ensure_input_map() :
-	#checks to see if there are already input actions in the input map for this tank
+	#checks to see if there are already input ons in the input map for this tank
 	#if there are none, creates them
 	#this way, if a tank is not one of the player tanks, it will have input actions that can be accessed by an NPC/AI controller node
 	if InputMap.has_action(get_input_tag()+"_left") : return #if it already has one, assume it has all of them
@@ -105,7 +89,29 @@ func ensure_input_map() :
 func get_input_tag(action : String = "") -> String :
 	return "tank" + str(id) + action
 
-#MISC RESOURCE
+# MAJOR STATE
+
+func on_begin_round() :
+	#response to GM.begin_round signal
+	#all of the relevant bools should get set here
+	#it should be spawned in by the level
+	dead = false
+	unlock()
+
+func on_end_round() :
+	#called at the end of every round
+	#all of the relevant bools should get set here
+	lock()
+	despawn()
+
+func die() :
+	lock()
+	#play death sound and anim
+	despawn()
+	dead = true
+	GameManager.GM.level.tank_died()
+
+#MINOR STATE
 
 func lock() :
 	#disallows player/npc script from controlling tank, should be used for scene transitions etc
@@ -116,14 +122,16 @@ func unlock() :
 	#allows player/npc script from controlling tank, should be used for scene transitions etc
 	input_locked = true
 	tank_rigidbody.unlock()
-	
-func remove_from_game() :
+
+func respawn(position : Vector2) :
+	tank_rigidbody.teleport_to(position)
+	tank_rigidbody.show()
+
+func despawn() :
 	tank_rigidbody.hide()
 	tank_rigidbody.teleport_to(Vector2(10000000, id * 100)) #to get the collision shapes out of the way. Easier than changing the collision masks. It works so...
-	
-func add_to_game(position : Vector2) :
-	tank_rigidbody.position = position
-	tank_rigidbody.show()
+
+#RESOURCE
 
 func is_player() -> bool :
 	return id > 0
