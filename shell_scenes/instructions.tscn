@@ -1,8 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cltaghkxnswjy"]
 
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/button_scene_switch.gd" id="1_4nwng"]
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_4nwng"]
 
-[node name="Instructions" type="Node"]
+[node name="Instructions" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 439.0

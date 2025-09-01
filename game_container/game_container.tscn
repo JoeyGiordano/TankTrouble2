@@ -4,20 +4,23 @@
 
 [node name="GameContainer" type="Node"]
 
-[node name="GameManager" type="Node" parent="."]
+[node name="Debug_label" type="Label" parent="."]
+offset_left = 191.0
+offset_top = 109.0
+offset_right = 231.0
+offset_bottom = 132.0
 
-[node name="Players" type="Node" parent="GameManager"]
+[node name="Game" type="Node" parent="."]
 
-[node name="Entities" type="Node" parent="GameManager"]
+[node name="LevelHolder" type="Node" parent="Game"]
 
-[node name="Debug_label" type="Label" parent="GameManager"]
-offset_left = 206.0
-offset_top = 24.0
-offset_right = 246.0
-offset_bottom = 47.0
+[node name="Players" type="Node" parent="Game"]
 
-[node name="ActiveSceneHolder" type="Node" parent="."]
+[node name="Entities" type="Node" parent="Game"]
 
-[node name="StartupCutscene" parent="ActiveSceneHolder" instance=ExtResource("2_xcs12")]
+[node name="ShellSceneHolder" type="CanvasLayer" parent="."]
 
-[node name="OverlayPanels" type="Node" parent="."]
+[node name="StartupCutscene" parent="ShellSceneHolder" instance=ExtResource("2_xcs12")]
+
+[node name="OverlayPanelHolder" type="CanvasLayer" parent="."]
+layer = 2

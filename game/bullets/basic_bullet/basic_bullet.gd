@@ -41,8 +41,8 @@ static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, li
 	b.position = position_
 	b.lifetime = lifetime_
 	
-	#add the new bullet to the scene tree in the correct place
-	GameManager.Entites.add_child(b)
+	#add the new bullet to the scene tree in the correct placem
+	Global.Entities.add_child(b)
 	return b
 	
 	

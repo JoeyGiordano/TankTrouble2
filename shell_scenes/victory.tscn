@@ -1,8 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cby3remb66qik"]
 
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/button_scene_switch.gd" id="1_mua0j"]
+[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_mua0j"]
 
-[node name="GameOver" type="Node"]
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="TitleButton" type="Button" parent="."]
 offset_left = 356.0

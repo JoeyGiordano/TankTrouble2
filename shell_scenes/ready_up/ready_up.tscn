@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c7x3b0o7nyjft" path="res://shell_scenes/ready_up/ready_up.gd" id="1_d831x"]
 
-[node name="ReadyUp" type="Node"]
+[node name="ReadyUp" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_d831x")
 
 [node name="Label" type="Label" parent="."]

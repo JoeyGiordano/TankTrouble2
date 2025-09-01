@@ -18,11 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://autoloads/GameManager.gd"
-SceneManager="*res://autoloads/SceneManager.gd"
+ShellSceneManager="*res://autoloads/ShellSceneManager.gd"
 Global="*res://autoloads/Global.gd"
 SignalBus="*res://autoloads/SignalBus.gd"
 Utility="*res://autoloads/Utility.gd"
-Reference="*res://autoloads/reference/Reference.tscn"
+Ref="*res://autoloads/Reference.tscn"
+LevelLoader="*res://autoloads/LevelLoader.gd"
 
 [display]
 

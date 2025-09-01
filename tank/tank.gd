@@ -109,7 +109,7 @@ func die() :
 	#play death sound and anim
 	despawn()
 	dead = true
-	GameManager.level.tank_died()
+	Global.ActiveLevelManager().tank_died()
 
 #MINOR STATE
 

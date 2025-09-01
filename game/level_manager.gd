@@ -1,6 +1,11 @@
 extends Node
 class_name LevelManager
 
+### Level Manager ###
+
+## This script communicates with the higher up scripts like GameManager.
+## Do not in game behaviors here (spawning upgrades, moving walls, etc)? 
+
 @onready var spawn_points : Array = $SpawnPoints.get_children()
 
 @export var randomize_spawn_rotation : bool = false
