@@ -24,6 +24,7 @@ SignalBus="*res://autoloads/SignalBus.gd"
 Utility="*res://autoloads/Utility.gd"
 Ref="*res://autoloads/Reference.tscn"
 LevelLoader="*res://autoloads/LevelLoader.gd"
+Debug="*res://autoloads/Debug.gd"
 
 [display]
 

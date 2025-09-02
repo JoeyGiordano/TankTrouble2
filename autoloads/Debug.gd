@@ -28,6 +28,7 @@ func print_node_signal_connections(node : Node, do_print : bool = true) -> Strin
 
 func print_signal_connections(s : Signal, do_print : bool = true) -> String :
 	#print all connections to the signal s, return the printout string, optionally don't print
+	#Note: if two instances of the same object are connected to the same signal, it counts as two connections and will be listed twice
 	var output : String = "" # prep to store the printed strings
 	output += "Signal: " + s.get_name() + "\n" + "---" + "\n" # store header
 	var connections = s.get_connections() # get the signal's connections

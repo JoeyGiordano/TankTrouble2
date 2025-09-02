@@ -28,7 +28,6 @@ func game_loop() :
 	# or something like that
 	pass
 
-
 func players_ready() :
 	#called when the players finish readying up in the ready_up shell_scene
 	#assume two players for now
@@ -40,12 +39,9 @@ func players_ready() :
 ### GAME FLOW/LOGIC ###
 
 func end_of_round() :
+	print("here")
 	end_round.emit()
 	in_game = false
-	
-	var x = Utility.print_signal_connections(end_round)
-	print('herhe')
-	print(x)
 	
 	#score the round
 	if !player(1).dead && player(2).dead :
