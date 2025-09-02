@@ -28,19 +28,6 @@ class_name _Global
 @onready var Players : Node = get_node("/root/GameContainer/Game/Players")
 @onready var Entities : Node = get_node("/root/GameContainer/Game/Entities")
 
-## Methods
-
-func _ready() :
-	GameManager.end_round.connect(test1)
-	GameManager.end_round.connect(test2, CONNECT_ONE_SHOT)
-
-func _process(_delta):
-	#quit if DEBUG_QUIT key pressed - DEBUG
-	if Input.is_action_pressed("DEBUG_QUIT") : get_tree().quit()
-
-func test1() : pass
-func test2() : pass
-
 ## Getters
 
 func ActiveShellScene() -> Node :

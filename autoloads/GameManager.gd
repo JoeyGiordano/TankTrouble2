@@ -15,12 +15,20 @@ var player_count : int = 2
 signal begin_round
 signal end_round
 
-func _process(_delta) :
-	#if in_game :
-	#	$Debug_label.text = player(2).stats.as_string()
-	#else : $Debug_label.text = ""
+## temp func for now, for serious implementation later
+func game_loop() :
+	#await players_ready
+	#before_first_level_stuff()
+	#for ...
+	#	start_level()
+	#	await all_tanks_died
+	#	clear_level()
+	#	end level()
+	#show_victory_screen()
+	# or something like that
 	pass
-	
+
+
 func players_ready() :
 	#called when the players finish readying up in the ready_up shell_scene
 	#assume two players for now
@@ -60,11 +68,10 @@ func next_level() :
 	ShellSceneManager.switch_overlay_panel(Ref.loading)
 	var timer = get_tree().create_timer(0.7)
 	await timer.timeout
-	#ShellSceneManager.switch_active_scene(Ref.get("test_level_" + str(randi_range(0,2))))
 	ShellSceneManager.switch_active_scene(Ref.game_shell_scene)
 	LevelLoader.next_level()
 	Global.ActiveLevelManager().spawn_players()
-	ShellSceneManager.close_overlay_panel()
+	ShellSceneManager.close_overlay_panel() # close loading overlay
 	in_game = true
 	begin_round.emit()
 
