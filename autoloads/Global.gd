@@ -25,7 +25,8 @@ class_name _Global
 @onready var OverlayPanelHolder : Node = get_node("/root/GameContainer/OverlayPanelHolder") #There should always be one or zero active overlay panels (UI, eg pause menu) and it should be the only child of the OverlayPanelHolder node
 @onready var Game : Node = get_node("/root/GameContainer/Game") #Where all parts of the game go (everything that's "in game" or not a shell scene)
 @onready var LevelHolder : Node = get_node("/root/GameContainer/Game/LevelHolder") #There should always be one or zero active level scenes and it should be the only child of the LevelHolder node
-@onready var Players : Node = get_node("/root/GameContainer/Game/Players")
+@onready var PlayerTanks : Node = get_node("/root/GameContainer/Game/PlayerTanks")
+@onready var NpcTanks : Node = get_node("/root/GameContainer/Game/NpcTanks")
 @onready var Entities : Node = get_node("/root/GameContainer/Game/Entities")
 
 ## Getters

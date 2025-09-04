@@ -23,14 +23,14 @@ func move_and_rotate() :
 	var move_input = tank.move_input
 	#forwards-backwards movement
 	if move_input.y > 0:
-		linear_velocity = move_input.y * tank.stats.forward_speed * transform.x
+		linear_velocity = move_input.y * tank.stats.forward_speed * transform.x #scalar * scalar * vector (forward direction)
 	elif move_input.y < 0:
 		linear_velocity = move_input.y * tank.stats.backward_speed * transform.x
 	else :
 		#makes the linear velocity go to zero smoothly (the higher the speed stat, the faster the speed needs to drop)
 		linear_velocity = linear_velocity.move_toward(Vector2.ZERO,linear_stop_damp*max(abs(tank.stats.forward_speed),abs(tank.stats.backward_speed)))
 	
-	#rotation	
+	#rotation
 	if move_input.x :
 		angular_velocity = move_input.x * tank.stats.rotation_speed
 	else :
