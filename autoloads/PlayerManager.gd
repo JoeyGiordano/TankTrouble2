@@ -27,6 +27,12 @@ func get_associated_tank(player_id : int) -> Tank :
 func player_count() -> int :
 	return players.size()
 
+## Reset
+
+func reset_player_scores() :
+	for p : PlayerProfile in players :
+		p.score = 0
+
 ## Create
 
 func create_players(count : int) :
@@ -68,11 +74,11 @@ func _delete_player(p : PlayerProfile) :
 func _create_and_assign_keybinds(p : PlayerProfile) :
 	var prefix : String = "player" + str(p.player_id)
 	#create
-	InputMap.add_action(prefix + "_left")
-	InputMap.add_action(prefix + "_right")
-	InputMap.add_action(prefix + "_up")
-	InputMap.add_action(prefix + "_down")
-	InputMap.add_action(prefix + "_shoot")
+	#InputMap.add_action(prefix + "_left")
+	#InputMap.add_action(prefix + "_right")
+	#InputMap.add_action(prefix + "_up")
+	#InputMap.add_action(prefix + "_down")
+	#InputMap.add_action(prefix + "_shoot")
 	#assign
 	p.key_LEFT = prefix + "_left"
 	p.key_RIGHT = prefix + "_right"

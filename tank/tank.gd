@@ -36,7 +36,6 @@ var dead = false
 
 
 func _ready() :
-	print("ready" + str(id))
 	GameManager.begin_round.connect(on_begin_round)
 	GameManager.end_round.connect(on_end_round)
 	lock()
@@ -61,19 +60,24 @@ func DEBUG_PROCESS() :
 #INPUT
 
 func set_move_input(new_move_input : Vector2) :
+	if input_locked : return
 	move_input = new_move_input
 
 func set_move_input_x(new_move_x : float) :
+	if input_locked : return
 	move_input = Vector2(move_input.x, new_move_x)
 
 func set_move_input_y(new_move_y : float) :
+	if input_locked : return
 	move_input = Vector2(move_input.x, new_move_y)
 
 func shoot() :
-	print("shoot" + str(id))
+	print(input_locked)
+	if input_locked : return
 	tank_rigidbody.get_loadout().shoot()
 
 func end_shoot() :
+	if input_locked : return
 	# simulation of when the shoot button is lifted
 	tank_rigidbody.get_loadout().end_shoot()
 
@@ -128,7 +132,7 @@ func lock() :
 
 func unlock() :
 	#allows player/npc script from controlling tank, should be used for scene transitions etc
-	input_locked = true
+	input_locked = false
 	tank_rigidbody.unlock()
 
 func respawn(position : Vector2) :

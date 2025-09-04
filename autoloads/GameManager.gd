@@ -25,12 +25,13 @@ func game_loop() : #TODO ready_up should send a signal instead of calling this??
 	var winner = -1
 	while true :
 		await load_next_level()
-		await end_round
+		await end_round #TODO renaming
 		end_of_round()
 		winner = check_for_winner()
 		if winner != -1 :
 			break
-	victory_achieved(winner)
+	reset()
+	show_victory_screen(winner)
 
 #func players_ready() : #NOTE DELETE
 	##called when the players finish readying up in the ready_up shell_scene
@@ -48,12 +49,12 @@ func create_player_tanks() : #NOTE KEEP
 
 func load_next_level() : #NOTE KEEP
 	ShellSceneManager.switch_overlay_panel(Ref.loading) #this loading thing is actually completely unecessary it just looks nice
+	ShellSceneManager.switch_active_scene(Ref.game_shell_scene, false)
+	LevelLoader.next_level()
+	LevelLoader.spawn_players()
 	var timer = get_tree().create_timer(0.7)
 	await timer.timeout
-	ShellSceneManager.switch_active_scene(Ref.game_shell_scene)
-	LevelLoader.next_level()
 	#Global.ActiveLevelManager().spawn_players() #NOTE DELETE
-	LevelLoader.spawn_players()
 	ShellSceneManager.close_overlay_panel() # close loading overlay
 	in_game = true # TODO move?
 	begin_round.emit() # TODO move?
@@ -63,18 +64,13 @@ func tank_died() : # TODO when tank calls this maybe turn into a signal??
 	#calls end of round 2.5 seconds after the most recent tank death
 	var tanks_alive : int = alive_players_count()
 	if tanks_alive == 1 :
-		print("1hehr")
 		var timer = get_tree().create_timer(2.5)
 		await timer.timeout
-		print("1waited")
 		if alive_players_count() == 0 : return #if the last surviving player died while the timer was running, let the new timer that was created when it died run out before ending the scene
-		print("1postif")
 		end_round.emit() #TODO NEXT signal bus stuff
 	if tanks_alive == 0 :
-		print("0here")
 		var timer = get_tree().create_timer(2.5)
 		await timer.timeout
-		print("0waited")
 		end_round.emit() #TODO NEXT signal bus stuff
 
 func end_of_round() : # NOTE KEEP
@@ -110,12 +106,14 @@ func check_for_winner() -> int : # NOTE KEEP
 			return p.player_id
 	return -1
 
-func victory_achieved(player_id) : #NOTE KEEP
-	#goes to the victory screen and ensures it displays the right winner, returns to the shell scenes sequence
-	#destroy_all_players()
+func reset() :
+	PlayerManager.reset_player_scores()
 	TankManager.destroy_all_tanks()
 	#PlayerManager.delete_all_players() # TODO LATER I don't think this should stay, you should be able to end the game and keep playing with the same custom colors and keybinds
 	LevelLoader.remove_level()
+
+func show_victory_screen(player_id) : #NOTE KEEP
+	#goes to the victory screen and ensures it displays the right winner, returns to the shell scenes sequence
 	ShellSceneManager.switch_active_scene(Ref.victory)
 	var label : Label = Global.ActiveShellScene().get_child(1)
 	match player_id :
