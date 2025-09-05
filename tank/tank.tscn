@@ -1,30 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddq1u3wwk2bwj"]
+[gd_scene load_steps=7 format=3 uid="uid://ddq1u3wwk2bwj"]
 
 [ext_resource type="Script" uid="uid://b2q2mhktsf8jw" path="res://tank/tank.gd" id="1_77ink"]
 [ext_resource type="Script" uid="uid://bxduchl0yk352" path="res://tank/rigidbody/tank_rigidbody.gd" id="2_2mifv"]
-[ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="2_tldmv"]
 [ext_resource type="PackedScene" uid="uid://2su3htx11obo" path="res://tank/loadouts/basic/basic_tankloadout.tscn" id="3_ilbjp"]
 [ext_resource type="Script" uid="uid://bqi7mptlmtaa6" path="res://tank/stats/stats_handler.gd" id="4_77ink"]
 [ext_resource type="Script" uid="uid://biom1jp1k1k57" path="res://tank/effects/effects_handler.gd" id="6_fa0tr"]
-
-[sub_resource type="Resource" id="Resource_fa0tr"]
-resource_local_to_scene = true
-script = ExtResource("2_tldmv")
-forward_speed = 150.0
-backward_speed = 100.0
-rotation_speed = 4.0
-bullet_count = 5
-bullet_lifetime = 7.0
-bullet_speed = 100.0
-func_names = Array[String]([])
-metadata/_custom_type_script = "uid://8jp733sld27f"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p4mbc"]
 friction = 0.5
 
 [node name="Tank" type="Node"]
 script = ExtResource("1_77ink")
-stats = SubResource("Resource_fa0tr")
 
 [node name="TankRigidbody" type="RigidBody2D" parent="."]
 collision_layer = 2

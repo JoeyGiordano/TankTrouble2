@@ -31,10 +31,10 @@ class_name _Global
 
 ## Getters
 
-func ActiveShellScene() -> Node :
+func CurrentShellScene() -> Node :
 	return ShellSceneHolder.get_child(0)
 	
-func ActiveLevelManager() -> LevelManager :
+func CurrentLevel() -> Node :
 	if LevelHolder.get_child_count() == 0 :
 		print("Global.get_active_level() : no active level")
 		return

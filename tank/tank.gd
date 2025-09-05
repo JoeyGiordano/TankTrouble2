@@ -1,7 +1,8 @@
 extends Node
 class_name Tank
 
-## The Tank class is the control center for the tank. This script is attached to the Tank Node.
+### Tank ##
+## The control center for a tank. This script is attached to the Tank Node.
 ## This class manages the internal state of the tank (including the state of the Tank Nodes children)
 ## and acts as a point of contact for external nodes to reference inside tank and act on its state.
 ## It is a set structure (ie we always know the hierarchy of nodes under tank) which makes it easy
@@ -11,14 +12,11 @@ class_name Tank
 ## up completely manages adding itself into the items list and giving the boost to the stats_handler,
 ## instead of having a pickup_item(Item) function in tank that does that stuff.
 
-# Tank creation
-#static var next_id : int = 0 #id will always be unique. This is useful for debug and quickly checking if two tanks are different or the same or whatever
-#static var tank_scene : PackedScene = Ref.tank_scene
-
-# Base stuff
-@export var id = 0 # will always be unique
+# Base stuff (set at instantiation)
+var id : int # will always be unique, never modified
+var profile : TankProfile
 #MUST set stats resource local_to_scene=true. MUST put the starting stats in as a NOT saved resource. if you want to use a saved resource, you must load it in init(). A normal saved exported resource loads too late, initializing in _ready() is also too late: it will cause an error when it tries to get accessed, preload causes a cyclic error with stat_boost static functions 
-@export var stats : StatBoost # we use a stat boost to store the tanks stats (it holds all the info we need it to hold)
+var stats : StatBoost # we use a stat boost to store the tanks stats (it holds all the info we need it to hold)
 
 # Important references
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
@@ -28,16 +26,15 @@ class_name Tank
 
 #Input
 var move_input : Vector2 = Vector2.ZERO
-var profile : TankProfile
 
 #Flags
-var input_locked = false #allows/disallows input map input from controlling tank, should be used for scene transitions etc
-var dead = false
+var input_locked : bool = false #allows/disallows input map input from controlling tank, should be used for scene transitions etc
+var dead : bool = false
 
 
 func _ready() :
-	GameManager.begin_round.connect(on_begin_round)
-	GameManager.end_round.connect(on_end_round)
+	SignalBus.begin_round.connect(on_begin_round)
+	SignalBus.end_round.connect(on_end_round)
 	lock()
 	despawn() #just hides them from view and disables their rigidbody interactions
 
@@ -72,7 +69,6 @@ func set_move_input_y(new_move_y : float) :
 	move_input = Vector2(move_input.x, new_move_y)
 
 func shoot() :
-	print(input_locked)
 	if input_locked : return
 	tank_rigidbody.get_loadout().shoot()
 
@@ -99,6 +95,9 @@ func detect_player_input() :
 
 func change_loadout(type : TankLoadout.Type) :
 	tank_rigidbody.replace_loadout(type)
+
+func destroy() :
+	TankManager.destroy_tank(self)
 
 # HIGH LEVEL STATE
 

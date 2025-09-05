@@ -1,6 +1,7 @@
 extends Node
 class_name StatsHandler
 
+### StatsHandler ###
 ## Handles all stats for one tank. This script is on a node that is a direct child of a tank.
 ## Use this script by calling one of the three add or remove boost methods.
 
@@ -25,7 +26,7 @@ func handle_process_effects() :
 		#calls the boost specific functions, passes the tank
 		for func_name in boost_holder.stat_boost.func_names :
 			if func_name == "" : continue
-			boost_holder.stat_boost.call(func_name, tank) #this line calls a one of the static functions in the StatBoost class
+			BoostFuncLibrary.call_from_lib(func_name, tank) #this line calls a one of the static functions in the StatBoost class
 
 # Adding boosts
 
@@ -72,14 +73,14 @@ func subtract_boost_stats(boost : StatBoost) :
 func remove_all_boosts_from_source(source : Node) :
 	for i in range(boost_list.size()-1, -1, -1) :
 		if boost_list.get(i).has_source && boost_list.get(i).source == source :
-			unregister_boost_holder(boost_list.get(i))
+			_unregister_boost_holder(boost_list.get(i))
 
 ## Removes a Boost contained in the passed Boost Holder 
 func remove_boost(bh : BoostHolder) :
-	unregister_boost_holder(bh)
+	_unregister_boost_holder(bh)
 	
 ## Don't call this. Use remove_boost() or remove_all_boosts_from_source()
-func unregister_boost_holder(bh : BoostHolder) :
+func _unregister_boost_holder(bh : BoostHolder) :
 	#change the unconditional stats (eg if the item has damage +2, the player unconditional_stats damage will decrease by 2)
 	unconditional_stats.subtract(bh.stat_boost) #item.item_res is an ItemResource which is an extension of StatBoost
 	#here we could also add something for a special on_removed() for each boost if need be

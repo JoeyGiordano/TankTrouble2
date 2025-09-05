@@ -4,7 +4,7 @@ class_name _Utility
 ### AUTOLOAD
 
 ### Utility ###
-## This autoload stores commonly used or bulky methods for use in other scripts.
+## Stores general use or bulky methods for use in other scripts.
 
 func replace_scene_in_holder(holder_node : Node, new_scene : PackedScene) :
 	#replace the scene in the holder_node (ShellSceneHolder, LevelHolder, etc) with a newly instantiated scene from PackedScene new_scene

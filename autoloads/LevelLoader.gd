@@ -3,6 +3,9 @@ class_name _LevelLoader
 
 ### AUTOLOAD
 
+### LevelLoader ###
+## Loads levels and spawns players.
+
 func remove_level() :
 	Utility.remove_scene_in_holder(Global.LevelHolder) # the level manager is on the level node
 
@@ -23,7 +26,7 @@ func _determine_next_level() -> String :
 func spawn_players() :
 	#spawns players, can be overriden in extended class if more complex behavior is desired
 	var num_players = PlayerManager.player_count()
-	var spawn_points : Array = Global.ActiveLevelManager().get_node("SpawnPoints").get_children()
+	var spawn_points : Array = Global.CurrentLevel().get_node("SpawnPoints").get_children()
 	#check if theres enough spawn points
 	if num_players > spawn_points.size() :
 		push_error("Not enough spawn points available")

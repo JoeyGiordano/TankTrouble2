@@ -1,8 +1,8 @@
 extends RigidBody2D
 class_name TankRigidbody
 
-## Script on the rigidbody.
-## Manages movement and switching tank loadouts (which are collision objects).
+## Script on the tank rigidbody.
+## Manages movement and switching TankLoadouts (which are CollisionObjects).
 
 var linear_stop_damp : float = 0.186
 var angular_stop_damp : float = 4.27
@@ -23,9 +23,9 @@ func move_and_rotate() :
 	var move_input = tank.move_input
 	#forwards-backwards movement
 	if move_input.y > 0:
-		linear_velocity = move_input.y * tank.stats.forward_speed * transform.x #scalar * scalar * vector (forward direction)
+		linear_velocity = move_input.y * tank.stats.forward_speed * forward()
 	elif move_input.y < 0:
-		linear_velocity = move_input.y * tank.stats.backward_speed * transform.x
+		linear_velocity = move_input.y * tank.stats.backward_speed * forward()
 	else :
 		#makes the linear velocity go to zero smoothly (the higher the speed stat, the faster the speed needs to drop)
 		linear_velocity = linear_velocity.move_toward(Vector2.ZERO,linear_stop_damp*max(abs(tank.stats.forward_speed),abs(tank.stats.backward_speed)))

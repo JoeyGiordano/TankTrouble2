@@ -1,8 +1,6 @@
 extends RigidBody2D
 class_name BasicBullet
 
-static var bullet_scene = preload("res://game/bullets/basic_bullet/basic_bullet.tscn")
-
 @onready var hitbox : Area2D = $Hitbox
 
 var speed : float
@@ -10,7 +8,7 @@ var dir : Vector2
 var lifetime : float #lifetime in seconds
 
 func _ready():
-	GameManager.end_round.connect(on_end_round)
+	SignalBus.end_round.connect(on_end_round)
 	
 	hitbox.area_entered.connect(on_area_entered)
 	linear_velocity = speed * dir.normalized()
@@ -33,7 +31,7 @@ func on_end_round() :
 static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, lifetime_ : float) -> BasicBullet :
 	#create a new bullet and return it
 	#instantiate a tank from the .tscn
-	var b : BasicBullet = bullet_scene.instantiate() #have to call to game container here bc this method is static
+	var b : BasicBullet = Ref.basic_bullet.instantiate() #have to call to game container here bc this method is static
 	
 	#set the variables
 	b.speed = speed_

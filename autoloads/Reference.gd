@@ -18,7 +18,6 @@ class_name _Reference
 ##   For example, Ref.get("level_0") is the same thing as Ref.level_0
 
 @export_category("Scenes")
-
 @export_group("Shell Scenes")
 @export var startup : PackedScene
 @export var main_menu : PackedScene
@@ -39,3 +38,5 @@ class_name _Reference
 @export var basic_bullet : PackedScene
 
 @export_category("Other")
+@export_group("Tank Starting Stats")
+@export var base_tank_stats : StatBoost

@@ -4,9 +4,8 @@ class_name _PlayerManager
 ### AUTOLOAD
 
 ### PlayerManager ###
-## PlayerProfiles are just special TankProfiles. This script manages creating, setting up, and destroying these profiles.
-## It also allows anyone to access players via their player_id
-## Each player has a unique player_id that is stored in the PlayerProfile
+## Provides methods for creating, setting up, and destroying PlayerProfiles.
+## Each player has a unique player_id that is stored in the PlayerProfile. Provides method to access players from their player_id.
 
 var next_id : int = 0
 

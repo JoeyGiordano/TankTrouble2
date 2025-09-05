@@ -1,9 +1,8 @@
 extends Resource
 class_name StatBoost
 
-## This script is a resource that holds all of the stats for a tank.
-## It acts as a library of static boost specific functions for boosts to use.
-## When adding a new boost specific function, put it with all the other ones (between the two comments)
+### StatBoost ###
+## A resource that holds all of the stats for a tank.
 ## It also has some helper functions used by stats handler
 
 #Stats
@@ -15,30 +14,10 @@ class_name StatBoost
 @export var bullet_lifetime : float  # in seconds
 @export var bullet_speed : float  #in pixels/second
 
-#Functions
+#Boost Functions
 @export var func_names : Array[String]
 
-########################################################################
-######   BOOST  SPECIFIC  FUNCTIONS    #######################################
-
-#EXAMPLE
-"""
-static func amulet_of_empowering_fear(player : Player) :
-	if (player.is_scared) : 
-		player.stats.top_speed += 10
-"""
-
-static func do_nothing(tank : Tank) :
-	#for testing
-	tank.stats.backward_speed -= 20
-	if tank.effects_handler.on_fire : tank.stats.backward_speed = 150
-
-
-######   END BOOST  SPECIFIC  FUNCTIONS    ###################################
-########################################################################
-
 # Resource functions
-
 func add(s : StatBoost) :
 	# we can possibly use logrithmic adding if we want things to stay above zero (or just use min)
 	forward_speed += s.forward_speed
@@ -58,6 +37,7 @@ func subtract(s : StatBoost) :
 
 func copy() -> StatBoost :
 	var s = StatBoost.new()
+	s.func_names = func_names
 	s.forward_speed = forward_speed
 	s.backward_speed = backward_speed
 	s.rotation_speed = rotation_speed
@@ -65,6 +45,15 @@ func copy() -> StatBoost :
 	s.bullet_lifetime = bullet_lifetime
 	s.bullet_speed = bullet_speed
 	return s
+
+func set_values_equal_to(s : StatBoost) :
+	func_names = s.func_names
+	forward_speed = s.forward_speed
+	backward_speed = s.backward_speed
+	rotation_speed = s.rotation_speed
+	bullet_count = s.bullet_count
+	bullet_lifetime = s.bullet_lifetime
+	bullet_speed = s.bullet_speed
 
 func as_string() -> String :
 	var s = ""

@@ -1,7 +1,9 @@
 extends TankProfile
 class_name PlayerProfile
 
-# has all the stuff from TankProfile
+## PlayerProfile
+## An extension of TankProfile with additional info for players.
+## Different player tanks should get different PlayerProfile objects. 
 
 # Player
 var player_id : int

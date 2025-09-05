@@ -27,6 +27,7 @@ LevelLoader="*res://autoloads/LevelLoader.gd"
 Debug="*res://autoloads/Debug.gd"
 PlayerManager="*res://autoloads/PlayerManager.gd"
 TankManager="*res://autoloads/TankManager.gd"
+GameInfo="*res://autoloads/GameInfo.gd"
 
 [display]
 
