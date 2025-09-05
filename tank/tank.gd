@@ -15,8 +15,7 @@ class_name Tank
 # Base stuff (set at instantiation)
 var id : int # will always be unique, never modified
 var profile : TankProfile
-#MUST set stats resource local_to_scene=true. MUST put the starting stats in as a NOT saved resource. if you want to use a saved resource, you must load it in init(). A normal saved exported resource loads too late, initializing in _ready() is also too late: it will cause an error when it tries to get accessed, preload causes a cyclic error with stat_boost static functions 
-var stats : StatBoost # we use a stat boost to store the tanks stats (it holds all the info we need it to hold)
+var stats : StatBoost # we use a stat boost to store the tanks stats (it holds all the info we need it to hold) # -> an old comment that I thought was interesting -> #MUST set stats resource local_to_scene=true. MUST put the starting stats in as a NOT saved resource. if you want to use a saved resource, you must load it in init(). A normal saved exported resource loads too late, initializing in _ready() is also too late: it will cause an error when it tries to get accessed, preload causes a cyclic error with stat_boost static functions 
 
 # Important references
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody

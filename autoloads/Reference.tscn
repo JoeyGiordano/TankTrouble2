@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dsd7gwwl4lle0" path="res://levels/test_level_0.tscn" id="9_6y62y"]
 [ext_resource type="PackedScene" uid="uid://bodgu2jrmx8ps" path="res://levels/test_level_1.tscn" id="10_yjp2r"]
 [ext_resource type="PackedScene" uid="uid://dtefbfue0nrjs" path="res://levels/test_level_2.tscn" id="11_xedrw"]
-[ext_resource type="PackedScene" uid="uid://cwdtdg5xj5phs" path="res://game_misc/bullets/basic_bullet/basic_bullet.tscn" id="12_vdkhk"]
+[ext_resource type="PackedScene" uid="uid://cwdtdg5xj5phs" path="res://game/bullets/basic_bullet/basic_bullet.tscn" id="12_vdkhk"]
 [ext_resource type="PackedScene" uid="uid://ddq1u3wwk2bwj" path="res://tank/tank.tscn" id="13_acwhr"]
 [ext_resource type="Resource" uid="uid://c3hg6budcbmhm" path="res://tank/stats/base_tank_stats.tres" id="15_axg78"]
 

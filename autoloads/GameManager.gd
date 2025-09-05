@@ -6,8 +6,6 @@ class_name _GameManager
 ### GameManager
 ## Manages the flow of the game (game_loop()). Mostly calls methods in other autoloads and sends/receives signals.
 
-var in_game : bool = false
-
 func _ready() -> void:
 	PlayerManager.create_players(2) # TODO this is here for now, will be moved to a add players shell scene later
 
@@ -41,7 +39,7 @@ func load_next_level() : #NOTE KEEP
 	var timer = get_tree().create_timer(0.7)
 	await timer.timeout
 	ShellSceneManager.close_overlay_panel() # close loading overlay
-	in_game = true # TODO move?
+	GameInfo.in_game = true
 	SignalBus.begin_round.emit()
 
 func tank_died() : # TODO when tank calls this maybe turn into a signal??
@@ -59,7 +57,7 @@ func tank_died() : # TODO when tank calls this maybe turn into a signal??
 		SignalBus.end_round.emit()
 
 func end_of_round() : # NOTE KEEP
-	in_game = false #TODO move?
+	GameInfo.in_game = false
 	
 	if !PlayerManager.get_associated_tank(0).dead && PlayerManager.get_associated_tank(1).dead :
 		PlayerManager.get_player_profile(0).score += 1

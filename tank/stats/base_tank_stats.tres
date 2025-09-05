@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="1_mybnb"]
 
 [resource]
-resource_local_to_scene = true
 script = ExtResource("1_mybnb")
 forward_speed = 150.0
 backward_speed = 100.0

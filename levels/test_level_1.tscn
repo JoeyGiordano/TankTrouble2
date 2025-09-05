@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bodgu2jrmx8ps"]
 
-[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game_misc/wall/wall.tscn" id="1_hri27"]
-[ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game_misc/grid/grid.gd" id="2_7lf0s"]
-[ext_resource type="Script" uid="uid://dm5taoqysx28v" path="res://game_misc/grid/snap_to_grid.gd" id="4_ccxi4"]
+[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_hri27"]
+[ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="2_7lf0s"]
+[ext_resource type="Script" uid="uid://dm5taoqysx28v" path="res://game/grid/snap_to_grid.gd" id="4_ccxi4"]
 
 [node name="TestLevel1" type="Node"]
 
