@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelGenBone" load_steps=2 format=3 uid="uid://b2ea07rprulyt"]
+
+[ext_resource type="Script" uid="uid://dln15b5r85yhb" path="res://levels/level_gen/level_gen_bone.gd" id="1_xgscf"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_xgscf")
+sides = Array[int]([])
+metadata/_custom_type_script = "uid://dln15b5r85yhb"

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dum6085nqdo78"]
+
+[ext_resource type="Script" uid="uid://2dkadkv22ljj" path="res://levels/level_gen/level_gen_wall.gd" id="1_mdtf3"]
+[ext_resource type="PhysicsMaterial" uid="uid://bl5a4s68smpol" path="res://game/wall/wall_physmat.tres" id="2_4jurj"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_4smjr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4smjr"]
+size = Vector2(1, 2)
+
+[node name="LevelGenWall" type="Node2D"]
+script = ExtResource("1_mdtf3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.972549, 0.513726, 0.47451, 1)
+texture = ExtResource("2_4smjr")
+region_enabled = true
+region_rect = Rect2(79, 62, 1, 2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 6
+physics_material_override = ExtResource("2_4jurj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_4smjr")
