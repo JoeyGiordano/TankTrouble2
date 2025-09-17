@@ -4,8 +4,6 @@
 
 [node name="LevelGenerator" type="Node2D"]
 script = ExtResource("1_73hm2")
-gen_bounds = Vector2i(10, 10)
-scale_ = Vector2i(70, 70)
 
 [node name="Origin" type="Marker2D" parent="."]
 

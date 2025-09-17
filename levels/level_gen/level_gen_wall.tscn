@@ -17,6 +17,7 @@ region_enabled = true
 region_rect = Rect2(79, 62, 1, 2)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 collision_mask = 6
 physics_material_override = ExtResource("2_4jurj")
 

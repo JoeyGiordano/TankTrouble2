@@ -22,7 +22,7 @@ func _switch_level(new_level : PackedScene) :
 
 func _determine_next_level() -> String :
 	#return "test_level_" + str(randi_range(0,3)) NORMAL!
-	return "level_gen_test_level" #DEBUG!
+	return "test_level_gen_level" #DEBUG!
 
 func spawn_players() :
 	#spawns players, can be overriden in extended class if more complex behavior is desired
