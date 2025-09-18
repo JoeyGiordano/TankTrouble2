@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://rigrosaete8h"]
+[gd_scene load_steps=6 format=3 uid="uid://rigrosaete8h"]
 
+[ext_resource type="PackedScene" uid="uid://dg7j5a0vuixef" path="res://game/loadout_upgrade/loadout_upgrade.tscn" id="1_gkona"]
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_yvw6e"]
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_q26d8"]
-[ext_resource type="Script" uid="uid://dm5taoqysx28v" path="res://game/grid/snap_to_grid.gd" id="3_gkona"]
+[ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="5_l8bmr"]
+[ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="6_ciepe"]
 
 [node name="LevelTemplate" type="Node"]
+
+[node name="LoadoutUpgrade" parent="." instance=ExtResource("1_gkona")]
+position = Vector2(-75, 0)
+color = Color(0.79607844, 0.8039216, 0.23529412, 1)
+loadout = 0
+
+[node name="LoadoutUpgrade2" parent="." instance=ExtResource("1_gkona")]
+position = Vector2(75, 1)
+color = Color(0.7019608, 0.5647059, 0.9372549, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -78,32 +89,26 @@ grid = NodePath("../../Grid")
 grid_pos = Vector2(4, 1.5)
 grid_length = 3
 
-[node name="SpawnPoints" type="Node2D" parent="."]
+[node name="PlayerSpawner" parent="." instance=ExtResource("5_l8bmr")]
 
-[node name="Node2D" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+[node name="SpawnPoint" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("6_ciepe")]
 position = Vector2(-135, -60)
-script = ExtResource("3_gkona")
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-4, -2)
 
-[node name="Node2D2" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+[node name="SpawnPoint2" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("6_ciepe")]
 position = Vector2(135, 60)
-rotation = 3.14159
-script = ExtResource("3_gkona")
 grid = NodePath("../../Grid")
 grid_pos = Vector2(5, 2)
 
-[node name="Node2D3" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+[node name="SpawnPoint3" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("6_ciepe")]
 position = Vector2(0, -60)
-script = ExtResource("3_gkona")
 grid = NodePath("../../Grid")
 snap_type = 2
 grid_pos = Vector2(0.5, -2)
 
-[node name="Node2D4" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+[node name="SpawnPoint4" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("6_ciepe")]
 position = Vector2(0, 60)
-rotation = 3.14159
-script = ExtResource("3_gkona")
 grid = NodePath("../../Grid")
 snap_type = 2
 grid_pos = Vector2(0.5, 2)

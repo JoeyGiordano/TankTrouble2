@@ -13,9 +13,10 @@ class_name Tank
 ## instead of having a pickup_item(Item) function in tank that does that stuff.
 
 # Base stuff (set at instantiation)
+@export var scene_file_tank : bool = false #switch this to true for tanks that are placed in a scene tree manually in a scene file
 var id : int # will always be unique, never modified
-var profile : TankProfile
-var stats : StatBoost # we use a stat boost to store the tanks stats (it holds all the info we need it to hold) # -> an old comment that I thought was interesting -> #MUST set stats resource local_to_scene=true. MUST put the starting stats in as a NOT saved resource. if you want to use a saved resource, you must load it in init(). A normal saved exported resource loads too late, initializing in _ready() is also too late: it will cause an error when it tries to get accessed, preload causes a cyclic error with stat_boost static functions 
+@export var profile : TankProfile = TankProfile.new()
+@export var stats : StatBoost = Ref.base_tank_stats.copy() # we use a stat boost to store the tanks stats (it holds all the info we need it to hold) # -> an old comment that I thought was interesting -> #MUST set stats resource local_to_scene=true. MUST put the starting stats in as a NOT saved resource. if you want to use a saved resource, you must load it in init(). A normal saved exported resource loads too late, initializing in _ready() is also too late: it will cause an error when it tries to get accessed, preload causes a cyclic error with stat_boost static functions 
 
 # Important references
 @onready var tank_rigidbody : TankRigidbody = $TankRigidbody
@@ -30,11 +31,16 @@ var move_input : Vector2 = Vector2.ZERO
 var input_locked : bool = false #allows/disallows input map input from controlling tank, should be used for scene transitions etc
 var dead : bool = false
 
+func _init() :
+	if scene_file_tank : TankManager.register_scene_file_npc_tank(self) # handle tanks that are in the scene files (not created by TankManager), mostly for debug, also possibly for campaign later
 
 func _ready() :
 	GameManager.beginning_of_round.connect(on_beginning_of_round)
 	GameManager.end_of_round.connect(on_end_of_round)
-	despawn() #just hides them from view, locks input, and disables their rigidbody interactions
+	if scene_file_tank : 
+		respawn(tank_rigidbody.position)
+	else :
+		despawn() #just hides them from view, locks input, and disables their rigidbody interactions
 
 func _process(_delta) :
 	DEBUG_PROCESS()
@@ -45,12 +51,7 @@ func _physics_process(_delta):
 
 func DEBUG_PROCESS() :
 	#place to put debug stuff
-	#don't leave debug features in here when you merge (unless its something for everybody to use)
-	if Input.is_action_just_pressed("DEBUG_COMMAND") && id == 2: #for this if, you have to press 9 before debug command
-		if Input.is_key_pressed(KEY_9) :
-			change_loadout(TankLoadout.Type.EMPTY)
-		if Input.is_key_pressed(KEY_8) :
-			change_loadout(TankLoadout.Type.BASIC)
+	pass
 
 ## Input
 
@@ -60,7 +61,7 @@ func set_move_input(new_move_input : Vector2) :
 
 func set_move_input_x(new_move_x : float) :
 	if input_locked : return
-	move_input = Vector2(move_input.x, new_move_x)
+	move_input = Vector2(new_move_x, move_input.y)
 
 func set_move_input_y(new_move_y : float) :
 	if input_locked : return
