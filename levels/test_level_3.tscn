@@ -11,7 +11,7 @@
 [node name="LoadoutUpgrade" parent="." instance=ExtResource("1_gkona")]
 position = Vector2(-75, 0)
 color = Color(0.79607844, 0.8039216, 0.23529412, 1)
-loadout = 0
+loadout_name = "empty_loadout"
 
 [node name="LoadoutUpgrade2" parent="." instance=ExtResource("1_gkona")]
 position = Vector2(75, 1)

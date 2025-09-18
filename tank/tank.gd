@@ -92,8 +92,8 @@ func detect_player_input() :
 
 ## Misc
 
-func change_loadout(type : TankLoadout.Type) :
-	tank_rigidbody.replace_loadout(type)
+func change_loadout(loadout_name : String) :
+	tank_rigidbody.replace_loadout(loadout_name)
 
 func destroy() :
 	TankManager.destroy_tank(self)

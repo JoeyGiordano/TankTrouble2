@@ -2,7 +2,7 @@ extends Node2D
 class_name LoadoutUpgrade
 
 @export var color : Color
-@export var loadout : TankLoadout.Type = TankLoadout.Type.BASIC
+@export var loadout_name : String = "basic_loadout"
 
 @onready var hitbox : Area2D = $Hitbox
 
@@ -16,5 +16,5 @@ func on_area_entered(area : Area2D) :
 		get_pickedup_by(tank)
 		
 func get_pickedup_by(tank : Tank) :
-	tank.change_loadout(loadout)
+	tank.change_loadout(loadout_name)
 	queue_free()
