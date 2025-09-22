@@ -5,6 +5,9 @@ class_name PlayerProfile
 ## An extension of TankProfile with additional info for players.
 ## Different player tanks should get different PlayerProfile objects. 
 
+func _init() :
+	profile_type = TYPE.Player
+
 # Player
 var player_id : int
 

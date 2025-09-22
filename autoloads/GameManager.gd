@@ -42,7 +42,6 @@ func load_next_level() :
 	ShellSceneManager.switch_overlay_panel(Ref.loading) #this loading thing is actually completely unecessary it just looks nice
 	ShellSceneManager.switch_active_scene(Ref.game_shell_scene, false)
 	LevelLoader.next_level()
-	LevelLoader.spawn_players()
 	var timer = get_tree().create_timer(0.7)
 	await timer.timeout
 	ShellSceneManager.close_overlay_panel() # close loading overlay

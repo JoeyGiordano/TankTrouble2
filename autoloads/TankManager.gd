@@ -63,6 +63,11 @@ func _create_tank(parent : Node, profile : TankProfile = TankProfile.new(), star
 	# NOTE _ready() is called during the execution of the previous line (first on all the children of the tank, then on the tank)
 	return t
 
+func register_scene_file_npc_tank(t : Tank) :
+	t.id = next_id
+	next_id += 1
+	t.reparent(Global.NpcTanks, true)
+
 # Destroy
 
 func destroy_tank_from_id(tank_id : int) :

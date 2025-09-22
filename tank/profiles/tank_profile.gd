@@ -8,6 +8,11 @@ class_name TankProfile
 ## Tanks controlled by a player should use a PlayerProfile, which extends from TankProfile.
 ## Different player tanks should get different PlayerProfile objects. 
 
+enum TYPE {
+	Player, CPUPlayer, Enemy
+}
+var profile_type : TYPE = TYPE.Enemy
+
 #tank association
 var has_associated_tank : bool = false
 var associated_tank_id : int
@@ -17,7 +22,7 @@ var associated_tank_id : int
 #var tank_secondary_color
 
 func is_player() :
-	return typeof(PlayerProfile)
+	return profile_type != TYPE.Enemy
 
 func associate(tank_id : int) :
 	has_associated_tank = true
