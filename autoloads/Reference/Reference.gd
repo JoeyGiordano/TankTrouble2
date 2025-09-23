@@ -34,6 +34,7 @@ class_name _Reference
 @export var test_level_1 : PackedScene
 @export var test_level_2 : PackedScene
 @export var test_level_3 : PackedScene
+@export var tank_ai_test_level_0 : PackedScene
 
 @export_group("Prefabs")
 @export var tank_scene : PackedScene

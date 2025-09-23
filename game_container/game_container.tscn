@@ -9,6 +9,7 @@ offset_left = 191.0
 offset_top = 109.0
 offset_right = 231.0
 offset_bottom = 132.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Game" type="Node" parent="."]
 
@@ -23,6 +24,7 @@ offset_bottom = 132.0
 [node name="ShellSceneHolder" type="CanvasLayer" parent="."]
 
 [node name="StartupCutscene" parent="ShellSceneHolder" instance=ExtResource("2_xcs12")]
+metadata/_edit_use_anchors_ = true
 
 [node name="OverlayPanelHolder" type="CanvasLayer" parent="."]
 layer = 2
