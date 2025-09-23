@@ -21,7 +21,7 @@ func _switch_level(new_level : PackedScene) :
 	Utility.replace_scene_in_holder(Global.LevelHolder, new_level)
 
 func _determine_next_level() -> String :
-	return "test_level_" + str(randi_range(0,3))
+	return "test_level_active_map"
 
 func spawn_players() :
 	#spawns players, can be overriden in extended class if more complex behavior is desired
