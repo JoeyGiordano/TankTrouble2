@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx2nhx7cbggc4"]
+
+[ext_resource type="Script" uid="uid://lxm1apx1hbya" path="res://game/map_elements/destructable_box.gd" id="1_mfdo5"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_qxtel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdo5"]
+
+[node name="Destructable Box" type="Node2D"]
+script = ExtResource("1_mfdo5")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 13
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_mfdo5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(14, 14)
+texture = ExtResource("1_qxtel")
+region_enabled = true
+region_rect = Rect2(64, 68, 1, 1)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
