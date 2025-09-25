@@ -12,6 +12,7 @@ size = Vector2(14, 14)
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_mfdo5")
+health = 3
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 13
