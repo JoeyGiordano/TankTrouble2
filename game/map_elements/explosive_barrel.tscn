@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhnun2qb7oy3g"]
+[gd_scene load_steps=5 format=3 uid="uid://dhnun2qb7oy3g"]
 
 [ext_resource type="Script" uid="uid://ll22rw3b2kvr" path="res://game/map_elements/explosive_barrel.gd" id="1_qiun0"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_uocmh"]
@@ -6,7 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiun0"]
 size = Vector2(16, 16)
 
-[node name="Explosive Barrel" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epv1b"]
+size = Vector2(14, 14)
+
+[node name="Explosive Barrel" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 3
 script = ExtResource("1_qiun0")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -23,5 +28,8 @@ texture = ExtResource("1_uocmh")
 region_enabled = true
 region_rect = Rect2(64, 66, 1, 1)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_epv1b")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
