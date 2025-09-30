@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name LaikaAIv1
 
 @onready var tank : Tank = get_parent()
@@ -8,6 +8,6 @@ class_name LaikaAIv1
 
 #right now he just goes in circles
 
-func _process(delta):
+func _process(_delta):
 	tank.set_move_input_x(-1)
 	tank.set_move_input_y(-1)

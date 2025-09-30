@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bodgu2jrmx8ps"]
+[gd_scene load_steps=7 format=3 uid="uid://bodgu2jrmx8ps"]
 
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="1_hri27"]
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="2_7lf0s"]
-[ext_resource type="Script" uid="uid://dm5taoqysx28v" path="res://game/grid/snap_to_grid.gd" id="4_ccxi4"]
+[ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="3_ccxi4"]
+[ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="4_nnacv"]
+[ext_resource type="PackedScene" uid="uid://ddq1u3wwk2bwj" path="res://tank/tank.tscn" id="5_nnacv"]
+[ext_resource type="Script" uid="uid://nduq441sv5ai" path="res://tank/ai_control/laikaAIv1.gd" id="6_s743b"]
 
 [node name="TestLevel1" type="Node"]
 
@@ -69,23 +72,32 @@ length = 48.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(6, -2.5)
 
-[node name="SpawnPoints" type="Node2D" parent="."]
+[node name="PlayerSpawner" parent="." instance=ExtResource("3_ccxi4")]
 
-[node name="Node2D" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
-position = Vector2(-480, 0)
-script = ExtResource("4_ccxi4")
+[node name="SpawnPoint" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_nnacv")]
+position = Vector2(-440, 200)
 grid = NodePath("../../Grid")
-grid_pos = Vector2(-12, 0)
+grid_pos = Vector2(-11, 5)
 
-[node name="Node2D2" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
-position = Vector2(480, 0)
-rotation = 3.14159
-script = ExtResource("4_ccxi4")
+[node name="SpawnPoint2" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_nnacv")]
+position = Vector2(440, 240)
 grid = NodePath("../../Grid")
-grid_pos = Vector2(12, 0)
+grid_pos = Vector2(11, 6)
 
-[node name="Node2D3" type="Node2D" parent="SpawnPoints"]
-position = Vector2(-2, 226)
+[node name="SpawnPoint3" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_nnacv")]
+position = Vector2(440, -220)
+grid = NodePath("../../Grid")
+snap_type = 2
+grid_pos = Vector2(11, -5.5)
 
-[node name="Node2D4" type="Node2D" parent="SpawnPoints"]
-position = Vector2(0, -224)
+[node name="SpawnPoint4" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_nnacv")]
+position = Vector2(-480, -220)
+grid = NodePath("../../Grid")
+snap_type = 2
+grid_pos = Vector2(-12, -5.5)
+
+[node name="LaikaTank" parent="." instance=ExtResource("5_nnacv")]
+scene_file_tank = true
+
+[node name="Node" type="Node" parent="LaikaTank"]
+script = ExtResource("6_s743b")
