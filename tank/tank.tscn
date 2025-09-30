@@ -14,7 +14,7 @@ script = ExtResource("1_77ink")
 
 [node name="TankRigidbody" type="RigidBody2D" parent="."]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 19
 mass = 11.406
 physics_material_override = SubResource("PhysicsMaterial_p4mbc")
 gravity_scale = 0.0

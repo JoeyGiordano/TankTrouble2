@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="StatBoost" load_steps=2 format=3 uid="uid://caebp7g2ppn2s"]
+
+[ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="1_3an1x"]
+
+[resource]
+script = ExtResource("1_3an1x")
+metadata/_custom_type_script = "uid://8jp733sld27f"
