@@ -14,11 +14,10 @@ var dir : Vector2
 var lifetime : float #lifetime in seconds
 
 #region - variables for the spawned shards
-var shard_speed: float = 200.0
-var shard_lifetime: float = 1.5
-var disable_collision_on_explode: bool = true
-var exploded: bool = false
-var spawn_radius: float = 0.0
+var num_shards : int = 8
+var shard_speed : float = 100.0
+var shard_lifetime : float = 1.5
+var exploded : bool = false
 var shards : Array[BasicBullet] = []
 #endregion
 
@@ -44,58 +43,46 @@ func _process(delta):
 ## Signal Response
 
 func on_area_entered(area : Area2D) : #contact_monitor must be set to true and max_contacts_reported must be >0
-	# explode once
-	if exploded:
-		return
-	exploded = true
-	
-	#if is_instance_valid(hitbox):
-		#disable player collision until timer
-		#hitbox.set_deferred("monitoring", false)
-		#hitbox.set_deferred("monitorable", false)
-		#hitbox.get_child(0).set_deferred("disabled", true) # double check to make sure polgon 2d is 
-		#print("Multibullet collision disabled")
-			
-	# handle hitting player
 	if area.is_in_group("tank_hitbox") :
 		var tank : Tank = area.get_parent().tank_rigidbody.tank #all tank hitboxes must be direct children of a tank loadout
 		if tank.id == source_tank_id && source_tank_invincible :
 			return #a tank can't hit itself with its own bullet for a brief moment after the bullet has been shot
 		tank.die()
-		#queue_free()
+		
 		spawn_shards()
+		queue_free()
 
-
+# when bullet hits a wall, it deletes itself and sprays the basic bullets
 func on_body_entered(_body : Node) :
-	if exploded:
-		return
-	exploded = true
-	
-	# dir_changed = true
-	#added vvvv
 	spawn_shards()
-	#var b : BasicBullet = Ref.basic_bullet.instantiate()
+	queue_free()
 	
 func on_end_of_round() :
-	queue_free()
+	return
+	#despawn_shards()
+	#queue_free()
 
 ## Misc
 func spawn_shards() -> void: #Array[BasicBullet]:
-	var base_dir :  Vector2;
-	# make sure direction is not 0, not sure if I even have to handle this
-		
-	# four directions (degrees) --> (0, 90, 180, 270)
-	var angles := [0, 0.5 * PI, PI, 1.5 * PI]
-	for a in angles:
-		# get direcion
-		var bb : BasicBullet = BasicBullet.instantiate(global_position, speed, dir, shard_lifetime)
+	if num_shards <= 0: return #numshards must be >0
+	# Tau is just 2π, this is finding an even spacing of angles for the shards to be spawned
+	var step := TAU / float(num_shards)
+	# Center the spread around 'base' direction, randomness adds variability to spray inital direction to look better
+	var start := dir.angle() - 0.5 * step * (num_shards - 1)
+	
+	for i in range(num_shards):
+		var a := start + i * step * RandomNumberGenerator.new().randf_range(0.8,1.2)
+		var v := Vector2.RIGHT.rotated(a)  # unit direction at angle a
+		var bb : BasicBullet = BasicBullet.instantiate(global_position, shard_speed, v, shard_lifetime)
 		bb.source_tank_id = source_tank_id   # preserve ownership 
 		shards.append(bb)	#add to shards array referece
 
 	return
 
+#remove all shards from multibullet
 func despawn_shards():
-	return
+	for s in shards:
+		s.queue_free()
 
 static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, lifetime_ : float) -> MultiBullet :
 	#create a new bullet and return it

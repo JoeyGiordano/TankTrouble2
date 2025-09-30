@@ -1,14 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://duji7i7tnorqk"]
+[gd_scene load_steps=5 format=3 uid="uid://duji7i7tnorqk"]
 
 [ext_resource type="Script" uid="uid://fiwd7nqcbeqb" path="res://game/bullets/multi_bullet/multi_bullet.gd" id="1_4j1ce"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_054t7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oo62o"]
+radius = 1.7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_054t7"]
+radius = 1.7
 
 [node name="MultiBullet" type="RigidBody2D"]
+collision_layer = 4
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 8
 script = ExtResource("1_4j1ce")
 
 [node name="BulletSprite" type="Sprite2D" parent="."]
+position = Vector2(7.1525574e-07, 4.7683716e-07)
+scale = Vector2(0.029296877, 0.029296877)
+texture = ExtResource("2_054t7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oo62o")
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_054t7")

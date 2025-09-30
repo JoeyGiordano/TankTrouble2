@@ -4,20 +4,21 @@ class_name MultiTankLoadout
 @onready var guntip = $Guntip
 
 var multibullets : Array[MultiBullet] = []
+var shots_used : int = 0
+var max_shots : int = 3
 
 func shoot() :
 	#update_bullets()
-	if multibullets.size() == 3 : return
+	#if multibullets.size() == 3 : set to basic bullet loadout
 	
 	var b = MultiBullet.instantiate(guntip.global_position, tank.stats.bullet_speed, tank_rigidbody.forward(), tank.stats.bullet_lifetime)
-	multibullets.append(b)
 	b.source_tank_id = tank.id
-	#play shoot sound and anim
-	#set the variables
+	shots_used += 1
+	
+	# if multibullet has been shot 3 times, then revert back to basic loadout
+	if shots_used == max_shots : set_basic_loadout()
 
-
-func update_bullets() :
-	#iterates backwards through the array to safely through the array and delete all invalid nodes (bullets that have destroyed themselves)
-	for i in range(multibullets.size() - 1, -1, -1) :
-		if !is_instance_valid(multibullets[i]):
-			multibullets.remove_at(i)
+func set_basic_loadout() :
+	tank.change_loadout("basic_loadout")
+	queue_free()
+	
