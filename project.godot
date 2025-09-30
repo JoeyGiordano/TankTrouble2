@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="TankTroubleTemplate"
+config/name="TankTrouble2"
 run/main_scene="res://game_container/game_container.tscn"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -30,7 +30,7 @@ GameInfo="*res://autoloads/GameInfo.gd"
 
 [display]
 
-window/size/mode=2
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [global_group]

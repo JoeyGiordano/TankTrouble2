@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cojumcdicoceq"]
+
+[ext_resource type="Script" uid="uid://dm5taoqysx28v" path="res://game/grid/snap_to_grid.gd" id="1_5piig"]
+
+[node name="SpawnPoint" type="Marker2D"]
+script = ExtResource("1_5piig")

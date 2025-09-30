@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg7j5a0vuixef"]
+
+[ext_resource type="Script" uid="uid://dlaysais0t100" path="res://game/loadout_upgrade/loadout_upgrade.gd" id="1_6da0r"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_qonxi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6da0r"]
+size = Vector2(7, 7)
+
+[node name="LoadoutUpgrade" type="Node2D"]
+script = ExtResource("1_6da0r")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="Body" type="Sprite2D" parent="Hitbox"]
+modulate = Color(0.435294, 0.666667, 1, 1)
+scale = Vector2(7, 7)
+texture = ExtResource("1_qonxi")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="Body2" type="Sprite2D" parent="Hitbox"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2.842171e-14, 2.842171e-14)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_qonxi")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_6da0r")
