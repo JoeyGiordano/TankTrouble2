@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://duji7i7tnorqk"]
+
+[ext_resource type="Script" uid="uid://fiwd7nqcbeqb" path="res://game/bullets/multi_bullet/multi_bullet.gd" id="1_4j1ce"]
+
+[node name="MultiBullet" type="RigidBody2D"]
+script = ExtResource("1_4j1ce")
+
+[node name="BulletSprite" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
