@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2vd12pjydjhl"]
+
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_fik1q"]
+[ext_resource type="Script" uid="uid://blqc5qe1fprgt" path="res://game/map_elements/bullet_speed_modifier_area.gd" id="1_ghps4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghps4"]
+
+[node name="Bullet Speed Modifier Area" type="Node2D"]
+script = ExtResource("1_ghps4")
+speed_mod = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 0.39607844)
+scale = Vector2(20, 20)
+texture = ExtResource("1_fik1q")
+region_enabled = true
+region_rect = Rect2(64, 67, 1, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ghps4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
