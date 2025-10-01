@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dum6085nqdo78"]
 
-[ext_resource type="Script" uid="uid://2dkadkv22ljj" path="res://levels/level_gen/level_gen_wall.gd" id="1_mdtf3"]
+[ext_resource type="Script" uid="uid://2dkadkv22ljj" path="res://levels/level_gen/parts/level_gen_wall.gd" id="1_mdtf3"]
 [ext_resource type="PhysicsMaterial" uid="uid://bl5a4s68smpol" path="res://game/wall/wall_physmat.tres" id="2_4jurj"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_4smjr"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4smjr"]
 size = Vector2(1, 2)
