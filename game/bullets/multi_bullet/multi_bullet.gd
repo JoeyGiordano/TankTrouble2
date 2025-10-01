@@ -48,7 +48,8 @@ func on_area_entered(area : Area2D) : #contact_monitor must be set to true and m
 		if tank.id == source_tank_id && source_tank_invincible :
 			return #a tank can't hit itself with its own bullet for a brief moment after the bullet has been shot
 		tank.die()
-		
+		#wait for tank to despawn so that bullet shards dont hit player
+		await get_tree().create_timer(0.02).timeout
 		spawn_shards()
 		queue_free()
 
@@ -58,8 +59,9 @@ func on_body_entered(_body : Node) :
 	queue_free()
 	
 func on_end_of_round() :
+	print("endround")
+	despawn_shards()
 	return
-	#despawn_shards()
 	#queue_free()
 
 ## Misc
@@ -71,6 +73,7 @@ func spawn_shards() -> void: #Array[BasicBullet]:
 	var start := dir.angle() - 0.5 * step * (num_shards - 1)
 	
 	for i in range(num_shards):
+		#add randomness to spread to keep visually interesting
 		var a := start + i * step * RandomNumberGenerator.new().randf_range(0.8,1.2)
 		var v := Vector2.RIGHT.rotated(a)  # unit direction at angle a
 		var bb : BasicBullet = BasicBullet.instantiate(global_position, shard_speed, v, shard_lifetime)
@@ -81,7 +84,9 @@ func spawn_shards() -> void: #Array[BasicBullet]:
 
 #remove all shards from multibullet
 func despawn_shards():
+	print("get rid of em")
 	for s in shards:
+		print("shard removed")
 		s.queue_free()
 
 static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, lifetime_ : float) -> MultiBullet :
