@@ -12,7 +12,7 @@ func spawn_players() :
 	#spawn players at points randomly
 	var p : Array = spawn_points.duplicate()
 	p.shuffle() #shuffle the array
-	for i in num_players :
+	for i in num_players : 
 		#put at spawn point
 		PlayerManager.get_associated_tank(i).respawn(p.get(i).position)
 		#randomize rotation
