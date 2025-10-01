@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bco7bn3j6pl3n"]
+
+[ext_resource type="Script" uid="uid://k687a7f4yocb" path="res://game/map_elements/moveable_box.gd" id="1_ch5ga"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_84ian"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdo5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ch5ga"]
+size = Vector2(14, 14)
+
+[node name="Moveable Box" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 3
+gravity_scale = 0.0
+linear_damp = 50.0
+script = ExtResource("1_ch5ga")
+health = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 13
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_mfdo5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.23098439, 0.87540084, 1.1551381e-06, 1)
+scale = Vector2(14, 14)
+texture = ExtResource("2_84ian")
+region_enabled = true
+region_rect = Rect2(64, 68, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ch5ga")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

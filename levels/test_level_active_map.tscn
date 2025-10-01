@@ -1,0 +1,130 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckef6glp3htbr"]
+
+[ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_uqreq"]
+[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_54bsp"]
+[ext_resource type="Script" uid="uid://dm5taoqysx28v" path="res://game/grid/snap_to_grid.gd" id="3_1pcs8"]
+[ext_resource type="PackedScene" uid="uid://dhnun2qb7oy3g" path="res://game/map_elements/explosive_barrel.tscn" id="4_54bsp"]
+[ext_resource type="PackedScene" uid="uid://bx2nhx7cbggc4" path="res://game/map_elements/destructable_box.tscn" id="5_1pcs8"]
+[ext_resource type="PackedScene" uid="uid://kgb8qiwyx3h5" path="res://game/map_elements/indestructable_box.tscn" id="6_pobmj"]
+[ext_resource type="PackedScene" uid="uid://bco7bn3j6pl3n" path="res://game/map_elements/moveable_box.tscn" id="7_kqg12"]
+
+[node name="LevelTemplate" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Grid" type="Node" parent="."]
+script = ExtResource("1_uqreq")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Border" type="Node2D" parent="Walls"]
+
+[node name="Top" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_54bsp")]
+position = Vector2(0, -320)
+horizontal = true
+length = 1171.0
+width = 51.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(0, -8)
+grid_length = 28
+
+[node name="Left" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_54bsp")]
+position = Vector2(-560, 0)
+length = 690.0
+width = 50.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(-14, 0)
+grid_length = 16
+
+[node name="Right" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_54bsp")]
+position = Vector2(560, 0)
+length = 690.0
+width = 50.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(14, 0)
+grid_length = 16
+
+[node name="Bottom" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_54bsp")]
+position = Vector2(-20, 320)
+horizontal = true
+length = 1130.0
+width = 50.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(-0.5, 8)
+grid_length = 27
+
+[node name="Wall" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_54bsp")]
+position = Vector2(-400, 0)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-10, 0)
+grid_length = 6
+
+[node name="Wall2" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_54bsp")]
+position = Vector2(400, 0)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(10, 0)
+grid_length = 6
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+position = Vector2(-480, 0)
+script = ExtResource("3_1pcs8")
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-12, 0)
+
+[node name="Node2D2" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+position = Vector2(480, 0)
+rotation = 3.14159
+script = ExtResource("3_1pcs8")
+grid = NodePath("../../Grid")
+grid_pos = Vector2(12, 0)
+
+[node name="Node2D3" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+position = Vector2(-480, -80)
+script = ExtResource("3_1pcs8")
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-12, -2)
+
+[node name="Node2D4" type="Node2D" parent="SpawnPoints" node_paths=PackedStringArray("grid")]
+position = Vector2(480, 80)
+rotation = 3.14159
+script = ExtResource("3_1pcs8")
+grid = NodePath("../../Grid")
+grid_pos = Vector2(12, 2)
+
+[node name="Active Map Stuff" type="Node2D" parent="."]
+
+[node name="Explosive Barrels" type="Node2D" parent="Active Map Stuff"]
+
+[node name="Explosive Barrel" parent="Active Map Stuff/Explosive Barrels" instance=ExtResource("4_54bsp")]
+position = Vector2(-399, -157)
+
+[node name="Explosive Barrel2" parent="Active Map Stuff/Explosive Barrels" instance=ExtResource("4_54bsp")]
+position = Vector2(398, -158)
+
+[node name="Explosive Barrel3" parent="Active Map Stuff/Explosive Barrels" instance=ExtResource("4_54bsp")]
+position = Vector2(-36, -44)
+
+[node name="Explosive Barrel4" parent="Active Map Stuff/Explosive Barrels" instance=ExtResource("4_54bsp")]
+position = Vector2(-405, 156)
+
+[node name="Explosive Barrel5" parent="Active Map Stuff/Explosive Barrels" instance=ExtResource("4_54bsp")]
+position = Vector2(414, 165)
+
+[node name="Destructable Boxes" type="Node2D" parent="Active Map Stuff"]
+
+[node name="Destructable Box2" parent="Active Map Stuff/Destructable Boxes" instance=ExtResource("5_1pcs8")]
+position = Vector2(-188, -104)
+
+[node name="Indestructable Boxes" type="Node2D" parent="Active Map Stuff"]
+
+[node name="Indestructable Box" parent="Active Map Stuff/Indestructable Boxes" instance=ExtResource("6_pobmj")]
+position = Vector2(-266, -50)
+
+[node name="Moveable Boxes" type="Node2D" parent="Active Map Stuff"]
+
+[node name="Moveable Box" parent="Active Map Stuff/Moveable Boxes" instance=ExtResource("7_kqg12")]
+position = Vector2(-186, 36)
