@@ -12,7 +12,7 @@ script/source = "extends Camera2D
 script = SubResource("GDScript_iq1mi")
 
 [node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_bvjr1")]
-gen_bounds = Vector2i(12, 12)
+gen_bounds = Vector2i(10, 6)
 scale_ = Vector2i(80, 80)
 origin_marker = NodePath("OriginMarker")
 region_divisions = 3
@@ -21,4 +21,4 @@ spawner_buffers = 2
 srw_random_limits = Vector2i(2, 10)
 
 [node name="OriginMarker" type="Marker2D" parent="LevelGenerator"]
-position = Vector2(-354, -230)
+position = Vector2(-390, -212)
