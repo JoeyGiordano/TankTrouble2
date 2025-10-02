@@ -13,7 +13,7 @@ script = SubResource("GDScript_iq1mi")
 
 [node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_bvjr1")]
 gen_bounds = Vector2i(12, 12)
-scale_ = Vector2i(80, 80)
+scale_ = Vector2i(32, 32)
 origin_marker = NodePath("OriginMarker")
 region_divisions = 3
 region_connections = 0

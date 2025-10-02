@@ -12,7 +12,8 @@ var region_tile_limit : int = 0
 var region_smash_random_walls : int = 0 #0 for none
 #internal variables
 var bone_count : int = 0
-var active_bones : Array[LevelGenBone] #keeps track of bones with univisited neighbors
+var active_bones : Array[LevelGenBone] = [] #keeps track of bones with univisited neighbors
+var bone_ages : Array[LevelGenBone] = [] #stores order bones were placed; use this like a stack, index is how many cells were placed after it
 
 func _init(region_ : LevelRegion, overhead_ : LevelGenerator, region_tile_limit_ : int):
 	self.region = region_
@@ -67,8 +68,12 @@ func skeleton_builder():
 			if active_bones.is_empty():
 				break
 
+func init_bones():
+	pass
+
 func place_bone(coords : Vector2i, direction : int, branch_bone : LevelGenBone) -> LevelGenBone:
 	var new_bone : LevelGenBone = overhead.bone_resource_template.duplicate(true)
+	bone_ages.push_front(new_bone)
 	new_bone.coords = coords
 	active_bones.append(new_bone)
 	overhead.map_bones[coords.x][coords.y] = new_bone
