@@ -10,3 +10,4 @@ class_name ItemResource
 
 #Other
 @export var color : Color
+@export var loadout_name : String

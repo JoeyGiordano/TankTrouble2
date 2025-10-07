@@ -9,4 +9,5 @@ name = "itemx1"
 description = "tttt"
 stat_boost = ExtResource("2_a4jme")
 color = Color(0.364706, 0.760784, 0.996078, 1)
+loadout_name = "empty_loadout"
 metadata/_custom_type_script = "uid://cl7ga7teyrqpf"

@@ -41,6 +41,7 @@ class_name _Reference
 @export_group("Prefabs")
 @export var tank_scene : PackedScene
 @export var basic_bullet : PackedScene
+@export var item_scene : PackedScene
 
 @export_group("Tank Loadouts")
 @export var empty_loadout : PackedScene

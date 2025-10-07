@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://rigrosaete8h"]
+[gd_scene load_steps=8 format=3 uid="uid://rigrosaete8h"]
 
 [ext_resource type="PackedScene" uid="uid://dg7j5a0vuixef" path="res://game/loadout_upgrade/loadout_upgrade.tscn" id="1_gkona"]
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_yvw6e"]
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_q26d8"]
 [ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="5_l8bmr"]
 [ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="6_ciepe"]
+[ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="6_l8bmr"]
+[ext_resource type="Resource" uid="uid://b8ve24bo453do" path="res://game/item/items/item1.tres" id="7_ciepe"]
 
 [node name="LevelTemplate" type="Node"]
 
@@ -22,93 +24,99 @@ zoom = Vector2(2, 2)
 
 [node name="Grid" type="Node" parent="."]
 script = ExtResource("1_yvw6e")
-scale_ = 30.0
-offset = Vector2(-15, 0)
+scale_ = 60.0
 
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="Border" type="Node2D" parent="Walls"]
 
 [node name="Wall" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
-position = Vector2(-165, 0)
-length = 188.0
+position = Vector2(-180, 0)
+length = 248.0
 grid = NodePath("../../../Grid")
-grid_pos = Vector2(-5, 0)
-grid_length = 6
+grid_pos = Vector2(-3, 0)
+grid_length = 4
 
 [node name="Wall2" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
-position = Vector2(165, 0)
-length = 188.0
+position = Vector2(180, 0)
+length = 248.0
 grid = NodePath("../../../Grid")
-grid_pos = Vector2(6, 0)
-grid_length = 6
+grid_pos = Vector2(3, 0)
+grid_length = 4
 
 [node name="Wall3" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
-position = Vector2(0, -90)
+position = Vector2(0, -120)
 horizontal = true
-length = 338.0
+length = 368.0
 grid = NodePath("../../../Grid")
-grid_pos = Vector2(0.5, -3)
-grid_length = 11
+grid_pos = Vector2(0, -2)
+grid_length = 6
 
 [node name="Wall4" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
-position = Vector2(0, 90)
+position = Vector2(0, 120)
 horizontal = true
-length = 338.0
+length = 368.0
 grid = NodePath("../../../Grid")
-grid_pos = Vector2(0.5, 3)
-grid_length = 11
+grid_pos = Vector2(0, 2)
+grid_length = 6
 
 [node name="Wall5" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
-position = Vector2(-105, -45)
-length = 98.0
+position = Vector2(-120, -60)
+length = 128.0
 grid = NodePath("../../Grid")
-grid_pos = Vector2(-3, -1.5)
-grid_length = 3
+grid_pos = Vector2(-2, -1)
+grid_length = 2
 
 [node name="Wall6" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
-position = Vector2(0, 30)
+position = Vector2(0, 60)
 horizontal = true
-length = 98.0
+length = 128.0
 grid = NodePath("../../Grid")
-grid_pos = Vector2(0.5, 1)
-grid_length = 3
+grid_pos = Vector2(0, 1)
+grid_length = 2
 
 [node name="Wall7" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
-position = Vector2(0, -30)
+position = Vector2(0, -60)
 horizontal = true
-length = 98.0
+length = 128.0
 grid = NodePath("../../Grid")
-grid_pos = Vector2(0.5, -1)
-grid_length = 3
+grid_pos = Vector2(0, -1)
+grid_length = 2
 
 [node name="Wall8" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
-position = Vector2(105, 45)
-length = 98.0
+position = Vector2(120, 60)
+length = 128.0
 grid = NodePath("../../Grid")
-grid_pos = Vector2(4, 1.5)
-grid_length = 3
+grid_pos = Vector2(2, 1)
+grid_length = 2
 
 [node name="PlayerSpawner" parent="." instance=ExtResource("5_l8bmr")]
 
 [node name="SpawnPoint" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("6_ciepe")]
-position = Vector2(-135, -60)
+position = Vector2(-150, -90)
 grid = NodePath("../../Grid")
-grid_pos = Vector2(-4, -2)
+snap_type = 1
+grid_pos = Vector2(-2.5, -1.5)
 
 [node name="SpawnPoint2" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("6_ciepe")]
-position = Vector2(135, 60)
+position = Vector2(150, 90)
 grid = NodePath("../../Grid")
-grid_pos = Vector2(5, 2)
+snap_type = 1
+grid_pos = Vector2(2.5, 1.5)
 
 [node name="SpawnPoint3" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("6_ciepe")]
-position = Vector2(0, -60)
+position = Vector2(-30, -90)
 grid = NodePath("../../Grid")
-snap_type = 2
-grid_pos = Vector2(0.5, -2)
+snap_type = 1
+grid_pos = Vector2(-0.5, -1.5)
 
 [node name="SpawnPoint4" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("6_ciepe")]
-position = Vector2(0, 60)
+position = Vector2(30, 90)
 grid = NodePath("../../Grid")
-snap_type = 2
-grid_pos = Vector2(0.5, 2)
+snap_type = 1
+grid_pos = Vector2(0.5, 1.5)
+
+[node name="ItemSpawner" parent="." instance=ExtResource("6_l8bmr")]
+grid_type = 1
+spawn_area = Rect2(-175, -100, 350, 200)
+item_res = ExtResource("7_ciepe")
