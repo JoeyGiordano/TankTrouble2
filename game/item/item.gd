@@ -31,4 +31,15 @@ func _get_pickedup_by(tank : Tank) :
 	hitbox.monitorable = false
 	hide()
 	reparent(tank.items)
-	tank.stats_handler.add_boost_with_source(item_res.stat_boost, self)
+	if item_res.stat_boost :
+		tank.stats_handler.add_boost_with_source(item_res.stat_boost, self)
+	if item_res.loadout_name != "" :
+		tank.change_loadout(item_res.loadout_name)
+
+static func instantiate(_item_res : ItemResource, _position : Vector2) -> Item:
+	var i : Item = Ref.item_scene.instantiate()
+	i.item_res = _item_res
+	i.position = _position
+	Global.Entities.add_child(i)
+	return i
+	
