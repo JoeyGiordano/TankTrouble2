@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6wb8oosdthco"]
+[gd_scene load_steps=6 format=3 uid="uid://c6wb8oosdthco"]
 
 [ext_resource type="Script" uid="uid://bqgjqft6dywot" path="res://game/map_elements/tank_speed_modifier_area.gd" id="1_galw1"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_eqyu3"]
+[ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="2_mi6jf"]
+
+[sub_resource type="Resource" id="Resource_3jloe"]
+script = ExtResource("2_mi6jf")
+forward_speed = 100.0
+metadata/_custom_type_script = "uid://8jp733sld27f"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi6jf"]
 
 [node name="Tank Speed Modifier Area" type="Node2D"]
 script = ExtResource("1_galw1")
-speed_mod = null
+boost = SubResource("Resource_3jloe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.86805695, 5.2943824e-06, 0.54054344, 0.4627451)
@@ -16,9 +22,9 @@ texture = ExtResource("2_eqyu3")
 region_enabled = true
 region_rect = Rect2(64, 66, 1, 1)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_mi6jf")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

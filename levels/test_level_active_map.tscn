@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckef6glp3htbr"]
+[gd_scene load_steps=11 format=3 uid="uid://ckef6glp3htbr"]
 
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_uqreq"]
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_54bsp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bx2nhx7cbggc4" path="res://game/map_elements/destructable_box.tscn" id="5_1pcs8"]
 [ext_resource type="PackedScene" uid="uid://kgb8qiwyx3h5" path="res://game/map_elements/indestructable_box.tscn" id="6_pobmj"]
 [ext_resource type="PackedScene" uid="uid://b2vd12pjydjhl" path="res://game/map_elements/bullet_speed_modifier_area.tscn" id="7_5swdi"]
+[ext_resource type="PackedScene" uid="uid://c6wb8oosdthco" path="res://game/map_elements/tank_speed_modifier_area.tscn" id="7_evsuk"]
 [ext_resource type="PackedScene" uid="uid://bco7bn3j6pl3n" path="res://game/map_elements/moveable_box.tscn" id="7_kqg12"]
 [ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="7_uepb4"]
 [ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="8_5swdi"]
@@ -104,6 +105,10 @@ position = Vector2(-266, -50)
 position = Vector2(-186, 36)
 
 [node name="SpeedFields" type="Node2D" parent="Active Map Stuff"]
+
+[node name="Tank Speed Modifier Area" parent="Active Map Stuff/SpeedFields" instance=ExtResource("7_evsuk")]
+position = Vector2(117, 33.999996)
+scale = Vector2(6.964583, -6.5526533)
 
 [node name="Bullet Speed Modifier Area" parent="Active Map Stuff/SpeedFields" instance=ExtResource("7_5swdi")]
 position = Vector2(95, -97)
