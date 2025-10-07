@@ -26,12 +26,22 @@ func _process(_delta) -> void:
 		spawn()
 
 func spawn() :
+	if grid_type == GRID_TYPE.RAND_GEN :
+		rand_gen_spawn()
+		return
 	var x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
 	var y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
 	var pos = Vector2(x, y)
 	if grid_type == GRID_TYPE.GRID :
 		var g : Grid = get_parent().get_node("Grid")
 		pos = g.nearest_square_center(pos, Grid.COORD_TYPE.REAL, Grid.COORD_TYPE.REAL)
+	Item.instantiate(item_res, pos)
+
+func rand_gen_spawn() :
+	var g : LevelGenerator = get_parent().get_node("LevelGenerator")
+	var x = randf_range(0, g.gen_bounds.x)
+	var y = randf_range(0, g.gen_bounds.y)
+	var pos = g.coords_to_position(Vector2(x,y))
 	Item.instantiate(item_res, pos)
 
 func is_correct_time() -> bool :

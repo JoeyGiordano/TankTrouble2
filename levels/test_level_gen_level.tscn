@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://nnt58oni83nl"]
+[gd_scene load_steps=5 format=3 uid="uid://nnt58oni83nl"]
 
+[ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="1_ayf84"]
 [ext_resource type="PackedScene" uid="uid://dtak7aat5yspu" path="res://levels/level_gen/generation/level_generator.tscn" id="2_bvjr1"]
+[ext_resource type="Resource" uid="uid://b8ve24bo453do" path="res://game/item/items/item1.tres" id="2_iq1mi"]
 
 [sub_resource type="GDScript" id="GDScript_iq1mi"]
 script/source = "extends Camera2D
@@ -10,6 +12,13 @@ script/source = "extends Camera2D
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = SubResource("GDScript_iq1mi")
+
+[node name="ItemSpawner" parent="." instance=ExtResource("1_ayf84")]
+grid_type = 2
+period_low = 0.1
+period_high = 0.2
+delay = 1.0
+item_res = ExtResource("2_iq1mi")
 
 [node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_bvjr1")]
 gen_bounds = Vector2i(10, 6)
