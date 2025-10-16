@@ -135,8 +135,11 @@ player2_shoot={
 2d_physics/layer_1="walls"
 2d_physics/layer_2="tanks"
 2d_physics/layer_3="bullets"
+2d_physics/layer_4="hitboxes"
+2d_physics/layer_5="boxes"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
