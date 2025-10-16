@@ -110,6 +110,7 @@ func on_end_of_round() :
 ## State
 
 func die() :
+	if dead : return
 	lock()
 	#play death sound and anim
 	despawn()

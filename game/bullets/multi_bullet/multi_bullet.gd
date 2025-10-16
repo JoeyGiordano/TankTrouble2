@@ -50,12 +50,12 @@ func on_area_entered(area : Area2D) : #contact_monitor must be set to true and m
 		tank.die()
 		#wait for tank to despawn so that bullet shards dont hit player
 		await get_tree().create_timer(0.02).timeout
-		spawn_shards()
+		call_deferred("spawn_shards")
 		queue_free()
 
 # when bullet hits a wall, it deletes itself and sprays the basic bullets
 func on_body_entered(_body : Node) :
-	spawn_shards()
+	call_deferred("spawn_shards")
 	queue_free()
 	
 func on_end_of_round() :
