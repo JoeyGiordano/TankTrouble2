@@ -21,4 +21,4 @@ func _switch_level(new_level : PackedScene) :
 	Utility.replace_scene_in_holder(Global.LevelHolder, new_level)
 
 func _determine_next_level() -> String :
-	return "test_level_active_map" 
+	return "custom_level_1" 

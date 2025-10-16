@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=21 format=3 uid="uid://dimsdmfqcpvlg"]
-
+[gd_scene load_steps=22 format=3 uid="uid://dimsdmfqcpvlg"]
 
 [ext_resource type="Script" uid="uid://ciyveyuo2ihr0" path="res://autoloads/Reference/Reference.gd" id="1_pmmna"]
 [ext_resource type="PackedScene" uid="uid://d176ir76ayfrc" path="res://shell_scenes/startup.tscn" id="2_qlxkd"]
@@ -20,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://rigrosaete8h" path="res://levels/test_level_3.tscn" id="14_0nf36"]
 [ext_resource type="Resource" uid="uid://c3hg6budcbmhm" path="res://tank/stats/base_tank_stats.tres" id="15_axg78"]
 [ext_resource type="PackedScene" uid="uid://ckef6glp3htbr" path="res://levels/test_level_active_map.tscn" id="15_hiq1x"]
+[ext_resource type="PackedScene" uid="uid://dq0y0r8qtbtw2" path="res://levels/custom_level_1.tscn" id="16_323l5"]
 [ext_resource type="PackedScene" uid="uid://bd3yrfsuc246j" path="res://tank/loadouts/empty_tankloadout.tscn" id="17_j6ump"]
 [ext_resource type="PackedScene" uid="uid://2su3htx11obo" path="res://tank/loadouts/basic/basic_tankloadout.tscn" id="18_d3fos"]
 
@@ -39,6 +38,7 @@ test_level_1 = ExtResource("10_yjp2r")
 test_level_2 = ExtResource("11_xedrw")
 test_level_3 = ExtResource("14_0nf36")
 test_level_active_map = ExtResource("15_hiq1x")
+custom_level_1 = ExtResource("16_323l5")
 tank_scene = ExtResource("13_acwhr")
 basic_bullet = ExtResource("12_vdkhk")
 empty_loadout = ExtResource("17_j6ump")
