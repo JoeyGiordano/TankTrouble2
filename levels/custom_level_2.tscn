@@ -1,0 +1,326 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvx6y0y353jnt"]
+
+[ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_lvsjq"]
+[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_adlxq"]
+[ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="3_05xrx"]
+[ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="4_d4elk"]
+[ext_resource type="PackedScene" uid="uid://b2vd12pjydjhl" path="res://game/map_elements/bullet_speed_modifier_area.tscn" id="5_8h7hc"]
+[ext_resource type="PackedScene" uid="uid://bco7bn3j6pl3n" path="res://game/map_elements/moveable_box.tscn" id="5_d4elk"]
+[ext_resource type="PackedScene" uid="uid://dhnun2qb7oy3g" path="res://game/map_elements/explosive_barrel.tscn" id="6_8h7hc"]
+[ext_resource type="PackedScene" uid="uid://bx2nhx7cbggc4" path="res://game/map_elements/destructable_box.tscn" id="7_rdubh"]
+
+[node name="LevelTemplate" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Grid" type="Node" parent="."]
+script = ExtResource("1_lvsjq")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Border" type="Node2D" parent="Walls"]
+
+[node name="Top" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(0, -320)
+horizontal = true
+length = 1171.0
+width = 51.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(0, -8)
+grid_length = 28
+
+[node name="Left" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-560, 0)
+length = 690.0
+width = 50.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(-14, 0)
+grid_length = 16
+
+[node name="Right" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(560, 0)
+length = 690.0
+width = 50.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(14, 0)
+grid_length = 16
+
+[node name="Bottom" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-20, 320)
+horizontal = true
+length = 1130.0
+width = 50.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(-0.5, 8)
+grid_length = 27
+
+[node name="Wall" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-400, 0)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-10, 0)
+grid_length = 6
+
+[node name="Wall18" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(0, -200)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(0, -5)
+grid_length = 6
+
+[node name="Wall19" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(0, 200)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(0, 5)
+grid_length = 6
+
+[node name="Wall13" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-200, 160)
+scale = Vector2(1, 0.64000124)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-5, 4)
+grid_length = 6
+
+[node name="Wall20" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-200, 160)
+scale = Vector2(1, 0.64000124)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-5, 4)
+grid_length = 6
+
+[node name="Wall22" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-200, -160)
+scale = Vector2(1, 0.64000124)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-5, -4)
+grid_length = 6
+
+[node name="Wall23" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(200, -160)
+scale = Vector2(1, 0.64000124)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(5, -4)
+grid_length = 6
+
+[node name="Wall21" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(200, 160)
+scale = Vector2(1, 0.64000124)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(5, 4)
+grid_length = 6
+
+[node name="Wall3" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_length = 6
+
+[node name="Wall4" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-440, 0)
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-11, 0)
+grid_length = 6
+
+[node name="Wall14" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-200, 80)
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-5, 2)
+grid_length = 6
+
+[node name="Wall15" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(200, 80)
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(5, 2)
+grid_length = 6
+
+[node name="Wall16" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(200, -80)
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(5, -2)
+grid_length = 6
+
+[node name="Wall17" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-200, -80)
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-5, -2)
+grid_length = 6
+
+[node name="Wall6" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-440, -200)
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-11, -5)
+grid_length = 6
+
+[node name="Wall7" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(-440, 200)
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-11, 5)
+grid_length = 6
+
+[node name="Wall8" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(440, 200)
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(11, 5)
+grid_length = 6
+
+[node name="Wall9" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(440, -200)
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(11, -5)
+grid_length = 6
+
+[node name="Wall5" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(440, 0)
+rotation = 1.5707964
+scale = Vector2(1.089, 0.8)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(11, 0)
+grid_length = 6
+
+[node name="Wall2" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
+position = Vector2(400, 0)
+length = 248.0
+grid = NodePath("../../Grid")
+grid_pos = Vector2(10, 0)
+grid_length = 6
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("3_05xrx")]
+
+[node name="SpawnPoint" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_d4elk")]
+position = Vector2(-480, -40)
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-12, -1)
+
+[node name="SpawnPoint2" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_d4elk")]
+position = Vector2(480, 40)
+grid = NodePath("../../Grid")
+grid_pos = Vector2(12, 1)
+
+[node name="SpawnPoint3" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_d4elk")]
+position = Vector2(-480, 60)
+grid = NodePath("../../Grid")
+snap_type = 2
+grid_pos = Vector2(-12, 1.5)
+
+[node name="SpawnPoint4" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_d4elk")]
+position = Vector2(480, -60)
+grid = NodePath("../../Grid")
+snap_type = 2
+grid_pos = Vector2(12, -1.5)
+
+[node name="Active Map Elements" type="Node2D" parent="."]
+
+[node name="Bullet Speed Modifier Area" parent="Active Map Elements" instance=ExtResource("5_8h7hc")]
+position = Vector2(-200, 0)
+scale = Vector2(5, 5)
+
+[node name="Bullet Speed Modifier Area2" parent="Active Map Elements" instance=ExtResource("5_8h7hc")]
+position = Vector2(200, 0)
+scale = Vector2(5, 5)
+
+[node name="Destructable Boxes" type="Node2D" parent="Active Map Elements"]
+
+[node name="Destructable Box" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(-200, 248)
+
+[node name="Destructable Box2" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(-200, 267)
+
+[node name="Destructable Box3" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(-200, 286)
+
+[node name="Destructable Box4" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(200, 248)
+
+[node name="Destructable Box5" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(200, 267)
+
+[node name="Destructable Box6" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(200, 286)
+
+[node name="Destructable Box7" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(200, -286)
+
+[node name="Destructable Box8" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(200, -267)
+
+[node name="Destructable Box9" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(200, -248)
+
+[node name="Destructable Box10" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(-200, -286)
+
+[node name="Destructable Box11" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(-200, -267)
+
+[node name="Destructable Box12" parent="Active Map Elements/Destructable Boxes" instance=ExtResource("7_rdubh")]
+position = Vector2(-200, -248)
+
+[node name="Moveable Boxes" type="Node2D" parent="Active Map Elements"]
+
+[node name="Moveable Box" parent="Active Map Elements/Moveable Boxes" instance=ExtResource("5_d4elk")]
+position = Vector2(-100, -200)
+
+[node name="Moveable Box2" parent="Active Map Elements/Moveable Boxes" instance=ExtResource("5_d4elk")]
+position = Vector2(100, -200)
+
+[node name="Moveable Box3" parent="Active Map Elements/Moveable Boxes" instance=ExtResource("5_d4elk")]
+position = Vector2(100, 200)
+
+[node name="Moveable Box4" parent="Active Map Elements/Moveable Boxes" instance=ExtResource("5_d4elk")]
+position = Vector2(-100, 200)
+
+[node name="Explosive Barrels" type="Node2D" parent="Active Map Elements"]
+
+[node name="Explosive Barrel" parent="Active Map Elements/Explosive Barrels" instance=ExtResource("6_8h7hc")]
+position = Vector2(-200, 0)
+
+[node name="Explosive Barrel3" parent="Active Map Elements/Explosive Barrels" instance=ExtResource("6_8h7hc")]
+position = Vector2(-400, -250)
+
+[node name="Explosive Barrel6" parent="Active Map Elements/Explosive Barrels" instance=ExtResource("6_8h7hc")]
+position = Vector2(400, -250)
+
+[node name="Explosive Barrel4" parent="Active Map Elements/Explosive Barrels" instance=ExtResource("6_8h7hc")]
+position = Vector2(-400, 250)
+
+[node name="Explosive Barrel5" parent="Active Map Elements/Explosive Barrels" instance=ExtResource("6_8h7hc")]
+position = Vector2(400, 250)
+
+[node name="Explosive Barrel2" parent="Active Map Elements/Explosive Barrels" instance=ExtResource("6_8h7hc")]
+position = Vector2(200, 0)
