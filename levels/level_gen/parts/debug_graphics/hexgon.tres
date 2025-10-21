@@ -1,0 +1,11 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://coqb5tndb0kb8"]
+
+[ext_resource type="Texture2D" uid="uid://bh4tyrtmy7nx7" path="res://levels/level_gen/parts/debug_graphics/hex_gon.png" id="1_cubtu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a47j3"]
+texture = ExtResource("1_cubtu")
+0:0/0 = 0
+
+[resource]
+tile_shape = 3
+sources/0 = SubResource("TileSetAtlasSource_a47j3")
