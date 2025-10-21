@@ -29,4 +29,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if(health == 0):
 			queue_free()
 			#spawn bullets
-			explode()
+			call_deferred("explode")
