@@ -10,28 +10,32 @@ size = Vector2(14, 14)
 
 [node name="Moveable Box" type="RigidBody2D"]
 collision_layer = 16
-collision_mask = 3
+collision_mask = 19
 gravity_scale = 0.0
-linear_damp = 50.0
+linear_damp = 100.0
+angular_damp_mode = 1
+angular_damp = 50.0
 script = ExtResource("1_ch5ga")
 health = 3
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(2, 2)
 collision_layer = 13
 collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_mfdo5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.23098439, 0.87540084, 1.1551381e-06, 1)
-scale = Vector2(14, 14)
+scale = Vector2(28, 28)
 texture = ExtResource("2_84ian")
 region_enabled = true
 region_rect = Rect2(64, 68, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ch5ga")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

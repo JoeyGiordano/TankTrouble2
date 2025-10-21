@@ -4,13 +4,8 @@
 
 [resource]
 script = ExtResource("1_vmwlf")
-forward_speed = 30.0
-backward_speed = -10.0
-rotation_speed = -0.4
-linear_damp_factor = 0.0
-angular_damp_factor = 0.0
-bullet_count = -1
+forward_speed = 100.0
+backward_speed = 30.0
 bullet_lifetime = 1.0
-bullet_speed = -9.0
 func_names = Array[String](["do_nothing"])
 metadata/_custom_type_script = "uid://8jp733sld27f"
