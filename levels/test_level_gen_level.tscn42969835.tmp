@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://nnt58oni83nl"]
+
+[ext_resource type="PackedScene" uid="uid://dtak7aat5yspu" path="res://levels/level_gen/generation/level_generator.tscn" id="2_bvjr1"]
+
+[sub_resource type="GDScript" id="GDScript_iq1mi"]
+script/source = "extends Camera2D
+"
+
+[node name="LevelGenTestLevel" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = SubResource("GDScript_iq1mi")
+
+[node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_bvjr1")]
+gen_bounds = Vector2i(12, 12)
+scale_ = Vector2i(32, 32)
+origin_marker = NodePath("OriginMarker")
+region_divisions = 3
+region_connections = 0
+spawner_buffers = 2
+srw_random_limits = Vector2i(2, 10)
+
+[node name="OriginMarker" type="Marker2D" parent="LevelGenerator"]
+position = Vector2(-354, -230)
