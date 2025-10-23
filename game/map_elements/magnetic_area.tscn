@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx0nr0e7wnvtg"]
+
+[ext_resource type="Script" uid="uid://d6cunwhfg404" path="res://game/map_elements/magnetic_area.gd" id="1_k8obu"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_yi5om"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghps4"]
+
+[node name="Magnetic Area" type="Node2D"]
+script = ExtResource("1_k8obu")
+magnetic_strength = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.91322726, 0.91299045, 0.24110928, 0.39607844)
+scale = Vector2(20, 20)
+texture = ExtResource("2_yi5om")
+region_enabled = true
+region_rect = Rect2(64, 67, 1, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ghps4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
