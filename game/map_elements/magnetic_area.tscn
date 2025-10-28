@@ -1,9 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx0nr0e7wnvtg"]
+[gd_scene load_steps=5 format=3 uid="uid://dx0nr0e7wnvtg"]
 
 [ext_resource type="Script" uid="uid://d6cunwhfg404" path="res://game/map_elements/magnetic_area.gd" id="1_k8obu"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_yi5om"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghps4"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k8obu"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(8, 8, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -20.000002
+radial_accel_max = 19.999998
 
 [node name="Magnetic Area" type="Node2D"]
 script = ExtResource("1_k8obu")
@@ -22,6 +35,14 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ghps4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.65148306, 1, 0.22609296, 1)
+amount = 12
+preprocess = 0.5
+speed_scale = 0.8
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_k8obu")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

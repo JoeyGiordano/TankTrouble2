@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6wb8oosdthco"]
+[gd_scene load_steps=7 format=3 uid="uid://c6wb8oosdthco"]
 
 [ext_resource type="Script" uid="uid://bqgjqft6dywot" path="res://game/map_elements/tank_stat_modifier_area.gd" id="1_t30ux"]
 [ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="2_ytnfq"]
@@ -10,6 +10,19 @@ forward_speed = 100.0
 metadata/_custom_type_script = "uid://8jp733sld27f"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi6jf"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t30ux"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(8, 8, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -20.000002
+radial_accel_max = 19.999998
 
 [node name="Tank Stat Modifier Area" type="Node2D"]
 script = ExtResource("1_t30ux")
@@ -28,3 +41,11 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_mi6jf")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.87682986, 0.2999867, 1, 1)
+amount = 12
+preprocess = 0.5
+speed_scale = 0.8
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_t30ux")

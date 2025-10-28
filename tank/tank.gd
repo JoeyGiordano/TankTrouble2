@@ -24,6 +24,9 @@ var id : int # will always be unique, never modified
 @onready var stats_handler : StatsHandler = $StatsHandler
 @onready var effects_handler : EffectsHandler = $EffectsHandler
 
+#Invincability
+
+
 # Input
 var move_input : Vector2 = Vector2.ZERO
 
