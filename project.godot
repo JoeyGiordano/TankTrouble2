@@ -36,6 +36,7 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 tank_hitbox=""
+tank_rigidbody=""
 
 [input]
 

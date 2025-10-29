@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwe3cijftd4x5"]
+
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_epf1g"]
+[ext_resource type="Script" uid="uid://dbp1bgtqaybb8" path="res://game/bullets/land_mine/land_mine.gd" id="1_wphjs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epf1g"]
+size = Vector2(10.5, 10.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epf1g"]
+radius = 8.062258
+
+[node name="LandMine" type="RigidBody2D"]
+collision_layer = 4
+gravity_scale = 0.0
+script = ExtResource("1_wphjs")
+
+[node name="LandMineSprite" type="Sprite2D" parent="."]
+position = Vector2(2.3841858e-07, 2.3841858e-07)
+scale = Vector2(0.08789064, 0.08789064)
+texture = ExtResource("1_epf1g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_epf1g")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_epf1g")
+debug_color = Color(0.9905403, 0, 0.2827947, 0.41960785)

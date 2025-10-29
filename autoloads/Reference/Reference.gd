@@ -44,12 +44,14 @@ class_name _Reference
 @export var tank_scene : PackedScene
 @export var basic_bullet : PackedScene
 @export var multi_bullet : PackedScene
+@export var land_mine : PackedScene
 @export var item_scene : PackedScene
 
 @export_group("Tank Loadouts")
 @export var empty_loadout : PackedScene
 @export var basic_loadout : PackedScene
 @export var multi_loadout : PackedScene
+@export var landmine_loadout : PackedScene
 
 @export_category("Other")
 @export_group("Tank Starting Stats")
