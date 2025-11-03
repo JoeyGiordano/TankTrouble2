@@ -44,7 +44,7 @@ shape = SubResource("RectangleShape2D_mi6jf")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 modulate = Color(0.87682986, 0.2999867, 1, 1)
-amount = 12
+amount = 30
 preprocess = 0.5
 speed_scale = 0.8
 randomness = 0.5

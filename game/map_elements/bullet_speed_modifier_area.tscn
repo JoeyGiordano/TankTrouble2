@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_ghps4")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 modulate = Color(0.30109066, 0.9985567, 0.96971744, 1)
-amount = 12
+amount = 30
 preprocess = 0.5
 speed_scale = 0.8
 randomness = 0.5

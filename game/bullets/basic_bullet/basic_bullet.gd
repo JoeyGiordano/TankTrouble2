@@ -59,6 +59,7 @@ static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, li
 	
 	#add the new bullet to the scene tree in the correct placem
 	Global.Entities.add_child(b)
+	
 	return b
 	
 	
