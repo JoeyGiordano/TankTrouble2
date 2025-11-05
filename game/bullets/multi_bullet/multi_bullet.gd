@@ -65,7 +65,6 @@ func remote_detonate() -> void:
 	call_deferred("spawn_shards")
 	
 func on_end_of_round() :
-	print("endround")
 	despawn_shards()
 	return
 	#queue_free()
@@ -73,7 +72,6 @@ func on_end_of_round() :
 	
 ## Misc
 func spawn_shards() -> void: #Array[BasicBullet]:
-	print("in shards")
 	if num_shards <= 0: return #numshards must be >0
 	# Tau is just 2π, this is finding an even spacing of angles for the shards to be spawned
 	var step := TAU / float(num_shards)
@@ -93,9 +91,7 @@ func spawn_shards() -> void: #Array[BasicBullet]:
 
 #remove all shards from multibullet
 func despawn_shards():
-	print("get rid of em")
 	for s in shards:
-		print("shard removed")
 		s.queue_free()
 
 static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, lifetime_ : float, remote_ : bool) -> MultiBullet :

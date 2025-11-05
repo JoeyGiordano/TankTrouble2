@@ -8,7 +8,7 @@ var source_tank_id : int = -1
 var source_tank_invincible : bool = true #this will get turned off 0.1 seconds after the bullet is shot, prevents tanks from accidentally shooting themselves unless they are going way faster than their own bullets
 # control how long player is invincible after planting land mine
 # if player who planted mine cannot trigger, then this is unessesary
-var delay_when_plant : float = 0.2
+var delay_when_plant : float = 1
 # control how long the mine takes to explode after being triggered
 # if it is immediate, then this is unnessesary
 var delay_when_trig : float = 0
