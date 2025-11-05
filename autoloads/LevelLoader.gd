@@ -25,16 +25,16 @@ func _switch_level(new_level : PackedScene) :
 	Utility.replace_scene_in_holder(Global.LevelHolder, new_level)
 
 func _determine_next_level() -> String :
-	j+=1
-	match j :
-		1 : return "custom_level_2"
-		2 : return "test_level_gen_level"
-		3 : return "test_level_gen_level"
-		4 : return "test_level_gen_level"
-		5 : return "test_level_3"
-		6 : return "custom_level_1"
+	#j+=1
+	#match j :
+		#1 : return "custom_level_2"
+		#2 : return "test_level_gen_level"
+		#3 : return "test_level_gen_level"
+		#4 : return "test_level_gen_level"
+		#5 : return "test_level_3"
+		#6 : return "custom_level_1"
 		
-	return "custom_level_2" 
+	return "test_level_3" 
 	#return "test_level_" + str(randi_range(0,3))
 	#return "test_level_3"
 	#return "test_level_gen_level"
