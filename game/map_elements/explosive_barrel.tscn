@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dhnun2qb7oy3g"]
+[gd_scene load_steps=5 format=3 uid="uid://dhnun2qb7oy3g"]
 
 [ext_resource type="Script" uid="uid://ll22rw3b2kvr" path="res://game/map_elements/explosive_barrel.gd" id="1_qiun0"]
 [ext_resource type="Texture2D" uid="uid://co2wwagvab7hc" path="res://explosive.png" id="3_epv1b"]
-[ext_resource type="Texture2D" uid="uid://cq02uhwvukke6" path="res://explosion_1_0-Sheet.png" id="4_48xmq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiun0"]
 size = Vector2(16, 16)
@@ -10,94 +9,10 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epv1b"]
 size = Vector2(14, 14)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2bgyj"]
-atlas = ExtResource("4_48xmq")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q38wa"]
-atlas = ExtResource("4_48xmq")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lpw64"]
-atlas = ExtResource("4_48xmq")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4q8o"]
-atlas = ExtResource("4_48xmq")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l44op"]
-atlas = ExtResource("4_48xmq")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s7r8w"]
-atlas = ExtResource("4_48xmq")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_okngi"]
-atlas = ExtResource("4_48xmq")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e3ugx"]
-atlas = ExtResource("4_48xmq")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1dxdl"]
-atlas = ExtResource("4_48xmq")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fyotp"]
-atlas = ExtResource("3_epv1b")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vorrb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2bgyj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q38wa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lpw64")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c4q8o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l44op")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s7r8w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_okngi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e3ugx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1dxdl")
-}],
-"loop": false,
-"name": &"Explode",
-"speed": 20.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fyotp")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="Explosive Barrel" type="StaticBody2D" node_paths=PackedStringArray("animated_sprite_2d", "sprite2D")]
+[node name="Explosive Barrel" type="StaticBody2D" node_paths=PackedStringArray("sprite2D")]
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_qiun0")
-animated_sprite_2d = NodePath("AnimatedSprite2D")
 sprite2D = NodePath("Sprite2D")
 health = 1
 
@@ -116,13 +31,5 @@ shape = SubResource("RectangleShape2D_epv1b")
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_epv1b")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(1.9073486e-06, 7.1054274e-15)
-scale = Vector2(0.59374994, 0.59374994)
-sprite_frames = SubResource("SpriteFrames_vorrb")
-animation = &"Explode"
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

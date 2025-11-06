@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dimsdmfqcpvlg"]
+[gd_scene load_steps=28 format=3 uid="uid://dimsdmfqcpvlg"]
 
 [ext_resource type="Script" uid="uid://ciyveyuo2ihr0" path="res://autoloads/Reference/Reference.gd" id="1_pmmna"]
 [ext_resource type="PackedScene" uid="uid://d176ir76ayfrc" path="res://shell_scenes/startup.tscn" id="2_qlxkd"]
@@ -25,8 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://bvx6y0y353jnt" path="res://levels/custom_level_2.tscn" id="17_k55fg"]
 [ext_resource type="PackedScene" uid="uid://2su3htx11obo" path="res://tank/loadouts/basic/basic_tankloadout.tscn" id="18_d3fos"]
 [ext_resource type="PackedScene" uid="uid://4xfrxxpiguq" path="res://tank/loadouts/multibullet/multibullet_tankloadout.tscn" id="19_d3fos"]
-[ext_resource type="PackedScene" uid="uid://ckef6glp3htbr" path="res://levels/test_level_active_map.tscn" id="15_hiq1x"]
 [ext_resource type="PackedScene" uid="uid://bojycccxpxfms" path="res://game/item/item.tscn" id="22_k55fg"]
+[ext_resource type="PackedScene" uid="uid://dwgdjpfsltjy3" path="res://animations/Explosion.tscn" id="23_3kg4t"]
 
 [node name="Reference" type="Node"]
 script = ExtResource("1_pmmna")
@@ -51,6 +51,7 @@ tank_scene = ExtResource("13_acwhr")
 basic_bullet = ExtResource("12_vdkhk")
 multi_bullet = ExtResource("17_323l5")
 item_scene = ExtResource("22_k55fg")
+explosion_anim = ExtResource("23_3kg4t")
 empty_loadout = ExtResource("17_j6ump")
 basic_loadout = ExtResource("18_d3fos")
 multi_loadout = ExtResource("19_d3fos")
