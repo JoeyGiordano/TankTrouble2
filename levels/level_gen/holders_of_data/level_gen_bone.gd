@@ -3,9 +3,11 @@ class_name LevelGenBone
 
 ## Holds the bone data for a future section of level[br]
 
-@export var sides : Array[int] # -1 = border, 0 = unknown, 1 = wall, 2 = opening
+@export var sides : Array[int] # -2 = pit, -1 = border, 0 = unknown, 1 = wall, 2 = opening
 var coords : Vector2i = Vector2i(-1,-1) #this will be used for when the bone is randomly picked from active_bones
-var spawner_flag : bool = false
+#extraneous data
+var spawner_flag : bool = false #spawn players here
+var pit_flag : bool = false #devoid of tile
 
 func setup(tile_type : LevelGenerator.TILE_TYPE):
 	#initializing the tile based on tile type

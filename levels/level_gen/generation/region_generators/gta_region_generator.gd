@@ -8,92 +8,166 @@ class_name GTARegionGenerator
 #init variables
 var overhead : LevelGenerator
 var region : LevelRegion
-var region_tile_limit : int = 0
-var region_smash_random_walls : int = 0 #0 for none
+var region_smash_random_walls : int = 0 #0 for 9none
 #internal variables
-var bone_count : int = 0
+var region_pits : int = 0
 var active_bones : Array[LevelGenBone] = [] #keeps track of bones with univisited neighbors
-var bone_ages : Array[LevelGenBone] = [] #stores order bones were placed; use this like a stack, index is how many cells were placed after it
+var connections : Array[Array] = [] #keeps track of connections to ensure they remain so; [bone,sides]
 
-func _init(region_ : LevelRegion, overhead_ : LevelGenerator, region_tile_limit_ : int):
+func _init(region_ : LevelRegion, overhead_ : LevelGenerator, region_pits_ : int):
 	self.region = region_
 	self.overhead = overhead_
-	self.region_tile_limit = region_tile_limit_
-	self.region_smash_random_walls = overhead.smash_random_walls
-
+	self.region_smash_random_walls = overhead_.smash_random_walls
+	self.region_pits = region_pits_
+	
 func skeleton_builder():
-	var tile_limit_flag: bool = true
-	if region_tile_limit == 0: 
-		tile_limit_flag = false
+	#storing connections
+	_set_connections()
+	#placing pits before bones
+	if region_pits != 0:
+		place_pits()
 	#choosing the starting bone of the region
-	var x = randi_range(region.pos.x,region.pos.x+region.area.x-1)
-	var y = randi_range(region.pos.y,region.pos.y+region.area.y-1)
-	var origin_bone = place_bone(Vector2i(x,y),-1,null)
-	active_bones.append(origin_bone)
+	var region_bones = overhead.region_to_bones(region)
+	var region_possibles: Array[LevelGenBone] = []
+	for i in region_bones:
+		region_possibles.append_array(i.filter(func(bone): return not bone.pit_flag))
+	place_bone(region_possibles.pick_random().coords,-1,null)
 	#the main builder loop
 	while (true):
 		var active_bone : LevelGenBone = decision_maker()
 		var direction : int = -1
 		#some base randomization for what cell should be added to active_bones
 		if active_bone.sides.has(0):
+			var not_possibles : Array[int] = overhead.region_manager.sides_on_region_border_of(region,active_bone.coords)
+			var probe_hits : Array = overhead.probe_around_bone(active_bone,0,[-2]) #checking for pits
 			var possibles : Array[int] = []
 			for i in range(active_bone.sides.size()):
 				if active_bone.sides[i] == 0:
-					match overhead.tile_type:
-						LevelGenerator.TILE_TYPE.SQUARE: #don't allow it to exceed region
-							if not (active_bone.coords.x <= region.pos.x and i == 3):
-								if not (active_bone.coords.y <= region.pos.y and i == 0):
-									if not (active_bone.coords.x >= region.pos.x + region.area.x-1 and i == 1):
-										if not (active_bone.coords.y >= region.pos.y + region.area.y-1 and i == 2):
-											possibles.append(i)
-						LevelGenerator.TILE_TYPE.HEXAGON:
-							pass #TODO: make this work after hexagons are made working in bsp!
+					if not i in not_possibles:
+						if not i in probe_hits:
+							possibles.append(i)
 			if possibles.is_empty():
 				active_bones.erase(active_bone)
-				if tile_limit_flag:
-					if bone_count >= region_tile_limit or active_bones.is_empty():
-						break # break = the end of bone generation for this region
-				else:
-					if active_bones.is_empty():
-						break
+				if active_bones.is_empty():
+					break
 				continue
 			direction = possibles.pick_random()
 			place_bone(active_bone.coords+overhead.direction_to_offset(direction),direction,active_bone)
 		else: #removing the bones with no unvisited neighbors
 			active_bones.erase(active_bone)
-		if tile_limit_flag:
-			if bone_count >= region_tile_limit or active_bones.is_empty():
-				break
-		else:
 			if active_bones.is_empty():
 				break
+	#reopening the closed connections between regions
+	reopen_connections()
 
-func init_bones():
-	pass
 
+##storing connections
+func _set_connections():
+	var region_bones : Array[Array] = overhead.region_to_bones(region)
+	#checking every border cell for a 2; a connection placed by region_manager
+	for i in range(len(region_bones)):
+		for j in range(len(region_bones[i])):
+			if region_bones[i][j].sides.has(2):
+				for z in range(len(region_bones[i][j].sides)):
+					if region_bones[i][j].sides[z] == 2:
+						connections.append([region_bones[i][j],z])
+				region_bones[i][j].sides.fill(0) #closing off connection(s) to allow GTA to work correctly
+			#skipping middle section for efficency on top + bottom borders
+			if not i == 0 and not i == region_bones.size()-1:
+				j = region_bones.size()-1
+
+#placing the pits in the level before we generate everything
+func place_pits():
+	#turning connections into just the bones
+	var connection_bones : Array[LevelGenBone] = []
+	for i in connections:
+		connection_bones.append(i[0])
+	#generating pits
+	var pathfinder_map = overhead.get_pathfinder_map(region,false)
+	var pits_left = region_pits
+	var region_bones : Array[Array] = overhead.region_to_bones(region)
+	var inner_flag : bool = false #makes sure the pits loop dosen't last forever
+	while (pits_left > 0):
+		#we have to loop this setup because the potential pits change whenever a pit is placed
+		var possibles : Array[LevelGenBone] = []
+		for i in region_bones:
+			possibles.append_array(i.filter(func(bone : LevelGenBone): return not bone.pit_flag and not connection_bones.has(bone)))
+		if possibles.is_empty():
+			break
+		while (true): #only breaks when one pit is placed or there's no where to place a pit
+			if possibles.is_empty():
+				inner_flag = true
+				break
+			var rolled_bone : LevelGenBone = possibles.pick_random()
+			possibles.erase(rolled_bone)
+			#we're checking the neighboring bones connection to each other to ensure pits didn't disconnect the level
+			var neighbors : Array[LevelGenBone] = []
+			pathfinder_map.set_point_disabled(overhead.bone_coords_to_id(region,rolled_bone.coords))
+			var region_borders : Array[int] = overhead.region_manager.sides_on_region_border_of(region,rolled_bone.coords)
+			for j in range(len(rolled_bone.sides)):
+				if not j in region_borders:
+					var neighbor = overhead.get_map_bone(rolled_bone.coords + overhead.direction_to_offset(j))
+					#no border, no pits
+					if not neighbor == null:
+						if not neighbor.pit_flag:
+							neighbors.append(neighbor)
+			var disconnected_flag : bool = false
+			for j in range(1,len(neighbors)): #ensuring that the pits placed keep all the bones connected
+				if pathfinder_map.get_point_path(overhead.bone_coords_to_id(region,neighbors[j-1].coords),overhead.bone_coords_to_id(region,neighbors[j].coords)).is_empty():
+					disconnected_flag = true
+					break
+			if disconnected_flag: #when a pit would disconnect bones
+				pathfinder_map.set_point_disabled(overhead.bone_coords_to_id(region,rolled_bone.coords),false)
+				continue
+			#finalizing pit placement, only runs if previous check dosen't rerun the loop
+			pathfinder_map.remove_point(overhead.bone_coords_to_id(region,rolled_bone.coords))
+			place_pit(rolled_bone)
+			pits_left -= 1
+			break
+		if inner_flag:
+			break
+	#sending stuff to next generator
+	if pits_left != 0:
+		overhead.region_manager.emit_signal("overloaded_pits",pits_left)
+
+## because bone placement WILL skip over pits :)
+func place_pit(bone : LevelGenBone):
+	bone.pit_flag = true
+	var bones_around : Array = overhead.probe_around_bone(bone,0,[-2,1])
+	for i in bones_around:
+		var dir = overhead.coords_to_direction(bone.coords,i[0])
+		bone.sides[dir] = i[1].get(0) #i[1] is either [-2] (pit) or [1] (non-empty bone)
+		overhead.get_map_bone(i[0]).sides[overhead.inverse_direction(dir)] = -2
+
+## "placing" bones ; filling up the currently blank bones with data
 func place_bone(coords : Vector2i, direction : int, branch_bone : LevelGenBone) -> LevelGenBone:
-	var new_bone : LevelGenBone = overhead.bone_resource_template.duplicate(true)
-	bone_ages.push_front(new_bone)
+	var new_bone : LevelGenBone = overhead.get_map_bone(coords)
 	new_bone.coords = coords
 	active_bones.append(new_bone)
-	overhead.map_bones[coords.x][coords.y] = new_bone
 	#direction of -1 means there is no branch bone (think origin bone)
 	if direction != -1:
 		new_bone.sides[overhead.inverse_direction(direction)] = 2
 		branch_bone.sides[direction] = 2
-	bone_count += 1
 	#maping out around new bone
-	var hits : Array = overhead.probe_around_bone(new_bone,0,[-1,1])
+	var hits : Array = overhead.probe_around_bone(new_bone,0,[-2,-1,1])
 	for i in hits:
 		var dir = overhead.coords_to_direction(new_bone.coords,i[0])
 		if i[1].has(-1):
 			new_bone.sides[dir] = -1 #border
-		elif i[1].has(1):
-			if overhead.get_map_bone(i[0]) == branch_bone:
-				continue
-			new_bone.sides[dir] = 1 #there's a cell over there, so wall it off
+		elif i[1].has(-2):
+			new_bone.sides[dir] = -2 #pit
 			overhead.get_map_bone(i[0]).sides[overhead.inverse_direction(dir)] = 1
+		elif i[1].has(1):
+			if not overhead.get_map_bone(i[0]) == branch_bone:
+				new_bone.sides[dir] = 1 #there's a cell over there, so wall it off
+				overhead.get_map_bone(i[0]).sides[overhead.inverse_direction(dir)] = 1
 	return new_bone
+
+## reopening connections because I had to close them during general generation
+func reopen_connections():
+	for i in connections:
+		i[0].sides[i[1]] = 2
+		overhead.get_map_bone(i[0].coords+overhead.direction_to_offset(i[1])).sides[overhead.inverse_direction(i[1])] = 2
 
 func decision_maker() -> LevelGenBone:
 	#makes the important decision -- what cell are we building off next?
