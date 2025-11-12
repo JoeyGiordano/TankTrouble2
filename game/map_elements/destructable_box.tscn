@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_qxtel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdo5"]
+size = Vector2(17.499998, 17.499998)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fugm8"]
 size = Vector2(14, 14)
@@ -19,6 +20,7 @@ collision_layer = 13
 collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.5762787e-07, -3.5762787e-07)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_mfdo5")
 

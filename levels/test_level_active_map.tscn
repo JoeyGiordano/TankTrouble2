@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckef6glp3htbr"]
+[gd_scene load_steps=13 format=3 uid="uid://ckef6glp3htbr"]
 
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_uqreq"]
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_54bsp"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bco7bn3j6pl3n" path="res://game/map_elements/moveable_box.tscn" id="7_kqg12"]
 [ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="7_uepb4"]
 [ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="8_5swdi"]
+[ext_resource type="PackedScene" uid="uid://bdbhw1olqqxyt" path="res://game/map_elements/invincibility_field.tscn" id="10_jphbi"]
 
 [node name="LevelTemplate" type="Node"]
 
@@ -108,31 +109,34 @@ position = Vector2(-266, -50)
 [node name="Moveable Box" parent="Active Map Stuff/Moveable Boxes" instance=ExtResource("7_kqg12")]
 position = Vector2(-186, 36)
 
-[node name="SpeedFields" type="Node2D" parent="Active Map Stuff"]
+[node name="Fields" type="Node2D" parent="Active Map Stuff"]
 
-[node name="Magnetic Area" parent="Active Map Stuff/SpeedFields" instance=ExtResource("7_b6xup")]
+[node name="Magnetic Area" parent="Active Map Stuff/Fields" instance=ExtResource("7_b6xup")]
 position = Vector2(-186, 120)
 scale = Vector2(7, 7)
 magnetic_strength = 4
 clockwise_rotation = true
 
-[node name="Tank Speed Modifier Area" parent="Active Map Stuff/SpeedFields" instance=ExtResource("7_evsuk")]
+[node name="Tank Speed Modifier Area" parent="Active Map Stuff/Fields" instance=ExtResource("7_evsuk")]
 position = Vector2(117, 33.999996)
 scale = Vector2(6.964583, -6.5526533)
 
-[node name="Bullet Speed Modifier Area" parent="Active Map Stuff/SpeedFields" instance=ExtResource("7_5swdi")]
+[node name="Bullet Speed Modifier Area" parent="Active Map Stuff/Fields" instance=ExtResource("7_5swdi")]
 position = Vector2(-188, 121)
 scale = Vector2(5, 5)
 
-[node name="Magnetic Area2" parent="Active Map Stuff/SpeedFields" instance=ExtResource("7_b6xup")]
+[node name="Magnetic Area2" parent="Active Map Stuff/Fields" instance=ExtResource("7_b6xup")]
 position = Vector2(-1.0000153, -108.999985)
 scale = Vector2(7, 7)
 magnetic_strength = 4
 clockwise_rotation = true
 
-[node name="Bullet Speed Modifier Area2" parent="Active Map Stuff/SpeedFields" instance=ExtResource("7_5swdi")]
+[node name="Bullet Speed Modifier Area2" parent="Active Map Stuff/Fields" instance=ExtResource("7_5swdi")]
 position = Vector2(-155.99998, -35.000015)
 scale = Vector2(5, 5)
+
+[node name="Invincibility Field" parent="Active Map Stuff/Fields" instance=ExtResource("10_jphbi")]
+position = Vector2(158, -108)
 
 [node name="PlayerSpawner" parent="." instance=ExtResource("7_uepb4")]
 

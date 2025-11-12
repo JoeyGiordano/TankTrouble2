@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdbhw1olqqxyt"]
+
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_3ljcf"]
+[ext_resource type="Script" uid="uid://du74irtiyg63n" path="res://game/map_elements/invincibility_field.gd" id="1_l8q8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8q8o"]
+
+[node name="Invincibility Field" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_l8q8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.3137255, 0.58431375)
+position = Vector2(1.04904175e-05, -1.04904175e-05)
+scale = Vector2(200, 200)
+texture = ExtResource("1_3ljcf")
+region_enabled = true
+region_rect = Rect2(64, 66, 1, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_l8q8o")
