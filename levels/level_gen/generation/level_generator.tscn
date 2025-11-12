@@ -14,8 +14,4 @@ tile_set = ExtResource("3_u7cxg")
 [node name="Origin" type="Marker2D" parent="."]
 gizmo_extents = 20.0
 
-[node name="BoneHolder" type="Node2D" parent="Origin"]
-
 [node name="WallHolder" type="Node2D" parent="Origin"]
-
-[node name="SpawnerHolder" type="Node2D" parent="Origin"]
