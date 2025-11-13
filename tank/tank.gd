@@ -60,8 +60,10 @@ func _process(_delta) :
 		invincibility_heat -= _delta;
 		
 	#Change tank color based on heat
-	tank_rigidbody.get_loadout().modulate = Color(invincibility_heat/20, 1.0, 1.0, 1.0)  
-
+	print(invincibility_heat)
+	print(invincible_effect)
+	#tank_rigidbody.get_loadout().modulate = Color(1.0, 1.0-(invincibility_heat/10), 1.0-(invincibility_heat/10), 1.0) 
+	tank_rigidbody.get_loadout().modulate = Color(1.0, 0.0, 0.0, 1.0)
 	
 
 func _physics_process(_delta):

@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@onready var hitbox : Area2D = $Hitbox
+@onready var hitbox : Area2D = $Area2D
 
 var t : Tank
 

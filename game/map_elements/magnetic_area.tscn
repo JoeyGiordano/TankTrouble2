@@ -1,7 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx0nr0e7wnvtg"]
+[gd_scene load_steps=8 format=3 uid="uid://dx0nr0e7wnvtg"]
 
 [ext_resource type="Script" uid="uid://d6cunwhfg404" path="res://game/map_elements/magnetic_area.gd" id="1_k8obu"]
+[ext_resource type="Shader" uid="uid://b0ft5b2otk62a" path="res://test_01.gdshader" id="2_vfjf4"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_yi5om"]
+[ext_resource type="Script" uid="uid://colq55xqp1m13" path="res://game/map_elements/shader_scaler.gd" id="4_ou0r0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rlmis"]
+shader = ExtResource("2_vfjf4")
+shader_parameter/node2d_scale = Vector2(20, 20)
+shader_parameter/border_color = Vector4(0.4, 0.7, 0.9, 0)
+shader_parameter/field_background_color = Vector4(0.2, 0.2, 0.6, 0.2)
+shader_parameter/field_primary_color = Vector4(0, 0.7, 1, 0.2)
+shader_parameter/field_secondary_color = Vector4(0.2, 0.5, 1, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghps4"]
 
@@ -24,12 +34,16 @@ magnetic_strength = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.91322726, 0.91299045, 0.24110928, 0.39607844)
+material = SubResource("ShaderMaterial_rlmis")
+position = Vector2(5.9604645e-07, 5.9604645e-07)
 scale = Vector2(20, 20)
 texture = ExtResource("2_yi5om")
 region_enabled = true
 region_rect = Rect2(64, 67, 1, 1)
+script = ExtResource("4_ou0r0")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 4
 

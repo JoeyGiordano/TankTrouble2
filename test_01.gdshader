@@ -1,12 +1,12 @@
 shader_type canvas_item;
 
 uniform vec2 node2d_scale;
-const vec4 border_color = vec4(0.4, 0.7, 0.9, 0.9);
-const vec4 field_background_color = vec4(0.2,0.2,0.6,0.2);
-const vec4 field_primary_color = vec4(0.1, 0.7, 1.0, 1.0);
-const vec4 field_secondary_color = vec4(0.2, 0.5, 1.0, 1.0);
+uniform vec4 border_color = vec4(0.4, 0.7, 0.9, 0.9);
+uniform vec4 field_background_color = vec4(0.2,0.2,0.6,0.2);
+uniform vec4 field_primary_color = vec4(0.1, 0.7, 1.0, 1.0);
+uniform vec4 field_secondary_color = vec4(0.2, 0.5, 1.0, 1.0);
 
-const int pixelation = 10;
+const int pixelation = 200;
 
 float border(vec2 uv, float border_width) {
 	vec2 bottom_left = step(vec2(border_width/node2d_scale), uv);
@@ -30,9 +30,9 @@ vec3 random(vec3 uvt){
 float noise(vec2 uv) {
 	vec2 uv_index = floor(uv);
 	vec2 uv_fract = fract(uv);
-	
+
 	vec2 blur = smoothstep(0.0, 1.0, uv_fract);
-	
+
 	return mix( mix( dot( random(uv_index + vec2(0.0,0.0) ), uv_fract - vec2(0.0,0.0) ),
 					 dot( random(uv_index + vec2(1.0,0.0) ), uv_fract - vec2(1.0,0.0) ), blur.x),
 				mix( dot( random(uv_index + vec2(0.0,1.0) ), uv_fract - vec2(0.0,1.0) ),
@@ -91,8 +91,8 @@ float pcurve( float x, float a, float b ){
 
 void fragment() {
 	vec2 scaled_uv = UV*node2d_scale;
-	vec2 custom_uv = round(scaled_uv * float(pixelation)) / float(pixelation);
-	float b = border(UV, 0.02);
+	vec2 custom_uv = 5.0*round(scaled_uv * float(pixelation)) / float(pixelation);
+	float b = border(UV, 0.0);
 	float field1 = aug_noise1(custom_uv*1.0);
 	float field2 = aug_noise2((custom_uv+vec2(133.0,231.0))*3.0);
 	float ratio = 0.5;
