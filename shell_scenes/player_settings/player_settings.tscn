@@ -62,6 +62,7 @@ script = ExtResource("1_h1a8k")
 switch_to = "ready_up"
 
 [node name="PlayerGraphic1" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -76,7 +77,6 @@ color = Color(1, 0, 0, 1)
 
 [node name="PlayerGraphic2" type="Control" parent="."]
 visible = false
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -99,7 +99,6 @@ color = Color(1, 0, 0, 1)
 
 [node name="PlayerGraphic3" type="Control" parent="."]
 visible = false
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
