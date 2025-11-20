@@ -91,7 +91,7 @@ float pcurve( float x, float a, float b ){
 
 void fragment() {
 	vec2 scaled_uv = UV*node2d_scale;
-	vec2 custom_uv = 2.0*round(scaled_uv * float(pixelation)) / float(pixelation);
+	vec2 custom_uv = 4.0*round(scaled_uv * float(pixelation)) / float(pixelation);
 	float b = border(UV, 0.0);
 	float field1 = aug_noise1(custom_uv*1.0);
 	float field2 = aug_noise2((custom_uv+vec2(133.0,231.0))*3.0);

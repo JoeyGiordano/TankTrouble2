@@ -1,13 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6wb8oosdthco"]
+[gd_scene load_steps=10 format=3 uid="uid://c6wb8oosdthco"]
 
 [ext_resource type="Script" uid="uid://bqgjqft6dywot" path="res://game/map_elements/tank_stat_modifier_area.gd" id="1_t30ux"]
 [ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="2_ytnfq"]
+[ext_resource type="Shader" uid="uid://b0ft5b2otk62a" path="res://test_01.gdshader" id="3_mjagy"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="3_y4yp3"]
+[ext_resource type="Script" uid="uid://colq55xqp1m13" path="res://game/map_elements/shader_scaler.gd" id="5_sp83c"]
 
 [sub_resource type="Resource" id="Resource_3jloe"]
 script = ExtResource("2_ytnfq")
 forward_speed = 100.0
 metadata/_custom_type_script = "uid://8jp733sld27f"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x23ut"]
+shader = ExtResource("3_mjagy")
+shader_parameter/node2d_scale = Vector2(20, 20)
+shader_parameter/border_color = Vector4(0.4, 0.7, 0.9, 0.9)
+shader_parameter/field_background_color = Vector4(0.7, 0.2, 0.6, 0.2)
+shader_parameter/field_primary_color = Vector4(1, 0.2, 1, 1)
+shader_parameter/field_secondary_color = Vector4(0.3, 0.5, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi6jf"]
 
@@ -31,12 +41,15 @@ boost = SubResource("Resource_3jloe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.86805695, 5.2943824e-06, 0.54054344, 0.4627451)
+material = SubResource("ShaderMaterial_x23ut")
 scale = Vector2(20, 20)
 texture = ExtResource("3_y4yp3")
 region_enabled = true
 region_rect = Rect2(64, 66, 1, 1)
+script = ExtResource("5_sp83c")
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 8
 

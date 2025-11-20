@@ -1,7 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2vd12pjydjhl"]
+[gd_scene load_steps=8 format=3 uid="uid://b2vd12pjydjhl"]
 
+[ext_resource type="Shader" uid="uid://b0ft5b2otk62a" path="res://test_01.gdshader" id="1_1whef"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_fik1q"]
 [ext_resource type="Script" uid="uid://blqc5qe1fprgt" path="res://game/map_elements/bullet_speed_modifier_area.gd" id="1_ghps4"]
+[ext_resource type="Script" uid="uid://colq55xqp1m13" path="res://game/map_elements/shader_scaler.gd" id="4_1hhgm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1whef"]
+shader = ExtResource("1_1whef")
+shader_parameter/node2d_scale = Vector2(20, 20)
+shader_parameter/border_color = Vector4(0.4, 0.7, 0.9, 0.9)
+shader_parameter/field_background_color = Vector4(0.2, 0.2, 0.6, 0.2)
+shader_parameter/field_primary_color = Vector4(0.1, 0.7, 0.5, 1)
+shader_parameter/field_secondary_color = Vector4(0.2, 0.2, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghps4"]
 
@@ -24,12 +34,15 @@ speed_mod = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 1, 0.39607844)
+material = SubResource("ShaderMaterial_1whef")
 scale = Vector2(20, 20)
 texture = ExtResource("1_fik1q")
 region_enabled = true
 region_rect = Rect2(64, 67, 1, 1)
+script = ExtResource("4_1hhgm")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 4
 
