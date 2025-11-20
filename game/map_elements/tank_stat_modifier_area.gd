@@ -17,6 +17,7 @@ func on_area_entered(area : Area2D) :
 	if area.is_in_group("tank_hitbox") :
 		var tank : Tank = area.get_parent().tank_rigidbody.tank #all tank hitboxes must be direct children of a tank loadout
 		give_effect(tank)
+	
 		
 func on_area_exited(area : Area2D) :
 	if area.is_in_group("tank_hitbox") :

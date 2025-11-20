@@ -48,6 +48,10 @@ class_name _Reference
 @export var nuke : PackedScene
 @export var item_scene : PackedScene
 
+@export_group("Animations")
+@export var explosion_anim : PackedScene
+
+
 @export_group("Tank Loadouts")
 @export var empty_loadout : PackedScene
 @export var basic_loadout : PackedScene

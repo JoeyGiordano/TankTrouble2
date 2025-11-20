@@ -24,6 +24,11 @@ var id : int # will always be unique, never modified
 @onready var stats_handler : StatsHandler = $StatsHandler
 @onready var effects_handler : EffectsHandler = $EffectsHandler
 
+#Invincability
+var invincible_effect : bool = false
+var invincibility_heat : float = 0.0
+@export var max_heat : float
+
 # Input
 var move_input : Vector2 = Vector2.ZERO
 
@@ -45,6 +50,23 @@ func _ready() :
 func _process(_delta) :
 	DEBUG_PROCESS()
 	detect_player_input()
+	
+	#invincibility heat
+	if invincible_effect:
+		invincibility_heat += _delta
+		
+		if invincibility_heat >= max_heat:
+			invincible_effect = false
+			invincibility_heat = 0
+			die()
+	else:
+		if(invincibility_heat > 0):
+			invincibility_heat -= _delta;
+		
+	#Change tank color based on heat
+	tank_rigidbody.get_loadout().modulate = Color(1.0, 1.0-(invincibility_heat/max_heat), 1.0-(invincibility_heat/max_heat), 1.0) 
+
+	
 
 func _physics_process(_delta):
 	tank_rigidbody.move_and_rotate()
@@ -98,6 +120,16 @@ func change_loadout(loadout_name : String) :
 func destroy() :
 	TankManager.destroy_tank(self)
 
+
+#Detect if in the invincability field
+func give_invincibility():
+	invincible_effect = true
+
+
+func remove_invincibility():
+	invincible_effect = false
+
+
 ## Signal Response
 
 func on_beginning_of_round() :
@@ -109,13 +141,19 @@ func on_end_of_round() :
 
 ## State
 
+
+
 func die() :
 	if dead : return
+	#Check if in the invincibility field
+	if invincible_effect : return
 	lock()
 	#play death sound and anim
 	despawn()
 	dead = true
 	GameManager.tank_died()
+
+
 
 func despawn() :
 	lock()

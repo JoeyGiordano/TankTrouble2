@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhnun2qb7oy3g"]
 
 [ext_resource type="Script" uid="uid://ll22rw3b2kvr" path="res://game/map_elements/explosive_barrel.gd" id="1_qiun0"]
-[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_uocmh"]
+[ext_resource type="Texture2D" uid="uid://co2wwagvab7hc" path="res://explosive.png" id="3_epv1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiun0"]
 size = Vector2(16, 16)
@@ -9,10 +9,11 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epv1b"]
 size = Vector2(14, 14)
 
-[node name="Explosive Barrel" type="StaticBody2D"]
+[node name="Explosive Barrel" type="StaticBody2D" node_paths=PackedStringArray("sprite2D")]
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_qiun0")
+sprite2D = NodePath("Sprite2D")
 health = 1
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -20,17 +21,15 @@ collision_layer = 13
 collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_qiun0")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.94509804, 0, 0.03137255, 1)
-scale = Vector2(14, 14)
-texture = ExtResource("1_uocmh")
-region_enabled = true
-region_rect = Rect2(64, 66, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_epv1b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_epv1b")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
