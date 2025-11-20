@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://crsr7ik4jallv"]
+
+[ext_resource type="Script" uid="uid://brlmwcvcimmyj" path="res://tank/loadouts/nuke_loadout/nuke_tankloadout.gd" id="1_40g1q"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_cqyiq"]
+
+[node name="NukeTankLoadout" type="CollisionPolygon2D"]
+polygon = PackedVector2Array(-10, -7, 12, -7, 12, 7, -10, 7)
+script = ExtResource("1_40g1q")
+
+[node name="Sprite" type="Node2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="Body" type="Sprite2D" parent="Sprite"]
+scale = Vector2(22, 14)
+texture = ExtResource("2_cqyiq")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="Back" type="Sprite2D" parent="Sprite"]
+modulate = Color(0.858218, 0.858218, 0.858218, 1)
+position = Vector2(-4, 2.3841858e-07)
+scale = Vector2(7.9999995, 12.000001)
+texture = ExtResource("2_cqyiq")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="Barrel" type="Sprite2D" parent="Sprite"]
+modulate = Color(0.942703, 0.481239, 0.933172, 1)
+position = Vector2(13.000001, 0)
+scale = Vector2(10.000001, 10)
+texture = ExtResource("2_cqyiq")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="Guntip" type="Node2D" parent="."]
+position = Vector2(19, 0)
+
+[node name="Hitbox" type="Area2D" parent="." groups=["tank_hitbox"]]
+position = Vector2(1, 0)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(-11, -7, -11, 7, 11, 7, 11, 5.048877, 18, 5, 18, -5, 11, -5, 11, -7)

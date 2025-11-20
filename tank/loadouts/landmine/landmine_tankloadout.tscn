@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://1s3gq0f5ag1a"]
+
+[ext_resource type="Script" uid="uid://xixf2g7l3put" path="res://tank/loadouts/landmine/landmine_tankloadout.gd" id="1_4l3ap"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_ucgqr"]
+
+[node name="LandmineTankLoadout" type="CollisionPolygon2D"]
+polygon = PackedVector2Array(-10, -7, 12, -7, 12, 7, -10, 7)
+script = ExtResource("1_4l3ap")
+
+[node name="Sprite" type="Node2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="Body" type="Sprite2D" parent="Sprite"]
+scale = Vector2(22, 14)
+texture = ExtResource("1_ucgqr")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="Back" type="Sprite2D" parent="Sprite"]
+modulate = Color(0.858218, 0.858218, 0.858218, 1)
+scale = Vector2(3, 9.5)
+texture = ExtResource("1_ucgqr")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="Barrel" type="Sprite2D" parent="Sprite"]
+modulate = Color(0.942703, 0.481239, 0.933172, 1)
+position = Vector2(-1.1920929e-07, 1.0587912e-22)
+scale = Vector2(10.25, 6)
+texture = ExtResource("1_ucgqr")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="Guntip" type="Node2D" parent="."]
+position = Vector2(-10, 0)
+
+[node name="Hitbox" type="Area2D" parent="." groups=["tank_hitbox"]]
+position = Vector2(1, 0)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(-11, -7, -11, 7, 11, 7, 11, -7)

@@ -12,6 +12,7 @@ var dir_changed : bool = false #set to true the first time the bullet bounces
 var speed : float
 var dir : Vector2
 var lifetime : float #lifetime in seconds
+var remote : bool = false
 
 #region - variables for the spawned shards
 var num_shards : int = 8
@@ -19,6 +20,7 @@ var shard_speed : float = 100.0
 var shard_lifetime : float = 1.5
 var exploded : bool = false
 var shards : Array[BasicBullet] = []
+var spawn_timedelay : float = 0.05
 #endregion
 
 
@@ -51,19 +53,23 @@ func on_area_entered(area : Area2D) : #contact_monitor must be set to true and m
 		#wait for tank to despawn so that bullet shards dont hit player
 		await get_tree().create_timer(0.02).timeout
 		call_deferred("spawn_shards")
-		queue_free()
 
 # when bullet hits a wall, it deletes itself and sprays the basic bullets
 func on_body_entered(_body : Node) :
+	#print("rigid")
+	if not _body.is_in_group("tank_rigidbody") :
+		call_deferred("spawn_shards")
+	
+# this function called by tank when remote for bullet is true 
+func remote_detonate() -> void:
 	call_deferred("spawn_shards")
-	queue_free()
 	
 func on_end_of_round() :
-	print("endround")
 	despawn_shards()
 	return
 	#queue_free()
 
+	
 ## Misc
 func spawn_shards() -> void: #Array[BasicBullet]:
 	if num_shards <= 0: return #numshards must be >0
@@ -79,17 +85,16 @@ func spawn_shards() -> void: #Array[BasicBullet]:
 		var bb : BasicBullet = BasicBullet.instantiate(global_position, shard_speed, v, shard_lifetime)
 		bb.source_tank_id = source_tank_id   # preserve ownership 
 		shards.append(bb)	#add to shards array referece
-
+	
+	queue_free()
 	return
 
 #remove all shards from multibullet
 func despawn_shards():
-	print("get rid of em")
 	for s in shards:
-		print("shard removed")
 		s.queue_free()
 
-static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, lifetime_ : float) -> MultiBullet :
+static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, lifetime_ : float, remote_ : bool) -> MultiBullet :
 	#create a new bullet and return it
 	#instantiate a tank from the .tscn
 	#need to add to ref file
@@ -99,6 +104,7 @@ static func instantiate(position_ : Vector2 , speed_ : float, dir_ : Vector2, li
 	b.dir = dir_
 	b.position = position_
 	b.lifetime = lifetime_
+	b.remote = remote_
 	
 	#add the new bullet to the scene tree in the correct placem
 	Global.Entities.add_child(b)

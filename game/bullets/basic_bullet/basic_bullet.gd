@@ -19,8 +19,8 @@ func _ready() :
 	linear_velocity = speed * dir.normalized()
 	
 	#source tank invincibility
-	await get_tree().create_timer(0.07).timeout
-	source_tank_invincible = false
+	#await get_tree().create_timer(0.001).timeout
+	#source_tank_invincible = false
 
 func _process(delta):
 	lifetime -= delta
@@ -28,6 +28,11 @@ func _process(delta):
 		#play bullet disappread sound and anim
 		queue_free()
 
+var x = 0
+func _physics_process(delta: float) -> void:
+	if x == 1:
+		source_tank_invincible = false
+	x+=1
 ## Signal Response
 
 func on_area_entered(area : Area2D) : #contact_monitor must be set to true and max_contacts_reported must be >0
