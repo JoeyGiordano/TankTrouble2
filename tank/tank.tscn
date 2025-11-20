@@ -11,6 +11,7 @@ friction = 0.5
 
 [node name="Tank" type="Node"]
 script = ExtResource("1_77ink")
+max_heat = 10.0
 
 [node name="TankRigidbody" type="RigidBody2D" parent="."]
 collision_layer = 2

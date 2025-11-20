@@ -27,6 +27,7 @@ var id : int # will always be unique, never modified
 #Invincability
 var invincible_effect : bool = false
 var invincibility_heat : float = 0.0
+@export var max_heat : float
 
 # Input
 var move_input : Vector2 = Vector2.ZERO
@@ -53,17 +54,18 @@ func _process(_delta) :
 	#invincibility heat
 	if invincible_effect:
 		invincibility_heat += _delta
-		if invincibility_heat == 10:
+		
+		if invincibility_heat >= max_heat:
 			invincible_effect = false
+			invincibility_heat = 0
 			die()
 	else:
-		invincibility_heat -= _delta;
+		if(invincibility_heat > 0):
+			invincibility_heat -= _delta;
 		
 	#Change tank color based on heat
-	print(invincibility_heat)
-	print(invincible_effect)
-	#tank_rigidbody.get_loadout().modulate = Color(1.0, 1.0-(invincibility_heat/10), 1.0-(invincibility_heat/10), 1.0) 
-	tank_rigidbody.get_loadout().modulate = Color(1.0, 0.0, 0.0, 1.0)
+	tank_rigidbody.get_loadout().modulate = Color(1.0, 1.0-(invincibility_heat/max_heat), 1.0-(invincibility_heat/max_heat), 1.0) 
+
 	
 
 func _physics_process(_delta):
