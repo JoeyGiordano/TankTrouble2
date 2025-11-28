@@ -29,7 +29,7 @@ func _process(delta):
 		queue_free()
 
 var x = 0
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if x == 1:
 		source_tank_invincible = false
 	x+=1

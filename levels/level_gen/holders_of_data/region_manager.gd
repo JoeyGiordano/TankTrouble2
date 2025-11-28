@@ -14,6 +14,7 @@ var domain : LevelRegion #root region
 
 ##storage for the above signal
 var overload_pits : int = 0
+
 var region_total : int = 0
 
 #root is the whole level area
@@ -90,18 +91,14 @@ func direction_to_offset_region(direction : int) -> Vector2i:
 ## same as sides_on_level_border_of() but instead focusing on region borders
 func sides_on_region_border_of(region : LevelRegion, coords : Vector2i) -> Array[int]:
 	var results : Array[int] = []
-	match overhead.tile_type:
-		overhead.TILE_TYPE.SQUARE:
-			if coords.y <= region.pos.y:
-				results.append(0)
-			if coords.x >= region.pos.x+region.area.x-1:
-				results.append(1)
-			if coords.y >= region.pos.y+region.area.y-1:
-				results.append(2)
-			if coords.x <= region.pos.x:
-				results.append(3)
-		overhead.TILE_TYPE.HEXAGON:
-			pass
+	if coords.y <= region.pos.y:
+		results.append(0)
+	if coords.x >= region.pos.x+region.area.x-1:
+		results.append(1)
+	if coords.y >= region.pos.y+region.area.y-1:
+		results.append(2)
+	if coords.x <= region.pos.x:
+		results.append(3)
 	return results
 
 #endregion
@@ -143,6 +140,7 @@ func generate_regions_bones():
 	connect_all_regions()
 	var regions : Array[LevelRegion] = domain.get_undivided_subregions()
 	for i in range(len(regions)):
+		#applying pits
 		var region_pits : int = 0
 		if overhead.pits_left > 0:
 			match overhead.region_pit_rules:
@@ -158,6 +156,7 @@ func generate_regions_bones():
 					else:
 						region_pits = randi_range(0,overhead.pits_left)
 					overhead.pits_left -= region_pits
+		#generator and overloading management
 		var gta_generator = GTARegionGenerator.new(regions[i],overhead,region_pits+overload_pits)
 		overload_pits = 0
 		add_child(gta_generator)

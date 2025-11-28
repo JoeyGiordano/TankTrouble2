@@ -58,3 +58,5 @@ class_name _Reference
 @export_category("Other")
 @export_group("Tank Starting Stats")
 @export var base_tank_stats : StatBoost
+@export_group("TilesetLib")
+@export var tileset_library : TilesetLib

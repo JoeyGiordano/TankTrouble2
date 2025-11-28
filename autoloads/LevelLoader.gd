@@ -34,10 +34,10 @@ func _determine_next_level() -> String :
 		#5 : return "test_level_3"
 		#6 : return "custom_level_1"
 		
-	return "test_level_3" 
+	#return "test_level_3" 
 	#return "test_level_" + str(randi_range(0,3))
 	#return "test_level_3"
-	#return "test_level_gen_level"
+	return "test_level_gen_level"
 
 func destroy_all_entities() :
 	var x = Global.Entities.get_children()

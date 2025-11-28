@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dimsdmfqcpvlg"]
+[gd_scene load_steps=32 format=3 uid="uid://dimsdmfqcpvlg"]
 
 [ext_resource type="Script" uid="uid://ciyveyuo2ihr0" path="res://autoloads/Reference/Reference.gd" id="1_pmmna"]
 [ext_resource type="PackedScene" uid="uid://d176ir76ayfrc" path="res://shell_scenes/startup.tscn" id="2_qlxkd"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bd58u8e01gyf6" path="res://game/bullets/Nuke/nuke.tscn" id="23_nlf2g"]
 [ext_resource type="PackedScene" uid="uid://1s3gq0f5ag1a" path="res://tank/loadouts/landmine/landmine_tankloadout.tscn" id="27_pxxx1"]
 [ext_resource type="PackedScene" uid="uid://crsr7ik4jallv" path="res://tank/loadouts/nuke_loadout/nuke_tankloadout.tscn" id="29_pijn0"]
+[ext_resource type="Resource" uid="uid://cradvt8ln8q40" path="res://levels/level_gen/parts/tilesets/tileset_lib.tres" id="31_pijn0"]
 
 [node name="Reference" type="Node"]
 script = ExtResource("1_pmmna")
@@ -62,3 +63,4 @@ multi_loadout = ExtResource("19_d3fos")
 landmine_loadout = ExtResource("27_pxxx1")
 nuke_loadout = ExtResource("29_pijn0")
 base_tank_stats = ExtResource("15_axg78")
+tileset_library = ExtResource("31_pijn0")
