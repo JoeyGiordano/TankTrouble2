@@ -20,11 +20,12 @@ item_res = ExtResource("2_iq1mi")
 [node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_bvjr1")]
 gen_bounds = Vector2i(12, 8)
 level_pits = 7
+scale_ = Vector2i(65, 65)
 origin_marker = NodePath("OriginMarker")
-region_divisions = 4
-region_min_size = 3
 region_connections = 1
 spawner_buffers = 2
+box_gen_limits = Array[Vector3i]([Vector3i(0, 0, 10), Vector3i(0, 0, 10), Vector3i(0, 0, 10), Vector3i(0, 0, 10)])
+alternate_chance = 0
 srw_random_limits = Vector2i(3, 12)
 
 [node name="OriginMarker" type="Marker2D" parent="LevelGenerator"]
