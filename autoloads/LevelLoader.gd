@@ -23,7 +23,7 @@ func _switch_level(new_level : PackedScene) :
 	Utility.replace_scene_in_holder(Global.LevelHolder, new_level)
 
 func _determine_next_level() -> String :
-	return "test_level_3" 
+	return "test_level_gen_level" 
 
 func destroy_all_entities() :
 	var x = Global.Entities.get_children()

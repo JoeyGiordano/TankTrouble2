@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dajeyyd76x0vu"]
+[gd_scene load_steps=3 format=3 uid="uid://c45uy4ffq1qmt"]
 
-[ext_resource type="PackedScene" uid="uid://d176ir76ayfrc" path="res://shell_scenes/startup.tscn" id="2_xcs12"]
+[ext_resource type="PackedScene" uid="uid://dtak7aat5yspu" path="res://levels/level_gen/generation/level_generator.tscn" id="1_fxb05"]
+[ext_resource type="PackedScene" uid="uid://d176ir76ayfrc" path="res://shell_scenes/startup.tscn" id="1_opwrk"]
 
 [node name="GameContainer" type="Node"]
 
@@ -14,6 +15,8 @@ offset_bottom = 132.0
 
 [node name="LevelHolder" type="Node" parent="Game"]
 
+[node name="LevelGenerator" parent="Game/LevelHolder" instance=ExtResource("1_fxb05")]
+
 [node name="PlayerTanks" type="Node" parent="Game"]
 
 [node name="NpcTanks" type="Node" parent="Game"]
@@ -24,7 +27,7 @@ offset_bottom = 132.0
 
 [node name="ShellSceneHolder" type="CanvasLayer" parent="."]
 
-[node name="StartupCutscene" parent="ShellSceneHolder" instance=ExtResource("2_xcs12")]
+[node name="StartupCutscene" parent="ShellSceneHolder" instance=ExtResource("1_opwrk")]
 
 [node name="OverlayPanelHolder" type="CanvasLayer" parent="."]
 layer = 2

@@ -15,7 +15,7 @@ class_name _Global
 @onready var PlayerTanks : Node = get_node("/root/GameContainer/Game/PlayerTanks")
 @onready var NpcTanks : Node = get_node("/root/GameContainer/Game/NpcTanks")
 @onready var Entities : Node = get_node("/root/GameContainer/Game/Entities")
-
+@onready var Bullets : Node = get_node("/root/GameContainer/Game/Bullets")
 func CurrentShellScene() -> Node :
 	return ShellSceneHolder.get_child(0)
 	

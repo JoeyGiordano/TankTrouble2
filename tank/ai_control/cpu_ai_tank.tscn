@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx8i5cx0uk1x0"]
+
+[ext_resource type="Script" uid="uid://nduq441sv5ai" path="res://tank/ai_control/laikaAIv1.gd" id="1_qdljp"]
+[ext_resource type="Script" uid="uid://bxduchl0yk352" path="res://tank/rigidbody/tank_rigidbody.gd" id="2_tu87x"]
+[ext_resource type="PackedScene" uid="uid://2su3htx11obo" path="res://tank/loadouts/basic/basic_tankloadout.tscn" id="3_vtjub"]
+[ext_resource type="Script" uid="uid://bqi7mptlmtaa6" path="res://tank/stats/stats_handler.gd" id="4_6tyaq"]
+[ext_resource type="Script" uid="uid://biom1jp1k1k57" path="res://tank/effects/effects_handler.gd" id="5_nwi7k"]
+[ext_resource type="Script" uid="uid://bqabstekxo0bn" path="res://tank/ai_control/cpu_ai_tank.gd" id="6_qdljp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p4mbc"]
+friction = 0.5
+
+[node name="Tank" type="Node"]
+script = ExtResource("1_qdljp")
+
+[node name="TankRigidbody" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 19
+mass = 11.406
+physics_material_override = SubResource("PhysicsMaterial_p4mbc")
+gravity_scale = 0.0
+script = ExtResource("2_tu87x")
+
+[node name="BasicTankLoadout" parent="TankRigidbody" instance=ExtResource("3_vtjub")]
+
+[node name="Items" type="Node" parent="."]
+
+[node name="StatsHandler" type="Node" parent="."]
+script = ExtResource("4_6tyaq")
+
+[node name="EffectsHandler" type="Node" parent="."]
+script = ExtResource("5_nwi7k")
+
+[node name="AIController2D" type="Node2D" parent="."]
+script = ExtResource("6_qdljp")
+control_mode = null
+onnx_model_path = null
+reset_after = null
+expert_demo_save_path = null
+action_repeat = null
+policy_name = null
+metadata/_custom_type_script = "uid://lgh0ldw6e7n1"
