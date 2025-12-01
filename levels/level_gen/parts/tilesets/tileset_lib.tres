@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TilesetLib" load_steps=2 format=3 uid="uid://cradvt8ln8q40"]
+
+[ext_resource type="Script" uid="uid://f5dpasacmgh2" path="res://levels/level_gen/parts/tilesets/tileset_library.gd" id="1_8yi78"]
+
+[resource]
+script = ExtResource("1_8yi78")
+metadata/_custom_type_script = "uid://f5dpasacmgh2"
