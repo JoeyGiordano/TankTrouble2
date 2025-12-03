@@ -14,10 +14,17 @@ class_name LevelGenerator
 ## Building out the level based on the bones generated[br][br]
 
 #region exports
-@export_group("Generation Limits")
+@export_category("Generation Parameters")
+@export_group("Dimensions")
 ## # of cells wide x # of cells tall
 @export var gen_bounds : Vector2i = Vector2i(7,7)
-@export_subgroup("Pits")
+#WARNING: scale_ is currently not accodimating x and y not being equal at this time, sorry for the inconvenience!
+## pixel x pixel
+@export var scale_ : Vector2i = Vector2i(64,64)
+## percentage of tile space taken up by wall
+@export_range(0.01,1,0.0001) var wall_centage : float = 0.0625
+
+@export_group("Pits")
 ## -1 = random, 0 = no limit, # > 0 = tile_limit
 @export_range(-1,1000,1) var level_pits : int = 0
 ## Spread Evenly = Every region gets an (aproximately) equal number of pits[br]
@@ -25,13 +32,6 @@ class_name LevelGenerator
 ## (overloading ignores all above rules)
 @export_enum("Spread Evenly : 0","Random Spread : 1") var region_pit_rules : int = 0
 @export var random_pits_bounds : Vector2i = Vector2i(1,100)
-
-@export_group("Tiles")
-#WARNING: scale_ is currently not accodimating x and y not being equal at this time, sorry for the inconvenience!
-## pixel x pixel
-@export var scale_ : Vector2i = Vector2i(64,64)
-## percentage of tile space taken up by wall
-@export_range(0.01,1,0.0001) var wall_centage : float = 0.0625
 
 # observe decision_maker to see how these are used
 # the higher the number the more they're being used
@@ -54,14 +54,8 @@ class_name LevelGenerator
 ## Every Region Touching = every region connects to all touching regions[br]
 ## Base Connections = Min connections necessary to have everything connect[br]
 @export_enum("Every Region Every Direction : 0","Every Region Touching : 1","Base Connections : 2") var region_connections : int = 0
-
-@export_group("Spawners")
-## buffer : no spawners in a area around a spawner, edges: on or as close to the border as possible
-@export_enum("Random:0","Random With Buffer:1","Random Edges with Buffer:2","Random Edges:3","Even Edges:4") var spawner_rules : int = 1
-@export_range(1,10,1) var spawner_buffers : int = 1 #WARNING: higher buffers can make smaller maps have wonky spawner placement!
-
-@export_group("Map Elements")
-@export_subgroup("Boxes")
+@export_category("Map Elements")
+@export_group("Boxes")
 ## [d,i,m,e] [br]
 ## [# of box, random min, random max] [br]
 ## # = -1 means use random bounds, # = 0 none of that type, # > 0 means that number of boxes[br]
@@ -75,7 +69,8 @@ class_name LevelGenerator
 @export var box_walls : bool = false
 ##higher numbers means higher chance; 1 is a 1/100 chance
 @export_range(1,100,1) var box_wall_chance : int = 50
-@export_subgroup("Fields")
+@export_group("Fields")
+@export_subgroup("Placement Parameters")
 ## [bmod,tmod,mag,grav] [br]
 ## [# of field, random min, random max] [br]
 ## # = -1 means use random bounds, # = 0 none of that type, # > 0 means that number of fields[br]
@@ -83,12 +78,27 @@ class_name LevelGenerator
 @export var field_gen_limits : Array[Vector3i] = [Vector3i(3,1,10),Vector3i(3,1,10),Vector3i(3,1,10),Vector3i(3,1,10)]
 ##non-square fields
 @export var oblong_fields : bool = false
-##[bmod,tmod,mag,grav] [br]
-##min,max values (for both x and y)
+##[bmod,tmod,mag,inv] [br]
+##Vector2i(min,max) values (for both x and y dimensions)
 @export var field_size_bounds : Array[Vector2] = [Vector2(1,3),Vector2(1,3),Vector2(1,3),Vector2(1,3)]
 ##the number of "rings" of bones around a field that will not contain another field[br]
 ##WARNING: high numbers will produce SIGNFICANTLY less fields, also NO NEGATIVES!!!!!!!!
 @export_range(0,1000,1) var field_buffer : int = 1
+@export_subgroup("Field Mods")
+## a negative one value will initiate random, else just uses the provided values (random works for one or both values)
+@export var field_bmod_speed : Vector2 = Vector2(2,2)
+## upper and lower random bounds for both x and y speed modification Vector2(min,max) [x,y]
+@export var field_bmod_speed_r_bounds : Array[Vector2] = [Vector2(1.5,2),Vector2(1.5,2)]
+##WARNING: might break down if you try to place a tmod field without giving it a proper stat boost selection to choose from[br]
+## each tmod field will be given one of these statboosts at random
+@export var field_tmod_statboosts : Array[StatBoost] = []
+## -1 = random, everything else does everything else
+@export_range(-1,100,1) var field_mag_strength : int = 5
+## highly recommend not letting min go to 0 or below[br]
+## (min,max), simple random bounds of strength
+@export var field_mag_strength_r_bounds : Vector2i = Vector2i(1,11)
+## -1 = random, 0 = off, 1 = on
+@export_range(-1,1,1) var field_mag_clockwise : int = 1
 
 #manages tileset stuff
 @export_group("Floor")
@@ -96,11 +106,17 @@ class_name LevelGenerator
 ## #/100 chance for alternate tile to be used in tileset
 @export_range(0,100,1) var alternate_chance : int = 50
 
-@export_group("Miscellaneous")
+@export_category("Miscellaneous")
+@export_group("Smash Random Walls")
 ## -1 = random, 0 = don't kill random walls, # > 0 = kill # of random walls
 @export_range(-1,1000,1) var smash_random_walls : int = 0
 ## x = min, y = max
 @export var srw_random_limits : Vector2i = Vector2i(1,10)
+@export_group("Player Spawners")
+## buffer : no spawners in a area around a spawner, edges: on or as close to the border as possible
+@export_enum("Random:0","Random With Buffer:1","Random Edges with Buffer:2","Random Edges:3","Even Edges:4") var spawner_rules : int = 1
+@export_range(1,10,1) var spawner_buffers : int = 1 #WARNING: higher buffers can make smaller maps have wonky spawner placement!
+
 #endregion
 
 @onready var floor_layer : TileMapLayer = $FloorLayer
@@ -118,8 +134,8 @@ class_name LevelGenerator
 @onready var box_e : PackedScene = preload("uid://dhnun2qb7oy3g")
 @onready var field_bmod : PackedScene = preload("uid://b2vd12pjydjhl")
 @onready var field_tmod : PackedScene = preload("uid://c6wb8oosdthco")
-@onready var field_mag #I forgot what these were exactly so temp names
-@onready var field_grav #I forgot what these were exactly so temp names
+@onready var field_mag : PackedScene = preload("uid://dx0nr0e7wnvtg")
+@onready var field_inv : PackedScene = preload("uid://bdbhw1olqqxyt")
 
 #TEST: debug thing
 @onready var debug_square_sprite : Sprite2D = Sprite2D.new()
@@ -273,24 +289,53 @@ func instance_box(box_type : int) -> Node2D:
 			else:
 				new_box.health = box_health_limits[2].x
 	return new_box
-	
+
+##handles creating fields for the level, and uses level gen parameters for wanted randomness
 func instance_field(field_type : int, dimensions : Array[float]) -> Node2D:
 	var new_field : Node2D
+	#for special scale needs
+	var scale_edit : Vector2
 	match field_type:
-		0:
+		0: #bmod
 			new_field = field_bmod.instantiate()
-		1:
+			#giving bullet speed modification
+			for i in 2:
+				if field_bmod_speed[i] == -1:
+					new_field.speed_mod[i] = randf_range(field_bmod_speed_r_bounds[i].x,field_bmod_speed_r_bounds[i].y)
+				else:
+					new_field.speed_mod[i] = field_bmod_speed[i]
+		1: #tmod
 			new_field = field_tmod.instantiate()
-		2:
-			new_field = field_bmod.instantiate() #TODO: replace with actual
-		3:
-			new_field = field_bmod.instantiate() #TODO: replace with actual
+			#giving a random statboost from the selection provided
+			new_field.boost = field_tmod_statboosts.pick_random()
+		2: #mag
+			new_field = field_mag.instantiate()
+			#mag strength
+			if field_mag_strength == -1:
+				new_field.magnetic_strength = randi_range(field_mag_strength_r_bounds.x,field_mag_strength_r_bounds.y)
+			else:
+				new_field.magnetic_strength = field_mag_strength
+			#mag spin
+			if field_mag_clockwise == -1:
+				if randi_range(0,1) == 0:
+					new_field.clockwise_rotation = false
+				else:
+					new_field.clockwise_rotation = true
+			else:
+				if field_mag_clockwise == 0:
+					new_field.clockwise_rotation = false
+				else:
+					new_field.clockwise_rotation = true
+			scale_edit = Vector2(20,20) #WARNING: if you change field size in any way, you will need to edit these
+		3: #inv
+			new_field = field_inv.instantiate()
+			scale_edit = Vector2(20,20) #WARNING: if you change field size in any way, you will need to edit these
 	if oblong_fields:
-		new_field.scale.x = dimensions[0]*scale_.x
-		new_field.scale.y = dimensions[1]*scale_.y
+		new_field.scale.x = (dimensions[0]*scale_.x)/scale_edit.x
+		new_field.scale.y = (dimensions[1]*scale_.y)/scale_edit.y
 	else:
-		new_field.scale.x = dimensions[0]*scale_.x
-		new_field.scale.y = dimensions[0]*scale_.y
+		new_field.scale.x = (dimensions[0]*scale_.x)/scale_edit.x
+		new_field.scale.y = (dimensions[0]*scale_.y)/scale_edit.y
 	return new_field
 #endregion
 
@@ -302,7 +347,7 @@ func init_generation():
 	
 	#floor init
 	#TEST: making debug easier on the eyes
-	floor_layer.modulate = Color(0.0, 0.374, 0.0, 1.0)
+	floor_layer.modulate = Color(0.468, 0.468, 0.468, 1.0)
 	floor_tileset = Ref.tileset_library.lock_and_load_tileset(floor_tileset_id)
 	floor_layer.tile_set = floor_tileset
 	floor_layer.scale = scale_/floor_tileset.tile_size

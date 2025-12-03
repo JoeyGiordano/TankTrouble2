@@ -7,7 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rlmis"]
 shader = ExtResource("2_vfjf4")
-shader_parameter/node2d_scale = Vector2(20, 20)
+shader_parameter/node2d_scale = Vector2(1, 1)
 shader_parameter/border_color = Vector4(0.4, 0.7, 0.9, 0)
 shader_parameter/field_background_color = Vector4(0.2, 0.2, 0.6, 0.2)
 shader_parameter/field_primary_color = Vector4(0, 0.7, 1, 0.2)
@@ -36,10 +36,9 @@ magnetic_strength = 5
 modulate = Color(0.91322726, 0.91299045, 0.24110928, 0.39607844)
 material = SubResource("ShaderMaterial_rlmis")
 position = Vector2(5.9604645e-07, 5.9604645e-07)
-scale = Vector2(20, 20)
 texture = ExtResource("2_yi5om")
 region_enabled = true
-region_rect = Rect2(64, 67, 1, 1)
+region_rect = Rect2(64, 64, 20, 20)
 script = ExtResource("4_ou0r0")
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -1,12 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://nnt58oni83nl"]
+[gd_scene load_steps=9 format=3 uid="uid://nnt58oni83nl"]
 
 [ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="1_ayf84"]
 [ext_resource type="PackedScene" uid="uid://dtak7aat5yspu" path="res://levels/level_gen/generation/level_generator.tscn" id="2_bvjr1"]
 [ext_resource type="Resource" uid="uid://b8ve24bo453do" path="res://game/item/items/item1.tres" id="2_iq1mi"]
+[ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="4_ojlxl"]
 
 [sub_resource type="GDScript" id="GDScript_iq1mi"]
 script/source = "extends Camera2D
 "
+
+[sub_resource type="Resource" id="Resource_sh1xe"]
+script = ExtResource("4_ojlxl")
+forward_speed = 100.0
+metadata/_custom_type_script = "uid://8jp733sld27f"
+
+[sub_resource type="Resource" id="Resource_ojlxl"]
+script = ExtResource("4_ojlxl")
+bullet_count = 3
+metadata/_custom_type_script = "uid://8jp733sld27f"
+
+[sub_resource type="Resource" id="Resource_5rcoe"]
+script = ExtResource("4_ojlxl")
+bullet_speed = 100.0
+metadata/_custom_type_script = "uid://8jp733sld27f"
 
 [node name="LevelGenTestLevel" type="Node"]
 
@@ -19,14 +35,20 @@ item_res = ExtResource("2_iq1mi")
 
 [node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_bvjr1")]
 gen_bounds = Vector2i(12, 8)
-level_pits = 7
 scale_ = Vector2i(65, 65)
+level_pits = 7
 origin_marker = NodePath("OriginMarker")
 region_connections = 1
-spawner_buffers = 2
 box_gen_limits = Array[Vector3i]([Vector3i(0, 0, 10), Vector3i(0, 0, 10), Vector3i(0, 0, 10), Vector3i(0, 0, 10)])
+field_gen_limits = Array[Vector3i]([Vector3i(0, 1, 10), Vector3i(0, 1, 10), Vector3i(3, 1, 10), Vector3i(3, 1, 10)])
+field_bmod_speed = Vector2(-1, 2)
+field_bmod_speed_r_bounds = Array[Vector2]([Vector2(5, 10), Vector2(2, 2)])
+field_tmod_statboosts = Array[ExtResource("4_ojlxl")]([SubResource("Resource_sh1xe"), SubResource("Resource_ojlxl"), SubResource("Resource_5rcoe")])
+field_mag_strength = -1
+field_mag_clockwise = -1
 alternate_chance = 0
 srw_random_limits = Vector2i(3, 12)
+spawner_buffers = 2
 
 [node name="OriginMarker" type="Marker2D" parent="LevelGenerator"]
 position = Vector2(-390, -212)
