@@ -1,18 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://ernysejnfawt"]
+[gd_scene load_steps=8 format=3 uid="uid://ernysejnfawt"]
 
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_vicue"]
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_x0mrv"]
 [ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="3_apxdh"]
 [ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="4_vmlis"]
 [ext_resource type="PackedScene" uid="uid://dx0nr0e7wnvtg" path="res://game/map_elements/magnetic_area.tscn" id="5_nwli7"]
-[ext_resource type="PackedScene" uid="uid://c6wb8oosdthco" path="res://game/map_elements/tank_stat_modifier_area.tscn" id="6_apxdh"]
-[ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="7_vmlis"]
-
-[sub_resource type="Resource" id="Resource_nwli7"]
-script = ExtResource("7_vmlis")
-bullet_lifetime = 10.0
-bullet_speed = 2.0
-metadata/_custom_type_script = "uid://8jp733sld27f"
+[ext_resource type="PackedScene" uid="uid://dhnun2qb7oy3g" path="res://game/map_elements/explosive_barrel.tscn" id="8_nwli7"]
+[ext_resource type="PackedScene" uid="uid://b2vd12pjydjhl" path="res://game/map_elements/bullet_speed_modifier_area.tscn" id="9_tradp"]
 
 [node name="CustomLevelMagFields" type="Node"]
 
@@ -59,77 +53,147 @@ grid = NodePath("../../../Grid")
 grid_pos = Vector2(-0.5, 8)
 grid_length = 27
 
-[node name="Wall" parent="Walls" instance=ExtResource("2_x0mrv")]
-position = Vector2(0, -80)
-scale = Vector2(1, 0.64000124)
-horizontal = true
-length = 248.0
-grid_pos = Vector2(0, -2)
-grid_length = 6
-
-[node name="Wall2" parent="Walls" instance=ExtResource("2_x0mrv")]
-position = Vector2(-240, -80)
-scale = Vector2(1, 0.64000124)
-horizontal = true
-length = 248.0
-grid_pos = Vector2(-6, -2)
-grid_length = 6
-
-[node name="Wall3" parent="Walls" instance=ExtResource("2_x0mrv")]
-position = Vector2(240, -80)
-scale = Vector2(1, 0.64000124)
-horizontal = true
-length = 248.0
-grid_pos = Vector2(6, -2)
-grid_length = 6
-
-[node name="Wall4" parent="Walls" instance=ExtResource("2_x0mrv")]
-position = Vector2(0, 80)
-scale = Vector2(1, 0.64000124)
-horizontal = true
-length = 248.0
-grid_pos = Vector2(0, 2)
-grid_length = 6
-
 [node name="Wall5" parent="Walls" instance=ExtResource("2_x0mrv")]
-position = Vector2(-240, 80)
-scale = Vector2(1, 0.64000124)
+position = Vector2(400, 190)
+scale = Vector2(1.5600001, 0.64000124)
 horizontal = true
-length = 248.0
-grid_pos = Vector2(-6, 2)
+grid_length = 6
+
+[node name="Wall9" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(-400, 190)
+scale = Vector2(1.5600001, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall8" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(-430, 0)
+rotation = 1.5707964
+scale = Vector2(2.2, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall21" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(-130, 0)
+rotation = 1.5707964
+scale = Vector2(2.2, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall22" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(130, 0)
+rotation = 1.5707964
+scale = Vector2(2.2, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall14" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(430, 0)
+rotation = 1.5707964
+scale = Vector2(2.2, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall11" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(0, 200)
+rotation = 1.5707964
+scale = Vector2(2.2, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall15" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(0, -200)
+rotation = 1.5707964
+scale = Vector2(2.2, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall7" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(215, 190)
+scale = Vector2(1.2993574, 0.64000124)
+horizontal = true
 grid_length = 6
 
 [node name="Wall6" parent="Walls" instance=ExtResource("2_x0mrv")]
-position = Vector2(240, 80)
-scale = Vector2(1, 0.64000124)
+position = Vector2(400, -190)
+scale = Vector2(1.5600001, 0.64000124)
 horizontal = true
-length = 248.0
-grid_pos = Vector2(6, 2)
+grid_length = 6
+
+[node name="Wall20" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(215, -190)
+scale = Vector2(1.2993574, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall10" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(-215, 190)
+scale = Vector2(1.2993574, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall18" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(-400, -190)
+scale = Vector2(1.5600001, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall19" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(-215, -190)
+scale = Vector2(1.2993574, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall12" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(50, 275)
+rotation = 0.7853982
+scale = Vector2(1.2993574, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall17" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(50, -275)
+rotation = -0.7853982
+scale = Vector2(1.2993574, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall13" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(-50, 275)
+rotation = -0.7853982
+scale = Vector2(1.2993574, 0.64000124)
+horizontal = true
+grid_length = 6
+
+[node name="Wall16" parent="Walls" instance=ExtResource("2_x0mrv")]
+position = Vector2(-50, -275)
+rotation = 0.7853982
+scale = Vector2(1.2993574, 0.64000124)
+horizontal = true
 grid_length = 6
 
 [node name="PlayerSpawner" parent="." instance=ExtResource("3_apxdh")]
 
 [node name="SpawnPoint" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_vmlis")]
-position = Vector2(-480, -40)
+position = Vector2(-480, -240)
 grid = NodePath("../../Grid")
-grid_pos = Vector2(-12, -1)
+grid_pos = Vector2(-12, -6)
 
 [node name="SpawnPoint2" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_vmlis")]
-position = Vector2(480, 40)
+position = Vector2(480, 240)
 grid = NodePath("../../Grid")
-grid_pos = Vector2(12, 1)
+grid_pos = Vector2(12, 6)
 
 [node name="SpawnPoint3" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_vmlis")]
-position = Vector2(-480, 60)
+position = Vector2(-480, 260)
 grid = NodePath("../../Grid")
 snap_type = 2
-grid_pos = Vector2(-12, 1.5)
+grid_pos = Vector2(-12, 6.5)
 
 [node name="SpawnPoint4" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_vmlis")]
-position = Vector2(480, -60)
+position = Vector2(480, -260)
 grid = NodePath("../../Grid")
 snap_type = 2
-grid_pos = Vector2(12, -1.5)
+grid_pos = Vector2(12, -6.5)
 
 [node name="ActiveMapStuff" type="Node2D" parent="."]
 
@@ -137,194 +201,145 @@ grid_pos = Vector2(12, -1.5)
 
 [node name="Magnetic Fields" type="Node2D" parent="ActiveMapStuff/Fields"]
 
-[node name="Magnetic Area" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-50, -240)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
-
-[node name="Magnetic Area2" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(50, -240)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
-
-[node name="Magnetic Area5" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(150, -240)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
-
-[node name="Magnetic Area8" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(250, -240)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
-
-[node name="Magnetic Area3" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-50, -140)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-
-[node name="Magnetic Area4" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(50, -140)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-
-[node name="Magnetic Area6" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(150, -140)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-
-[node name="Magnetic Area7" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(250, -140)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-
-[node name="Magnetic Area15" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(350, -240)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
-
-[node name="Magnetic Area16" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(350, -140)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-
-[node name="Magnetic Area9" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-350, -240)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
-
 [node name="Magnetic Area10" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-250, -240)
+position = Vector2(485, 100)
+scale = Vector2(5, 5)
+magnetic_strength = 3
+
+[node name="Magnetic Area13" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
+position = Vector2(-200, 245)
+scale = Vector2(5, 5)
+magnetic_strength = 3
+
+[node name="Magnetic Area18" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
+position = Vector2(200, 245)
+scale = Vector2(5, 5)
+magnetic_strength = 3
+
+[node name="Magnetic Area12" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
+position = Vector2(485, -100)
 scale = Vector2(5, 5)
 magnetic_strength = 3
 clockwise_rotation = true
 
 [node name="Magnetic Area11" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-150, -240)
+position = Vector2(-485, 100)
+scale = Vector2(5, 5)
+magnetic_strength = 3
+
+[node name="Magnetic Area22" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
+position = Vector2(-300, 0)
+scale = Vector2(10, 10)
+magnetic_strength = 3
+
+[node name="Magnetic Area23" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
+position = Vector2(300, 0)
+scale = Vector2(10, 10)
+magnetic_strength = 3
+clockwise_rotation = true
+
+[node name="Magnetic Area14" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
+position = Vector2(-485, -100)
 scale = Vector2(5, 5)
 magnetic_strength = 3
 clockwise_rotation = true
 
-[node name="Magnetic Area12" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-350, -140)
+[node name="Magnetic Area15" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
+position = Vector2(-400, 245)
 scale = Vector2(5, 5)
 magnetic_strength = 3
+clockwise_rotation = true
 
-[node name="Magnetic Area13" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-250, -140)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-
-[node name="Magnetic Area14" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-150, -140)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-
-[node name="Magnetic Area17" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-50, 140)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-
-[node name="Magnetic Area18" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(50, 140)
+[node name="Magnetic Area16" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
+position = Vector2(-200, -245)
 scale = Vector2(5, 5)
 magnetic_strength = 3
 
 [node name="Magnetic Area19" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(150, 140)
+position = Vector2(-400, -245)
 scale = Vector2(5, 5)
 magnetic_strength = 3
+clockwise_rotation = true
+
+[node name="Magnetic Area17" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
+position = Vector2(400, 245)
+scale = Vector2(5, 5)
+magnetic_strength = 3
+clockwise_rotation = true
 
 [node name="Magnetic Area20" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(250, 140)
+position = Vector2(200, -245)
 scale = Vector2(5, 5)
 magnetic_strength = 3
 
 [node name="Magnetic Area21" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-50, 240)
+position = Vector2(400, -245)
 scale = Vector2(5, 5)
 magnetic_strength = 3
 clockwise_rotation = true
 
-[node name="Magnetic Area22" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(50, 240)
+[node name="Bullet Speed Modifier Area" parent="ActiveMapStuff/Fields" instance=ExtResource("9_tradp")]
+z_index = -1
+position = Vector2(485, 0)
 scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
 
-[node name="Magnetic Area23" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(150, 240)
+[node name="Bullet Speed Modifier Area3" parent="ActiveMapStuff/Fields" instance=ExtResource("9_tradp")]
+z_index = -1
+position = Vector2(-485, 0)
 scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
 
-[node name="Magnetic Area24" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(250, 240)
+[node name="Bullet Speed Modifier Area7" parent="ActiveMapStuff/Fields" instance=ExtResource("9_tradp")]
+z_index = -1
+position = Vector2(-300, 0)
 scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
 
-[node name="Magnetic Area25" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(350, 140)
+[node name="Bullet Speed Modifier Area8" parent="ActiveMapStuff/Fields" instance=ExtResource("9_tradp")]
+z_index = -1
+position = Vector2(300, 0)
 scale = Vector2(5, 5)
-magnetic_strength = 3
 
-[node name="Magnetic Area26" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(350, 240)
+[node name="Bullet Speed Modifier Area2" parent="ActiveMapStuff/Fields" instance=ExtResource("9_tradp")]
+z_index = -1
+position = Vector2(-300, 245)
 scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
 
-[node name="Magnetic Area27" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-350, 140)
+[node name="Bullet Speed Modifier Area4" parent="ActiveMapStuff/Fields" instance=ExtResource("9_tradp")]
+z_index = -1
+position = Vector2(-300, -245)
 scale = Vector2(5, 5)
-magnetic_strength = 3
 
-[node name="Magnetic Area28" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-250, 140)
+[node name="Bullet Speed Modifier Area5" parent="ActiveMapStuff/Fields" instance=ExtResource("9_tradp")]
+z_index = -1
+position = Vector2(300, 245)
 scale = Vector2(5, 5)
-magnetic_strength = 3
 
-[node name="Magnetic Area29" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-150, 140)
+[node name="Bullet Speed Modifier Area6" parent="ActiveMapStuff/Fields" instance=ExtResource("9_tradp")]
+z_index = -1
+position = Vector2(300, -245)
 scale = Vector2(5, 5)
-magnetic_strength = 3
 
-[node name="Magnetic Area30" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-350, 240)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
+[node name="Boxes" type="Node2D" parent="ActiveMapStuff"]
 
-[node name="Magnetic Area31" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-250, 240)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
+[node name="Explosive Barrel" parent="ActiveMapStuff/Boxes" instance=ExtResource("8_nwli7")]
+position = Vector2(485, 0)
 
-[node name="Magnetic Area32" parent="ActiveMapStuff/Fields/Magnetic Fields" instance=ExtResource("5_nwli7")]
-position = Vector2(-150, 240)
-scale = Vector2(5, 5)
-magnetic_strength = 3
-clockwise_rotation = true
+[node name="Explosive Barrel7" parent="ActiveMapStuff/Boxes" instance=ExtResource("8_nwli7")]
+position = Vector2(-300, 0)
 
-[node name="Tank Stat Modifier Area" parent="ActiveMapStuff" instance=ExtResource("6_apxdh")]
-position = Vector2(-470, -140)
-boost = SubResource("Resource_nwli7")
+[node name="Explosive Barrel8" parent="ActiveMapStuff/Boxes" instance=ExtResource("8_nwli7")]
+position = Vector2(300, 0)
 
-[node name="Tank Stat Modifier Area2" parent="ActiveMapStuff" instance=ExtResource("6_apxdh")]
-position = Vector2(-470, -240)
-boost = SubResource("Resource_nwli7")
+[node name="Explosive Barrel3" parent="ActiveMapStuff/Boxes" instance=ExtResource("8_nwli7")]
+position = Vector2(-485, 0)
 
-[node name="Tank Stat Modifier Area3" parent="ActiveMapStuff" instance=ExtResource("6_apxdh")]
-position = Vector2(470, 240)
-boost = SubResource("Resource_nwli7")
+[node name="Explosive Barrel2" parent="ActiveMapStuff/Boxes" instance=ExtResource("8_nwli7")]
+position = Vector2(-300, 245)
 
-[node name="Tank Stat Modifier Area4" parent="ActiveMapStuff" instance=ExtResource("6_apxdh")]
-position = Vector2(470, 140)
-boost = SubResource("Resource_nwli7")
+[node name="Explosive Barrel4" parent="ActiveMapStuff/Boxes" instance=ExtResource("8_nwli7")]
+position = Vector2(-300, -245)
+
+[node name="Explosive Barrel5" parent="ActiveMapStuff/Boxes" instance=ExtResource("8_nwli7")]
+position = Vector2(300, 245)
+
+[node name="Explosive Barrel6" parent="ActiveMapStuff/Boxes" instance=ExtResource("8_nwli7")]
+position = Vector2(300, -245)
