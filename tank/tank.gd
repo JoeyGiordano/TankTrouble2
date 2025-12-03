@@ -147,6 +147,10 @@ func die() :
 	if dead : return
 	#Check if in the invincibility field
 	if invincible_effect : return
+	
+	#Reset heat level if die from bullet
+	invincibility_heat = 0;
+	
 	lock()
 	#play death sound and anim
 	despawn()
