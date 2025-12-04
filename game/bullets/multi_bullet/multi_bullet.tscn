@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://duji7i7tnorqk"]
+[gd_scene load_steps=6 format=3 uid="uid://duji7i7tnorqk"]
 
 [ext_resource type="Script" uid="uid://fiwd7nqcbeqb" path="res://game/bullets/multi_bullet/multi_bullet.gd" id="1_4j1ce"]
-[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_054t7"]
+[ext_resource type="Texture2D" uid="uid://7hq64rkb8my0" path="res://game/bullets/basic_bullet/Bullet.png" id="2_054t7"]
+[ext_resource type="Script" uid="uid://rk15chg0gwnl" path="res://game/bullets/multi_bullet/spin.gd" id="2_oo62o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oo62o"]
-radius = 1.7
+radius = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_054t7"]
-radius = 1.7
+radius = 2.0
 
 [node name="MultiBullet" type="RigidBody2D"]
 collision_layer = 4
@@ -16,10 +17,26 @@ contact_monitor = true
 max_contacts_reported = 8
 script = ExtResource("1_4j1ce")
 
-[node name="BulletSprite" type="Sprite2D" parent="."]
-position = Vector2(7.1525574e-07, 4.7683716e-07)
-scale = Vector2(0.029296877, 0.029296877)
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("2_oo62o")
+
+[node name="BulletSprite3" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, -1.5)
+scale = Vector2(0.008, 0.008)
 texture = ExtResource("2_054t7")
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="BulletSprite2" type="Sprite2D" parent="Node2D"]
+position = Vector2(-1.3, 0.75)
+scale = Vector2(0.008, 0.008)
+texture = ExtResource("2_054t7")
+region_rect = Rect2(63, 68, 1, 1)
+
+[node name="BulletSprite4" type="Sprite2D" parent="Node2D"]
+position = Vector2(1.3, 0.75)
+scale = Vector2(0.008, 0.008)
+texture = ExtResource("2_054t7")
+region_rect = Rect2(63, 68, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oo62o")
