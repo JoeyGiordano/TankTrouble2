@@ -27,6 +27,7 @@ Debug="*res://autoloads/Debug.gd"
 PlayerManager="*res://autoloads/PlayerManager.gd"
 TankManager="*res://autoloads/TankManager.gd"
 GameInfo="*res://autoloads/GameInfo.gd"
+AudioManager="*res://autoloads/AudioManager.gd"
 
 [display]
 

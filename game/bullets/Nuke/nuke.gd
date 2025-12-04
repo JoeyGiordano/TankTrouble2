@@ -18,6 +18,7 @@ func _ready() :
 
 func kill_all_tanks() -> void:
 	await get_tree().create_timer(nuke_delay).timeout
+	AudioManager.play(Ref.nuke_explode_sfx)
 	var all_tanks : Array[Tank] = TankManager.get_all_tanks()
 	for t in all_tanks:
 		t.die()

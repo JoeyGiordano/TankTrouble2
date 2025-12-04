@@ -64,3 +64,14 @@ class_name _Reference
 @export var base_tank_stats : StatBoost
 @export_group("TilesetLib")
 @export var tileset_library : TilesetLib
+
+@export_category("Sounds")
+@export var basic_shoot_sfx : String = "res://sound/first half radio call.mp3"
+@export var landmine_shoot_sfx : String = "res://sound/first half radio call.mp3"
+@export var landmine_stepped_on_sfx : String = "res://sound/first half radio call.mp3"
+@export var landmine_explode_sfx : String = "res://sound/first half radio call.mp3"
+@export var multibullet_shoot_sfx : String = "res://sound/first half radio call.mp3"
+@export var multibullet_detonate_sfx : String = "res://sound/first half radio call.mp3"
+@export var nuke_shoot_sfx : String = "res://sound/first half radio call.mp3"
+@export var nuke_whistle_sfx : String = "res://sound/first half radio call.mp3"
+@export var nuke_explode_sfx : String = "res://sound/first half radio call.mp3"

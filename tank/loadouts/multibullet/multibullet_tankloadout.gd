@@ -18,6 +18,7 @@ func shoot() :
 		b.source_tank_id = tank.id
 		last_shot = b
 		has_fired = true
+		AudioManager.play(Ref.multibullet_shoot_sfx)
 	
 	
 	if has_fired and not remote: # if bullet wasnt remote, then revert to basic after shot

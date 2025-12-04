@@ -25,6 +25,7 @@ var shards : Array[BasicBullet] = []
 func _ready() :
 	GameManager.end_of_round.connect(on_end_of_round)
 	hitbox.area_exited.connect(on_area_exited)
+	hitbox.area_entered.connect(on_area_entered)
 	linear_velocity = Vector2(0,0);
 	#source tank invincibility
 	await get_tree().create_timer(delay_when_plant).timeout
@@ -34,7 +35,15 @@ func _ready() :
 # presumes all land mines will stay until end of round
 #func _process(delta):
 	#pass
-	
+
+func on_area_entered(area : Area2D) :
+	if area.is_in_group("tank_hitbox") :
+		var tank : Tank = area.get_parent().tank_rigidbody.tank #all tank hitboxes must be direct children of a tank loadout
+		# TODO: Do we want players to be able to be hit by their own mines?
+		if tank.id == source_tank_id && source_tank_invincible :
+			return #a tank can't destroy itself with its own land mine for a brief moment after the mine has been laid
+		AudioManager.play(Ref.landmine_stepped_on_sfx)
+
 # aka when a opponent (or any?) tank comes within the range of the landmine
 func on_area_exited(area : Area2D) :
 	if area.is_in_group("tank_hitbox") :
@@ -43,8 +52,9 @@ func on_area_exited(area : Area2D) :
 		if tank.id == source_tank_id && source_tank_invincible :
 			return #a tank can't destroy itself with its own land mine for a brief moment after the mine has been laid
 		#waits time before exploding mine, would be fun if tank is fast and can avoid
-		tank.die()
-		#await get_tree().create_timer(0.07).timeout
+		#tank.die()
+		AudioManager.play(Ref.landmine_explode_sfx)
+		await get_tree().create_timer(0.07).timeout
 		call_deferred("spawn_shards")
 		#wait for tank to despawn so that bullet shards dont hit player
 

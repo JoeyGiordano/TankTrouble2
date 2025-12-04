@@ -13,12 +13,12 @@
 [node name="LoadoutUpgrade" parent="." instance=ExtResource("1_gkona")]
 position = Vector2(-75, 0)
 color = Color(0.79607844, 0.8039216, 0.23529412, 1)
-loadout_name = "nuke_loadout"
+loadout_name = "multi_loadout"
 
 [node name="LoadoutUpgrade2" parent="." instance=ExtResource("1_gkona")]
 position = Vector2(75, 1)
 color = Color(0.7019608, 0.5647059, 0.9372549, 1)
-loadout_name = "multi_loadout"
+loadout_name = "landmine_loadout"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

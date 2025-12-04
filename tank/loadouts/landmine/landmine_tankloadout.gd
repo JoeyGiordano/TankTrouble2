@@ -15,6 +15,7 @@ func shoot() :
 	var lm = LandMine.instantiate(guntip.global_position)
 	lm.source_tank_id = tank.id
 	mines.append(lm)
+	AudioManager.play(Ref.landmine_shoot_sfx)
 	if mines.size() == man_num_mines:
 		set_basic_loadout()
 

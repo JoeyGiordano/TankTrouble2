@@ -11,6 +11,7 @@ func shoot() :
 	var b = BasicBullet.instantiate(guntip.global_position, max(tank.stats.bullet_speed,tank_rigidbody.linear_velocity.length()+10), tank_rigidbody.forward(), tank.stats.bullet_lifetime)
 	bullets.append(b)
 	b.source_tank_id = tank.id
+	AudioManager.play(Ref.basic_shoot_sfx)
 	#play shoot sound and anim
 
 

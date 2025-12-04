@@ -72,6 +72,7 @@ func on_end_of_round() :
 	
 ## Misc
 func spawn_shards() -> void: #Array[BasicBullet]:
+	AudioManager.play(Ref.multibullet_detonate_sfx)
 	if num_shards <= 0: return #numshards must be >0
 	# Tau is just 2π, this is finding an even spacing of angles for the shards to be spawned
 	var step := TAU / float(num_shards)
