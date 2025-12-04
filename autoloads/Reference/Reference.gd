@@ -39,6 +39,7 @@ class_name _Reference
 @export var custom_level_1 : PackedScene
 @export var custom_level_2 : PackedScene
 @export var custom_level_mag_fields : PackedScene
+@export var custom_level_all_mag_fields : PackedScene
 
 @export_category("Prefabs")
 @export_group("Prefabs")

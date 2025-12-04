@@ -23,12 +23,12 @@ func _physics_process(_delta):
 
 #adds the bullet to the array when it enters the field
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if (body is BasicBullet):
+	if (body is BasicBullet or MultiBullet):
 		if body not in bullets_in_field:
 			bullets_in_field.append(body)
 
 
 #removes the bullet from the array when it exits the field
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if (body is BasicBullet):
+	if (body is BasicBullet or MultiBullet):
 		bullets_in_field.erase(body)

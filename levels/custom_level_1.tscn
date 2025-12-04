@@ -88,9 +88,6 @@ position = Vector2(-168, -47)
 [node name="Explosive Barrel385" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-168, -207)
 
-[node name="Explosive Barrel386" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-168, -223)
-
 [node name="Explosive Barrel387" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-168, -239)
 
@@ -106,9 +103,6 @@ position = Vector2(-168, 239)
 [node name="Explosive Barrel400" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-168, 79)
 
-[node name="Explosive Barrel401" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-168, 63)
-
 [node name="Explosive Barrel402" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-168, 47)
 
@@ -121,17 +115,8 @@ position = Vector2(-168, 207)
 [node name="Explosive Barrel17" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-152, -47)
 
-[node name="Explosive Barrel416" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-152, -207)
-
 [node name="Explosive Barrel417" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-152, -223)
-
-[node name="Explosive Barrel418" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-152, -239)
-
-[node name="Explosive Barrel423" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-152, -63)
 
 [node name="Explosive Barrel424" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-152, -79)
@@ -139,17 +124,8 @@ position = Vector2(-152, -79)
 [node name="Explosive Barrel18" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-152, 239)
 
-[node name="Explosive Barrel431" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-152, 79)
-
 [node name="Explosive Barrel432" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-152, 63)
-
-[node name="Explosive Barrel433" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-152, 47)
-
-[node name="Explosive Barrel438" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-152, 223)
 
 [node name="Explosive Barrel439" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-152, 207)
@@ -159,9 +135,6 @@ position = Vector2(-136, -47)
 
 [node name="Explosive Barrel447" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-136, -207)
-
-[node name="Explosive Barrel448" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-136, -223)
 
 [node name="Explosive Barrel449" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-136, -239)
@@ -177,9 +150,6 @@ position = Vector2(-136, 239)
 
 [node name="Explosive Barrel462" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-136, 79)
-
-[node name="Explosive Barrel463" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-136, 63)
 
 [node name="Explosive Barrel464" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-136, 47)
@@ -202,9 +172,6 @@ position = Vector2(-392, -223)
 [node name="Explosive Barrel755" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-392, -239)
 
-[node name="Explosive Barrel847" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-392, -63)
-
 [node name="Explosive Barrel848" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-392, -79)
 
@@ -220,20 +187,11 @@ position = Vector2(-392, 63)
 [node name="Explosive Barrel1002" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-392, 47)
 
-[node name="Explosive Barrel1065" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-392, 223)
-
 [node name="Explosive Barrel1095" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-392, 207)
 
-[node name="Explosive Barrel75" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-376, -47)
-
 [node name="Explosive Barrel1188" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-376, -207)
-
-[node name="Explosive Barrel1189" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-376, -223)
 
 [node name="Explosive Barrel1219" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-376, -239)
@@ -241,26 +199,14 @@ position = Vector2(-376, -239)
 [node name="Explosive Barrel1252" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-376, -63)
 
-[node name="Explosive Barrel1253" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-376, -79)
-
-[node name="Explosive Barrel76" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-376, 239)
-
 [node name="Explosive Barrel1260" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-376, 79)
-
-[node name="Explosive Barrel1261" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-376, 63)
 
 [node name="Explosive Barrel1262" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-376, 47)
 
 [node name="Explosive Barrel1267" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-376, 223)
-
-[node name="Explosive Barrel1268" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-376, 207)
 
 [node name="Explosive Barrel77" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-360, -47)
@@ -273,9 +219,6 @@ position = Vector2(-360, -223)
 
 [node name="Explosive Barrel1276" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-360, -239)
-
-[node name="Explosive Barrel1281" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-360, -63)
 
 [node name="Explosive Barrel1282" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-360, -79)
@@ -292,29 +235,14 @@ position = Vector2(-360, 63)
 [node name="Explosive Barrel1291" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-360, 47)
 
-[node name="Explosive Barrel1296" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-360, 223)
-
 [node name="Explosive Barrel1297" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-360, 207)
-
-[node name="Explosive Barrel1422" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-280, -127)
 
 [node name="Explosive Barrel1423" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-280, -143)
 
-[node name="Explosive Barrel1424" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-280, -159)
-
-[node name="Explosive Barrel1437" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-280, 159)
-
 [node name="Explosive Barrel1438" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-280, 143)
-
-[node name="Explosive Barrel1439" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-280, 127)
 
 [node name="Explosive Barrel1451" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-264, -127)
@@ -334,41 +262,17 @@ position = Vector2(-264, 143)
 [node name="Explosive Barrel1468" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-264, 127)
 
-[node name="Explosive Barrel1480" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-248, -127)
-
 [node name="Explosive Barrel1481" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-248, -143)
-
-[node name="Explosive Barrel1482" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-248, -159)
-
-[node name="Explosive Barrel1495" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-248, 159)
 
 [node name="Explosive Barrel1496" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-248, 143)
 
-[node name="Explosive Barrel1497" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-248, 127)
-
-[node name="Explosive Barrel1509" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(280, -127)
-
 [node name="Explosive Barrel1510" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(280, -143)
 
-[node name="Explosive Barrel1511" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(280, -159)
-
-[node name="Explosive Barrel1524" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(280, 159)
-
 [node name="Explosive Barrel1525" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(280, 143)
-
-[node name="Explosive Barrel1526" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(280, 127)
 
 [node name="Explosive Barrel103" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(360, -47)
@@ -381,9 +285,6 @@ position = Vector2(360, -223)
 
 [node name="Explosive Barrel1653" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(360, -239)
-
-[node name="Explosive Barrel1658" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(360, -63)
 
 [node name="Explosive Barrel1659" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(360, -79)
@@ -400,20 +301,11 @@ position = Vector2(360, 63)
 [node name="Explosive Barrel1668" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(360, 47)
 
-[node name="Explosive Barrel1673" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(360, 223)
-
 [node name="Explosive Barrel1674" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(360, 207)
 
-[node name="Explosive Barrel129" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(376, -47)
-
 [node name="Explosive Barrel1680" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(376, -207)
-
-[node name="Explosive Barrel1681" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(376, -223)
 
 [node name="Explosive Barrel1682" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(376, -239)
@@ -421,26 +313,14 @@ position = Vector2(376, -239)
 [node name="Explosive Barrel1687" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(376, -63)
 
-[node name="Explosive Barrel1688" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(376, -79)
-
-[node name="Explosive Barrel135" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(376, 239)
-
 [node name="Explosive Barrel1695" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(376, 79)
-
-[node name="Explosive Barrel1696" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(376, 63)
 
 [node name="Explosive Barrel1697" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(376, 47)
 
 [node name="Explosive Barrel1702" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(376, 223)
-
-[node name="Explosive Barrel1703" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(376, 207)
 
 [node name="Explosive Barrel137" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(392, -47)
@@ -453,9 +333,6 @@ position = Vector2(392, -223)
 
 [node name="Explosive Barrel1711" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(392, -239)
-
-[node name="Explosive Barrel1716" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(392, -63)
 
 [node name="Explosive Barrel1717" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(392, -79)
@@ -472,9 +349,6 @@ position = Vector2(392, 63)
 [node name="Explosive Barrel1726" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(392, 47)
 
-[node name="Explosive Barrel1731" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(392, 223)
-
 [node name="Explosive Barrel1732" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(392, 207)
 
@@ -484,20 +358,11 @@ position = Vector2(-56, -127)
 [node name="Explosive Barrel606" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-56, -143)
 
-[node name="Explosive Barrel607" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-56, -159)
-
-[node name="Explosive Barrel620" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-56, 159)
-
 [node name="Explosive Barrel621" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-56, 143)
 
 [node name="Explosive Barrel622" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-56, 127)
-
-[node name="Explosive Barrel636" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-40, -127)
 
 [node name="Explosive Barrel637" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-40, -143)
@@ -511,12 +376,6 @@ position = Vector2(-40, 159)
 [node name="Explosive Barrel652" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(-40, 143)
 
-[node name="Explosive Barrel653" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(-40, 127)
-
-[node name="Explosive Barrel791" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(40, -127)
-
 [node name="Explosive Barrel792" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(40, -143)
 
@@ -529,20 +388,11 @@ position = Vector2(40, 159)
 [node name="Explosive Barrel807" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(40, 143)
 
-[node name="Explosive Barrel808" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(40, 127)
-
 [node name="Explosive Barrel822" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(56, -127)
 
 [node name="Explosive Barrel823" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(56, -143)
-
-[node name="Explosive Barrel824" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(56, -159)
-
-[node name="Explosive Barrel837" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(56, 159)
 
 [node name="Explosive Barrel838" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(56, 143)
@@ -555,9 +405,6 @@ position = Vector2(136, -47)
 
 [node name="Explosive Barrel974" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(136, -207)
-
-[node name="Explosive Barrel975" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(136, -223)
 
 [node name="Explosive Barrel976" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(136, -239)
@@ -574,9 +421,6 @@ position = Vector2(136, 239)
 [node name="Explosive Barrel989" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(136, 79)
 
-[node name="Explosive Barrel990" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(136, 63)
-
 [node name="Explosive Barrel991" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(136, 47)
 
@@ -589,17 +433,8 @@ position = Vector2(136, 207)
 [node name="Explosive Barrel55" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(152, -47)
 
-[node name="Explosive Barrel1005" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(152, -207)
-
 [node name="Explosive Barrel1006" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(152, -223)
-
-[node name="Explosive Barrel1007" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(152, -239)
-
-[node name="Explosive Barrel1012" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(152, -63)
 
 [node name="Explosive Barrel1013" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(152, -79)
@@ -607,17 +442,8 @@ position = Vector2(152, -79)
 [node name="Explosive Barrel56" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(152, 239)
 
-[node name="Explosive Barrel1020" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(152, 79)
-
 [node name="Explosive Barrel1021" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(152, 63)
-
-[node name="Explosive Barrel1022" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(152, 47)
-
-[node name="Explosive Barrel1027" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(152, 223)
 
 [node name="Explosive Barrel1028" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(152, 207)
@@ -627,9 +453,6 @@ position = Vector2(168, -47)
 
 [node name="Explosive Barrel1036" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(168, -207)
-
-[node name="Explosive Barrel1037" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(168, -223)
 
 [node name="Explosive Barrel1038" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(168, -239)
@@ -646,9 +469,6 @@ position = Vector2(168, 239)
 [node name="Explosive Barrel1051" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(168, 79)
 
-[node name="Explosive Barrel1052" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(168, 63)
-
 [node name="Explosive Barrel1053" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(168, 47)
 
@@ -658,23 +478,11 @@ position = Vector2(168, 223)
 [node name="Explosive Barrel1059" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(168, 207)
 
-[node name="Explosive Barrel1194" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(248, -127)
-
 [node name="Explosive Barrel1195" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(248, -143)
 
-[node name="Explosive Barrel1196" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(248, -159)
-
-[node name="Explosive Barrel1209" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(248, 159)
-
 [node name="Explosive Barrel1210" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(248, 143)
-
-[node name="Explosive Barrel1211" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
-position = Vector2(248, 127)
 
 [node name="Explosive Barrel1225" parent="Active Map Stuff/Boxes/Explosive Boxes" instance=ExtResource("5_bvjyl")]
 position = Vector2(264, -127)

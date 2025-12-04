@@ -1,0 +1,375 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6fjnvvniet71"]
+
+[ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_wygll"]
+[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_nomvy"]
+[ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="3_hqdji"]
+[ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="4_es85j"]
+[ext_resource type="PackedScene" uid="uid://dx0nr0e7wnvtg" path="res://game/map_elements/magnetic_area.tscn" id="5_nomvy"]
+
+[node name="LevelTemplate" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Grid" type="Node" parent="."]
+script = ExtResource("1_wygll")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Border" type="Node2D" parent="Walls"]
+
+[node name="Top" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_nomvy")]
+position = Vector2(0, -320)
+horizontal = true
+length = 1171.0
+width = 51.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(0, -8)
+grid_length = 28
+
+[node name="Left" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_nomvy")]
+position = Vector2(-560, 0)
+length = 690.0
+width = 50.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(-14, 0)
+grid_length = 16
+
+[node name="Right" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_nomvy")]
+position = Vector2(560, 0)
+length = 690.0
+width = 50.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(14, 0)
+grid_length = 16
+
+[node name="Bottom" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_nomvy")]
+position = Vector2(-20, 320)
+horizontal = true
+length = 1130.0
+width = 50.0
+grid = NodePath("../../../Grid")
+grid_pos = Vector2(-0.5, 8)
+grid_length = 27
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("3_hqdji")]
+
+[node name="SpawnPoint" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_es85j")]
+position = Vector2(-480, -240)
+grid = NodePath("../../Grid")
+grid_pos = Vector2(-12, -6)
+
+[node name="SpawnPoint2" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_es85j")]
+position = Vector2(480, 240)
+grid = NodePath("../../Grid")
+grid_pos = Vector2(12, 6)
+
+[node name="SpawnPoint3" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_es85j")]
+position = Vector2(-480, 260)
+grid = NodePath("../../Grid")
+snap_type = 2
+grid_pos = Vector2(-12, 6.5)
+
+[node name="SpawnPoint4" parent="PlayerSpawner" node_paths=PackedStringArray("grid") instance=ExtResource("4_es85j")]
+position = Vector2(480, -260)
+grid = NodePath("../../Grid")
+snap_type = 2
+grid_pos = Vector2(12, -6.5)
+
+[node name="Fields" type="Node2D" parent="."]
+
+[node name="Magnetic Area" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-485, -245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area2" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-485, -145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area3" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-485, -45)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area4" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-485, 245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area5" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-485, 145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area6" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-485, 45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area7" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-385, -245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area8" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-385, -145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area9" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-385, -45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area10" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-385, 245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area11" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-385, 145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area12" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-385, 45)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area13" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-285, -245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area14" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-285, -145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area15" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-285, -45)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area16" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-285, 245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area17" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-285, 145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area18" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-285, 45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area19" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-185, -245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area20" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-185, -145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area21" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-185, -45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area22" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-185, 245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area23" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-185, 145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area24" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-185, 45)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area25" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(85, -245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area26" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(85, -145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area27" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(85, -45)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area28" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(85, 245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area29" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(85, 145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area30" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(85, 45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area31" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-85, -245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area32" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-85, -145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area33" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-85, -45)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area34" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-85, 245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area35" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-85, 145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area36" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(-85, 45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area37" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(185, -245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area38" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(185, -145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area39" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(185, -45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area40" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(185, 245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area41" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(185, 145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area42" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(185, 45)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area43" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(285, -245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area44" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(285, -145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area45" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(285, -45)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area46" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(285, 245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area47" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(285, 145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area48" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(285, 45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area49" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(385, -245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area50" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(385, -145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area51" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(385, -45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area52" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(385, 245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area53" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(385, 145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area54" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(385, 45)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area55" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(485, -245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area56" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(485, -145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area57" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(485, -45)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area58" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(485, 245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area59" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(485, 145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area60" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(485, 45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area61" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(0, -245)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area62" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(0, -145)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area63" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(0, -45)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area64" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(0, 245)
+scale = Vector2(5, 5)
+
+[node name="Magnetic Area65" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(0, 145)
+scale = Vector2(5, 5)
+clockwise_rotation = true
+
+[node name="Magnetic Area66" parent="." instance=ExtResource("5_nomvy")]
+position = Vector2(0, 45)
+scale = Vector2(5, 5)

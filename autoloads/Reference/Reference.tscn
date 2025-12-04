@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dimsdmfqcpvlg"]
+[gd_scene load_steps=34 format=3 uid="uid://dimsdmfqcpvlg"]
 
 [ext_resource type="Script" uid="uid://ciyveyuo2ihr0" path="res://autoloads/Reference/Reference.gd" id="1_pmmna"]
 [ext_resource type="PackedScene" uid="uid://d176ir76ayfrc" path="res://shell_scenes/startup.tscn" id="2_qlxkd"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://2su3htx11obo" path="res://tank/loadouts/basic/basic_tankloadout.tscn" id="18_d3fos"]
 [ext_resource type="PackedScene" uid="uid://4xfrxxpiguq" path="res://tank/loadouts/multibullet/multibullet_tankloadout.tscn" id="19_d3fos"]
 [ext_resource type="PackedScene" uid="uid://ernysejnfawt" path="res://levels/custom_level_mag_fields.tscn" id="19_enlpg"]
+[ext_resource type="PackedScene" uid="uid://c6fjnvvniet71" path="res://levels/custom_level_all_mag_fields.tscn" id="20_xkbsy"]
 [ext_resource type="PackedScene" uid="uid://dwe3cijftd4x5" path="res://game/bullets/land_mine/land_mine.tscn" id="22_831b3"]
 [ext_resource type="PackedScene" uid="uid://bojycccxpxfms" path="res://game/item/item.tscn" id="22_k55fg"]
 [ext_resource type="PackedScene" uid="uid://dwgdjpfsltjy3" path="res://animations/Explosion.tscn" id="23_3kg4t"]
@@ -53,6 +54,7 @@ test_level_active_map = ExtResource("15_hiq1x")
 custom_level_1 = ExtResource("16_323l5")
 custom_level_2 = ExtResource("17_k55fg")
 custom_level_mag_fields = ExtResource("19_enlpg")
+custom_level_all_mag_fields = ExtResource("20_xkbsy")
 tank_scene = ExtResource("13_acwhr")
 basic_bullet = ExtResource("12_vdkhk")
 multi_bullet = ExtResource("17_323l5")

@@ -10,15 +10,20 @@ var bullets : Array[BasicBullet] = []
 
 
 
-func explode() :
+func explode(body: Node2D) :
 	
 	#instantiate 8 bullets
 	for n in range(8):
 		var angle = deg_to_rad(n*45)#get the 45 degree angle in radians
 		var direction = Vector2.RIGHT.rotated(angle)#get the vector for the bullet
-		var b = BasicBullet.instantiate(global_position, 125.0, direction, 7.0)
-		bullets.append(b)
-	
+		
+		if body is BasicBullet:
+			var b = BasicBullet.instantiate(global_position, 125.0, direction, 7.0)
+			bullets.append(b)
+		elif body is MultiBullet:
+			var b = MultiBullet.instantiate(global_position, 125.0, direction, 7.0, false)
+			bullets.append(b)
+			
 	var anim : AnimatedSprite2D = Ref.explosion_anim.instantiate()
 	Global.Entities.add_child(anim)
 	anim.position = position
@@ -27,7 +32,7 @@ func explode() :
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#check if the area is entered by a bullet:
-	if body is BasicBullet:
+	if body is BasicBullet or MultiBullet:
 		#remove the bullet
 		body.queue_free()
 		#update health
@@ -36,4 +41,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if(health <= 0):
 			#spawn bullets
 			queue_free()
-			call_deferred("explode")
+			call_deferred("explode", body)
