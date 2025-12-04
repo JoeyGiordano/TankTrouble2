@@ -66,7 +66,10 @@ class_name _Reference
 @export var tileset_library : TilesetLib
 
 @export_category("Sounds")
-@export var basic_shoot_sfx : String = "res://sound/first half radio call.mp3"
+@export var basic_shoot_sfx : String = "res://sound/basic_shoot.mp3"
+@export var basic_bounce_sfx : String = "res://sound/basic_bounce.mp3"
+@export var basic_pop_sfx : String = "res://sound/basic_pop.mp3"
+@export var basic_empty_sfx : String = "res://sound/basic_empty.mp3"
 @export var landmine_shoot_sfx : String = "res://sound/first half radio call.mp3"
 @export var landmine_stepped_on_sfx : String = "res://sound/first half radio call.mp3"
 @export var landmine_explode_sfx : String = "res://sound/first half radio call.mp3"
