@@ -75,8 +75,8 @@ class_name _Reference
 @export var landmine_stepped_on_sfx : String = "res://sound/mine_stepped.mp3"
 @export var landmine_explode_sfx : String = "res://sound/mine_explode.mp3"
 @export var multibullet_shoot_sfx : String = "res://sound/basic_shoot.mp3"
-@export var multibullet_detonate_sfx : String = "res://sound/mine_stepped.mp3"
+@export var multibullet_detonate_sfx : String = "res://sound/multi_clank.mp3"
 @export var nuke_shoot_sfx : String = "res://sound/nuke_shoot.mp3"
-@export var nuke_explode_sfx : String = "res://sound/multi_pop.mp3"
+@export var nuke_explode_sfx : String = "res://sound/nuke_explode.mp3"
 @export_group("Other")
 @export var tank_death_sfx : String = "res://sound/tank_explode.mp3"
