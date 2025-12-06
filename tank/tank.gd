@@ -49,7 +49,7 @@ func _ready() :
 		despawn() #just hides them from view, locks input, and disables their rigidbody interactions
 	
 	print(sprite_id)
-0	tank_rigidbody.get_child(0).sprite_id = sprite_id
+	tank_rigidbody.get_child(0).sprite_id = sprite_id
 	tank_rigidbody.get_child(0).set_sprite()
 
 func _process(_delta) :
