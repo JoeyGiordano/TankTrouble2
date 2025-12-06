@@ -82,7 +82,7 @@ class_name _Reference
 @export var tank_death_sfx : String = "res://sound/tank_explode.mp3"
 @export var item_spawn_sfx : String = "res://sound/item_spawn.mp3"
 @export var item_pickup_sfx : String = "res://sound/item_pickup.mp3"
-@export var box_explode_sfx : String = "res://sound/item_pickup.mp3"
+@export var box_explode_sfx : String = "res://sound/exploding_box.mp3"
 @export var box_destroy_sfx : String = "res://sound/destructible_box.mp3"
 @export var box_hit_sfx : String = "res://sound/crate_hit.mp3"
 @export var indestructible_box_hit_sfx : String = "res://sound/indestructible_box_hit.mp3"

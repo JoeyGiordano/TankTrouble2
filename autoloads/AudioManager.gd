@@ -23,6 +23,7 @@ func _on_stream_finished(stream):
 
 
 func play(sound_path):
+	if queue.size() > 30 : return
 	queue.append(sound_path)
 	
 

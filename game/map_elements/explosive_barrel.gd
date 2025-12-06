@@ -7,16 +7,19 @@ extends Node2D
 #health of the box
 @export var health : int
 var bullets : Array[BasicBullet] = []
+var shard_speed : float= 125.0
+var shard_lifetime : float = 7.0
+var num_shards : int = 8
 
 
 
 func explode() :
 	
 	#instantiate 8 bullets
-	for n in range(8):
+	for n in range(num_shards):
 		var angle = deg_to_rad(n*45)#get the 45 degree angle in radians
 		var direction = Vector2.RIGHT.rotated(angle)#get the vector for the bullet
-		var b = BasicBullet.instantiate(global_position, 125.0, direction, 7.0)
+		var b = BasicBullet.instantiate(global_position, shard_speed*(0.8+randf()*0.4), direction, shard_lifetime*(0.8+randf()*0.4))
 		bullets.append(b)
 	
 	var anim : AnimatedSprite2D = Ref.explosion_anim.instantiate()

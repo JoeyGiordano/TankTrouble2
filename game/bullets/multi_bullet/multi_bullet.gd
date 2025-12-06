@@ -83,7 +83,7 @@ func spawn_shards() -> void: #Array[BasicBullet]:
 		#add randomness to spread to keep visually interesting
 		var a := start + i * step * RandomNumberGenerator.new().randf_range(0.8,1.2)
 		var v := Vector2.RIGHT.rotated(a)  # unit direction at angle a
-		var bb : BasicBullet = BasicBullet.instantiate(global_position, shard_speed, v, shard_lifetime)
+		var bb : BasicBullet = BasicBullet.instantiate(global_position, shard_speed*(0.8+randf()*0.4), v, shard_lifetime*(0.8+randf()*0.4))
 		bb.source_tank_id = source_tank_id   # preserve ownership 
 		shards.append(bb)	#add to shards array referece
 	

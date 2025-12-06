@@ -8,11 +8,11 @@ var source_tank_id : int = -1
 var source_tank_invincible : bool = true #this will get turned off 0.1 seconds after the bullet is shot, prevents tanks from accidentally shooting themselves unless they are going way faster than their own bullets
 # control how long player is invincible after planting land mine
 # if player who planted mine cannot trigger, then this is unessesary
-var delay_when_plant : float = 1
+var delay_when_plant : float = 0.5
 # control how long the mine takes to explode after being triggered
 # if it is immediate, then this is unnessesary
 var delay_when_trig : float = 0
-var dissolve_delay : float = 0.05
+var dissolve_delay : float = 0.7
 
 #region - variables for the spawned shards
 var num_shards : int = 8
@@ -59,9 +59,10 @@ func on_area_exited(area : Area2D) :
 		#wait for tank to despawn so that bullet shards dont hit player
 
 func dissolve_sprite() -> void:
+	await get_tree().create_timer(dissolve_delay).timeout
 	while (sprite.modulate.a > 0):
-		await get_tree().create_timer(dissolve_delay).timeout
-		sprite.modulate.a -= 0.05
+		await get_tree().create_timer(0.05).timeout
+		sprite.modulate.a -= 0.08
 
 func spawn_shards() -> void: #Array[BasicBullet]:
 	if num_shards <= 0: return #numshards must be >0
@@ -71,9 +72,9 @@ func spawn_shards() -> void: #Array[BasicBullet]:
 	
 	for i in range(num_shards):
 		#add randomness to spread to keep visually interesting
-		var angle := i * step
+		var angle := i * step*(0.8+randf()*0.4)
 		var dir_vect := Vector2(cos(angle), sin(angle))
-		var bb : BasicBullet = BasicBullet.instantiate(global_position, shard_speed, dir_vect, shard_lifetime)
+		var bb : BasicBullet = BasicBullet.instantiate(global_position, shard_speed*(0.8+randf()*0.4), dir_vect, shard_lifetime*(0.8+randf()*0.4))
 		bb.source_tank_id = source_tank_id   # preserve ownership 
 		shards.append(bb)	#add to shards array referece
 		

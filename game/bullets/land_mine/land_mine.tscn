@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwe3cijftd4x5"]
+[gd_scene load_steps=6 format=3 uid="uid://dwe3cijftd4x5"]
 
-[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_epf1g"]
 [ext_resource type="Script" uid="uid://dbp1bgtqaybb8" path="res://game/bullets/land_mine/land_mine.gd" id="1_wphjs"]
+[ext_resource type="Texture2D" uid="uid://bef5nyqm0vb7t" path="res://sprites/mine_sheet.png" id="2_wphjs"]
+[ext_resource type="Script" uid="uid://dxpj1ci4mhbb0" path="res://game/bullets/land_mine/land_mine_sprite.gd" id="3_g85dr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epf1g"]
 size = Vector2(10.5, 10.5)
@@ -15,9 +16,12 @@ gravity_scale = 0.0
 script = ExtResource("1_wphjs")
 
 [node name="LandMineSprite" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(2.3841858e-07, 2.3841858e-07)
-scale = Vector2(0.08789064, 0.08789064)
-texture = ExtResource("1_epf1g")
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_wphjs")
+hframes = 2
+script = ExtResource("3_g85dr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_epf1g")
