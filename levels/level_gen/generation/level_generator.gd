@@ -22,7 +22,6 @@ class_name LevelGenerator
 ## pixel x pixel
 @export var scale_ : Vector2i = Vector2i(64,64)
 ## percentage of tile space taken up by wall
-@export_range(0.01,1,0.0001) var wall_centage : float = 0.0625
 
 @export_group("Pits")
 ## -1 = random, 0 = no limit, # > 0 = tile_limit
@@ -102,7 +101,7 @@ class_name LevelGenerator
 
 #manages tileset stuff
 @export_group("Floor")
-@export_enum("debug") var floor_tileset_id : String = "debug"
+@export_enum("debug","road") var floor_tileset_id : String = "debug"
 ## #/100 chance for alternate tile to be used in tileset
 @export_range(0,100,1) var alternate_chance : int = 50
 
@@ -123,6 +122,7 @@ class_name LevelGenerator
 #templates and packedscenes
 @onready var bone_resource_template : LevelGenBone = preload("uid://b2ea07rprulyt")
 @onready var wall_template : LevelGenWall = preload("uid://dum6085nqdo78").instantiate()
+@onready var pillar_template : LevelGenPillar = preload("uid://xanig5lgg8wt").instantiate()
 #holders and markers
 @onready var wall_holder : Node2D = $Holders/WallHolder
 @onready var box_holder : Node2D = $Holders/BoxHolder
@@ -153,7 +153,6 @@ var player_spawns : int = PlayerManager.player_count()
 var player_spawn_points : Array[Vector2i] = [] #stores tilecoords to run spawn_players on
 
 func _ready():
-	floor_layer.position = origin_marker.position
 	init_generation() #NOTE: remove once you have an outside system calling this
 
 #region utility functions
@@ -182,7 +181,7 @@ func coords_to_direction(root_coords : Vector2i,target_coords : Vector2i) -> int
 
 ## relative to floor_layer (gives center of tile) and offset by origin_marker position
 func coords_to_position(tile_coords : Vector2i) -> Vector2:
-	return origin_marker.position + (floor_layer.map_to_local(tile_coords) * Vector2(ceil(scale_/floor_tileset.tile_size)))
+	return origin_marker.position + (floor_layer.map_to_local(tile_coords))
 
 ## converts the bone_map coords to tile_map coords based off of origin marker position
 func bone_to_tile_coords(bone_coords : Vector2i) -> Vector2i:
@@ -347,10 +346,10 @@ func init_generation():
 	
 	#floor init
 	#TEST: making debug easier on the eyes
-	floor_layer.modulate = Color(0.468, 0.468, 0.468, 1.0)
+	#floor_layer.modulate = Color(0.468, 0.468, 0.468, 1.0)
 	floor_tileset = Ref.tileset_library.lock_and_load_tileset(floor_tileset_id)
 	floor_layer.tile_set = floor_tileset
-	floor_layer.scale = scale_/floor_tileset.tile_size
+	floor_layer.position = origin_marker.position
 	
 	#pit init
 	if level_pits == -1: #random pits
@@ -374,8 +373,6 @@ func init_generation():
 			new_bone.coords = Vector2i(i,j)
 			map_bones[i][j] = new_bone
 	
-	# wall template setup NOTE: currently temp setup for debug graphics
-	wall_template.scale_ = Vector2(scale_.x*wall_centage,scale_.y)
 	wall_template.rotate(deg_to_rad(90)) #starts in north rotation
 	wall_points = [Vector2i(0,ceil(-scale_.y/2.0)),Vector2i(ceil(scale_.x/2.0),0),Vector2i(0,ceil(scale_.y/2.0)),Vector2i(ceil(-scale_.x/2.0),0)] #NESW
 	
@@ -567,32 +564,80 @@ func level_builder():
 			var current_bone = get_map_bone(Vector2i(i,j))
 			if current_bone != null:
 				var current_tile_coords : Vector2i = bone_to_tile_coords(current_bone.coords)
+				
+				#scanning for wall placement needs
+				var neighbor_walls_exist : Array[bool] = [false,false,false,false]
+				for z in range(4):
+					if current_bone.sides[z] != -1: #not border
+						var neighbor_bone : LevelGenBone = get_map_bone(current_bone.coords + direction_to_offset(z))
+						match z:
+							0: #N
+								if neighbor_bone.sides[1] != 2:
+									neighbor_walls_exist[1] = true
+								if neighbor_bone.sides[3] != 2:
+									neighbor_walls_exist[0] = true
+							1: #E
+								if neighbor_bone.sides[0] != 2:
+									neighbor_walls_exist[1] = true
+								if neighbor_bone.sides[2] != 2:
+									neighbor_walls_exist[2] = true
+							2: #S
+								if neighbor_bone.sides[1] != 2:
+									neighbor_walls_exist[2] = true
+								if neighbor_bone.sides[3] != 2:
+									neighbor_walls_exist[3] = true
+							3: #W
+								if neighbor_bone.sides[0] != 2:
+									neighbor_walls_exist[0] = true
+								if neighbor_bone.sides[2] != 2:
+									neighbor_walls_exist[3] = true
+				
 				if not current_bone.pit_flag:
 					place_floor(current_tile_coords,current_bone)
 					#building each square by bottom and right side (and borders)
 					for z in range(1,3):
 						match current_bone.sides[z]:
-							1: 
+							1:
 								place_wall(current_tile_coords,z)
 							-2:
 								if not current_bone.pit_flag:
 									place_wall(current_tile_coords,z)
 							3:
 								place_box_wall(current_tile_coords,z,box_type_pool.pop_at(randi_range(0,box_type_pool.size()-1)))
+								
 					#borders
 					for z in current_bone.sides.size():
 						match current_bone.sides[z]:
 							-1,0: place_wall(current_tile_coords,z)
+					#pillars
+					if current_bone.sides[1] != 2 or current_bone.sides[2] != 2 or neighbor_walls_exist[2]:
+						place_pillar(current_tile_coords,2)
+					
+					#pillars on edges
+					if current_bone.sides[2] == -1 and current_bone.sides[3] == -1:
+						place_pillar(current_tile_coords,3)
+					if current_bone.sides[3] == -1:
+						place_pillar(current_tile_coords,0)
+					if current_bone.sides[0] == -1:
+						place_pillar(current_tile_coords,1)
+					
 				else: #something something fixing code something something
 					for z in range(1,3):
 						match current_bone.sides[z]:
 							1: place_wall(current_tile_coords,z)
+					
+					#pillar placement
+					if current_bone.sides[3] == -1 and current_bone.sides[0] == 1:
+						place_pillar(current_tile_coords,0)
+					if current_bone.sides[0] == -1 and current_bone.sides[1] == 1:
+						place_pillar(current_tile_coords,1)
+					#normal pillars
+					if current_bone.sides[1] != -2 or current_bone.sides[2] != -2 or neighbor_walls_exist[2]:
+						place_pillar(current_tile_coords,2)
 				
 				#mark spawners in list
 				if current_bone.spawner_flag == true:
 					player_spawn_points.append(current_tile_coords)
-					#TEST: making tank_spawner visible!
-					display_spawn_point(current_tile_coords)
 				#box placement
 				if current_bone.box_flag == true:
 					place_box(current_tile_coords,box_type_pool.pop_at(randi_range(0,box_type_pool.size()-1)))
@@ -608,6 +653,7 @@ func place_floor(tile_coords : Vector2i, bone : LevelGenBone):
 	for i in 4:
 		if bone.sides[i] != -1: #not border
 			var neighbor_bone : LevelGenBone = get_map_bone(bone.coords + direction_to_offset(i))
+			print(neighbor_bone)
 			match i:
 				0: #N
 					if neighbor_bone.sides[1] != 2:
@@ -633,11 +679,11 @@ func place_floor(tile_coords : Vector2i, bone : LevelGenBone):
 	for i in 4:
 		if bone.sides[i] != 2: #not open
 			prim_bits += int(pow(2,(i*2)+1))
-			second_bits += int(pow(2,i+1))
+			second_bits += int(pow(2,i))
 		if neighbor_walls_exist[i]:
 			prim_bits += int(pow(2,i*2))
 	atlas_coords = Ref.tileset_library.grab_atlas(prim_bits,second_bits,floor_tileset_id,alternate_chance)
-	floor_layer.set_cell(tile_coords,0,atlas_coords)
+	floor_layer.set_cell(tile_coords,Ref.tileset_library.grab_atlas_id(floor_tileset_id),atlas_coords)
 
 ## walls are placed on borders between tiles
 func place_wall(tile_coords : Vector2i, direction : int):
@@ -646,6 +692,21 @@ func place_wall(tile_coords : Vector2i, direction : int):
 	new_wall.position = coords_to_position(tile_coords)
 	new_wall.position += wall_points[direction]
 	wall_holder.add_child(new_wall)
+
+func place_pillar(tile_coords : Vector2i, corner : int):
+	var new_pillar : LevelGenPillar = pillar_template.duplicate()
+	new_pillar.position = coords_to_position(tile_coords)
+	new_pillar.position += wall_points[corner]
+	match corner:
+		0:
+			new_pillar.position.x -= (scale_.x/2.0)
+		1:
+			new_pillar.position.y -= (scale_.y/2.0)
+		2:
+			new_pillar.position.x += (scale_.x/2.0)
+		3:
+			new_pillar.position.y += (scale_.y/2.0)
+	wall_holder.add_child(new_pillar)
 
 ## placing a line of boxes as a pseduo wall
 func place_box_wall(tile_coords : Vector2i, direction : int, box_type : int):
@@ -688,16 +749,15 @@ func place_box(tile_coords : Vector2i, box_type : int):
 	new_box.position = coords_to_position(tile_coords)
 	#moving it about randomly in the tile (without overlapping with walls)
 	var place_offset_range : Vector4 = Vector4(-scale_.x/2.0,scale_.x/2.0,-scale_.y/2.0,scale_.y/2.0) #x lower, x higher, y lower, y higher (bounds)
-	place_offset_range[0] += ceili((scale_.x*(wall_centage/2.0)) + new_box.get_child(0).get_child(0).shape.get_rect().size.x/2.0)
-	place_offset_range[1] -= ceili((scale_.x*(wall_centage/2.0)) + new_box.get_child(0).get_child(0).shape.get_rect().size.x/2.0)
-	place_offset_range[2] += ceili((scale_.y*(wall_centage/2.0)) + new_box.get_child(0).get_child(0).shape.get_rect().size.y/2.0)
-	place_offset_range[3] -= ceili((scale_.y*(wall_centage/2.0)) + new_box.get_child(0).get_child(0).shape.get_rect().size.y/2.0)
+	place_offset_range[0] += ceili(3 + new_box.get_child(0).get_child(0).shape.get_rect().size.x/2.0)
+	place_offset_range[1] -= ceili(3 + new_box.get_child(0).get_child(0).shape.get_rect().size.x/2.0)
+	place_offset_range[2] += ceili(3 + new_box.get_child(0).get_child(0).shape.get_rect().size.y/2.0)
+	place_offset_range[3] -= ceili(3 + new_box.get_child(0).get_child(0).shape.get_rect().size.y/2.0)
 	new_box.position += Vector2(randi_range(int(place_offset_range[0]),int(place_offset_range[1])),randi_range(int(place_offset_range[2]),int(place_offset_range[3])))
 	box_holder.add_child(new_box)
 #endregion
 
 ##places fields
-#TODO: implement the modifications that the fields use when I gain access to the full fields
 func place_fields():
 	#list of field types setup
 	var field_type_pool : Array[int] = []
@@ -819,7 +879,7 @@ func debug_print_map_bones():
 	for i in gen_bounds.y:
 		var row = " "
 		for j in gen_bounds.x:
-			row += "[ " + str(map_bones[j][i].coords) + " : " + str(map_bones[j][i].sides) + str(map_bones[j][i].pit_flag) + " ] "
+			row += "[ " + str(map_bones[j][i].coords) + " : " + str(map_bones[j][i].position) + " ] "
 		print(row)
 	print()
 

@@ -1,14 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtak7aat5yspu"]
+[gd_scene load_steps=2 format=3 uid="uid://dtak7aat5yspu"]
 
 [ext_resource type="Script" uid="uid://83pifmalc47k" path="res://levels/level_gen/generation/level_generator.gd" id="1_8du7d"]
-[ext_resource type="TileSet" uid="uid://coqb5tndb0kb8" path="res://levels/level_gen/parts/debug_graphics/hexgon.tres" id="3_u7cxg"]
 
 [node name="LevelGenerator" type="Node2D"]
 script = ExtResource("1_8du7d")
 
 [node name="FloorLayer" type="TileMapLayer" parent="."]
 position = Vector2(-1, 0)
-tile_set = ExtResource("3_u7cxg")
 
 [node name="Holders" type="Node2D" parent="."]
 

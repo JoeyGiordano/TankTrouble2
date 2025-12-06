@@ -19,14 +19,12 @@ const debug_primary_bits_to_id : Dictionary[int,int] = {
 	1 : 1,
 	2 : 5,
 	3 : 12,
-	4 : 3,
+	4 : 2,
 	5 : 32,
 	6 : 11,
-	7 : 38,
 	8 : 6,
 	9 : 25,
 	10 : 18,
-	11 : 43,
 	12 : 14,
 	13 : 71,
 	14 : 74,
@@ -40,10 +38,8 @@ const debug_primary_bits_to_id : Dictionary[int,int] = {
 	22 : 67,
 	23 : 104,
 	24 : 13,
-	25 : 52,
 	26 : 42,
 	27 : 160,
-	28 : 39,
 	29 : 102,
 	30 : 98,
 	31 : 189,
@@ -103,7 +99,6 @@ const debug_primary_bits_to_id : Dictionary[int,int] = {
 	85 : 113,
 	86 : 119,
 	87 : 184,
-	88 : 66,
 	89 : 120,
 	90 : 151,
 	91 : 171,
@@ -119,7 +114,6 @@ const debug_primary_bits_to_id : Dictionary[int,int] = {
 	101 : 123,
 	102 : 150,
 	103 : 169,
-	104 : 44,
 	105 : 154,
 	106 : 141,
 	107 : 180,
@@ -127,7 +121,6 @@ const debug_primary_bits_to_id : Dictionary[int,int] = {
 	109 : 172,
 	110 : 201,
 	111 : 223,
-	112 : 40,
 	113 : 107,
 	114 : 111,
 	115 : 167,
@@ -167,7 +160,6 @@ const debug_primary_bits_to_id : Dictionary[int,int] = {
 	149 : 124,
 	150 : 157,
 	151 : 211,
-	152 : 58,
 	153 : 148,
 	154 : 139,
 	155 : 200,
@@ -176,7 +168,6 @@ const debug_primary_bits_to_id : Dictionary[int,int] = {
 	158 : 192,
 	159 : 240,
 	160 : 20,
-	161 : 45,
 	162 : 89,
 	163 : 134,
 	164 : 86,
@@ -209,7 +200,6 @@ const debug_primary_bits_to_id : Dictionary[int,int] = {
 	191 : 252,
 	192 : 10,
 	193 : 37,
-	194 : 41,
 	195 : 93,
 	196 : 56,
 	197 : 101,
@@ -551,12 +541,104 @@ const debug_id_to_atlas : Dictionary[int,Array] = {
 	255 : [Vector2i(50,0)],
 }
 
+#removed unused tile locations
+const road_primary_bits_to_id : Dictionary[int,int] = {
+	0 : 0,
+	1 : 1,
+	2 : 5,
+	4 : 2,
+	5 : 32,
+	8 : 6,
+	9 : 25,
+	10 : 18,
+	14 : 74,
+	15 : 95,
+	16 : 3,
+	17 : 30,
+	18 : 27,
+	20 : 33,
+	21 : 78,
+	30 : 98,
+	32 : 7,
+	33 : 23,
+	34 : 36,
+	36 : 24,
+	37 : 82,
+	40 : 19,
+	41 : 85,
+	53 : 122,
+	56 : 75,
+	60 : 97,
+	62 : 177,
+	63 : 233,
+	64 : 4,
+	65 : 31,
+	66 : 28,
+	68 : 29,
+	69 : 77,
+	72 : 26,
+	73 : 81,
+	74 : 88,
+	77 : 121,
+	80 : 34,
+	81 : 80,
+	82 : 84,
+	83 : 118,
+	84 : 79,
+	85 : 113,
+	86 : 119,
+	87 : 184,
+	89 : 120,
+	93 : 185,
+	95 : 244,
+	101 : 123,
+	117 : 186,
+	120 : 100,
+	125 : 245,
+	126 : 234,
+	128 : 8,
+	130 : 17,
+	131 : 73,
+	132 : 21,
+	135 : 96,
+	136 : 35,
+	143 : 176,
+	144 : 22,
+	146 : 87,
+	148 : 83,
+	149 : 124,
+	159 : 240,
+	160 : 20,
+	164 : 86,
+	170 : 146,
+	195 : 93,
+	207 : 239,
+	212 : 125,
+	213 : 183,
+	215 : 243,
+	224 : 76,
+	225 : 94,
+	227 : 175,
+	231 : 237,
+	240 : 99,
+	243 : 238,
+	245 : 246,
+	248 : 178,
+	249 : 235,
+	252 : 236
+}
+
 ## converts bits generated in level generation to a list of atlas coordinates[br]
 ## yes, this is somewhat manual to add to, no, I do not want to fix it
 func bits_to_atlas(prim_bits : int, second_bits : int, tile_set : String) -> Array:
-	match tile_set.to_lower():
+	match tile_set:
 		"debug":
 			var id : int = debug_primary_bits_to_id.get(prim_bits,-1)
+			if id == -1:
+				id = debug_secondary_bits_to_id.get(second_bits,0)
+			return debug_id_to_atlas.get(id)
+		"road":
+			var id : int = road_primary_bits_to_id.get(prim_bits,-1)
 			if id == -1:
 				id = debug_secondary_bits_to_id.get(second_bits,0)
 			return debug_id_to_atlas.get(id)
@@ -571,11 +653,19 @@ func grab_atlas(prim_bits : int, second_bits : int, tile_set : String, alternate
 	else:
 		return atlas_array.get(randi_range(1,atlas_array.size()-1))
 
+func grab_atlas_id(tile_set) -> int:
+	match tile_set:
+		"road":
+			return 1
+		_:
+			return 0
+
 ## TileSet uids
 const tile_set_dict : Dictionary[String,String] = {
-	"debug" : "uid://obe0ov82c2j4"
+	"debug" : "uid://obe0ov82c2j4",
+	"road" : "uid://bs6vbjd02p3k8"
 }
 
 ## just to ensure nothing breaks, please use this :)
-func lock_and_load_tileset(tile_set : String):
-	return load(tile_set_dict.get(tile_set.to_lower(),"uid://obe0ov82c2j4"))
+func lock_and_load_tileset(tile_set : String) -> TileSet:
+	return load(tile_set_dict.get(tile_set,"uid://obe0ov82c2j4"))

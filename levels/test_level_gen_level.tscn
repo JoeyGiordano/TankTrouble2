@@ -34,18 +34,18 @@ grid_type = 2
 item_res = ExtResource("2_iq1mi")
 
 [node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_bvjr1")]
-gen_bounds = Vector2i(12, 8)
-scale_ = Vector2i(65, 65)
-level_pits = 7
+gen_bounds = Vector2i(10, 6)
+scale_ = Vector2i(80, 80)
 origin_marker = NodePath("OriginMarker")
 region_connections = 1
 box_gen_limits = Array[Vector3i]([Vector3i(0, 0, 10), Vector3i(0, 0, 10), Vector3i(0, 0, 10), Vector3i(0, 0, 10)])
-field_gen_limits = Array[Vector3i]([Vector3i(0, 1, 10), Vector3i(0, 1, 10), Vector3i(3, 1, 10), Vector3i(3, 1, 10)])
+field_gen_limits = Array[Vector3i]([Vector3i(0, 1, 10), Vector3i(0, 1, 10), Vector3i(0, 1, 10), Vector3i(0, 1, 10)])
 field_bmod_speed = Vector2(-1, 2)
 field_bmod_speed_r_bounds = Array[Vector2]([Vector2(5, 10), Vector2(2, 2)])
 field_tmod_statboosts = Array[ExtResource("4_ojlxl")]([SubResource("Resource_sh1xe"), SubResource("Resource_ojlxl"), SubResource("Resource_5rcoe")])
 field_mag_strength = -1
 field_mag_clockwise = -1
+floor_tileset_id = "road"
 alternate_chance = 0
 srw_random_limits = Vector2i(3, 12)
 spawner_buffers = 2

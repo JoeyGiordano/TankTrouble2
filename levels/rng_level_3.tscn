@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cicha7ncwv202"]
+
+[ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="1_yomqt"]
+[ext_resource type="PackedScene" uid="uid://dtak7aat5yspu" path="res://levels/level_gen/generation/level_generator.tscn" id="2_ucoc3"]
+
+[node name="LevelTemplate" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ItemSpawner" parent="." instance=ExtResource("1_yomqt")]
+position = Vector2(-8.1518135, 6.3165627)
+
+[node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_ucoc3")]
+gen_bounds = Vector2i(10, 5)
+scale_ = Vector2i(80, 80)
+random_weight = 1
+newest_weight = 1
+middle_weight = 5
+oldest_weight = 5
+origin_marker = NodePath("origin")
+box_gen_limits = Array[Vector3i]([Vector3i(-1, 5, 20), Vector3i(-1, 5, 20), Vector3i(-1, 5, 20), Vector3i(-1, 5, 20)])
+box_health_limits = Array[Vector3i]([Vector3i(-1, 1, 10), Vector3i(-1, 1, 10), Vector3i(-1, 1, 10)])
+box_walls = true
+box_wall_chance = 33
+field_gen_limits = Array[Vector3i]([Vector3i(0, 1, 10), Vector3i(0, 1, 10), Vector3i(0, 1, 10), Vector3i(0, 1, 10)])
+floor_tileset_id = "road"
+smash_random_walls = 5
+
+[node name="origin" type="Marker2D" parent="LevelGenerator"]
+position = Vector2(-370, -171)

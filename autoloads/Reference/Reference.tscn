@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dimsdmfqcpvlg"]
+[gd_scene load_steps=36 format=3 uid="uid://dimsdmfqcpvlg"]
 
 [ext_resource type="Script" uid="uid://ciyveyuo2ihr0" path="res://autoloads/Reference/Reference.gd" id="1_pmmna"]
 [ext_resource type="PackedScene" uid="uid://d176ir76ayfrc" path="res://shell_scenes/startup.tscn" id="2_qlxkd"]
@@ -25,9 +25,12 @@
 [ext_resource type="PackedScene" uid="uid://bvx6y0y353jnt" path="res://levels/custom_level_2.tscn" id="17_k55fg"]
 [ext_resource type="PackedScene" uid="uid://2su3htx11obo" path="res://tank/loadouts/basic/basic_tankloadout.tscn" id="18_d3fos"]
 [ext_resource type="PackedScene" uid="uid://4xfrxxpiguq" path="res://tank/loadouts/multibullet/multibullet_tankloadout.tscn" id="19_d3fos"]
+[ext_resource type="PackedScene" uid="uid://caaogrsopcbsa" path="res://levels/rng_level_1.tscn" id="19_jt88h"]
+[ext_resource type="PackedScene" uid="uid://vywhnte21c8" path="res://levels/rng_level_2.tscn" id="20_6i4fw"]
+[ext_resource type="PackedScene" uid="uid://cicha7ncwv202" path="res://levels/rng_level_3.tscn" id="21_jubfu"]
+[ext_resource type="PackedScene" uid="uid://dwe3cijftd4x5" path="res://game/bullets/land_mine/land_mine.tscn" id="22_831b3"]
 [ext_resource type="PackedScene" uid="uid://bojycccxpxfms" path="res://game/item/item.tscn" id="22_k55fg"]
 [ext_resource type="PackedScene" uid="uid://dwgdjpfsltjy3" path="res://animations/Explosion.tscn" id="23_3kg4t"]
-[ext_resource type="PackedScene" uid="uid://dwe3cijftd4x5" path="res://game/bullets/land_mine/land_mine.tscn" id="22_831b3"]
 [ext_resource type="PackedScene" uid="uid://bd58u8e01gyf6" path="res://game/bullets/Nuke/nuke.tscn" id="23_nlf2g"]
 [ext_resource type="PackedScene" uid="uid://1s3gq0f5ag1a" path="res://tank/loadouts/landmine/landmine_tankloadout.tscn" id="27_pxxx1"]
 [ext_resource type="PackedScene" uid="uid://crsr7ik4jallv" path="res://tank/loadouts/nuke_loadout/nuke_tankloadout.tscn" id="29_pijn0"]
@@ -52,6 +55,9 @@ test_level_gen_level = ExtResource("15_323l5")
 test_level_active_map = ExtResource("15_hiq1x")
 custom_level_1 = ExtResource("16_323l5")
 custom_level_2 = ExtResource("17_k55fg")
+rng_level_1 = ExtResource("19_jt88h")
+rng_level_2 = ExtResource("20_6i4fw")
+rng_level_3 = ExtResource("21_jubfu")
 tank_scene = ExtResource("13_acwhr")
 basic_bullet = ExtResource("12_vdkhk")
 multi_bullet = ExtResource("17_323l5")
