@@ -603,7 +603,7 @@ position = Vector2(1, 0)
 position = Vector2(-8, 0)
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_t0xl2")
-animation = &"tank_green_idle"
+animation = &"tan_rat_idle"
 script = ExtResource("4_ftwc1")
 metadata/_custom_type_script = "uid://dsmpmfacmdo3b"
 

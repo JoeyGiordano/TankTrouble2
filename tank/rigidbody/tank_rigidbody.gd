@@ -53,6 +53,12 @@ func _replace_loadout(loadout_name : String) :
 	remove_child(get_child(0))
 	#create a new tank loadout as a child of this node
 	TankLoadout.instantiate(self, loadout_name)
+	if (get_child(0) is TankLoadout):
+		#print(tank.sprite_id)
+		get_child(0).sprite_id = tank.sprite_id
+	else:
+		print("not a loadout sorry")
+	
 
 ## Resource
 

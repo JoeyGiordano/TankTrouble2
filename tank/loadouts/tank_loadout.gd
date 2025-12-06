@@ -36,12 +36,13 @@ func end_shoot() :
 static func instantiate(parent : RigidBody2D, loadout_name : String) -> TankLoadout :
 	#should be overriden by child class
 	var tl : TankLoadout = Ref.get(loadout_name).instantiate()
+	tl.sprite_id = sprite_id
 	parent.add_child(tl)
 	tl.set_sprite()
 	return tl
 	
 func set_sprite() :
-	print(sprite_id)
+	#print(sprite_id)
 	if(get_child(0).get_child(0) is AnimatedSprite2D):
 		match(sprite_id):
 			0:

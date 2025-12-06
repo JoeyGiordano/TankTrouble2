@@ -41,6 +41,7 @@ func get_all_tanks() -> Array[Tank] :
 func create_player_tank(p : PlayerProfile) -> Tank :
 	var t : Tank = _create_tank(Global.PlayerTanks, p)
 	p.associate(t.id)
+	#print(p.sprite_id)
 	return t
 
 func create_npc_tank(p : TankProfile, associate : bool = false) :
@@ -55,7 +56,7 @@ func _create_tank(parent : Node, profile : PlayerProfile = PlayerProfile.new(), 
 	#set id
 	t.id = next_id
 	t.sprite_id = profile.sprite_id
-	# print(profile.sprite_id) <-- Seems right
+	#print(profile.sprite_id) #<-- Seems right
 	next_id += 1
 	#set profile and stats
 	t.profile = profile as TankProfile

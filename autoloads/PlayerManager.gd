@@ -41,7 +41,7 @@ func reset() :
 func create_players(count : int, player_sprite_ids : Array[int]) :
 	for i in range(count) :
 		create_player(player_sprite_ids[i])
-		# print(player_sprite_ids[i]) <-- correct here
+		#print(player_sprite_ids[i]) #<-- correct here
 
 func create_player(sprite_id : int) -> PlayerProfile :
 	# create unique id

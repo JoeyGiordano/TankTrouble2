@@ -48,7 +48,7 @@ func _ready() :
 	else :
 		despawn() #just hides them from view, locks input, and disables their rigidbody interactions
 	
-	print(sprite_id)
+	#print(sprite_id)
 	tank_rigidbody.get_child(0).sprite_id = sprite_id
 	tank_rigidbody.get_child(0).set_sprite()
 
