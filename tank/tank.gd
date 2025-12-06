@@ -24,6 +24,8 @@ var id : int # will always be unique, never modified
 @onready var stats_handler : StatsHandler = $StatsHandler
 @onready var effects_handler : EffectsHandler = $EffectsHandler
 
+@onready var invin_heat_sound : AudioStreamPlayer2D = $InvinHeatSound
+
 #Invincability
 var invincible_effect : bool = false
 var invincibility_heat : float = 0.0
@@ -59,6 +61,8 @@ func _process(_delta) :
 			invincible_effect = false
 			invincibility_heat = 0
 			die()
+		if invincibility_heat >= max_heat - 4.5 && !invin_heat_sound.playing:
+			invin_heat_sound.play()
 	else:
 		if(invincibility_heat > 0):
 			invincibility_heat -= _delta;
@@ -127,6 +131,7 @@ func give_invincibility():
 
 
 func remove_invincibility():
+	invin_heat_sound.stop()
 	invincible_effect = false
 
 
