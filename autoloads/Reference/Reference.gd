@@ -20,6 +20,7 @@ class_name _Reference
 @export_category("Scenes")
 @export_group("Shell Scenes")
 @export var startup : PackedScene
+@export var icon : PackedScene
 @export var main_menu : PackedScene
 @export var instructions : PackedScene
 @export var credits : PackedScene
@@ -86,3 +87,4 @@ class_name _Reference
 @export var box_destroy_sfx : String = "res://sound/destructible_box.mp3"
 @export var box_hit_sfx : String = "res://sound/crate_hit.mp3"
 @export var indestructible_box_hit_sfx : String = "res://sound/indestructible_box_hit.mp3"
+@export var pipe_fall : String = "res://sound/metal_pipe.mp3"

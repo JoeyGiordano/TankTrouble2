@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvt88un11f5iw"]
+
+[ext_resource type="Texture2D" uid="uid://dmiwf8x68khn3" path="res://sprites/jankycat-Sheet.png" id="1_0w63c"]
+[ext_resource type="Script" uid="uid://rlh10f8uu4kv" path="res://shell_scenes/startup_cutscene.gd" id="2_17gpa"]
+
+[node name="Startup" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -97.99999
+offset_top = -40.0
+offset_right = -57.999992
+scale = Vector2(33.166668, 18.942858)
+color = Color(0.7764706, 0.80784315, 0.9254902, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(574, 302)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_0w63c")
+hframes = 9
+script = ExtResource("2_17gpa")
