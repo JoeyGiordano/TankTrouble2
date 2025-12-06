@@ -151,6 +151,7 @@ func die() :
 	#play death sound and anim
 	despawn()
 	dead = true
+	AudioManager.play(Ref.tank_death_sfx)
 	GameManager.tank_died()
 
 

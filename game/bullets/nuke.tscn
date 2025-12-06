@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd58u8e01gyf6"]
+
+[ext_resource type="Script" uid="uid://c2m4hktj0ab0g" path="res://game/bullets/Nuke/nuke.gd" id="1_3yf5j"]
+[ext_resource type="Texture2D" uid="uid://bqc6nosm8ppxt" path="res://sprites/nuke_shadow.png" id="2_e8crf"]
+[ext_resource type="Texture2D" uid="uid://cac7sh4t4fr3s" path="res://sprites/WhiteCircle.png" id="3_e8crf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epf1g"]
+size = Vector2(10.5, 10.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epf1g"]
+radius = 126.0
+
+[node name="Nuke" type="RigidBody2D"]
+collision_layer = 4
+gravity_scale = 0.0
+script = ExtResource("1_3yf5j")
+
+[node name="nuke_shadow_sprite" type="Sprite2D" parent="."]
+position = Vector2(1.1920929e-07, 0)
+rotation = 3.1415927
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_e8crf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_epf1g")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+shape = SubResource("CircleShape2D_epf1g")
+debug_color = Color(0.9905403, 0, 0.2827947, 0.41960785)
+
+[node name="Explosion" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="nuke_explosion1" type="Sprite2D" parent="Explosion"]
+modulate = Color(0.75, 0.20999998, 0.20999998, 0.8156863)
+position = Vector2(1.1920929e-07, 0)
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_e8crf")
+
+[node name="nuke_explosion2" type="Sprite2D" parent="Explosion"]
+modulate = Color(1, 0.7246667, 0.41000003, 0.9019608)
+position = Vector2(1.1920929e-07, 0)
+rotation = 3.1415927
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_e8crf")
+
+[node name="nuke_explosion3" type="Sprite2D" parent="Explosion"]
+modulate = Color(0.98, 0.94406664, 0.5488, 1)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_e8crf")
+
+[node name="nuke_explosion4" type="Sprite2D" parent="Explosion"]
+modulate = Color(1, 0.97433335, 0.86, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_e8crf")

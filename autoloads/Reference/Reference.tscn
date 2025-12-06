@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dwe3cijftd4x5" path="res://game/bullets/land_mine/land_mine.tscn" id="22_831b3"]
 [ext_resource type="PackedScene" uid="uid://bojycccxpxfms" path="res://game/item/item.tscn" id="22_k55fg"]
 [ext_resource type="PackedScene" uid="uid://dwgdjpfsltjy3" path="res://animations/Explosion.tscn" id="23_3kg4t"]
-[ext_resource type="PackedScene" uid="uid://bd58u8e01gyf6" path="res://game/bullets/Nuke/nuke.tscn" id="23_nlf2g"]
+[ext_resource type="PackedScene" uid="uid://bd58u8e01gyf6" path="res://game/bullets/nuke.tscn" id="23_nlf2g"]
 [ext_resource type="PackedScene" uid="uid://1s3gq0f5ag1a" path="res://tank/loadouts/landmine/landmine_tankloadout.tscn" id="27_pxxx1"]
 [ext_resource type="PackedScene" uid="uid://crsr7ik4jallv" path="res://tank/loadouts/nuke_loadout/nuke_tankloadout.tscn" id="29_pijn0"]
 [ext_resource type="Resource" uid="uid://cradvt8ln8q40" path="res://levels/level_gen/parts/tilesets/tileset_lib.tres" id="31_pijn0"]

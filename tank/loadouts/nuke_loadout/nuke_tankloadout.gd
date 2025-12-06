@@ -11,7 +11,6 @@ func shoot() :
 	var n = Nuke.instantiate(guntip.global_position)
 	n.source_tank_id = tank.id
 	AudioManager.play(Ref.nuke_shoot_sfx)
-	AudioManager.play(Ref.nuke_whistle_sfx)
 	set_basic_loadout()
 
 func on_end_of_round() :

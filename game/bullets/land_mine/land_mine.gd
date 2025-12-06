@@ -54,7 +54,7 @@ func on_area_exited(area : Area2D) :
 		#waits time before exploding mine, would be fun if tank is fast and can avoid
 		#tank.die()
 		AudioManager.play(Ref.landmine_explode_sfx)
-		await get_tree().create_timer(0.07).timeout
+		await get_tree().create_timer(0.1).timeout
 		call_deferred("spawn_shards")
 		#wait for tank to despawn so that bullet shards dont hit player
 

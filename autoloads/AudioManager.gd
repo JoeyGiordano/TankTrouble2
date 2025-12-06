@@ -24,7 +24,7 @@ func _on_stream_finished(stream):
 
 func play(sound_path):
 	queue.append(sound_path)
-
+	
 
 func _process(_delta):
 	# Play a queued sound if any players are available.
