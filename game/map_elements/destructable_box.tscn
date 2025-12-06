@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bx2nhx7cbggc4"]
 
 [ext_resource type="Script" uid="uid://lxm1apx1hbya" path="res://game/map_elements/destructable_box.gd" id="1_mfdo5"]
-[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="1_qxtel"]
+[ext_resource type="Texture2D" uid="uid://c36us8irf3sxe" path="res://sprites/small_fragile.png" id="2_mfdo5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdo5"]
 size = Vector2(14, 14)
@@ -23,9 +23,8 @@ collision_mask = 13
 shape = SubResource("RectangleShape2D_mfdo5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(14, 14)
-texture = ExtResource("1_qxtel")
-region_enabled = true
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_mfdo5")
 region_rect = Rect2(64, 68, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

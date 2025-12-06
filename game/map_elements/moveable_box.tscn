@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bco7bn3j6pl3n"]
 
 [ext_resource type="Script" uid="uid://k687a7f4yocb" path="res://game/map_elements/moveable_box.gd" id="1_ch5ga"]
-[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_84ian"]
+[ext_resource type="Texture2D" uid="uid://btx7xi0e8385x" path="res://sprites/movableBig.png" id="2_ch5ga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdo5"]
 size = Vector2(28, 27)
@@ -28,10 +28,8 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_mfdo5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.23098439, 0.87540084, 1.1551381e-06, 1)
-scale = Vector2(28, 28)
-texture = ExtResource("2_84ian")
-region_enabled = true
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("2_ch5ga")
 region_rect = Rect2(64, 68, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

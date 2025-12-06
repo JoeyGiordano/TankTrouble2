@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://kgb8qiwyx3h5"]
 
 [ext_resource type="Script" uid="uid://dpwnm74cbnbv" path="res://game/map_elements/indestructable_box.gd" id="1_d6ile"]
-[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_hbifx"]
+[ext_resource type="Texture2D" uid="uid://d57q1ijk2dtq" path="res://sprites/small_steel.png" id="2_d6ile"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdo5"]
 size = Vector2(14, 14)
@@ -22,10 +22,8 @@ collision_mask = 13
 shape = SubResource("RectangleShape2D_mfdo5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(14, 14)
-texture = ExtResource("2_hbifx")
-region_enabled = true
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_d6ile")
 region_rect = Rect2(64, 68, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

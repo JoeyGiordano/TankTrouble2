@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bef5nyqm0vb7t" path="res://sprites/mine_sheet.png" id="2_wphjs"]
 [ext_resource type="Script" uid="uid://dxpj1ci4mhbb0" path="res://game/bullets/land_mine/land_mine_sprite.gd" id="3_g85dr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_epf1g"]
-size = Vector2(10.5, 10.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_g85dr"]
+radius = 7.1975145
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epf1g"]
-radius = 8.062258
+radius = 7.3254747
 
 [node name="LandMine" type="RigidBody2D"]
 collision_layer = 4
@@ -24,7 +24,7 @@ hframes = 2
 script = ExtResource("3_g85dr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_epf1g")
+shape = SubResource("CircleShape2D_g85dr")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
@@ -33,3 +33,4 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_epf1g")
 debug_color = Color(0.9905403, 0, 0.2827947, 0.41960785)
+metadata/_edit_group_ = true
