@@ -46,6 +46,7 @@ func replace_loadout(loadout_name : String) :
 	#using call_deferred ensures that _replace_loadout is not called during a physics frame, loadouts are collsion objects and switching a rigidbody's collision object mid physics update can be bad
 	call_deferred("_replace_loadout", loadout_name)
 
+# TODO: add functionality to get parent tank for tank profile, get tank ID, and pass it along when instancing a loadout
 func _replace_loadout(loadout_name : String) :
 	#destroy the old tank loadout
 	get_child(0).queue_free()

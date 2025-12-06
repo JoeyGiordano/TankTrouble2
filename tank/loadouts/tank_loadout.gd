@@ -9,6 +9,11 @@ class_name TankLoadout
 #packed scenes of loadout types (except basic, see below)
 static var empty : PackedScene = preload("res://tank/loadouts/empty_tankloadout.tscn")
 
+# the sprite id for the player's tank
+var sprite_id : int
+# reference to the loadout sprite
+#var loadout_sprite : AnimatedSprite2D = $Sprite/LoadoutSprite
+
 #loadout type enum, one for each packed scene
 enum Type {
 	EMPTY,
@@ -32,7 +37,33 @@ static func instantiate(parent : RigidBody2D, loadout_name : String) -> TankLoad
 	#should be overriden by child class
 	var tl : TankLoadout = Ref.get(loadout_name).instantiate()
 	parent.add_child(tl)
+	tl.set_sprite()
 	return tl
+	
+func set_sprite() :
+	print(sprite_id)
+	if(get_child(0).get_child(0) is AnimatedSprite2D):
+		match(sprite_id):
+			0:
+				get_child(0).get_child(0).play("grey_rat_idle")
+			1:
+				get_child(0).get_child(0).play("white_rat_idle")
+			2:
+				get_child(0).get_child(0).play("tan_rat_idle")
+			3:
+				get_child(0).get_child(0).play("tank_white_idle")
+			4:
+				get_child(0).get_child(0).play("tank_green_idle")
+			5:
+				get_child(0).get_child(0).play("tank_red_idle")
+			_:
+				get_child(0).get_child(0).play("grey_rat_idle")
+
+func set_moving_sprite() :
+	pass
+	
+func get_sprite_id() -> int:
+	return sprite_id
 
 ## Old but funny, don't delete
 #static func instantiate_basic() -> TankLoadout :

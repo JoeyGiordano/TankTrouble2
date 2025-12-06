@@ -49,17 +49,31 @@ func create_npc_tank(p : TankProfile, associate : bool = false) :
 		p.associate(t.id)
 	return t
 
-func _create_tank(parent : Node, profile : TankProfile = TankProfile.new(), starting_stats : StatBoost = Ref.base_tank_stats) -> Tank :
+func _create_tank(parent : Node, profile : PlayerProfile = PlayerProfile.new(), starting_stats : StatBoost = Ref.base_tank_stats) -> Tank :
 	var t : Tank = Ref.tank_scene.instantiate()
 	# NOTE _init() is called during the execution of the previous line
 	#set id
 	t.id = next_id
+	t.sprite_id = profile.sprite_id
+	# print(profile.sprite_id) <-- Seems right
 	next_id += 1
 	#set profile and stats
-	t.profile = profile
+	t.profile = profile as TankProfile
 	t.stats = starting_stats.copy()
+	#TEST: have tank choose sprite selected by player
+	# t.TankRigidBody.BasicTankLoadout
+	
+	## set the default tankloadout to have the correct sprite ID
+	#if (t.tank_rigidbody.get_child(0) is TankLoadout):
+		#t.tank_rigidbody.get_child(0).sprite_id = profile.sprite_id
+	
 	#add the new tank to the scene tree
 	parent.add_child(t)
+	# set the default tankloadout to have the correct sprite ID
+	if (t.tank_rigidbody.get_child(0) is TankLoadout):
+		t.tank_rigidbody.get_child(0).sprite_id = profile.sprite_id
+		#print(t.tank_rigidbody.get_child(0).sprite_id) <-- seems right
+		#print(profile.sprite_id)
 	# NOTE _ready() is called during the execution of the previous line (first on all the children of the tank, then on the tank)
 	return t
 
