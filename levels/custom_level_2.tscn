@@ -247,11 +247,11 @@ grid_pos = Vector2(12, -1.5)
 
 [node name="Bullet Speed Modifier Area" parent="Active Map Elements" instance=ExtResource("5_8h7hc")]
 position = Vector2(-200, 0)
-scale = Vector2(5, 5)
+scale = Vector2(100, 100)
 
 [node name="Bullet Speed Modifier Area2" parent="Active Map Elements" instance=ExtResource("5_8h7hc")]
 position = Vector2(200, 0)
-scale = Vector2(5, 5)
+scale = Vector2(100, 100)
 
 [node name="Destructable Boxes" type="Node2D" parent="Active Map Elements"]
 

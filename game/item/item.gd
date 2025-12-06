@@ -8,7 +8,7 @@ class_name Item
 var t : Tank
 
 func _ready():
-	AudioManager.play(Ref.item_spawn)
+	AudioManager.play(Ref.item_spawn_sfx)
 	hitbox.area_entered.connect(on_area_entered)
 	hitbox.get_child(0).modulate = item_res.color
 
@@ -19,7 +19,7 @@ func on_area_entered(area : Area2D) :
 	if area.is_in_group("tank_hitbox") :
 		var tank : Tank = area.get_parent().tank_rigidbody.tank #all tank hitboxes must be direct children of a tank loadout
 		get_pickedup_by(tank)
-		AudioManager.play(Ref.item_pickup)
+		AudioManager.play(Ref.item_pickup_sfx)
 		
 func get_pickedup_by(tank : Tank) :
 	#need to use call_deferred because the tank can't reparent item during physics_process

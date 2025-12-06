@@ -22,6 +22,8 @@ func explode() :
 	var anim : AnimatedSprite2D = Ref.explosion_anim.instantiate()
 	Global.Entities.add_child(anim)
 	anim.position = position
+	
+	AudioManager.play(Ref.box_explode_sfx)
 
 
 
