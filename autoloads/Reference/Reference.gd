@@ -80,3 +80,5 @@ class_name _Reference
 @export var nuke_explode_sfx : String = "res://sound/nuke_explode.mp3"
 @export_group("Other")
 @export var tank_death_sfx : String = "res://sound/tank_explode.mp3"
+@export var item_spawn : String = "res://sound/item_spawn.mp3"
+@export var item_pickup : String = "res://sound/item_pickup.mp3"
