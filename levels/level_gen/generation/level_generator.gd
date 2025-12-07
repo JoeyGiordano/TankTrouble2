@@ -653,7 +653,7 @@ func place_floor(tile_coords : Vector2i, bone : LevelGenBone):
 	for i in 4:
 		if bone.sides[i] != -1: #not border
 			var neighbor_bone : LevelGenBone = get_map_bone(bone.coords + direction_to_offset(i))
-			print(neighbor_bone)
+			#print(neighbor_bone)
 			match i:
 				0: #N
 					if neighbor_bone.sides[1] != 2:
