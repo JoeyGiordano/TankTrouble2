@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://davcb00x4qwcq"]
+
+[ext_resource type="PackedScene" uid="uid://bojycccxpxfms" path="res://game/item/item.tscn" id="1_varlc"]
+[ext_resource type="Resource" uid="uid://6du0k7jjksg2" path="res://game/item/items/item_loadout.tres" id="2_pe3fo"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="3_dtyln"]
+
+[node name="LoadoutItem" type="Node2D"]
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(18, 18)
+texture = ExtResource("3_dtyln")
+region_enabled = true
+region_rect = Rect2(63, 65, 1, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.50980395, 0.29803923, 0.9019608, 1)
+scale = Vector2(14, 14)
+texture = ExtResource("3_dtyln")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.7853982
+scale = Vector2(10, 10)
+texture = ExtResource("3_dtyln")
+region_enabled = true
+region_rect = Rect2(64, 66, 1, 1)
+
+[node name="Item" parent="." instance=ExtResource("1_varlc")]
+item_res = ExtResource("2_pe3fo")

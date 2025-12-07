@@ -12,6 +12,7 @@ enum GRID_TYPE {
 @export var delay : float = 5 #the delay before the first spawn cycle takes place
 
 var item_res : ItemResource = preload("res://game/item/items/item1.tres")#later make this an array and make it variable spawn frequency etc, also consolidate item with loadout upgrade? could also make a random generator
+var loadout_item : PackedScene = preload("res://game/item/items/loadout_item.tscn")
 
 var spawning : bool = false
 var next_spawn_time : float = 0
@@ -35,14 +36,25 @@ func spawn() :
 	if grid_type == GRID_TYPE.GRID :
 		var g : Grid = get_parent().get_node("Grid")
 		pos = g.nearest_square_center(pos, Grid.COORD_TYPE.REAL, Grid.COORD_TYPE.REAL)
-	Item.instantiate(item_res, pos)
+	do_spawn(pos)
+	#Item.instantiate(item_res, pos)
 
 func rand_gen_spawn() :
 	var g : LevelGenerator = get_parent().get_node("LevelGenerator")
 	var x = randf_range(0, g.gen_bounds.x)
 	var y = randf_range(0, g.gen_bounds.y)
 	var pos = g.coords_to_position(Vector2(x,y))
-	Item.instantiate(item_res, pos)
+	do_spawn(pos)
+	#Item.instantiate(item_res, pos)
+
+var aaa : = ["empty_loadout", "basic_loadout", "multi_loadout", "landmine_loadout", "nuke_loadout"]
+func do_spawn(pos : Vector2) :
+	var i = loadout_item.instantiate()
+	var r : ItemResource = i.get_child(3).item_res.duplicate()
+	r.loadout_name = aaa[randi_range(0,4)]
+	i.get_child(3).item_res = r
+	Global.Entities.add_child(i)
+	i.position = pos
 
 func is_correct_time() -> bool :
 	if time() > next_spawn_time :
