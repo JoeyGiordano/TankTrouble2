@@ -22,4 +22,6 @@ func _process(_delta):
 func players_ready() :
 	if players_ready_already_called : return #ensures GameManager.game_loop() is only called once
 	players_ready_already_called = true
+	Global.MainAudio().stop()
+	Global.MainAudio2().play()
 	GameManager.players_ready.emit()

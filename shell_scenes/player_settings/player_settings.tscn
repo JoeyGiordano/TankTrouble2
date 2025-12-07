@@ -152,7 +152,7 @@ theme_override_constants/separation = 200
 alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.42745098, 0.5921569, 0.6901961, 1)
+modulate = Color(0.52156866, 0.72156864, 0.8392157, 1)
 z_index = -5
 position = Vector2(601, 362)
 scale = Vector2(1327.5001, 817.50006)

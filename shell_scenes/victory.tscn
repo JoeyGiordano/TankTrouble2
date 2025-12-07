@@ -1,12 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cby3remb66qik"]
+[gd_scene load_steps=6 format=3 uid="uid://cby3remb66qik"]
 
+[ext_resource type="Script" uid="uid://dtxgkb73ca1ht" path="res://shell_scenes/victory.gd" id="1_i5amd"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_mua0j"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="3_e224l"]
+[ext_resource type="FontFile" uid="uid://duu0y1mi7xx5m" path="res://sprites/Here Just Now Black.ttf" id="3_suqb6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_awy3c"]
+font = ExtResource("3_suqb6")
+font_size = 50
+font_color = Color(0.5865, 0.5865, 0.85, 1)
+outline_size = 20
+outline_color = Color(0.1, 0.1, 0.1, 1)
 
 [node name="Victory" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_i5amd")
 
 [node name="TitleButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 356.0
 offset_top = 414.0
 offset_right = 782.0
@@ -17,9 +29,20 @@ switch_to = "main_menu"
 quick_key = true
 
 [node name="TEMP" type="Label" parent="."]
+layout_mode = 0
 offset_left = 385.0
 offset_top = 185.0
 offset_right = 752.0
 offset_bottom = 234.0
 text = "Victory"
+label_settings = SubResource("LabelSettings_awy3c")
 horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.52156866, 0.72156864, 0.8392157, 1)
+z_index = -2
+position = Vector2(99.87497, -69.12497)
+scale = Vector2(2497.75, 1619.7499)
+texture = ExtResource("3_e224l")
+region_enabled = true
+region_rect = Rect2(63, 65, 1, 1)

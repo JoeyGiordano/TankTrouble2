@@ -24,3 +24,9 @@ func CurrentLevel() -> Node :
 		print("Global.get_active_level() : no active level")
 		return
 	return LevelHolder.get_child(0)
+
+func MainAudio() -> AudioStreamPlayer2D :
+	return GameContainer.get_child(0)
+
+func MainAudio2() -> AudioStreamPlayer2D :
+	return GameContainer.get_child(1)

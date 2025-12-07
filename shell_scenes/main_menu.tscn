@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://dd71ltua8vpqj"]
+[gd_scene load_steps=25 format=3 uid="uid://dd71ltua8vpqj"]
 
+[ext_resource type="Script" uid="uid://d28nnm2xq0wu8" path="res://shell_scenes/main_menu.gd" id="1_rujnt"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_u5tdt"]
 [ext_resource type="Texture2D" uid="uid://cnd0xstqi0f60" path="res://spritesheets/playbutton_pressed_sh.png" id="2_4ange"]
 [ext_resource type="Texture2D" uid="uid://cbnu2d7hmhir7" path="res://sprites/menu_logo.png" id="2_hh8ys"]
@@ -152,6 +153,7 @@ animations = [{
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_rujnt")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -228,7 +230,7 @@ position = Vector2(567, 163)
 texture = ExtResource("2_hh8ys")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.42745098, 0.5921569, 0.6901961, 1)
+modulate = Color(0.52156866, 0.72156864, 0.8392157, 1)
 z_index = -3
 position = Vector2(579.00006, 341.00003)
 scale = Vector2(1275.4999, 753.49994)

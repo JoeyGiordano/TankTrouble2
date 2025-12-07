@@ -11,7 +11,9 @@ var shard_speed : float= 125.0
 var shard_lifetime : float = 7.0
 var num_shards : int = 8
 
-
+func _ready() -> void:
+	await get_tree().create_timer(1).timeout
+	health = 1
 
 func explode() :
 	
