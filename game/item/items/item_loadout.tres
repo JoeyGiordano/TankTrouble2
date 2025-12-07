@@ -11,4 +11,5 @@ metadata/_custom_type_script = "uid://8jp733sld27f"
 script = ExtResource("1_hbvwx")
 name = "loadout_change"
 stat_boost = SubResource("Resource_wfamk")
+color = Color(0.18431373, 0.54901963, 0.87058824, 1)
 metadata/_custom_type_script = "uid://cl7ga7teyrqpf"

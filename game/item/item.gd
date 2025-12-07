@@ -29,8 +29,6 @@ func get_pickedup_by(tank : Tank) :
 	call_deferred("_get_pickedup_by", tank)
 
 func _get_pickedup_by(tank : Tank) :
-	if get_parent().name == "LoadoutItem" :
-		get_parent().queue_free()
 	hitbox.monitoring = false
 	hitbox.monitorable = false
 	hide()
