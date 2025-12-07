@@ -1,7 +1,7 @@
 extends Control
 class_name SpriteSelector
 
-@onready var sprite_display : Sprite2D = $sprite_display
+#@onready var sprite_display : Sprite2D = $sprite_display
 @onready var sprite_selection : AnimatedSprite2D = $sprite_selection
 @onready var prev_button : Button = $PrevButton
 @onready var next_button : Button = $NextButton
@@ -9,7 +9,7 @@ class_name SpriteSelector
 
 # Sprites to be displayed and iterated through
 # @export var sprites : Array[Texture2D] = []
-const MAX_SPRITES = 6
+const MAX_SPRITES = 7
 @export var player_index : int = 0
 
 # current sprite being displayed
@@ -44,11 +44,13 @@ func _update_sprite() -> void:
 		2:
 			sprite_selection.play("tan_rat_idle")
 		3:
-			sprite_selection.play("tank_white_idle")
+			sprite_selection.play("tank_limegreen_idle")
 		4:
-			sprite_selection.play("tank_green_idle")
+			sprite_selection.play("tank_darkgreen_idle")
+		5:
+			sprite_selection.play("tank_silver_idle")
 		_:
-			sprite_selection.play("tank_red_idle")
+			sprite_selection.play("tank_orange_idle")
 		
 
 #func get_selected_sprite() -> Texture2D:

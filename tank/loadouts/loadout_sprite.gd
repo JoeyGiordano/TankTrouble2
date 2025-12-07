@@ -11,8 +11,10 @@ class_name LoadoutSprite
 # on startup, the loadout sprite will select the correct animation based on the chosen sprite ID
 # selects stationary sprite to begin
 func _ready() :
-	var loadout_sprite_id : int = tank_loadout.get_sprite_id()
-	print(loadout_sprite_id)
+	pass
+	# TODO: Poblem here, returning 0s <<<<
+	#var loadout_sprite_id : int = tank_loadout.get_sprite_id()
+	#print("LOADOUT SPRITE SEES: ",loadout_sprite_id)
 	#match loadout_sprite_id:
 		#0:	# tank sprite 1
 			#self.play("grey_rat_idle")

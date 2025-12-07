@@ -36,9 +36,9 @@ func move_and_rotate() :
 		#makes the angular velocity go to zero smoothly (the higher the speed stat, the faster the speed needs to drop) (when speed stat is below 2, just use 2 so it looks right)
 		var damp : float = tank.stats.angular_damp_factor * max(2, abs(tank.stats.rotation_speed))
 		angular_velocity = move_toward(angular_velocity, 0, damp)
-
+	
+		
 ## Loadout Management
-
 func get_loadout() -> TankLoadout : 
 	return get_child(0)
 
@@ -54,10 +54,14 @@ func _replace_loadout(loadout_name : String) :
 	#create a new tank loadout as a child of this node
 	TankLoadout.instantiate(self, loadout_name)
 	if (get_child(0) is TankLoadout):
-		#print(tank.sprite_id)
+		#print("RIDID sprite id replacing: ",tank.sprite_id)
+		# child is instanced before sprite is assigned, so correct the sprite to players selection
 		get_child(0).sprite_id = tank.sprite_id
+		get_child(0).set_sprite()
 	else:
-		print("not a loadout sorry")
+		pass
+		#print("not a loadout sorry")
+	#print("RIGID SEES LOADOUT: ", get_child(0).get_sprite_id())
 	
 
 ## Resource
