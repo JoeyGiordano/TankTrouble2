@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://vywhnte21c8"]
+
+[ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="1_owou1"]
+[ext_resource type="PackedScene" uid="uid://dtak7aat5yspu" path="res://levels/level_gen/generation/level_generator.tscn" id="2_3at2m"]
+
+[node name="LevelTemplate" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ItemSpawner" parent="." instance=ExtResource("1_owou1")]
+position = Vector2(-8.1518135, 6.3165627)
+
+[node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_3at2m")]
+gen_bounds = Vector2i(10, 5)
+scale_ = Vector2i(80, 80)
+level_pits = -1
+random_pits_bounds = Vector2i(3, 12)
+random_weight = 5
+newest_weight = 5
+middle_weight = 2
+oldest_weight = 2
+origin_marker = NodePath("origin")
+box_gen_limits = Array[Vector3i]([Vector3i(-1, 1, 3), Vector3i(-1, 1, 3), Vector3i(-1, 1, 3), Vector3i(-1, 1, 3)])
+box_health_limits = Array[Vector3i]([Vector3i(-1, 2, 4), Vector3i(-1, 1, 6), Vector3i(-1, 3, 5)])
+field_gen_limits = Array[Vector3i]([Vector3i(0, 1, 10), Vector3i(0, 1, 10), Vector3i(-1, 1, 10), Vector3i(0, 1, 10)])
+field_buffer = 0
+field_mag_strength = -1
+field_mag_strength_r_bounds = Vector2i(1, 20)
+field_mag_clockwise = -1
+floor_tileset_id = "road"
+smash_random_walls = -1
+srw_random_limits = Vector2i(3, 20)
+
+[node name="origin" type="Marker2D" parent="LevelGenerator"]
+position = Vector2(-370, -171)

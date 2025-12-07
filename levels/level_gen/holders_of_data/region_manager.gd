@@ -236,7 +236,7 @@ func _connect_bordering_regions(focus_region : LevelRegion,border_region : Level
 #endregion
 
 #TEST: debug drawing
-func _draw():
-	for r in domain.get_undivided_subregions():
-		var real_pos : Vector2i = overhead.pos_to_position(r.pos)
-		draw_rect(Rect2(real_pos.x,real_pos.y,r.area.x * overhead.scale_.x,r.area.y * overhead.scale_.y), Color.BLACK,false,1)
+#func _draw():
+	#for r in domain.get_undivided_subregions():
+		#var real_pos : Vector2i = overhead.pos_to_position(r.pos)
+		#draw_rect(Rect2(real_pos.x,real_pos.y,r.area.x * overhead.scale_.x,r.area.y * overhead.scale_.y), Color.BLACK,false,1)

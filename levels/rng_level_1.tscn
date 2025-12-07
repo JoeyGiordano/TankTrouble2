@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://caaogrsopcbsa"]
+
+[ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="1_p1833"]
+[ext_resource type="PackedScene" uid="uid://dtak7aat5yspu" path="res://levels/level_gen/generation/level_generator.tscn" id="2_wqbao"]
+[ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="3_wqbao"]
+
+[sub_resource type="Resource" id="Resource_k82yl"]
+script = ExtResource("3_wqbao")
+forward_speed = 100.0
+backward_speed = -999.0
+metadata/_custom_type_script = "uid://8jp733sld27f"
+
+[sub_resource type="Resource" id="Resource_dcw51"]
+script = ExtResource("3_wqbao")
+forward_speed = -50.0
+rotation_speed = 999.0
+metadata/_custom_type_script = "uid://8jp733sld27f"
+
+[sub_resource type="Resource" id="Resource_emdqw"]
+script = ExtResource("3_wqbao")
+forward_speed = -20.0
+backward_speed = -20.0
+bullet_count = 11
+bullet_lifetime = 14.0
+bullet_speed = 75.0
+metadata/_custom_type_script = "uid://8jp733sld27f"
+
+[node name="LevelTemplate" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ItemSpawner" parent="." instance=ExtResource("1_p1833")]
+position = Vector2(-8.1518135, 6.3165627)
+
+[node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_wqbao")]
+gen_bounds = Vector2i(10, 5)
+scale_ = Vector2i(80, 80)
+origin_marker = NodePath("origin")
+box_walls = true
+box_wall_chance = 33
+field_gen_limits = Array[Vector3i]([Vector3i(1, 1, 10), Vector3i(1, 1, 10), Vector3i(1, 1, 10), Vector3i(1, 1, 10)])
+oblong_fields = true
+field_size_bounds = Array[Vector2]([Vector2(1, 5), Vector2(1, 5), Vector2(1, 5), Vector2(1, 5)])
+field_buffer = 0
+field_bmod_speed_r_bounds = Array[Vector2]([Vector2(1.5, 7), Vector2(1.5, 7)])
+field_tmod_statboosts = Array[ExtResource("3_wqbao")]([SubResource("Resource_k82yl"), SubResource("Resource_dcw51"), SubResource("Resource_emdqw")])
+field_mag_strength = -1
+field_mag_clockwise = -1
+floor_tileset_id = "road"
+spawner_buffers = 2
+
+[node name="origin" type="Marker2D" parent="LevelGenerator"]
+position = Vector2(-370, -171)
