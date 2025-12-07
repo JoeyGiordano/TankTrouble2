@@ -18,7 +18,7 @@ func game_loop() :
 	await players_ready
 	create_player_tanks()
 	#temp
-	PlayerManager.get_associated_tank(0).tank_rigidbody.get_loadout().get_child(0).get_child(1).modulate = Color.BLUE #change one tank color
+	# PlayerManager.get_associated_tank(0).tank_rigidbody.get_loadout().get_child(0).get_child(1).modulate = Color.BLUE #change one tank color
 	var winner = -1
 	while true :
 		await load_next_level()

@@ -38,11 +38,12 @@ func reset() :
 
 ## Create
 
-func create_players(count : int) :
+func create_players(count : int, player_sprite_ids : Array[int]) :
 	for i in range(count) :
-		create_player()
+		create_player(player_sprite_ids[i])
+		#print(player_sprite_ids[i]) #<-- correct here
 
-func create_player() -> PlayerProfile :
+func create_player(sprite_id : int) -> PlayerProfile :
 	# create unique id
 	var player_id = next_id
 	next_id += 1
@@ -52,6 +53,7 @@ func create_player() -> PlayerProfile :
 	players.append(p) #add the new profile to the players array
 	# setup
 	p.player_id = player_id
+	p.sprite_id = sprite_id # give the player profile a default sprite chosen at startup
 	_create_and_assign_keybinds(p)
 	return p
 
