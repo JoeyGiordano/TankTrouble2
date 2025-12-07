@@ -34,3 +34,4 @@ script = ExtResource("6_fa0tr")
 
 [node name="InvinHeatSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_lb7o4")
+volume_db = 17.0

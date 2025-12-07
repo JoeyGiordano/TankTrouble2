@@ -1,19 +1,32 @@
-[gd_scene format=3 uid="uid://cjn6ovy0vud68"]
+[gd_scene load_steps=3 format=3 uid="uid://cjn6ovy0vud68"]
+
+[ext_resource type="Texture2D" uid="uid://cxflw0o7i34gy" path="res://sprites/CityBackground.png" id="1_8e27a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8e27a"]
+font_size = 50
+font_color = Color(0.26486844, 0.70624137, 0.3946685, 1)
+outline_size = 17
+outline_color = Color(0.04, 0.04, 0.04, 1)
 
 [node name="Loading" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1156.0
-offset_bottom = 652.0
-color = Color(0.458824, 0.764706, 0.976471, 1)
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 528.0
-offset_top = 260.0
-offset_right = 590.0
-offset_bottom = 283.0
+offset_left = 484.0
+offset_top = 244.0
+offset_right = 675.0
+offset_bottom = 313.0
 text = "Loading"
+label_settings = SubResource("LabelSettings_8e27a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -3
+layout_mode = 0
+offset_left = -87.0
+offset_top = -27.0
+offset_right = 4009.0
+offset_bottom = 4069.0
+scale = Vector2(0.32460144, 0.32460144)
+texture = ExtResource("1_8e27a")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtak7aat5yspu"]
+[gd_scene load_steps=3 format=3 uid="uid://dtak7aat5yspu"]
 
 [ext_resource type="Script" uid="uid://83pifmalc47k" path="res://levels/level_gen/generation/level_generator.gd" id="1_8du7d"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_dco3u"]
 
 [node name="LevelGenerator" type="Node2D"]
 script = ExtResource("1_8du7d")
@@ -15,3 +16,11 @@ position = Vector2(-1, 0)
 [node name="BoxHolder" type="Node2D" parent="Holders"]
 
 [node name="FieldHolder" type="Node2D" parent="Holders"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.4278, 0.59386003, 0.69, 1)
+z_index = -3
+scale = Vector2(-602.5, 418)
+texture = ExtResource("2_dco3u")
+region_enabled = true
+region_rect = Rect2(63, 67, 2.207718, 2)
