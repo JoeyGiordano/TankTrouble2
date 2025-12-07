@@ -16,7 +16,7 @@ func _process(_delta):
 		if most_recent_press == 1 :
 			players_ready()
 		most_recent_press = 2
-	if Input.is_action_just_pressed("DEBUG_SKIP") :
+	if Input.is_anything_pressed() :
 		players_ready()
 
 func players_ready() :

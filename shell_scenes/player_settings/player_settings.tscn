@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxa1svc5qgg5b"]
+[gd_scene load_steps=7 format=3 uid="uid://cxa1svc5qgg5b"]
 
 [ext_resource type="Script" uid="uid://dj61l2scwl7jk" path="res://shell_scenes/player_settings/player_settings.gd" id="1_gdq6l"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_h1a8k"]
 [ext_resource type="PackedScene" uid="uid://dugypw2tos5d4" path="res://shell_scenes/player_settings/SpriteSelector/SpriteSelector.tscn" id="2_205g3"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="4_ompbi"]
+[ext_resource type="FontFile" uid="uid://duu0y1mi7xx5m" path="res://sprites/Here Just Now Black.ttf" id="4_op2j6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iifau"]
+font = ExtResource("4_op2j6")
+font_size = 50
+font_color = Color(0.43679997, 0.51116, 0.78, 1)
+outline_size = 18
+outline_color = Color(0.12, 0.12, 0.12, 1)
 
 [node name="PlayerSettings" type="Control"]
 layout_mode = 3
@@ -22,11 +31,12 @@ switch_to = "main_menu"
 
 [node name="TEMP" type="Label" parent="."]
 layout_mode = 0
-offset_left = 518.0
-offset_top = 112.0
-offset_right = 682.0
-offset_bottom = 161.0
-text = "Player Settings"
+offset_left = 362.0
+offset_top = 78.0
+offset_right = 829.0
+offset_bottom = 131.0
+text = "Choose your fighter"
+label_settings = SubResource("LabelSettings_iifau")
 horizontal_alignment = 1
 
 [node name="AddPlayerButton" type="Button" parent="."]
@@ -140,3 +150,12 @@ offset_bottom = 424.0
 layout_mode = 2
 theme_override_constants/separation = 200
 alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.42745098, 0.5921569, 0.6901961, 1)
+z_index = -5
+position = Vector2(601, 362)
+scale = Vector2(1327.5001, 817.50006)
+texture = ExtResource("4_ompbi")
+region_enabled = true
+region_rect = Rect2(63, 65, 1, 1)

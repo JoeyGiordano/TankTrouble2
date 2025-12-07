@@ -35,7 +35,7 @@ func on_add_player_pressed() :
 	if player_count < MAX_PLAYERS :
 		_set_player_count(player_count + 1)
 	else :
-		message_label.text = "Player max reached"
+		message_label.text = ""#"Player max reached"
 		await get_tree().create_timer(1.7).timeout
 		message_label.text = ""
 

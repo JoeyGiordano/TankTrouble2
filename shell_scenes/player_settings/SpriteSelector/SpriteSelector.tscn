@@ -1,9 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://dugypw2tos5d4"]
+[gd_scene load_steps=15 format=3 uid="uid://dugypw2tos5d4"]
 
 [ext_resource type="Script" uid="uid://df0n4y3l50knp" path="res://shell_scenes/player_settings/SpriteSelector/sprite_selector.gd" id="1_i0dhp"]
 [ext_resource type="Texture2D" uid="uid://bgawjs1td2a66" path="res://sprites/arrowDown.png" id="2_dvd6k"]
 [ext_resource type="Texture2D" uid="uid://06u5raro54dx" path="res://sprites/master_spriteshee_basic.png" id="2_wxpw6"]
 [ext_resource type="Texture2D" uid="uid://dnvv2qvl8wm0s" path="res://sprites/arrowUp.png" id="3_k2j4u"]
+[ext_resource type="FontFile" uid="uid://duu0y1mi7xx5m" path="res://sprites/Here Just Now Black.ttf" id="4_o4ubo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cagx0"]
+font = ExtResource("4_o4ubo")
+font_color = Color(0.43529412, 0.50980395, 0.78039217, 1)
+outline_size = 4
+outline_color = Color(0.11, 0.11, 0.11, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvd6k"]
 atlas = ExtResource("2_wxpw6")
@@ -102,38 +109,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i0dhp")
 
-[node name="PrevButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = -43.0
-offset_top = 51.0
-offset_right = 43.0
-offset_bottom = 109.0
-
-[node name="bottom_button" type="Sprite2D" parent="PrevButton"]
-position = Vector2(43.000004, 29.000002)
+[node name="bottom_button" type="Sprite2D" parent="."]
+position = Vector2(-0.10833358, 102)
 scale = Vector2(1.9083333, 1.9083333)
 texture = ExtResource("2_dvd6k")
 
-[node name="NextButton" type="Button" parent="."]
+[node name="PrevButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -44.0
-offset_top = -107.0
-offset_right = 44.0
-offset_bottom = -49.0
-text = "
-"
+offset_left = -43.108337
+offset_top = 73.0
+offset_right = 42.891663
+offset_bottom = 131.0
 
-[node name="Sprite2D" type="Sprite2D" parent="NextButton"]
-position = Vector2(44.00001, 29)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.1444092e-05, -95)
 scale = Vector2(1.8999999, 1.9)
 texture = ExtResource("3_k2j4u")
 
+[node name="NextButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -44.0
+offset_top = -124.0
+offset_right = 44.0
+offset_bottom = -66.0
+text = "
+"
+
 [node name="PlayerLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -25.0
-offset_top = 27.0
-offset_right = 15.0
-offset_bottom = 50.0
+offset_left = -30.0
+offset_top = 40.0
+offset_right = 10.0
+offset_bottom = 63.0
+label_settings = SubResource("LabelSettings_cagx0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

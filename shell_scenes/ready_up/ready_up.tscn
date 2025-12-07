@@ -1,30 +1,80 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddstyon1os41f"]
+[gd_scene load_steps=7 format=3 uid="uid://ddstyon1os41f"]
 
 [ext_resource type="Script" uid="uid://c7x3b0o7nyjft" path="res://shell_scenes/ready_up/ready_up.gd" id="1_d831x"]
+[ext_resource type="FontFile" uid="uid://dh6m31wx53m1d" path="res://sprites/SCOREBOARD.ttf" id="2_q8h1f"]
+[ext_resource type="Texture2D" uid="uid://cxflw0o7i34gy" path="res://sprites/CityBackground.png" id="3_lbrnb"]
+[ext_resource type="FontFile" uid="uid://duu0y1mi7xx5m" path="res://sprites/Here Just Now Black.ttf" id="4_ehu8v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5bxr2"]
+font = ExtResource("2_q8h1f")
+font_size = 150
+font_color = Color(0.26486844, 0.70624137, 0.3946685, 1)
+outline_size = 17
+outline_color = Color(0.04, 0.04, 0.04, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gn63k"]
+font = ExtResource("4_ehu8v")
+font_size = 30
+font_color = Color(0.285, 0.75, 0.40124997, 1)
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
 
 [node name="ReadyUp" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_d831x")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label3" type="Label" parent="."]
 layout_mode = 0
-offset_left = 336.0
-offset_top = 207.0
-offset_right = 790.0
-offset_bottom = 386.0
-text = "Player 1 controls        Player 2 controls        Player 3 controls
-       AWSD + Q                arrow keys + .                   HUJK + Y
+offset_left = 366.0
+offset_top = 95.0
+offset_right = 895.0
+offset_bottom = 252.0
+text = "Score"
+label_settings = SubResource("LabelSettings_5bxr2")
 
-
-      Ready up!                    Ready up!                       Ready up!
-
-Player 1 press Q           Player 2 press .          Player 3 press Y"
-
-[node name="Label2" type="Label" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -3
 layout_mode = 0
-offset_left = 290.0
-offset_top = 536.0
-offset_right = 856.0
-offset_bottom = 559.0
-text = "This needs to be rehashed. For now just press Player 1 and Player 2 shoot"
+offset_left = -87.0
+offset_top = -27.0
+offset_right = 4009.0
+offset_bottom = 4069.0
+scale = Vector2(0.32460144, 0.32460144)
+texture = ExtResource("3_lbrnb")
+
+[node name="Score0" type="Label" parent="."]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 323.0
+offset_right = 1315.0
+offset_bottom = 480.0
+text = "00"
+label_settings = SubResource("LabelSettings_5bxr2")
+
+[node name="Score1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 326.0
+offset_right = 1005.0
+offset_bottom = 483.0
+text = "00"
+label_settings = SubResource("LabelSettings_5bxr2")
+
+[node name="Score2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 327.0
+offset_right = 690.0
+offset_bottom = 484.0
+text = "00"
+label_settings = SubResource("LabelSettings_5bxr2")
+
+[node name="Next" type="Label" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 550.0
+offset_right = 1007.0
+offset_bottom = 583.0
+text = "Press any key to continue"
+label_settings = SubResource("LabelSettings_gn63k")
