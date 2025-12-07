@@ -8,6 +8,11 @@ class_name TankLoadout
 
 #packed scenes of loadout types (except basic, see below)
 static var empty : PackedScene = preload("res://tank/loadouts/empty_tankloadout.tscn")
+@onready var tank_rigid_body : TankRigidbody = get_parent()
+# the sprite id for the player's tank
+var sprite_id : int
+# reference to the loadout sprite
+#var loadout_sprite : AnimatedSprite2D = $Sprite/LoadoutSprite
 
 #loadout type enum, one for each packed scene
 enum Type {
@@ -18,6 +23,46 @@ enum Type {
 @onready var tank : Tank = get_parent().get_parent()
 @onready var tank_rigidbody : TankRigidbody = get_parent()
 
+func _process(_delta) :
+	var animated_sprite = get_child(0).get_child(0)
+	var tank : Tank = get_parent().get_parent()
+	if(animated_sprite is AnimatedSprite2D):
+		if tank_rigid_body.linear_velocity.length_squared() > 0.01:		# if the tank is moving
+			if (not "move" in animated_sprite.animation): 	# if the move animation is not already playing
+				match(tank.sprite_id):
+					0:
+						animated_sprite.play("grey_rat_move")
+					1:
+						animated_sprite.play("white_rat_move")
+					2:
+						animated_sprite.play("tan_rat_move")
+					3:
+						animated_sprite.play("tank_limegreen_move")
+					4:
+						animated_sprite.play("tank_darkgreen_move")
+					5:
+						animated_sprite.play("tank_silver_move")
+					_:
+						animated_sprite.play("tank_orange_move")
+		else:															# if the tank is not moving
+			if (not "idle" in animated_sprite.animation):	# if the tank is not playing idle animation
+				match(tank.sprite_id):
+					0:
+						animated_sprite.play("grey_rat_idle")
+					1:
+						animated_sprite.play("white_rat_idle")
+					2:
+						animated_sprite.play("tan_rat_idle")
+					3:
+						animated_sprite.play("tank_limegreen_idle")
+					4:
+						animated_sprite.play("tank_darkgreen_idle")
+					5:
+						animated_sprite.play("tank_silver_idle")
+					_:
+						animated_sprite.play("tank_orange_idle")
+				
+	
 func shoot() :
 	#should be overridden by child class
 	#print("shot fired")
@@ -30,9 +75,41 @@ func end_shoot() :
 
 static func instantiate(parent : RigidBody2D, loadout_name : String) -> TankLoadout :
 	#should be overriden by child class
+	# PROBLEM HERE I THINK
+	# the tank loadout sprite is seeing 0 on instantiation?
+	# but the loadout still sees the correct sprite id?
+	# so when the loadout is added, it doesnt have a sprite ID before loadout sprite checks? 
 	var tl : TankLoadout = Ref.get(loadout_name).instantiate()
 	parent.add_child(tl)
+	tl.set_sprite()
 	return tl
+	
+func set_sprite() :
+	print("TANK LOADOUT HAS: ", sprite_id)
+	if(get_child(0).get_child(0) is AnimatedSprite2D):
+		match(sprite_id):
+			0:
+				get_child(0).get_child(0).play("grey_rat_idle")
+			1:
+				get_child(0).get_child(0).play("white_rat_idle")
+			2:
+				get_child(0).get_child(0).play("tan_rat_idle")
+			3:
+				get_child(0).get_child(0).play("tank_limegreen_idle")
+			4:
+				get_child(0).get_child(0).play("tank_darkgreen_idle")
+			5:
+				get_child(0).get_child(0).play("tank_silver_idle")
+			6:
+				get_child(0).get_child(0).play("tank_orange_idle")
+			_:
+				get_child(0).get_child(0).play("grey_rat_idle")
+
+func set_moving_sprite() :
+	pass
+	
+func get_sprite_id() -> int:
+	return sprite_id
 
 ## Old but funny, don't delete
 #static func instantiate_basic() -> TankLoadout :

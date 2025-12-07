@@ -15,6 +15,7 @@ class_name Tank
 # Base stuff (set at instantiation)
 @export var scene_file_tank : bool = false #switch this to true for tanks that are placed in a scene tree manually in a scene file
 var id : int # will always be unique, never modified
+var sprite_id : int
 @export var profile : TankProfile = TankProfile.new()
 @export var stats : StatBoost = Ref.base_tank_stats.copy() # we use a stat boost to store the tanks stats (it holds all the info we need it to hold) # -> an old comment that I thought was interesting -> #MUST set stats resource local_to_scene=true. MUST put the starting stats in as a NOT saved resource. if you want to use a saved resource, you must load it in init(). A normal saved exported resource loads too late, initializing in _ready() is also too late: it will cause an error when it tries to get accessed, preload causes a cyclic error with stat_boost static functions 
 
@@ -48,6 +49,10 @@ func _ready() :
 		respawn(tank_rigidbody.position)
 	else :
 		despawn() #just hides them from view, locks input, and disables their rigidbody interactions
+	
+	#print(sprite_id)
+	tank_rigidbody.get_child(0).sprite_id = sprite_id
+	tank_rigidbody.get_child(0).set_sprite()
 
 func _process(_delta) :
 	DEBUG_PROCESS()

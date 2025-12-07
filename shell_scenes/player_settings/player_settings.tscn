@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxa1svc5qgg5b"]
+[gd_scene load_steps=4 format=3 uid="uid://cxa1svc5qgg5b"]
 
 [ext_resource type="Script" uid="uid://dj61l2scwl7jk" path="res://shell_scenes/player_settings/player_settings.gd" id="1_gdq6l"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_h1a8k"]
+[ext_resource type="PackedScene" uid="uid://dugypw2tos5d4" path="res://shell_scenes/player_settings/SpriteSelector/SpriteSelector.tscn" id="2_205g3"]
 
 [node name="PlayerSettings" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_gdq6l")
+player_selector_scene = ExtResource("2_205g3")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
@@ -62,6 +64,7 @@ script = ExtResource("1_h1a8k")
 switch_to = "ready_up"
 
 [node name="PlayerGraphic1" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -76,7 +79,6 @@ color = Color(1, 0, 0, 1)
 
 [node name="PlayerGraphic2" type="Control" parent="."]
 visible = false
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -99,7 +101,6 @@ color = Color(1, 0, 0, 1)
 
 [node name="PlayerGraphic3" type="Control" parent="."]
 visible = false
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -127,3 +128,15 @@ offset_top = 277.0
 offset_right = 208.0
 offset_bottom = 317.0
 color = Color(1, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 155.0
+offset_right = 1106.0
+offset_bottom = 424.0
+
+[node name="PlayersContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+alignment = 1

@@ -14,6 +14,9 @@ var player_id : int
 # Score
 var score : int = 0
 
+# Sprite
+var sprite_id : int
+
 # Keybinds
 # only need to set these to anything if this is a player (bots are controlled directly through method calls)
 # these are the names of the associated actions in the input map (eg "player1_up" "player2_right")

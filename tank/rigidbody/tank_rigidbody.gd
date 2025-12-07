@@ -36,9 +36,9 @@ func move_and_rotate() :
 		#makes the angular velocity go to zero smoothly (the higher the speed stat, the faster the speed needs to drop) (when speed stat is below 2, just use 2 so it looks right)
 		var damp : float = tank.stats.angular_damp_factor * max(2, abs(tank.stats.rotation_speed))
 		angular_velocity = move_toward(angular_velocity, 0, damp)
-
+	
+		
 ## Loadout Management
-
 func get_loadout() -> TankLoadout : 
 	return get_child(0)
 
@@ -46,12 +46,23 @@ func replace_loadout(loadout_name : String) :
 	#using call_deferred ensures that _replace_loadout is not called during a physics frame, loadouts are collsion objects and switching a rigidbody's collision object mid physics update can be bad
 	call_deferred("_replace_loadout", loadout_name)
 
+# TODO: add functionality to get parent tank for tank profile, get tank ID, and pass it along when instancing a loadout
 func _replace_loadout(loadout_name : String) :
 	#destroy the old tank loadout
 	get_child(0).queue_free()
 	remove_child(get_child(0))
 	#create a new tank loadout as a child of this node
 	TankLoadout.instantiate(self, loadout_name)
+	if (get_child(0) is TankLoadout):
+		#print("RIDID sprite id replacing: ",tank.sprite_id)
+		# child is instanced before sprite is assigned, so correct the sprite to players selection
+		get_child(0).sprite_id = tank.sprite_id
+		get_child(0).set_sprite()
+	else:
+		pass
+		#print("not a loadout sorry")
+	#print("RIGID SEES LOADOUT: ", get_child(0).get_sprite_id())
+	
 
 ## Resource
 
