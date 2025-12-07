@@ -11,7 +11,7 @@ enum GRID_TYPE {
 @export var period_high : float = 10
 @export var delay : float = 5 #the delay before the first spawn cycle takes place
 
-@export var item_res : ItemResource #later make this an array and make it variable spawn frequency etc, also consolidate item with loadout upgrade? could also make a random generator
+var item_res : ItemResource = preload("res://game/item/items/item1.tres")#later make this an array and make it variable spawn frequency etc, also consolidate item with loadout upgrade? could also make a random generator
 
 var spawning : bool = false
 var next_spawn_time : float = 0

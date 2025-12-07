@@ -9,6 +9,7 @@
 
 [node name="ItemSpawner" parent="." instance=ExtResource("1_owou1")]
 position = Vector2(-8.1518135, 6.3165627)
+grid_type = 2
 
 [node name="LevelGenerator" parent="." node_paths=PackedStringArray("origin_marker") instance=ExtResource("2_3at2m")]
 gen_bounds = Vector2i(10, 5)

@@ -603,7 +603,8 @@ func level_builder():
 								if not current_bone.pit_flag:
 									place_wall(current_tile_coords,z)
 							3:
-								place_box_wall(current_tile_coords,z,box_type_pool.pop_at(randi_range(0,box_type_pool.size()-1)))
+								#place_box_wall(current_tile_coords,z,box_type_pool.pop_at(randi_range(0,box_type_pool.size()-1)))
+								place_box_wall(current_tile_coords,z,randi_range(0,3))
 								
 					#borders
 					for z in current_bone.sides.size():
@@ -640,7 +641,8 @@ func level_builder():
 					player_spawn_points.append(current_tile_coords)
 				#box placement
 				if current_bone.box_flag == true:
-					place_box(current_tile_coords,box_type_pool.pop_at(randi_range(0,box_type_pool.size()-1)))
+					#place_box(current_tile_coords,box_type_pool.pop_at(randi_range(0,box_type_pool.size()-1)))
+					place_box(current_tile_coords,randi_range(0,3))
 	place_fields()
 	spawn_players()
 
