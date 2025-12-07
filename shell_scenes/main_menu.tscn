@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://dd71ltua8vpqj"]
+[gd_scene load_steps=24 format=3 uid="uid://dd71ltua8vpqj"]
 
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_u5tdt"]
 [ext_resource type="Texture2D" uid="uid://cnd0xstqi0f60" path="res://spritesheets/playbutton_pressed_sh.png" id="2_4ange"]
 [ext_resource type="Texture2D" uid="uid://cbnu2d7hmhir7" path="res://sprites/menu_logo.png" id="2_hh8ys"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="4_w7w0d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1s47i"]
 atlas = ExtResource("2_4ange")
@@ -225,3 +226,12 @@ horizontal_alignment = 1
 [node name="MenuLogo" type="Sprite2D" parent="."]
 position = Vector2(567, 163)
 texture = ExtResource("2_hh8ys")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.98, 0.98, 0.98, 1)
+z_index = -3
+position = Vector2(579.00006, 341.00003)
+scale = Vector2(1275.4999, 753.49994)
+texture = ExtResource("4_w7w0d")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)

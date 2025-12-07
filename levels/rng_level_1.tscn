@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://caaogrsopcbsa"]
+[gd_scene load_steps=7 format=3 uid="uid://caaogrsopcbsa"]
 
 [ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="1_p1833"]
 [ext_resource type="PackedScene" uid="uid://dtak7aat5yspu" path="res://levels/level_gen/generation/level_generator.tscn" id="2_wqbao"]
 [ext_resource type="Script" uid="uid://8jp733sld27f" path="res://tank/stats/stat_boost.gd" id="3_wqbao"]
-[ext_resource type="Texture2D" uid="uid://cxflw0o7i34gy" path="res://sprites/CityBackground.png" id="4_k82yl"]
 
 [sub_resource type="Resource" id="Resource_k82yl"]
 script = ExtResource("3_wqbao")
@@ -53,18 +52,3 @@ spawner_buffers = 2
 
 [node name="origin" type="Marker2D" parent="LevelGenerator"]
 position = Vector2(-370, -171)
-
-[node name="CityBackground" type="Sprite2D" parent="."]
-visible = false
-z_index = -14
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_k82yl")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_left = -30.0
-offset_top = -133.0
-offset_right = 4066.0
-offset_bottom = 3963.0
-scale = Vector2(0.29888582, 0.29888582)
-texture = ExtResource("4_k82yl")
