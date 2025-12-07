@@ -1,10 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://dd71ltua8vpqj"]
+[gd_scene load_steps=27 format=3 uid="uid://dd71ltua8vpqj"]
 
-[ext_resource type="Script" uid="uid://d28nnm2xq0wu8" path="res://shell_scenes/main_menu.gd" id="1_rujnt"]
+[ext_resource type="Script" path="res://shell_scenes/main_menu.gd" id="1_rujnt"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_u5tdt"]
 [ext_resource type="Texture2D" uid="uid://cnd0xstqi0f60" path="res://spritesheets/playbutton_pressed_sh.png" id="2_4ange"]
 [ext_resource type="Texture2D" uid="uid://cbnu2d7hmhir7" path="res://sprites/menu_logo.png" id="2_hh8ys"]
+[ext_resource type="Texture2D" uid="uid://cbyi45dllnq0y" path="res://sprites/ButtonSprites/Credits_button.png" id="4_kgja0"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="4_w7w0d"]
+[ext_resource type="Texture2D" uid="uid://cgpe213wws6kw" path="res://sprites/ButtonSprites/instruction_button.png" id="5_qkxma"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1s47i"]
 atlas = ExtResource("2_4ange")
@@ -182,8 +184,8 @@ quick_key = true
 delay_time = 1.3
 
 [node name="PlayGameButton" type="AnimatedSprite2D" parent="PlayButton"]
-position = Vector2(185.00003, 41)
-scale = Vector2(1.1249998, 1.1249999)
+position = Vector2(181.56255, 41)
+scale = Vector2(1.105357, 1.1249999)
 sprite_frames = SubResource("SpriteFrames_1s47i")
 animation = &"hovered"
 autoplay = "idle"
@@ -197,6 +199,11 @@ offset_bottom = 569.0
 text = "Credits"
 script = ExtResource("1_u5tdt")
 switch_to = "credits"
+
+[node name="CreditsSprite" type="Sprite2D" parent="CreditsButton"]
+position = Vector2(180, 29.999992)
+scale = Vector2(1.1142857, 0.89999974)
+texture = ExtResource("4_kgja0")
 
 [node name="InstructionsButton" type="Button" parent="."]
 layout_mode = 1
@@ -214,6 +221,11 @@ grow_vertical = 0
 text = "Instructions"
 script = ExtResource("1_u5tdt")
 switch_to = "instructions"
+
+[node name="InstructionsSprite" type="Sprite2D" parent="InstructionsButton"]
+position = Vector2(182, 41.000004)
+scale = Vector2(1.1085715, 0.9200001)
+texture = ExtResource("5_qkxma")
 
 [node name="TEMP" type="Label" parent="."]
 layout_mode = 0

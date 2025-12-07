@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxa1svc5qgg5b"]
+[gd_scene load_steps=11 format=3 uid="uid://cxa1svc5qgg5b"]
 
 [ext_resource type="Script" uid="uid://dj61l2scwl7jk" path="res://shell_scenes/player_settings/player_settings.gd" id="1_gdq6l"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_h1a8k"]
 [ext_resource type="PackedScene" uid="uid://dugypw2tos5d4" path="res://shell_scenes/player_settings/SpriteSelector/SpriteSelector.tscn" id="2_205g3"]
+[ext_resource type="Texture2D" uid="uid://c5kfilsrffvu7" path="res://sprites/ButtonSprites/back_button.png" id="4_iifau"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="4_ompbi"]
 [ext_resource type="FontFile" uid="uid://duu0y1mi7xx5m" path="res://sprites/Here Just Now Black.ttf" id="4_op2j6"]
+[ext_resource type="Texture2D" uid="uid://o263c517lx4o" path="res://sprites/ButtonSprites/add_player_button.png" id="6_5wuil"]
+[ext_resource type="Texture2D" uid="uid://bcerdhlx3fxe3" path="res://sprites/ButtonSprites/remove_player_button copy.png" id="7_rpg2j"]
+[ext_resource type="Texture2D" uid="uid://do5p3r4pg4i68" path="res://sprites/ButtonSprites/player_set_play.png" id="8_esjuh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iifau"]
 font = ExtResource("4_op2j6")
@@ -29,6 +33,11 @@ text = "Back"
 script = ExtResource("1_h1a8k")
 switch_to = "main_menu"
 
+[node name="BackSprite" type="Sprite2D" parent="BackButton"]
+position = Vector2(50, 23.5)
+scale = Vector2(1.1800001, 1.3800001)
+texture = ExtResource("4_iifau")
+
 [node name="TEMP" type="Label" parent="."]
 layout_mode = 0
 offset_left = 362.0
@@ -47,6 +56,11 @@ offset_right = 584.0
 offset_bottom = 500.0
 text = " + Add Player + "
 
+[node name="AddSprite" type="Sprite2D" parent="AddPlayerButton"]
+position = Vector2(86.249985, 24)
+scale = Vector2(1.0314287, 1.08)
+texture = ExtResource("6_5wuil")
+
 [node name="MessageLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 498.0
@@ -63,6 +77,11 @@ offset_right = 786.0
 offset_bottom = 497.0
 text = " - Remove Player - "
 
+[node name="RemoveSprite" type="Sprite2D" parent="RemovePlayerButton"]
+position = Vector2(87.5, 25)
+scale = Vector2(1.057143, 1.08)
+texture = ExtResource("7_rpg2j")
+
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 419.0
@@ -72,6 +91,11 @@ offset_bottom = 606.0
 text = "Play!"
 script = ExtResource("1_h1a8k")
 switch_to = "ready_up"
+
+[node name="PlaySprite" type="Sprite2D" parent="PlayButton"]
+position = Vector2(180.49998, 32.499985)
+scale = Vector2(1.0657142, 1.0000004)
+texture = ExtResource("8_esjuh")
 
 [node name="PlayerGraphic1" type="Control" parent="."]
 visible = false
