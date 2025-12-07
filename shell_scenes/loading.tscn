@@ -1,24 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjn6ovy0vud68"]
+[gd_scene load_steps=7 format=3 uid="uid://cjn6ovy0vud68"]
 
 [ext_resource type="Texture2D" uid="uid://cxflw0o7i34gy" path="res://sprites/CityBackground.png" id="1_8e27a"]
+[ext_resource type="Script" uid="uid://cauar6w4se3u5" path="res://shell_scenes/loading.gd" id="1_260mw"]
+[ext_resource type="FontFile" uid="uid://dh6m31wx53m1d" path="res://sprites/SCOREBOARD.ttf" id="1_ontue"]
+[ext_resource type="FontFile" uid="uid://duu0y1mi7xx5m" path="res://sprites/Here Just Now Black.ttf" id="3_g7dkb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8e27a"]
-font_size = 50
+font = ExtResource("1_ontue")
+font_size = 150
 font_color = Color(0.26486844, 0.70624137, 0.3946685, 1)
 outline_size = 17
 outline_color = Color(0.04, 0.04, 0.04, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_260mw"]
+font = ExtResource("3_g7dkb")
+font_size = 30
+font_color = Color(0.285, 0.75, 0.40124997, 1)
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Loading" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_260mw")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 484.0
-offset_top = 244.0
-offset_right = 675.0
-offset_bottom = 313.0
-text = "Loading"
+offset_left = 391.0
+offset_top = 94.0
+offset_right = 920.0
+offset_bottom = 251.0
+text = "Score"
 label_settings = SubResource("LabelSettings_8e27a")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -30,3 +42,39 @@ offset_right = 4009.0
 offset_bottom = 4069.0
 scale = Vector2(0.32460144, 0.32460144)
 texture = ExtResource("1_8e27a")
+
+[node name="Score0" type="Label" parent="."]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 323.0
+offset_right = 1315.0
+offset_bottom = 480.0
+text = "00"
+label_settings = SubResource("LabelSettings_8e27a")
+
+[node name="Score1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 326.0
+offset_right = 1005.0
+offset_bottom = 483.0
+text = "00"
+label_settings = SubResource("LabelSettings_8e27a")
+
+[node name="Score2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 327.0
+offset_right = 690.0
+offset_bottom = 484.0
+text = "00"
+label_settings = SubResource("LabelSettings_8e27a")
+
+[node name="Next" type="Label" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 550.0
+offset_right = 1007.0
+offset_bottom = 583.0
+text = "Press any key to continue"
+label_settings = SubResource("LabelSettings_260mw")

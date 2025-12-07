@@ -41,9 +41,10 @@ func create_player_tanks() :
 func load_next_level() :
 	ShellSceneManager.switch_overlay_panel(Ref.loading) #this loading thing is actually completely unecessary it just looks nice
 	ShellSceneManager.switch_active_scene(Ref.game_shell_scene, false)
+	await Global.OverlayPanelHolder.get_child(0).display_score()
 	LevelLoader.next_level()
-	var timer = get_tree().create_timer(0.7)
-	await timer.timeout
+	#var timer = get_tree().create_timer(0.7)
+	#await timer.timeout
 	ShellSceneManager.close_overlay_panel() # close loading overlay
 	GameInfo.in_game = true
 
@@ -64,10 +65,27 @@ func tank_died() :
 func end_round() : 
 	GameInfo.in_game = false
 	
-	if !PlayerManager.get_associated_tank(0).dead && PlayerManager.get_associated_tank(1).dead :
-		PlayerManager.get_player_profile(0).score += 1
-	if !PlayerManager.get_associated_tank(1).dead && PlayerManager.get_associated_tank(0).dead :
-		PlayerManager.get_player_profile(1).score += 1
+	if PlayerManager.player_count() == 1 :
+		return
+	
+	if PlayerManager.player_count() == 2 :
+		if !PlayerManager.get_associated_tank(0).dead && PlayerManager.get_associated_tank(1).dead :
+			PlayerManager.get_player_profile(0).score += 1
+			GameInfo.score0 += 1
+		if !PlayerManager.get_associated_tank(1).dead && PlayerManager.get_associated_tank(0).dead :
+			PlayerManager.get_player_profile(1).score += 1
+			GameInfo.score1 += 1
+	
+	if PlayerManager.player_count() == 3 :
+		if !PlayerManager.get_associated_tank(0).dead && PlayerManager.get_associated_tank(1).dead && PlayerManager.get_associated_tank(2).dead :
+			PlayerManager.get_player_profile(0).score += 1
+			GameInfo.score0 += 1
+		if !PlayerManager.get_associated_tank(1).dead && PlayerManager.get_associated_tank(0).dead && PlayerManager.get_associated_tank(2).dead:
+			PlayerManager.get_player_profile(1).score += 1
+			GameInfo.score1 += 1
+		if !PlayerManager.get_associated_tank(2).dead && PlayerManager.get_associated_tank(0).dead && PlayerManager.get_associated_tank(1).dead:
+			PlayerManager.get_player_profile(2).score += 1
+			GameInfo.score2 += 2
 
 func check_for_winner() -> int :
 	# returns player_id of winning player (score>5) and ignores ties
@@ -81,6 +99,7 @@ func reset() :
 	TankManager.destroy_all_tanks()
 	PlayerManager.reset()
 	LevelLoader.remove_level()
+	GameInfo.reset_scores()
 
 func show_victory_screen(player_id) :
 	#goes to the victory screen and ensures it displays the right winner, returns to the shell scenes sequence
