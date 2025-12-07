@@ -28,21 +28,25 @@ func _process(_delta):
 
 func mouse_entered() :
 	if get_children().size() != 0:
+		if not get_child(0) is AnimatedSprite2D:
+			return
 		if get_child(0).animation == "pushed":
 			return
 		get_child(0).play("hovered")
 	
 func mouse_exited() :
 	if get_children().size() != 0:
+		if not get_child(0) is AnimatedSprite2D:
+			return
 		if get_child(0).animation == "pushed":
 			return
 		get_child(0).play("idle")
 
 func on_pressed() :
-	
 	if get_children().size() != 0:
-		get_child(0).play("pushed")
-	await get_tree().create_timer(delay_time).timeout
+		if get_child(0) is AnimatedSprite2D:
+			get_child(0).play("pushed")
+			await get_tree().create_timer(delay_time).timeout
 	
 	if just_close_overlay_panel :
 		# pressed in a shell scene w/o overlay panel -> does nothing
