@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://b5uo7x8mwr01d"]
+
+[ext_resource type="Texture2D" uid="uid://dmiwf8x68khn3" path="res://sprites/jankycat-Sheet.png" id="1_mjsb2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mjsb2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
