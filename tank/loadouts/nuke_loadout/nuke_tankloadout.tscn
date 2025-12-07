@@ -1,7 +1,7 @@
 [gd_scene load_steps=72 format=3 uid="uid://crsr7ik4jallv"]
 
 [ext_resource type="Script" uid="uid://brlmwcvcimmyj" path="res://tank/loadouts/nuke_loadout/nuke_tankloadout.gd" id="1_40g1q"]
-[ext_resource type="Script" uid="uid://dsmpmfacmdo3b" path="res://tank/loadouts/loadout_sprite.gd" id="3_e4i8k"]
+[ext_resource type="Script" path="res://tank/loadouts/loadout_sprite.gd" id="3_e4i8k"]
 [ext_resource type="Texture2D" uid="uid://cs8tnu00hwwau" path="res://sprites/master_nuke_sheet.png" id="3_qdhvu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_760w8"]
@@ -554,12 +554,12 @@ script = ExtResource("1_40g1q")
 position = Vector2(1, 0)
 
 [node name="LoadoutSprite" type="AnimatedSprite2D" parent="Sprite"]
-position = Vector2(-9, 0)
+position = Vector2(-8.166531, -0.24197266)
 rotation = 1.5707964
+scale = Vector2(0.62191564, 0.96913075)
 sprite_frames = SubResource("SpriteFrames_e4i8k")
 animation = &"tank_silver_idle"
 script = ExtResource("3_e4i8k")
-metadata/_custom_type_script = "uid://dsmpmfacmdo3b"
 
 [node name="Guntip" type="Node2D" parent="."]
 position = Vector2(19, 0)

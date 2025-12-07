@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cevvdvskheoas" path="res://tank/loadouts/basic/basic_tankloadout.gd" id="1_vab7l"]
 [ext_resource type="Texture2D" uid="uid://06u5raro54dx" path="res://sprites/master_spriteshee_basic.png" id="3_ftwc1"]
-[ext_resource type="Script" uid="uid://dsmpmfacmdo3b" path="res://tank/loadouts/loadout_sprite.gd" id="4_ftwc1"]
+[ext_resource type="Script" path="res://tank/loadouts/loadout_sprite.gd" id="4_ftwc1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_camnk"]
 atlas = ExtResource("3_ftwc1")
@@ -554,12 +554,12 @@ script = ExtResource("1_vab7l")
 position = Vector2(1, 0)
 
 [node name="LoadoutSprite" type="AnimatedSprite2D" parent="Sprite"]
-position = Vector2(-11, 0)
+position = Vector2(-7.2930355, 0.13901155)
 rotation = 1.5707964
+scale = Vector2(0.64378387, 0.862705)
 sprite_frames = SubResource("SpriteFrames_t0xl2")
 animation = &"tank_darkgreen_idle"
 script = ExtResource("4_ftwc1")
-metadata/_custom_type_script = "uid://dsmpmfacmdo3b"
 
 [node name="Guntip" type="Node2D" parent="."]
 position = Vector2(17, 0)
