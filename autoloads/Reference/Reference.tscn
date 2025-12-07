@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ciyveyuo2ihr0" path="res://autoloads/Reference/Reference.gd" id="1_pmmna"]
 [ext_resource type="PackedScene" uid="uid://d176ir76ayfrc" path="res://shell_scenes/startup.tscn" id="2_qlxkd"]
 [ext_resource type="PackedScene" uid="uid://dd71ltua8vpqj" path="res://shell_scenes/main_menu.tscn" id="3_lrfi7"]
+[ext_resource type="PackedScene" uid="uid://cvt88un11f5iw" path="res://shell_scenes/startup2.tscn" id="3_xkbsy"]
 [ext_resource type="PackedScene" uid="uid://cltaghkxnswjy" path="res://shell_scenes/instructions.tscn" id="4_5tl84"]
 [ext_resource type="PackedScene" uid="uid://bhuom4ivjp0be" path="res://shell_scenes/credits.tscn" id="5_6y62y"]
 [ext_resource type="PackedScene" uid="uid://cxa1svc5qgg5b" path="res://shell_scenes/player_settings/player_settings.tscn" id="6_7h4v1"]
@@ -39,6 +40,7 @@
 [node name="Reference" type="Node"]
 script = ExtResource("1_pmmna")
 startup = ExtResource("2_qlxkd")
+icon = ExtResource("3_xkbsy")
 main_menu = ExtResource("3_lrfi7")
 instructions = ExtResource("4_5tl84")
 credits = ExtResource("5_6y62y")

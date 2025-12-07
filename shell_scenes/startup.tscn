@@ -1,24 +1,20 @@
 [gd_scene load_steps=2 format=3 uid="uid://d176ir76ayfrc"]
 
-[ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_2aema"]
+[ext_resource type="Script" uid="uid://cvf6fkip6ypde" path="res://shell_scenes/startup.gd" id="1_20eut"]
 
-[node name="StartupCutscene" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="StartupCutscene" type="Node"]
+script = ExtResource("1_20eut")
 
-[node name="CutSceneOverButton" type="Button" parent="."]
-offset_left = 517.0
-offset_top = 407.0
-offset_right = 645.0
-offset_bottom = 438.0
-text = "[CutSceneOver]"
-script = ExtResource("1_2aema")
-switch_to = "main_menu"
-quick_key = true
-
-[node name="THIS SCENE IS TEMP" type="Label" parent="."]
-offset_left = 503.0
-offset_top = 136.0
-offset_right = 725.0
-offset_bottom = 202.0
-text = "Pre Game Cut Scene"
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -31.0
+offset_right = -1168.0
+offset_bottom = -639.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(32.67502, 18.203573)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true

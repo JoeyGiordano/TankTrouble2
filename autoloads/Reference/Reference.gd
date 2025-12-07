@@ -20,6 +20,7 @@ class_name _Reference
 @export_category("Scenes")
 @export_group("Shell Scenes")
 @export var startup : PackedScene
+@export var icon : PackedScene
 @export var main_menu : PackedScene
 @export var instructions : PackedScene
 @export var credits : PackedScene
@@ -67,3 +68,26 @@ class_name _Reference
 @export var base_tank_stats : StatBoost
 @export_group("TilesetLib")
 @export var tileset_library : TilesetLib
+
+@export_category("Sounds")
+@export_group("Tank Loadouts")
+@export var basic_shoot_sfx : String = "res://sound/basic_shoot.mp3"
+@export var basic_bounce_sfx : String = "res://sound/basic_bounce.mp3"
+@export var basic_pop_sfx : String = "res://sound/basic_pop.mp3"
+@export var basic_empty_sfx : String = "res://sound/basic_empty.mp3"
+@export var landmine_shoot_sfx : String = "res://sound/mine_lay.mp3"
+@export var landmine_stepped_on_sfx : String = "res://sound/mine_stepped.mp3"
+@export var landmine_explode_sfx : String = "res://sound/mine_explode.mp3"
+@export var multibullet_shoot_sfx : String = "res://sound/basic_shoot.mp3"
+@export var multibullet_detonate_sfx : String = "res://sound/multi_clank.mp3"
+@export var nuke_shoot_sfx : String = "res://sound/nuke_shoot.mp3"
+@export var nuke_explode_sfx : String = "res://sound/nuke_explode.mp3"
+@export_group("Other")
+@export var tank_death_sfx : String = "res://sound/tank_explode.mp3"
+@export var item_spawn_sfx : String = "res://sound/item_spawn.mp3"
+@export var item_pickup_sfx : String = "res://sound/item_pickup.mp3"
+@export var box_explode_sfx : String = "res://sound/exploding_box.mp3"
+@export var box_destroy_sfx : String = "res://sound/destructible_box.mp3"
+@export var box_hit_sfx : String = "res://sound/crate_hit.mp3"
+@export var indestructible_box_hit_sfx : String = "res://sound/indestructible_box_hit.mp3"
+@export var pipe_fall : String = "res://sound/metal_pipe.mp3"

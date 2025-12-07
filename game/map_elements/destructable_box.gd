@@ -13,4 +13,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		health -= 1
 		#remove if health = 0
 		if(health == 0):
+			AudioManager.play(Ref.box_destroy_sfx)
 			queue_free()
+		else :
+			AudioManager.play(Ref.box_hit_sfx)
+			

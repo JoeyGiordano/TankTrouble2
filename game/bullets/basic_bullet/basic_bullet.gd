@@ -26,6 +26,7 @@ func _process(delta):
 	lifetime -= delta
 	if lifetime <= 0 :
 		#play bullet disappread sound and anim
+		AudioManager.play(Ref.basic_pop_sfx)
 		queue_free()
 
 var x = 0
@@ -45,6 +46,7 @@ func on_area_entered(area : Area2D) : #contact_monitor must be set to true and m
 
 func on_body_entered(_body : Node) :
 	dir_changed = true
+	AudioManager.play(Ref.basic_bounce_sfx)
 
 func on_end_of_round() :
 	queue_free()
