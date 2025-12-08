@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cltaghkxnswjy"]
+[gd_scene load_steps=3 format=3 uid="uid://cltaghkxnswjy"]
 
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_4nwng"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_r5u6c"]
 
 [node name="Instructions" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="BackButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 439.0
 offset_top = 522.0
 offset_right = 747.0
@@ -16,8 +18,18 @@ script = ExtResource("1_4nwng")
 switch_to = "main_menu"
 
 [node name="TEMP" type="Label" parent="."]
+layout_mode = 0
 offset_left = 538.0
 offset_top = 142.0
 offset_right = 702.0
 offset_bottom = 191.0
 text = "Instructions"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.52156866, 0.72156864, 0.8392157, 1)
+z_index = -3
+position = Vector2(579.00006, 341.00003)
+scale = Vector2(1275.4999, 753.49994)
+texture = ExtResource("2_r5u6c")
+region_enabled = true
+region_rect = Rect2(63, 68, 1, 1)

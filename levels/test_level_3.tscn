@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rigrosaete8h"]
+[gd_scene load_steps=7 format=3 uid="uid://rigrosaete8h"]
 
 [ext_resource type="PackedScene" uid="uid://dg7j5a0vuixef" path="res://game/loadout_upgrade/loadout_upgrade.tscn" id="1_gkona"]
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_yvw6e"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="5_l8bmr"]
 [ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="6_ciepe"]
 [ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="6_l8bmr"]
-[ext_resource type="Resource" uid="uid://b8ve24bo453do" path="res://game/item/items/item1.tres" id="7_ciepe"]
 
 [node name="LevelTemplate" type="Node"]
 
@@ -120,4 +119,3 @@ grid_pos = Vector2(0.5, 1.5)
 [node name="ItemSpawner" parent="." instance=ExtResource("6_l8bmr")]
 grid_type = 1
 spawn_area = Rect2(-175, -100, 350, 200)
-item_res = ExtResource("7_ciepe")

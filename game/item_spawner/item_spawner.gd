@@ -47,11 +47,14 @@ func rand_gen_spawn() :
 	do_spawn(pos)
 	#Item.instantiate(item_res, pos)
 
-var aaa : = ["empty_loadout", "basic_loadout", "multi_loadout", "landmine_loadout", "nuke_loadout"]
+var aaa : = ["empty_loadout", "multi_loadout", "landmine_loadout", "nuke_loadout"]
+var colors_aaa : = [Color(0.51, 0.0, 0.0, 1.0), Color(0.622, 0.174, 0.83, 1.0),Color(0.194, 0.43, 0.146, 1.0),Color(1.0, 0.483, 0.0, 1.0)]
 func do_spawn(pos : Vector2) :
 	var i = loadout_item.instantiate()
 	var r : ItemResource = i.get_child(3).item_res.duplicate()
-	r.loadout_name = aaa[randi_range(0,4)]
+	var xr : int = randi_range(0,3)
+	r.loadout_name = aaa[xr]
+	r.color = colors_aaa[xr]
 	i.get_child(3).item_res = r
 	Global.Entities.add_child(i)
 	i.position = pos
