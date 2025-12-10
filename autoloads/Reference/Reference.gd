@@ -42,6 +42,7 @@ class_name _Reference
 @export var rng_level_1 : PackedScene
 @export var rng_level_2 : PackedScene
 @export var rng_level_3 : PackedScene
+@export var rng_level_4 : PackedScene
 
 @export_category("Prefabs")
 @export_group("Prefabs")
