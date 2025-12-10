@@ -28,6 +28,8 @@ metadata/_custom_type_script = "uid://8jp733sld27f"
 [node name="LevelTemplate" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(29, 30)
+zoom = Vector2(1.4, 1.4)
 
 [node name="ItemSpawner" parent="." instance=ExtResource("1_p1833")]
 position = Vector2(-8.1518135, 6.3165627)

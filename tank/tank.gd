@@ -75,8 +75,6 @@ func _process(_delta) :
 	#Change tank color based on heat
 	tank_rigidbody.get_loadout().modulate = Color(1.0, 1.0-(invincibility_heat/max_heat), 1.0-(invincibility_heat/max_heat), 1.0) 
 
-	
-
 func _physics_process(_delta):
 	tank_rigidbody.move_and_rotate()
 
@@ -158,6 +156,10 @@ func die() :
 	if invincible_effect : return
 	lock()
 	#play death sound and anim
+	var anim : AnimatedSprite2D = Ref.explosion_anim.instantiate()
+	Global.Entities.add_child(anim)
+	anim.scale = Vector2(1.1,1.1)
+	anim.position = tank_rigidbody.position
 	despawn()
 	dead = true
 	AudioManager.play(Ref.tank_death_sfx)
