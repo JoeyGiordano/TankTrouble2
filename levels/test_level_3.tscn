@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://rigrosaete8h"]
+[gd_scene load_steps=8 format=4 uid="uid://rigrosaete8h"]
 
 [ext_resource type="PackedScene" uid="uid://dg7j5a0vuixef" path="res://game/loadout_upgrade/loadout_upgrade.tscn" id="1_gkona"]
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_yvw6e"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="5_l8bmr"]
 [ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="6_ciepe"]
 [ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="6_l8bmr"]
+[ext_resource type="TileSet" uid="uid://bs6vbjd02p3k8" path="res://levels/level_gen/parts/tilesets/floors/road.tres" id="7_ciepe"]
 
 [node name="LevelTemplate" type="Node"]
 
@@ -32,6 +33,7 @@ scale_ = 60.0
 
 [node name="Wall" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
 position = Vector2(-180, 0)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../../Grid")
 grid_pos = Vector2(-3, 0)
@@ -39,6 +41,7 @@ grid_length = 4
 
 [node name="Wall2" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
 position = Vector2(180, 0)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../../Grid")
 grid_pos = Vector2(3, 0)
@@ -47,6 +50,7 @@ grid_length = 4
 [node name="Wall3" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
 position = Vector2(0, -120)
 horizontal = true
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 368.0
 grid = NodePath("../../../Grid")
 grid_pos = Vector2(0, -2)
@@ -55,6 +59,7 @@ grid_length = 6
 [node name="Wall4" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
 position = Vector2(0, 120)
 horizontal = true
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 368.0
 grid = NodePath("../../../Grid")
 grid_pos = Vector2(0, 2)
@@ -62,6 +67,7 @@ grid_length = 6
 
 [node name="Wall5" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
 position = Vector2(-120, -60)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 128.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-2, -1)
@@ -70,6 +76,7 @@ grid_length = 2
 [node name="Wall6" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
 position = Vector2(0, 60)
 horizontal = true
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 128.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(0, 1)
@@ -78,6 +85,7 @@ grid_length = 2
 [node name="Wall7" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
 position = Vector2(0, -60)
 horizontal = true
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 128.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(0, -1)
@@ -85,6 +93,7 @@ grid_length = 2
 
 [node name="Wall8" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_q26d8")]
 position = Vector2(120, 60)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 128.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(2, 1)
@@ -119,3 +128,8 @@ grid_pos = Vector2(0.5, 1.5)
 [node name="ItemSpawner" parent="." instance=ExtResource("6_l8bmr")]
 grid_type = 1
 spawn_area = Rect2(-175, -100, 350, 200)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AAD9//7/AQAAAAAAAAD+//7/AQAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAABAP7/AQAAAAAAAAACAP7/AQAAAAAAAAACAP//AQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAD//wAAAQAAAAAAAAD+/wAAAQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAP//AQAAAAAAAAAAAP//AQAAAAAAAAD/////AQAAAAAAAAD+////AQAAAAAAAAD9////AQAAAAAAAAD8/wAAAQAAAAAAAAD8////AQAAAAAAAAD8//7/AQAAAAAAAAD8//3/AQAAAAAAAAD8/wEAAQAAAAAAAAADAAEAAQAAAAAAAAADAAAAAQAAAAAAAAADAP//AQAAAAAAAAADAP7/AQAAAAAAAAADAP3/AQAAAAAAAAACAP3/AQAAAAAAAAABAP3/AQAAAAAAAAAAAP3/AQAAAAAAAAD///3/AQAAAAAAAAD+//3/AQAAAAAAAAD9//3/AQAAAAAAAAD8/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD//wIAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAA=")
+tile_set = ExtResource("7_ciepe")

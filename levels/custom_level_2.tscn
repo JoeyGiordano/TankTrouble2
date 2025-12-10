@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvx6y0y353jnt"]
+[gd_scene load_steps=10 format=4 uid="uid://bvx6y0y353jnt"]
 
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_lvsjq"]
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_adlxq"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bco7bn3j6pl3n" path="res://game/map_elements/moveable_box.tscn" id="5_d4elk"]
 [ext_resource type="PackedScene" uid="uid://dhnun2qb7oy3g" path="res://game/map_elements/explosive_barrel.tscn" id="6_8h7hc"]
 [ext_resource type="PackedScene" uid="uid://bx2nhx7cbggc4" path="res://game/map_elements/destructable_box.tscn" id="7_rdubh"]
-[ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="9_rdubh"]
+[ext_resource type="TileSet" uid="uid://bs6vbjd02p3k8" path="res://levels/level_gen/parts/tilesets/floors/road.tres" id="9_rdubh"]
 
 [node name="LevelTemplate" type="Node"]
 
@@ -24,6 +24,7 @@ script = ExtResource("1_lvsjq")
 [node name="Top" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(0, -320)
 horizontal = true
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 1171.0
 width = 51.0
 grid = NodePath("../../../Grid")
@@ -32,6 +33,7 @@ grid_length = 28
 
 [node name="Left" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(-560, 0)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 690.0
 width = 50.0
 grid = NodePath("../../../Grid")
@@ -40,6 +42,7 @@ grid_length = 16
 
 [node name="Right" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(560, 0)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 690.0
 width = 50.0
 grid = NodePath("../../../Grid")
@@ -49,6 +52,7 @@ grid_length = 16
 [node name="Bottom" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(-20, 320)
 horizontal = true
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 1130.0
 width = 50.0
 grid = NodePath("../../../Grid")
@@ -57,6 +61,7 @@ grid_length = 27
 
 [node name="Wall" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(-400, 0)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-10, 0)
@@ -64,6 +69,7 @@ grid_length = 6
 
 [node name="Wall18" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(0, -200)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(0, -5)
@@ -71,6 +77,7 @@ grid_length = 6
 
 [node name="Wall19" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(0, 200)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(0, 5)
@@ -79,6 +86,7 @@ grid_length = 6
 [node name="Wall13" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(-200, 160)
 scale = Vector2(1, 0.64000124)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-5, 4)
@@ -87,6 +95,7 @@ grid_length = 6
 [node name="Wall20" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(-200, 160)
 scale = Vector2(1, 0.64000124)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-5, 4)
@@ -95,6 +104,7 @@ grid_length = 6
 [node name="Wall22" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(-200, -160)
 scale = Vector2(1, 0.64000124)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-5, -4)
@@ -103,6 +113,7 @@ grid_length = 6
 [node name="Wall23" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(200, -160)
 scale = Vector2(1, 0.64000124)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(5, -4)
@@ -111,6 +122,7 @@ grid_length = 6
 [node name="Wall21" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(200, 160)
 scale = Vector2(1, 0.64000124)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(5, 4)
@@ -119,6 +131,7 @@ grid_length = 6
 [node name="Wall3" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_length = 6
@@ -127,6 +140,7 @@ grid_length = 6
 position = Vector2(-440, 0)
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-11, 0)
@@ -136,6 +150,7 @@ grid_length = 6
 position = Vector2(-200, 80)
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-5, 2)
@@ -145,6 +160,7 @@ grid_length = 6
 position = Vector2(200, 80)
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(5, 2)
@@ -154,6 +170,7 @@ grid_length = 6
 position = Vector2(200, -80)
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(5, -2)
@@ -163,6 +180,7 @@ grid_length = 6
 position = Vector2(-200, -80)
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-5, -2)
@@ -172,6 +190,7 @@ grid_length = 6
 position = Vector2(-440, -200)
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-11, -5)
@@ -181,6 +200,7 @@ grid_length = 6
 position = Vector2(-440, 200)
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(-11, 5)
@@ -190,6 +210,7 @@ grid_length = 6
 position = Vector2(440, 200)
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(11, 5)
@@ -199,6 +220,7 @@ grid_length = 6
 position = Vector2(440, -200)
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(11, -5)
@@ -208,6 +230,7 @@ grid_length = 6
 position = Vector2(440, 0)
 rotation = 1.5707964
 scale = Vector2(1.089, 0.8)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(11, 0)
@@ -215,6 +238,7 @@ grid_length = 6
 
 [node name="Wall2" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
 position = Vector2(400, 0)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 248.0
 grid = NodePath("../../Grid")
 grid_pos = Vector2(10, 0)
@@ -326,6 +350,7 @@ position = Vector2(400, 250)
 [node name="Explosive Barrel2" parent="Active Map Elements/Explosive Barrels" instance=ExtResource("6_8h7hc")]
 position = Vector2(200, 0)
 
-[node name="ItemSpawner" parent="." instance=ExtResource("9_rdubh")]
-grid_type = 1
-spawn_area = Rect2(-290, -535, 580, 1070)
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AAD5//z/AQAAAAAAAAD6//z/AQAAAAAAAAD7//z/AQAAAAAAAAD8//z/AQAAAAAAAAD9//z/AQAAAAAAAAD+//z/AQAAAAAAAAD///z/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPz/AQAAAAAAAAACAPz/AQAAAAAAAAADAPz/AQAAAAAAAAAEAPz/AQAAAAAAAAAFAPz/AQAAAAAAAAAGAPz/AQAAAAAAAAAGAP3/AQAAAAAAAAAGAP7/AQAAAAAAAAAGAP//AQAAAAAAAAAGAAAAAQAAAAAAAAD5//3/AQAAAAAAAAD6//3/AQAAAAAAAAD7//3/AQAAAAAAAAD8//3/AQAAAAAAAAD9//3/AQAAAAAAAAD+//3/AQAAAAAAAAD///3/AQAAAAAAAAAAAP3/AQAAAAAAAAABAP3/AQAAAAAAAAACAP3/AQAAAAAAAAADAP3/AQAAAAAAAAAEAP3/AQAAAAAAAAAFAP3/AQAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAADAAMAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAAAAAMAAQAAAAAAAAD//wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD8/wMAAQAAAAAAAAD7/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD6/wIAAQAAAAAAAAD5/wIAAQAAAAAAAAD5/wMAAQAAAAAAAAD5/wEAAQAAAAAAAAD5/wAAAQAAAAAAAAD5////AQAAAAAAAAD5//7/AQAAAAAAAAD6//7/AQAAAAAAAAD7//7/AQAAAAAAAAD8//7/AQAAAAAAAAD9//7/AQAAAAAAAAD+//7/AQAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAABAP7/AQAAAAAAAAACAP7/AQAAAAAAAAADAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAAFAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAADAAIAAQAAAAAAAAACAAIAAQAAAAAAAAABAAIAAQAAAAAAAAAAAAIAAQAAAAAAAAD//wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD7/wIAAQAAAAAAAAD6/wEAAQAAAAAAAAD7/wEAAQAAAAAAAAD8/wEAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAAAAQAAAAAAAAADAAAAAQAAAAAAAAACAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAD//wAAAQAAAAAAAAD+/wAAAQAAAAAAAAD9/wAAAQAAAAAAAAD8/wAAAQAAAAAAAAD7/wAAAQAAAAAAAAD6/wAAAQAAAAAAAAD6////AQAAAAAAAAD7////AQAAAAAAAAD8////AQAAAAAAAAD9////AQAAAAAAAAD+////AQAAAAAAAAD/////AQAAAAAAAAAAAP//AQAAAAAAAAABAP//AQAAAAAAAAACAP//AQAAAAAAAAADAP//AQAAAAAAAAAEAP//AQAAAAAAAAA=")
+tile_set = ExtResource("9_rdubh")
