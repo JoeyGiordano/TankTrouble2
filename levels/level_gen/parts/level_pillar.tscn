@@ -8,10 +8,10 @@
 size = Vector2(6, 6)
 
 [node name="LevelPillar" type="Node2D"]
-scale = Vector2(1.2, 1.2)
 script = ExtResource("1_lhb6q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.49019608, 0.49019608, 0.49019608, 1)
 texture = ExtResource("1_fw5sw")
 hframes = 6
 frame = 1

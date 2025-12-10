@@ -1,29 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://cltaghkxnswjy"]
+[gd_scene load_steps=6 format=3 uid="uid://cltaghkxnswjy"]
 
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_4nwng"]
+[ext_resource type="FontFile" uid="uid://duu0y1mi7xx5m" path="res://sprites/Here Just Now Black.ttf" id="2_qslmo"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_r5u6c"]
+[ext_resource type="Texture2D" uid="uid://c5kfilsrffvu7" path="res://sprites/ButtonSprites/back_button.png" id="2_suxbw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_suxbw"]
+font = ExtResource("2_qslmo")
+font_size = 24
+font_color = Color(0.46666667, 0.5568628, 0.83137256, 1)
+outline_size = 11
+outline_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
 
 [node name="Instructions" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="BackButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 439.0
-offset_top = 522.0
-offset_right = 747.0
-offset_bottom = 574.0
+offset_left = 480.0
+offset_top = 515.0
+offset_right = 683.0
+offset_bottom = 606.0
 text = "Back"
 script = ExtResource("1_4nwng")
 switch_to = "main_menu"
 
+[node name="BackSprite" type="Sprite2D" parent="."]
+position = Vector2(581, 558)
+scale = Vector2(2, 2)
+texture = ExtResource("2_suxbw")
+
 [node name="TEMP" type="Label" parent="."]
 layout_mode = 0
-offset_left = 538.0
-offset_top = 142.0
-offset_right = 702.0
-offset_bottom = 191.0
-text = "Instructions"
+offset_left = -554.0
+offset_top = 113.0
+offset_right = 1708.0
+offset_bottom = 458.0
+text = "Instructions
+
+The science experiment's gone wrong! The lab rats have grown to enourmous size,
+escaped the lab and somehow come into possession of specially fitted mouse weapons.
+The military has brought in ground support to neutralize the threat. The city is engulfed in chaos!
+
+Controls (move+shoot)
+Player 1: awsd+q
+Player 2: hujk+y (arrow keys+period in a two player game)
+Player 3: arrow keys
+
+Kill all of the other players! First to win five rounds wins!"
+label_settings = SubResource("LabelSettings_suxbw")
+horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.52156866, 0.72156864, 0.8392157, 1)

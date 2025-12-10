@@ -20,7 +20,7 @@ func explode() :
 	#instantiate 8 bullets
 	for n in range(num_shards):
 		var angle = deg_to_rad(n*45)#get the 45 degree angle in radians
-		var direction = Vector2.RIGHT.rotated(angle)#get the vector for the bullet
+		var direction = Vector2.RIGHT.rotated(angle*(0.8+randf()*0.4))#get the vector for the bullet
 		var b = BasicBullet.instantiate(global_position, shard_speed*(0.8+randf()*0.4), direction, shard_lifetime*(0.8+randf()*0.4))
 		bullets.append(b)
 	

@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://dd71ltua8vpqj"]
 
-[ext_resource type="Script" path="res://shell_scenes/main_menu.gd" id="1_rujnt"]
+[ext_resource type="Script" uid="uid://d28nnm2xq0wu8" path="res://shell_scenes/main_menu.gd" id="1_rujnt"]
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_u5tdt"]
 [ext_resource type="Texture2D" uid="uid://cnd0xstqi0f60" path="res://spritesheets/playbutton_pressed_sh.png" id="2_4ange"]
 [ext_resource type="Texture2D" uid="uid://cbnu2d7hmhir7" path="res://sprites/menu_logo.png" id="2_hh8ys"]
@@ -164,17 +164,25 @@ offset_top = 648.0
 offset_right = 1546.0
 offset_bottom = 671.0
 
+[node name="PlayGameButton" type="AnimatedSprite2D" parent="."]
+position = Vector2(567.56256, 358)
+scale = Vector2(1.105357, 1.1249999)
+sprite_frames = SubResource("SpriteFrames_1s47i")
+animation = &"hovered"
+autoplay = "idle"
+
 [node name="PlayButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 386.0
-offset_top = 317.0
+offset_left = 372.0
+offset_top = 306.0
 offset_right = 756.0
-offset_bottom = 395.0
+offset_bottom = 402.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Play"
@@ -183,49 +191,44 @@ switch_to = "player_settings"
 quick_key = true
 delay_time = 1.3
 
-[node name="PlayGameButton" type="AnimatedSprite2D" parent="PlayButton"]
-position = Vector2(181.56255, 41)
-scale = Vector2(1.105357, 1.1249999)
-sprite_frames = SubResource("SpriteFrames_1s47i")
-animation = &"hovered"
-autoplay = "idle"
+[node name="CreditsSprite" type="Sprite2D" parent="."]
+position = Vector2(568, 549)
+scale = Vector2(1.1142857, 0.89999974)
+texture = ExtResource("4_kgja0")
 
 [node name="CreditsButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 388.0
-offset_top = 519.0
-offset_right = 758.0
-offset_bottom = 569.0
+offset_left = 375.0
+offset_top = 505.0
+offset_right = 764.0
+offset_bottom = 587.0
 text = "Credits"
 script = ExtResource("1_u5tdt")
 switch_to = "credits"
 
-[node name="CreditsSprite" type="Sprite2D" parent="CreditsButton"]
-position = Vector2(180, 29.999992)
-scale = Vector2(1.1142857, 0.89999974)
-texture = ExtResource("4_kgja0")
+[node name="InstructionsSprite" type="Sprite2D" parent="."]
+position = Vector2(568, 461)
+scale = Vector2(1.1085715, 0.9200001)
+texture = ExtResource("5_qkxma")
 
 [node name="InstructionsButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 386.0
+offset_left = 373.0
 offset_top = 420.0
-offset_right = 756.0
-offset_bottom = 470.0
+offset_right = 758.0
+offset_bottom = 495.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Instructions"
 script = ExtResource("1_u5tdt")
 switch_to = "instructions"
-
-[node name="InstructionsSprite" type="Sprite2D" parent="InstructionsButton"]
-position = Vector2(182, 41.000004)
-scale = Vector2(1.1085715, 0.9200001)
-texture = ExtResource("5_qkxma")
 
 [node name="TEMP" type="Label" parent="."]
 layout_mode = 0

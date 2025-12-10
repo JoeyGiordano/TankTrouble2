@@ -17,7 +17,7 @@ var dissolve_delay : float = 0.7
 #region - variables for the spawned shards
 var num_shards : int = 8
 var shard_speed : float = 100.0
-var shard_lifetime : float = 1.5
+var shard_lifetime : float = 1.3
 var exploded : bool = false
 var shards : Array[BasicBullet] = []
 #endregion

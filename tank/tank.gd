@@ -66,11 +66,11 @@ func _process(_delta) :
 			invincible_effect = false
 			invincibility_heat = 0
 			die()
-		if invincibility_heat >= max_heat - 4.5 && !invin_heat_sound.playing:
-			invin_heat_sound.play()
+		if invincibility_heat >= max_heat - 5.02 && !invin_heat_sound.playing:
+			invin_heat_sound.play(invincibility_heat - 5.02)
 	else:
 		if(invincibility_heat > 0):
-			invincibility_heat -= _delta;
+			invincibility_heat -= 2.2*_delta;
 		
 	#Change tank color based on heat
 	tank_rigidbody.get_loadout().modulate = Color(1.0, 1.0-(invincibility_heat/max_heat), 1.0-(invincibility_heat/max_heat), 1.0) 
@@ -148,10 +148,9 @@ func on_beginning_of_round() :
 
 func on_end_of_round() :
 	despawn()
+	invincibility_heat = 0
 
 ## State
-
-
 
 func die() :
 	if dead : return
@@ -163,8 +162,6 @@ func die() :
 	dead = true
 	AudioManager.play(Ref.tank_death_sfx)
 	GameManager.tank_died()
-
-
 
 func despawn() :
 	lock()

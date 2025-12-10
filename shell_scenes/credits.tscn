@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhuom4ivjp0be"]
+[gd_scene load_steps=6 format=3 uid="uid://bhuom4ivjp0be"]
 
 [ext_resource type="Script" uid="uid://bj5ye56nvni8h" path="res://shell_scenes/scene_switch_button.gd" id="1_lxpdn"]
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="2_jyk2p"]
 [ext_resource type="FontFile" uid="uid://duu0y1mi7xx5m" path="res://sprites/Here Just Now Black.ttf" id="2_wc8vp"]
+[ext_resource type="Texture2D" uid="uid://c5kfilsrffvu7" path="res://sprites/ButtonSprites/back_button.png" id="4_itc5l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_itc5l"]
 font = ExtResource("2_wc8vp")
@@ -16,11 +17,12 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="BackButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 388.0
-offset_top = 520.0
-offset_right = 750.0
-offset_bottom = 567.0
+offset_left = 487.0
+offset_top = 502.0
+offset_right = 691.0
+offset_bottom = 599.0
 text = "Back"
 script = ExtResource("1_lxpdn")
 switch_to = "main_menu"
@@ -50,3 +52,8 @@ scale = Vector2(1275.4999, 753.49994)
 texture = ExtResource("2_jyk2p")
 region_enabled = true
 region_rect = Rect2(63, 68, 1, 1)
+
+[node name="BackSprite" type="Sprite2D" parent="."]
+position = Vector2(588, 550)
+scale = Vector2(2, 2)
+texture = ExtResource("4_itc5l")

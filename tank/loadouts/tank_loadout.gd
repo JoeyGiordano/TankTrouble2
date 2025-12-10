@@ -85,7 +85,6 @@ static func instantiate(parent : RigidBody2D, loadout_name : String) -> TankLoad
 	return tl
 	
 func set_sprite() :
-	print("TANK LOADOUT HAS: ", sprite_id)
 	if(get_child(0).get_child(0) is AnimatedSprite2D):
 		match(sprite_id):
 			0:
