@@ -4,11 +4,17 @@ extends Control
 @onready var score1 = $Score1
 @onready var score2 = $Score2
 
+var r : bool = false
 var p : bool = false
 
+func _ready() -> void:
+	await get_tree().create_timer(1.1).timeout
+	r = true
+
 func _process(_delta: float) -> void:
-		
-	if Input.is_anything_pressed() :
+	if r && Input.is_anything_pressed() :
+		p = true
+	if Input.is_action_just_pressed("DEBUG_SKIP") :
 		p = true
 
 func display_score() :

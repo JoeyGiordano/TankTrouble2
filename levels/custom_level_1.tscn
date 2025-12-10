@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq0y0r8qtbtw2"]
+[gd_scene load_steps=8 format=3 uid="uid://dq0y0r8qtbtw2"]
 
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_uwx0b"]
+[ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="1_wered"]
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_ux485"]
 [ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="3_bvjyl"]
 [ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="4_wered"]
@@ -10,6 +11,10 @@
 [node name="Minefield Custom Level" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ItemSpawner" parent="." instance=ExtResource("1_wered")]
+grid_type = 1
+spawn_area = Rect2(-240, -435, 480, 870)
 
 [node name="Grid" type="Node" parent="."]
 script = ExtResource("1_uwx0b")

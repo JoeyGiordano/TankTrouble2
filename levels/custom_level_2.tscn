@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvx6y0y353jnt"]
+[gd_scene load_steps=10 format=3 uid="uid://bvx6y0y353jnt"]
 
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_lvsjq"]
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_adlxq"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bco7bn3j6pl3n" path="res://game/map_elements/moveable_box.tscn" id="5_d4elk"]
 [ext_resource type="PackedScene" uid="uid://dhnun2qb7oy3g" path="res://game/map_elements/explosive_barrel.tscn" id="6_8h7hc"]
 [ext_resource type="PackedScene" uid="uid://bx2nhx7cbggc4" path="res://game/map_elements/destructable_box.tscn" id="7_rdubh"]
+[ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="9_rdubh"]
 
 [node name="LevelTemplate" type="Node"]
 
@@ -324,3 +325,7 @@ position = Vector2(400, 250)
 
 [node name="Explosive Barrel2" parent="Active Map Elements/Explosive Barrels" instance=ExtResource("6_8h7hc")]
 position = Vector2(200, 0)
+
+[node name="ItemSpawner" parent="." instance=ExtResource("9_rdubh")]
+grid_type = 1
+spawn_area = Rect2(-290, -535, 580, 1070)

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="3_dtyln"]
 
 [node name="LoadoutItem" type="Node2D"]
+z_index = 10
 script = ExtResource("1_8xg78")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
@@ -30,4 +31,5 @@ region_enabled = true
 region_rect = Rect2(64, 66, 1, 1)
 
 [node name="Item" parent="." instance=ExtResource("1_varlc")]
+z_index = 7
 item_res = ExtResource("2_pe3fo")

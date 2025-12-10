@@ -5,6 +5,7 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="Label" type="Label" parent="."]
+visible = false
 modulate = Color(0.839216, 0.388235, 0.85098, 1)
 layout_mode = 0
 offset_left = 533.0

@@ -25,7 +25,6 @@ enum Type {
 
 func _process(_delta) :
 	var animated_sprite = get_child(0).get_child(0)
-	var tank : Tank = get_parent().get_parent()
 	if(animated_sprite is AnimatedSprite2D):
 		if tank_rigid_body.linear_velocity.length_squared() > 0.01:		# if the tank is moving
 			if (not "move" in animated_sprite.animation): 	# if the move animation is not already playing
