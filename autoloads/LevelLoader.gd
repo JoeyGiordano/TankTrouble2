@@ -24,11 +24,18 @@ func _switch_level(new_level : PackedScene) :
 
 func _determine_next_level() -> String :
 	var r = randf() * 100.0
-	if r < 5 :
+	if r < 33 :
 		return "custom_level_1"
-	elif r < 13 :
+	elif r < 66 :
 		return "custom_level_2"
-	elif r < 25 :
+	else :
+		return "test_level_3"
+	
+	if r < 8 :
+		return "custom_level_1"
+	elif r < 16 :
+		return "custom_level_2"
+	elif r < 28 :
 		return "test_level_3"
 	elif r < 50 :
 		return "rng_level_1"

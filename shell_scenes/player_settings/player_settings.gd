@@ -32,18 +32,21 @@ func _process(_delta) :
 		play_button.pressed.emit()
 
 func on_add_player_pressed() :
-	AudioManager.play(Ref.item_spawn_sfx)
 	if player_count < MAX_PLAYERS :
+		AudioManager.play(Ref.item_spawn_sfx)
 		_set_player_count(player_count + 1)
 	else :
+		AudioManager.play(Ref.multibullet_detonate_sfx)
 		message_label.text = ""#"Player max reached"
 		await get_tree().create_timer(1.7).timeout
 		message_label.text = ""
 
 func on_remove_player_pressed() :
-	AudioManager.play(Ref.tank_death_sfx)
 	if player_count > MIN_PLAYERS :
+		AudioManager.play(Ref.tank_death_sfx)
 		_set_player_count(player_count - 1)
+	else :
+		AudioManager.play(Ref.multibullet_detonate_sfx)
 
 # TODO: create_players needs to changed to take in player_count as well as selected_sprites
 func on_play_pressed() :
