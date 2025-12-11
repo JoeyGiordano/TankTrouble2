@@ -7,4 +7,4 @@ class_name LevelGenWall
 
 func _ready():
 	sprite.frame = randi_range(0,sprite.hframes-1)
-	collision_shape.shape.size = Vector2(6,72)
+	collision_shape.shape.size = Vector2(6,78)

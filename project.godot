@@ -38,6 +38,7 @@ window/stretch/mode="canvas_items"
 
 tank_hitbox=""
 tank_rigidbody=""
+level_gen_wall=""
 
 [input]
 
