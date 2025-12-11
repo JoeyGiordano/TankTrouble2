@@ -49,7 +49,7 @@ func _process(_delta):
 			create_new_identical_wall()
 		update_children_shape()
 
-func  update_children_shape() :
+func update_children_shape() :
 	#update the variables of the children (sprite and collider) to reflect the length and width in this script
 	if horizontal :
 		col.shape.size = Vector2(length, width)

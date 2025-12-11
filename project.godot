@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="TankTrouble2"
+config/name="Tank Trouble 2"
 run/main_scene="res://game_container/game_container.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://crdwv0l8n7ock"
 
 [autoload]
 
@@ -31,7 +31,7 @@ AudioManager="*res://autoloads/AudioManager.gd"
 
 [display]
 
-window/size/mode=3
+window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [global_group]
@@ -145,3 +145,4 @@ player2_shoot={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
