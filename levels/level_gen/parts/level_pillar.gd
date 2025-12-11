@@ -13,6 +13,7 @@ func _ready():
 	area.body_entered.connect(on_body_entered)
 	await get_tree().create_timer(0.1).timeout
 	if to_destroy : queue_free()
+	area.queue_free()
 
 func on_body_entered(b : Node2D) :
 	if b.get_parent().is_in_group("level_gen_wall") :

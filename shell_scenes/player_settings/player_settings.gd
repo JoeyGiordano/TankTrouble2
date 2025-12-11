@@ -32,6 +32,7 @@ func _process(_delta) :
 		play_button.pressed.emit()
 
 func on_add_player_pressed() :
+	AudioManager.play(Ref.item_spawn_sfx)
 	if player_count < MAX_PLAYERS :
 		_set_player_count(player_count + 1)
 	else :
@@ -40,6 +41,7 @@ func on_add_player_pressed() :
 		message_label.text = ""
 
 func on_remove_player_pressed() :
+	AudioManager.play(Ref.tank_death_sfx)
 	if player_count > MIN_PLAYERS :
 		_set_player_count(player_count - 1)
 
