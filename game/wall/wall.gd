@@ -10,6 +10,8 @@ class_name Wall
 @export var length : float = 100.0
 @export var width : float = 8.0
 
+@export var res : WallRes
+
 @export_category("Grid")
 @export var grid : Grid
 @export var snap_to_grid : bool = true
@@ -21,7 +23,7 @@ class_name Wall
 @onready var sprite : Sprite2D = $Sprite2D
 
 func _ready():
-	update_children_shape()
+	non_editor_shape_set()
 
 func _process(_delta):
 	if Engine.is_editor_hint() : #only run this code in the editor
@@ -48,6 +50,21 @@ func _process(_delta):
 		if selected && Input.is_action_just_pressed("ui_focus_next") : #ui_focus_next = tab
 			create_new_identical_wall()
 		update_children_shape()
+		
+		#resource setup
+		if Input.is_key_pressed(KEY_5) :
+			res = WallRes.new()
+			res.color = color
+			res.horizontal = horizontal
+			res.length = length
+			res.width = width
+			#var error = ResourceSaver.save(res, "res://game/wall/wall_res_saves/wall_res_" + str(randi_range(0,9999999)))
+			#if error == OK:
+				#print("Resource saved successfully")
+			#else:
+				#print("Error saving resource: ", error)
+			
+			
 
 func update_children_shape() :
 	#update the variables of the children (sprite and collider) to reflect the length and width in this script
@@ -59,6 +76,16 @@ func update_children_shape() :
 		sprite.scale = Vector2(width, length)
 	sprite.position = Vector2.ZERO
 	sprite.modulate = color
+
+func non_editor_shape_set() :
+	if res.horizontal :
+		col.shape.size = Vector2(res.length, res.width)
+		sprite.scale = Vector2(res.length, res.width)
+	else :
+		col.shape.size = Vector2(res.width, res.length)
+		sprite.scale = Vector2(res.width, res.length)
+	sprite.position = Vector2.ZERO
+	sprite.modulate = res.color
 
 func create_new_identical_wall() : #call in the editor only
 	var ps : PackedScene = load("res://game/wall/wall.tscn")

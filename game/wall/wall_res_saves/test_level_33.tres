@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WallRes" load_steps=2 format=3 uid="uid://cdpehqsupsi4f"]
+
+[ext_resource type="Script" uid="uid://c1eyaddkufp3y" path="res://game/wall/base_wall.gd" id="1_obtng"]
+
+[resource]
+script = ExtResource("1_obtng")
+horizontal = true
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
+length = 368.0
