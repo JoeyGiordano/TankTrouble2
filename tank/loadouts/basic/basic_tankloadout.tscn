@@ -547,7 +547,7 @@ animations = [{
 }]
 
 [node name="BasicTankLoadout" type="CollisionPolygon2D"]
-polygon = PackedVector2Array(-10, -7, 12, -7, 12, -2, 17, -2, 17, 2, 12, 2, 12, 7, -10, 7)
+polygon = PackedVector2Array(-10, -7, 12, -7, 17, 0, 12, 7, -10, 7)
 script = ExtResource("1_vab7l")
 
 [node name="Sprite" type="Node2D" parent="."]
@@ -558,7 +558,7 @@ position = Vector2(-7.2930355, 0.13901155)
 rotation = 1.5707964
 scale = Vector2(0.64378387, 0.862705)
 sprite_frames = SubResource("SpriteFrames_t0xl2")
-animation = &"tank_darkgreen_idle"
+animation = &"white_rat_move"
 script = ExtResource("4_ftwc1")
 
 [node name="Guntip" type="Node2D" parent="."]
@@ -570,4 +570,4 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(-11, -7, 11, -7, 11, -2, 16, -2, 16, 2, 11, 2, 11, 7, -11, 7)
+polygon = PackedVector2Array(-11, -7, 11, -7, 16, 0, 11, 7, -11, 7)
