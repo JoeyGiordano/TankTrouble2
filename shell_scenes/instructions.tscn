@@ -32,7 +32,7 @@ position = Vector2(581, 558)
 scale = Vector2(2, 2)
 texture = ExtResource("2_suxbw")
 
-[node name="TEMP" type="Label" parent="."]
+[node name="Instructions" type="Label" parent="."]
 layout_mode = 0
 offset_left = -554.0
 offset_top = 113.0
@@ -41,7 +41,7 @@ offset_bottom = 458.0
 text = "Instructions
 
 Dr. Dimitri's science experiment has gone wrong! His lab rats have grown to enourmous size,
-escaped his lab and somehow come into possession of specially fitted rat weapons.
+escaped his lab, and somehow come into possession of specially fitted rat weapons.
 The military has brought in ground support to neutralize the threat. The city is in chaos!
 
 Controls (move+shoot)

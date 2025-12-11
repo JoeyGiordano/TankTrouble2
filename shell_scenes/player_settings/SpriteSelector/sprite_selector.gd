@@ -23,10 +23,12 @@ func _ready() -> void:
 	_update_sprite()
 
 func _on_prev_pressed() -> void:
+	AudioManager.play(Ref.basic_shoot_sfx)
 	current_index -= 1
 	_update_sprite()
 	
 func _on_next_pressed() -> void:
+	AudioManager.play(Ref.basic_shoot_sfx)
 	current_index += 1
 	_update_sprite()
 	

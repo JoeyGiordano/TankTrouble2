@@ -30,8 +30,6 @@ func explode() :
 	
 	AudioManager.play(Ref.box_explode_sfx)
 
-
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#check if the area is entered by a bullet:
 	if body is BasicBullet:

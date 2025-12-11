@@ -32,6 +32,7 @@ func _process(_delta) :
 		play_button.pressed.emit()
 
 func on_add_player_pressed() :
+	AudioManager.play(Ref.item_spawn_sfx)
 	if player_count < MAX_PLAYERS :
 		_set_player_count(player_count + 1)
 	else :
@@ -40,6 +41,7 @@ func on_add_player_pressed() :
 		message_label.text = ""
 
 func on_remove_player_pressed() :
+	AudioManager.play(Ref.tank_death_sfx)
 	if player_count > MIN_PLAYERS :
 		_set_player_count(player_count - 1)
 
@@ -47,9 +49,20 @@ func on_remove_player_pressed() :
 func on_play_pressed() :
 	# TODO: following lines can be uncommented once PlayerManager.create_players is modified
 	var player_sprite_ids: Array[int] = []
-	for p in player_selectors:
-		player_sprite_ids.append(p.get_selected_sprite_id())
+	if player_count == 2 :
+		player_sprite_ids.append(player_selectors[0].get_selected_sprite_id())
+		player_sprite_ids.append(player_selectors[1].get_selected_sprite_id())
+	if player_count == 3 :
+		player_sprite_ids.append(player_selectors[0].get_selected_sprite_id())
+		player_sprite_ids.append(player_selectors[2].get_selected_sprite_id())
+		player_sprite_ids.append(player_selectors[1].get_selected_sprite_id())
+		
+	#for p in player_selectors:
+	#	player_sprite_ids.append(p.get_selected_sprite_id())
 	PlayerManager.create_players(player_count, player_sprite_ids)
+	Global.MainAudio().stop()
+	Global.MainAudio2().play()
+	GameManager.players_ready.emit()
 	# PlayerManager.create_players(player_count)
 
 #func add_update_graphic() :

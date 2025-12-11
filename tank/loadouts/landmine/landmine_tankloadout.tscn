@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xixf2g7l3put" path="res://tank/loadouts/landmine/landmine_tankloadout.gd" id="1_4l3ap"]
 [ext_resource type="Texture2D" uid="uid://b3ko6aqll8a6g" path="res://sprites/master_mine_sheet.png" id="3_88xo6"]
-[ext_resource type="Script" path="res://tank/loadouts/loadout_sprite.gd" id="4_e0knw"]
+[ext_resource type="Script" uid="uid://dsmpmfacmdo3b" path="res://tank/loadouts/loadout_sprite.gd" id="4_e0knw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwo5y"]
 atlas = ExtResource("3_88xo6")
@@ -505,18 +505,18 @@ animations = [{
 }]
 
 [node name="LandmineTankLoadout" type="CollisionPolygon2D"]
-polygon = PackedVector2Array(-10, -7, 12, -7, 12, 7, -10, 7)
+polygon = PackedVector2Array(-10, -7, 12, -7, 16, 0, 12, 7, -10, 7)
 script = ExtResource("1_4l3ap")
 
 [node name="Sprite" type="Node2D" parent="."]
 position = Vector2(1, 0)
 
 [node name="LoadoutSprite" type="AnimatedSprite2D" parent="Sprite"]
-position = Vector2(-7.7601476, -7.1525574e-07)
+position = Vector2(-8, -1.1920929e-07)
 rotation = 1.5707964
-scale = Vector2(0.5898304, 0.6948203)
+scale = Vector2(0.644, 0.863)
 sprite_frames = SubResource("SpriteFrames_mf2hk")
-animation = &"tank_orange_move"
+animation = &"grey_rat_idle"
 script = ExtResource("4_e0knw")
 
 [node name="Guntip" type="Node2D" parent="."]
@@ -528,4 +528,5 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(-11, -7, -11, 7, 11, 7, 11, -7)
+position = Vector2(0, 1)
+polygon = PackedVector2Array(-11, -8, -11, 6, 11, 6, 15, -1, 11, -8)

@@ -43,6 +43,8 @@ func mouse_exited() :
 		get_child(0).play("idle")
 
 func on_pressed() :
+	AudioManager.play(Ref.basic_shoot_sfx)
+	
 	if get_children().size() != 0:
 		if get_child(0) is AnimatedSprite2D:
 			get_child(0).play("pushed")

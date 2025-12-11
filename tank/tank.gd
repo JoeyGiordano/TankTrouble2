@@ -127,16 +127,13 @@ func change_loadout(loadout_name : String) :
 func destroy() :
 	TankManager.destroy_tank(self)
 
-
 #Detect if in the invincability field
 func give_invincibility():
 	invincible_effect = true
 
-
 func remove_invincibility():
 	invin_heat_sound.stop()
 	invincible_effect = false
-
 
 ## Signal Response
 

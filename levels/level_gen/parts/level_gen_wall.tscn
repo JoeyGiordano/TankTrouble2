@@ -5,14 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://desg714yrkfn8" path="res://sprites/perm_elements/tt2 window-Sheet.png" id="2_s2xfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4smjr"]
-size = Vector2(1, 2)
+size = Vector2(3, 56.5)
 
-[node name="LevelGenWall" type="Node2D"]
-scale = Vector2(1.1, 1.1)
+[node name="LevelGenWall" type="Node2D" groups=["level_gen_wall"]]
 script = ExtResource("1_mdtf3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.49, 0.49, 0.49, 1)
+scale = Vector2(1, 1.03)
 texture = ExtResource("2_s2xfn")
 hframes = 10
 

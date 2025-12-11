@@ -45,9 +45,9 @@ texture = ExtResource("3_lbrnb")
 
 [node name="Score0" type="Label" parent="."]
 layout_mode = 0
-offset_left = 786.0
+offset_left = 158.0
 offset_top = 323.0
-offset_right = 1315.0
+offset_right = 687.0
 offset_bottom = 480.0
 text = "00"
 label_settings = SubResource("LabelSettings_5bxr2")
@@ -63,9 +63,9 @@ label_settings = SubResource("LabelSettings_5bxr2")
 
 [node name="Score2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 161.0
+offset_left = 769.0
 offset_top = 327.0
-offset_right = 690.0
+offset_right = 1298.0
 offset_bottom = 484.0
 text = "00"
 label_settings = SubResource("LabelSettings_5bxr2")

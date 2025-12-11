@@ -1,20 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq0y0r8qtbtw2"]
+[gd_scene load_steps=8 format=4 uid="uid://dq0y0r8qtbtw2"]
 
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_uwx0b"]
-[ext_resource type="PackedScene" uid="uid://cie0axyk6sxe5" path="res://game/item_spawner/item_spawner.tscn" id="1_wered"]
 [ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_ux485"]
 [ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="3_bvjyl"]
 [ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="4_wered"]
 [ext_resource type="PackedScene" uid="uid://dhnun2qb7oy3g" path="res://game/map_elements/explosive_barrel.tscn" id="5_bvjyl"]
 [ext_resource type="PackedScene" uid="uid://kgb8qiwyx3h5" path="res://game/map_elements/indestructable_box.tscn" id="6_bvjyl"]
+[ext_resource type="TileSet" uid="uid://bs6vbjd02p3k8" path="res://levels/level_gen/parts/tilesets/floors/road.tres" id="7_wered"]
 
 [node name="Minefield Custom Level" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="ItemSpawner" parent="." instance=ExtResource("1_wered")]
-grid_type = 1
-spawn_area = Rect2(-240, -435, 480, 870)
 
 [node name="Grid" type="Node" parent="."]
 script = ExtResource("1_uwx0b")
@@ -26,6 +22,7 @@ script = ExtResource("1_uwx0b")
 [node name="Top" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_ux485")]
 position = Vector2(0, -320)
 horizontal = true
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 1171.0
 width = 51.0
 grid = NodePath("../../../Grid")
@@ -34,6 +31,7 @@ grid_length = 28
 
 [node name="Left" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_ux485")]
 position = Vector2(-560, 0)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 690.0
 width = 50.0
 grid = NodePath("../../../Grid")
@@ -42,6 +40,7 @@ grid_length = 16
 
 [node name="Right" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_ux485")]
 position = Vector2(560, 0)
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 690.0
 width = 50.0
 grid = NodePath("../../../Grid")
@@ -51,6 +50,7 @@ grid_length = 16
 [node name="Bottom" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_ux485")]
 position = Vector2(-20, 320)
 horizontal = true
+color = Color(0.61960787, 0.61960787, 0.61960787, 1)
 length = 1130.0
 width = 50.0
 grid = NodePath("../../../Grid")
@@ -948,3 +948,8 @@ position = Vector2(500, -214)
 position = Vector2(486, -214)
 
 [node name="Speed Ups" type="Node2D" parent="Active Map Stuff"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AAD+//7/AQAAAAAAAAD9//7/AQAAAAAAAAD8//7/AQAAAAAAAAD7//7/AQAAAAAAAAD6//3/AQAAAAAAAAD5//3/AQAAAAAAAAD5//7/AQAAAAAAAAD5//z/AQAAAAAAAAD6//z/AQAAAAAAAAD7//z/AQAAAAAAAAD8//z/AQAAAAAAAAD9//z/AQAAAAAAAAD+//z/AQAAAAAAAAD///z/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPz/AQAAAAAAAAACAPz/AQAAAAAAAAADAPz/AQAAAAAAAAAEAPz/AQAAAAAAAAAFAPz/AQAAAAAAAAAGAPz/AQAAAAAAAAAGAP3/AQAAAAAAAAAGAP7/AQAAAAAAAAAGAP//AQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAADAAMAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAAAAAMAAQAAAAAAAAD//wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD8/wMAAQAAAAAAAAD7/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD5/wMAAQAAAAAAAAD5/wIAAQAAAAAAAAD6/wIAAQAAAAAAAAD7/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD//wIAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAADAAEAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAD//wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD9/wEAAQAAAAAAAAD8/wEAAQAAAAAAAAD8/wAAAQAAAAAAAAD7/wEAAQAAAAAAAAD6/wEAAQAAAAAAAAD5/wEAAQAAAAAAAAD5/wAAAQAAAAAAAAD5////AQAAAAAAAAD6//7/AQAAAAAAAAD6////AQAAAAAAAAD6/wAAAQAAAAAAAAD7//3/AQAAAAAAAAD7////AQAAAAAAAAD8//3/AQAAAAAAAAD8////AQAAAAAAAAD9////AQAAAAAAAAD+/wAAAQAAAAAAAAD/////AQAAAAAAAAAAAP//AQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAD//wAAAQAAAAAAAAD+////AQAAAAAAAAD9/wAAAQAAAAAAAAD7/wAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAFAP//AQAAAAAAAAAEAP//AQAAAAAAAAADAP//AQAAAAAAAAACAP//AQAAAAAAAAABAP//AQAAAAAAAAAFAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAADAP7/AQAAAAAAAAACAP7/AQAAAAAAAAABAP7/AQAAAAAAAAAAAP7/AQAAAAAAAAD///7/AQAAAAAAAAD9//3/AQAAAAAAAAD+//3/AQAAAAAAAAD///3/AQAAAAAAAAAAAP3/AQAAAAAAAAABAP3/AQAAAAAAAAACAP3/AQAAAAAAAAADAP3/AQAAAAAAAAAEAP3/AQAAAAAAAAAFAP3/AQAAAAAAAAA=")
+tile_set = ExtResource("7_wered")

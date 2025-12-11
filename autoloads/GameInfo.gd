@@ -11,6 +11,8 @@ var score0 : int = 0
 var score1 : int = 0
 var score2 : int = 0
 
+var num_players = 0
+
 
 func alive_players_count() -> int : #TODO NEXT move somewhere else?
 	var players_alive : int = 0 

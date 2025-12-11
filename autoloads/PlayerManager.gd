@@ -39,6 +39,7 @@ func reset() :
 ## Create
 
 func create_players(count : int, player_sprite_ids : Array[int]) :
+	GameInfo.num_players = count
 	for i in range(count) :
 		create_player(player_sprite_ids[i])
 		#print(player_sprite_ids[i]) #<-- correct here

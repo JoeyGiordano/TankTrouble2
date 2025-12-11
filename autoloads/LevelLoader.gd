@@ -23,17 +23,19 @@ func _switch_level(new_level : PackedScene) :
 	Utility.replace_scene_in_holder(Global.LevelHolder, new_level)
 
 func _determine_next_level() -> String :
-	var r = randf() * 100
+	var r = randf() * 100.0
 	if r < 5 :
 		return "custom_level_1"
 	elif r < 13 :
 		return "custom_level_2"
 	elif r < 25 :
 		return "test_level_3"
-	elif r < 60 :
+	elif r < 50 :
 		return "rng_level_1"
-	else :
+	elif r < 75 :
 		return "rng_level_3"
+	else :
+		return "rng_level_4"
 
 func destroy_all_entities() :
 	var x = Global.Entities.get_children()
