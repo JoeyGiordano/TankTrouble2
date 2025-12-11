@@ -23,7 +23,7 @@ func _switch_level(new_level : PackedScene) :
 	Utility.replace_scene_in_holder(Global.LevelHolder, new_level)
 
 func _determine_next_level() -> String :
-	var r = randf() * 100
+	var r = randf() * 100.0
 	if r < 5 :
 		return "custom_level_1"
 	elif r < 13 :

@@ -48,7 +48,7 @@ func rand_gen_spawn() :
 	#Item.instantiate(item_res, pos)
 
 var aaa : = ["multi_loadout", "landmine_loadout", "nuke_loadout"]
-var colors_aaa : = [Color(0.83, 0.174, 0.295, 1.0),Color(0.194, 0.43, 0.146, 1.0),Color(1.0, 0.483, 0.0, 1.0)]
+var colors_aaa : = [Color(0.223, 0.647, 0.93, 1.0),Color(0.225, 0.5, 0.17, 1.0),Color(1.0, 0.483, 0.0, 1.0)]
 func do_spawn(pos : Vector2) :
 	var i = loadout_item.instantiate()
 	var r : ItemResource = i.get_child(3).item_res.duplicate()

@@ -47,9 +47,20 @@ func on_remove_player_pressed() :
 func on_play_pressed() :
 	# TODO: following lines can be uncommented once PlayerManager.create_players is modified
 	var player_sprite_ids: Array[int] = []
-	for p in player_selectors:
-		player_sprite_ids.append(p.get_selected_sprite_id())
+	if player_count == 2 :
+		player_sprite_ids.append(player_selectors[0].get_selected_sprite_id())
+		player_sprite_ids.append(player_selectors[1].get_selected_sprite_id())
+	if player_count == 3 :
+		player_sprite_ids.append(player_selectors[0].get_selected_sprite_id())
+		player_sprite_ids.append(player_selectors[2].get_selected_sprite_id())
+		player_sprite_ids.append(player_selectors[1].get_selected_sprite_id())
+		
+	#for p in player_selectors:
+	#	player_sprite_ids.append(p.get_selected_sprite_id())
 	PlayerManager.create_players(player_count, player_sprite_ids)
+	Global.MainAudio().stop()
+	Global.MainAudio2().play()
+	GameManager.players_ready.emit()
 	# PlayerManager.create_players(player_count)
 
 #func add_update_graphic() :

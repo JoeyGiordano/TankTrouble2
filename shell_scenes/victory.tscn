@@ -14,6 +14,7 @@ outline_color = Color(0.1, 0.1, 0.1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_suqb6"]
 font = ExtResource("3_suqb6")
+font_size = 24
 font_color = Color(0.5882353, 0.5882353, 0.8509804, 1)
 outline_size = 6
 outline_color = Color(0.07, 0.07, 0.07, 1)
@@ -26,10 +27,10 @@ script = ExtResource("1_i5amd")
 [node name="TitleButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 356.0
+offset_left = 312.0
 offset_top = 414.0
-offset_right = 782.0
-offset_bottom = 486.0
+offset_right = 815.0
+offset_bottom = 530.0
 text = "MainMenu"
 script = ExtResource("1_mua0j")
 switch_to = "main_menu"
@@ -56,9 +57,9 @@ region_rect = Rect2(63, 65, 1, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 435.0
-offset_top = 442.0
-offset_right = 718.0
-offset_bottom = 465.0
+offset_left = 350.0
+offset_top = 459.0
+offset_right = 773.0
+offset_bottom = 485.0
 text = "Click here to return to the main menu"
 label_settings = SubResource("LabelSettings_suqb6")

@@ -85,7 +85,7 @@ func end_round() :
 			GameInfo.score1 += 1
 		if !PlayerManager.get_associated_tank(2).dead && PlayerManager.get_associated_tank(0).dead && PlayerManager.get_associated_tank(1).dead:
 			PlayerManager.get_player_profile(2).score += 1
-			GameInfo.score2 += 2
+			GameInfo.score2 += 1
 
 func check_for_winner() -> int :
 	# returns player_id of winning player (score>5) and ignores ties
@@ -105,7 +105,16 @@ func show_victory_screen(player_id) :
 	#goes to the victory screen and ensures it displays the right winner, returns to the shell scenes sequence
 	ShellSceneManager.switch_active_scene(Ref.victory)
 	var label : Label = Global.CurrentShellScene().get_child(1)
-	match player_id :
-		"draw" : label.text = "Draw"
-		1 : label.text = "Player 1 wins"
-		0 : label.text = "Player 2 wins"
+	if GameInfo.num_players == 2 :
+		match player_id :
+			"draw" : label.text = "Draw"
+			0 : label.text = "Player 1 wins"
+			1 : label.text = "Player 2 wins"
+	elif GameInfo.num_players == 3 :
+		match player_id :
+			"draw" : label.text = "Draw"
+			0 : label.text = "Player 1 wins"
+			1 : label.text = "Player 3 wins"
+			2 : label.text = "Player 2 wins"
+	else :
+		label.text = "error"
