@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6tipnwivsspp" path="res://tank/loadouts/multibullet/multibullet_tankloadout.gd" id="1_84uf1"]
 [ext_resource type="Texture2D" uid="uid://ddmn6tulo1g2i" path="res://sprites/master_multi_sheet.png" id="3_j8y4m"]
-[ext_resource type="Script" path="res://tank/loadouts/loadout_sprite.gd" id="4_t0kmd"]
+[ext_resource type="Script" uid="uid://dsmpmfacmdo3b" path="res://tank/loadouts/loadout_sprite.gd" id="4_t0kmd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ihqim"]
 atlas = ExtResource("3_j8y4m")
@@ -547,7 +547,7 @@ animations = [{
 }]
 
 [node name="MultibulletTankLoadout" type="CollisionPolygon2D"]
-polygon = PackedVector2Array(-10, -7, 12, -7, 12, -3, 17, -3, 17, 3, 12, 3, 12, 7, -10, 7)
+polygon = PackedVector2Array(-10, -7, 13, -7, 13, 7, -10, 7)
 script = ExtResource("1_84uf1")
 
 [node name="Sprite" type="Node2D" parent="."]
@@ -556,7 +556,7 @@ position = Vector2(1, 0)
 [node name="LoadoutSprite" type="AnimatedSprite2D" parent="Sprite"]
 position = Vector2(-6.6822805, 0.015779138)
 rotation = 1.5707964
-scale = Vector2(0.6003998, 0.8400845)
+scale = Vector2(0.644, 0.863)
 sprite_frames = SubResource("SpriteFrames_7vms1")
 animation = &"tank_darkgreen_idle"
 script = ExtResource("4_t0kmd")
@@ -570,4 +570,4 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(-11, -7, -11, 7, 11, 7, 11, 2.93669, 16, 3, 16, -3, 11, -3.01297, 11, -7)
+polygon = PackedVector2Array(-11, -7, -11, 7, 12, 7, 12, -7)
