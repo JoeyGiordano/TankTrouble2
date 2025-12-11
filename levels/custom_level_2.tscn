@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://bvx6y0y353jnt"]
+[gd_scene load_steps=15 format=4 uid="uid://bvx6y0y353jnt"]
 
 [ext_resource type="Script" uid="uid://bciuldxspt6ul" path="res://game/grid/grid.gd" id="1_lvsjq"]
-[ext_resource type="PackedScene" uid="uid://c4p5w7pfj3smp" path="res://game/wall/wall.tscn" id="2_adlxq"]
 [ext_resource type="PackedScene" uid="uid://vo2tyqhl6m72" path="res://game/player_spawner/player_spawner.tscn" id="3_05xrx"]
 [ext_resource type="PackedScene" uid="uid://cojumcdicoceq" path="res://game/player_spawner/spawn_point.tscn" id="4_d4elk"]
 [ext_resource type="PackedScene" uid="uid://b2vd12pjydjhl" path="res://game/map_elements/bullet_speed_modifier_area.tscn" id="5_8h7hc"]
@@ -9,6 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://dhnun2qb7oy3g" path="res://game/map_elements/explosive_barrel.tscn" id="6_8h7hc"]
 [ext_resource type="PackedScene" uid="uid://bx2nhx7cbggc4" path="res://game/map_elements/destructable_box.tscn" id="7_rdubh"]
 [ext_resource type="TileSet" uid="uid://bs6vbjd02p3k8" path="res://levels/level_gen/parts/tilesets/floors/road.tres" id="9_rdubh"]
+[ext_resource type="Texture2D" uid="uid://dxe5rsvu84bgc" path="res://icon.svg" id="10_e7vgk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7vgk"]
+size = Vector2(8, 248)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i37b6"]
+size = Vector2(8, 158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6cj1"]
+size = Vector2(51, 689)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3aqp6"]
+size = Vector2(198, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xaius"]
+size = Vector2(1087, 49.75)
 
 [node name="LevelTemplate" type="Node"]
 
@@ -16,233 +31,6 @@
 
 [node name="Grid" type="Node" parent="."]
 script = ExtResource("1_lvsjq")
-
-[node name="Walls" type="Node2D" parent="."]
-
-[node name="Border" type="Node2D" parent="Walls"]
-
-[node name="Top" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(0, -320)
-horizontal = true
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 1171.0
-width = 51.0
-grid = NodePath("../../../Grid")
-grid_pos = Vector2(0, -8)
-grid_length = 28
-
-[node name="Left" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-560, 0)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 690.0
-width = 50.0
-grid = NodePath("../../../Grid")
-grid_pos = Vector2(-14, 0)
-grid_length = 16
-
-[node name="Right" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(560, 0)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 690.0
-width = 50.0
-grid = NodePath("../../../Grid")
-grid_pos = Vector2(14, 0)
-grid_length = 16
-
-[node name="Bottom" parent="Walls/Border" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-20, 320)
-horizontal = true
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 1130.0
-width = 50.0
-grid = NodePath("../../../Grid")
-grid_pos = Vector2(-0.5, 8)
-grid_length = 27
-
-[node name="Wall" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-400, 0)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(-10, 0)
-grid_length = 6
-
-[node name="Wall18" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(0, -200)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(0, -5)
-grid_length = 6
-
-[node name="Wall19" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(0, 200)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(0, 5)
-grid_length = 6
-
-[node name="Wall13" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-200, 160)
-scale = Vector2(1, 0.64000124)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(-5, 4)
-grid_length = 6
-
-[node name="Wall20" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-200, 160)
-scale = Vector2(1, 0.64000124)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(-5, 4)
-grid_length = 6
-
-[node name="Wall22" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-200, -160)
-scale = Vector2(1, 0.64000124)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(-5, -4)
-grid_length = 6
-
-[node name="Wall23" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(200, -160)
-scale = Vector2(1, 0.64000124)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(5, -4)
-grid_length = 6
-
-[node name="Wall21" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(200, 160)
-scale = Vector2(1, 0.64000124)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(5, 4)
-grid_length = 6
-
-[node name="Wall3" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_length = 6
-
-[node name="Wall4" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-440, 0)
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(-11, 0)
-grid_length = 6
-
-[node name="Wall14" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-200, 80)
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(-5, 2)
-grid_length = 6
-
-[node name="Wall15" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(200, 80)
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(5, 2)
-grid_length = 6
-
-[node name="Wall16" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(200, -80)
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(5, -2)
-grid_length = 6
-
-[node name="Wall17" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-200, -80)
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(-5, -2)
-grid_length = 6
-
-[node name="Wall6" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-440, -200)
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(-11, -5)
-grid_length = 6
-
-[node name="Wall7" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(-440, 200)
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(-11, 5)
-grid_length = 6
-
-[node name="Wall8" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(440, 200)
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(11, 5)
-grid_length = 6
-
-[node name="Wall9" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(440, -200)
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(11, -5)
-grid_length = 6
-
-[node name="Wall5" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(440, 0)
-rotation = 1.5707964
-scale = Vector2(1.089, 0.8)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(11, 0)
-grid_length = 6
-
-[node name="Wall2" parent="Walls" node_paths=PackedStringArray("grid") instance=ExtResource("2_adlxq")]
-position = Vector2(400, 0)
-color = Color(0.61960787, 0.61960787, 0.61960787, 1)
-length = 248.0
-grid = NodePath("../../Grid")
-grid_pos = Vector2(10, 0)
-grid_length = 6
 
 [node name="PlayerSpawner" parent="." instance=ExtResource("3_05xrx")]
 
@@ -354,3 +142,342 @@ position = Vector2(200, 0)
 z_index = -1
 tile_map_data = PackedByteArray("AAD5//z/AQAAAAAAAAD6//z/AQAAAAAAAAD7//z/AQAAAAAAAAD8//z/AQAAAAAAAAD9//z/AQAAAAAAAAD+//z/AQAAAAAAAAD///z/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPz/AQAAAAAAAAACAPz/AQAAAAAAAAADAPz/AQAAAAAAAAAEAPz/AQAAAAAAAAAFAPz/AQAAAAAAAAAGAPz/AQAAAAAAAAAGAP3/AQAAAAAAAAAGAP7/AQAAAAAAAAAGAP//AQAAAAAAAAAGAAAAAQAAAAAAAAD5//3/AQAAAAAAAAD6//3/AQAAAAAAAAD7//3/AQAAAAAAAAD8//3/AQAAAAAAAAD9//3/AQAAAAAAAAD+//3/AQAAAAAAAAD///3/AQAAAAAAAAAAAP3/AQAAAAAAAAABAP3/AQAAAAAAAAACAP3/AQAAAAAAAAADAP3/AQAAAAAAAAAEAP3/AQAAAAAAAAAFAP3/AQAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAADAAMAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAAAAAMAAQAAAAAAAAD//wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD8/wMAAQAAAAAAAAD7/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD6/wIAAQAAAAAAAAD5/wIAAQAAAAAAAAD5/wMAAQAAAAAAAAD5/wEAAQAAAAAAAAD5/wAAAQAAAAAAAAD5////AQAAAAAAAAD5//7/AQAAAAAAAAD6//7/AQAAAAAAAAD7//7/AQAAAAAAAAD8//7/AQAAAAAAAAD9//7/AQAAAAAAAAD+//7/AQAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAABAP7/AQAAAAAAAAACAP7/AQAAAAAAAAADAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAAFAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAADAAIAAQAAAAAAAAACAAIAAQAAAAAAAAABAAIAAQAAAAAAAAAAAAIAAQAAAAAAAAD//wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD7/wIAAQAAAAAAAAD6/wEAAQAAAAAAAAD7/wEAAQAAAAAAAAD8/wEAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAAAAQAAAAAAAAADAAAAAQAAAAAAAAACAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAD//wAAAQAAAAAAAAD+/wAAAQAAAAAAAAD9/wAAAQAAAAAAAAD8/wAAAQAAAAAAAAD7/wAAAQAAAAAAAAD6/wAAAQAAAAAAAAD6////AQAAAAAAAAD7////AQAAAAAAAAD8////AQAAAAAAAAD9////AQAAAAAAAAD+////AQAAAAAAAAD/////AQAAAAAAAAAAAP//AQAAAAAAAAABAP//AQAAAAAAAAACAP//AQAAAAAAAAADAP//AQAAAAAAAAAEAP//AQAAAAAAAAA=")
 tile_set = ExtResource("9_rdubh")
+
+[node name="Walls2" type="Node2D" parent="."]
+
+[node name="VSprites" type="Node2D" parent="Walls2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls2/VSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-400.00003, 0)
+scale = Vector2(7.9999995, 248)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Walls2/VSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(0, -200)
+scale = Vector2(7.9999995, 248)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Walls2/VSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(200, -161)
+scale = Vector2(7.9999995, 156.00002)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Walls2/VSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(0, 199.99998)
+scale = Vector2(7.9999995, 248)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Walls2/VSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(400.00003, 0)
+scale = Vector2(7.9999995, 248)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Walls2/VSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(200.00002, 161)
+scale = Vector2(7.9999995, 156.00002)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Walls2/VSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-200, 161)
+scale = Vector2(7.9999995, 156.00002)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Walls2/VSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-200.00002, -161)
+scale = Vector2(7.9999995, 156.00002)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D9" type="Sprite2D" parent="Walls2/VSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-560, 2.4497509e-05)
+scale = Vector2(49.99998, 690.00006)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Walls2/VSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(559.99994, 5.9604645e-08)
+scale = Vector2(49.99998, 690.00006)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="HSprites" type="Node2D" parent="Walls2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-199.99998, 80)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-7.6293945e-06, 0)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-200, -80)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(200, -80.00001)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(199.99998, 80)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(440.00003, 0)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(440.00003, 200)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D8" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(440, -200)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D9" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-440, 7.6293945e-06)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D10" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-440.00003, -200)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D11" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-440, 200)
+scale = Vector2(197.99998, 8.999998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D12" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(-0.9999552, 320)
+scale = Vector2(1090, 50.000004)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="Sprite2D13" type="Sprite2D" parent="Walls2/HSprites"]
+modulate = Color(0.61960787, 0.61960787, 0.61960787, 1)
+position = Vector2(19.999947, -320)
+scale = Vector2(1129.9999, 50.74998)
+texture = ExtResource("10_e7vgk")
+region_enabled = true
+region_rect = Rect2(64, 65, 1, 1)
+
+[node name="VBody" type="Node2D" parent="Walls2"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls2/VBody"]
+position = Vector2(-400, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/VBody/StaticBody2D"]
+position = Vector2(0, -1.000001)
+shape = SubResource("RectangleShape2D_e7vgk")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls2/VBody"]
+position = Vector2(0, 201)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/VBody/StaticBody2D2"]
+position = Vector2(0, -1.000001)
+shape = SubResource("RectangleShape2D_e7vgk")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls2/VBody"]
+position = Vector2(0, -199)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/VBody/StaticBody2D3"]
+position = Vector2(0, -1.000001)
+shape = SubResource("RectangleShape2D_e7vgk")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls2/VBody"]
+position = Vector2(400, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/VBody/StaticBody2D4"]
+position = Vector2(0, -1.000001)
+shape = SubResource("RectangleShape2D_e7vgk")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Walls2/VBody"]
+position = Vector2(-200, -160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/VBody/StaticBody2D5"]
+shape = SubResource("RectangleShape2D_i37b6")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Walls2/VBody"]
+position = Vector2(200, -160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/VBody/StaticBody2D6"]
+shape = SubResource("RectangleShape2D_i37b6")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Walls2/VBody"]
+position = Vector2(200, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/VBody/StaticBody2D7"]
+shape = SubResource("RectangleShape2D_i37b6")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Walls2/VBody"]
+position = Vector2(-200, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/VBody/StaticBody2D8"]
+shape = SubResource("RectangleShape2D_i37b6")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Walls2/VBody"]
+position = Vector2(539, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/VBody/StaticBody2D9"]
+position = Vector2(21.5, -1.5)
+shape = SubResource("RectangleShape2D_h6cj1")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Walls2/VBody"]
+position = Vector2(-582, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/VBody/StaticBody2D10"]
+position = Vector2(21.5, -1.5)
+shape = SubResource("RectangleShape2D_h6cj1")
+
+[node name="HBody" type="Node2D" parent="Walls2"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(-200, -80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(-200, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(200, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D3"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(200, -80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D4"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Walls2/HBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D5"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(440, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D6"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(440, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D7"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(440, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D8"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(-440, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D9"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(-440, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D10"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(-440, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D11"]
+shape = SubResource("RectangleShape2D_3aqp6")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(-441, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D12"]
+position = Vector2(445, 19.875)
+shape = SubResource("RectangleShape2D_xaius")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="Walls2/HBody"]
+position = Vector2(-441, -339)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2/HBody/StaticBody2D13"]
+position = Vector2(445, 19.875)
+shape = SubResource("RectangleShape2D_xaius")
